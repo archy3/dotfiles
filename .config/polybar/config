@@ -1,0 +1,155 @@
+[settings]
+pseudo-transparency = true
+
+[bar/mybar]
+font-0 =
+;font-0 = DejaVu Sans Mono:style=Book
+font-1 = FontAwesome:style=Regular
+background = #60000000
+foreground = #dddddd
+height = 24
+module-margin = 1
+padding-right = 1
+modules-left = pcmanfm htop xterm vim calc firefox workspaces polywins
+;line-size = 3
+modules-right = pulseaudio cpu memory date
+;tray-position = right
+tray-maxsize = 24
+tray-detached = true
+tray-padding = 2
+tray-offset-x = -153
+; See https://i.reddit.com/r/Polybar/comments/gfej6a/tray_overlapping_while_in_fullscreen/
+
+[module/cpu]
+type = internal/cpu
+interval = 3
+format = <ramp-load>
+ramp-load-spacing = 1
+ramp-load-0 = ▁
+ramp-load-1 = ▂
+ramp-load-2 = ▃
+ramp-load-3 = ▄
+ramp-load-4 = ▅
+ramp-load-5 = ▆
+ramp-load-6 = ▇
+ramp-load-7 = █
+
+
+[module/memory]
+type = internal/memory
+interval = 3
+format = <ramp-used>
+ramp-used-0 = ▁
+ramp-used-1 = ▂
+ramp-used-2 = ▃
+ramp-used-3 = ▄
+ramp-used-4 = ▅
+ramp-used-5 = ▆
+ramp-used-6 = ▇
+ramp-used-7 = █
+
+[module/date]
+type = internal/date
+date = %H:%M
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+; Sink to be used, if it exists (find using `pacmd list-sinks`, name field)
+; If not, uses default sink
+sink = alsa_output.pci-0000_12_00.3.analog-stereo
+
+; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
+; Default: true
+use-ui-max = true
+
+interval = 5
+
+label-muted = muted
+;label-muted-foreground
+click-right = pavucontrol
+
+
+[module/pcmanfm]
+type = custom/text
+content = " "
+;content = " F "
+;              
+click-left = "pcmanfm &"
+
+[module/htop]
+type = custom/text
+content = " ∿"
+;content = " M "
+click-left = "xterm -class htop -sl 0 -e htop -u $USER &"
+
+[module/xterm]
+type = custom/text
+content = " "
+;content = " T "
+click-left = "xterm &"
+
+[module/vim]
+type = custom/text
+content = " "
+;content = " E "
+click-left = "gvim &"
+
+[module/calc]
+type = custom/text
+content = " "
+click-left = "galculator &"
+
+[module/firefox]
+type = custom/text
+content = "  "
+;content = " I "
+click-left = "firefox &"
+
+[module/workspaces]
+type = internal/xworkspaces
+
+; Only show workspaces defined on the same output as the bar
+;
+; Useful if you want to show monitor specific workspaces
+; on different bars
+;
+; Default: false
+pin-workspaces = true
+
+; Create click handler used to focus desktop
+; Default: true
+enable-click = true
+
+; Create scroll handlers used to cycle desktops
+; Default: true
+enable-scroll = false
+
+icon-default = ◉
+
+format = <label-state>
+
+label-active = %icon%
+label-active-foreground = #dfdfdf
+;label-active-background = #3f3f3f
+label-active-underline = #fba922
+label-active-padding = 2
+
+label-occupied = ◉
+label-occupied-foreground = #999999
+label-occupied-padding = 2
+
+; See https://www.w3schools.com/charsets/ref_utf_geometric.asp for nice shapes.
+;label-empty = %icon%
+;◎●
+label-empty = ○
+label-empty-foreground = #999999
+label-empty-padding = 2
+
+[module/polywins]
+type = custom/script
+exec = exec ~/.config/polybar/scripts/polywins.sh 2>/dev/null
+format = <label>
+label = %output%
+label-padding = 1
+tail = true

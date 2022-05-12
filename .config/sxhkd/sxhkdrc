@@ -1,0 +1,68 @@
+super + {e, t, n, m, c, i, w, y, j, x, g, r, v, l}
+	{pcmanfm &, \
+	~/scripts/lof.sh xterm -sl 0 -e "$HOME/scripts/tmux-auto-attach.sh" &, \
+	gvim &, \
+	~/scripts/lof.sh xterm -class htop -sl 0 -e htop -u "$USER" &, \
+	GTK_THEME=Arc-Dark galculator &, \
+	~/scripts/lof.sh firefox-esr -P default-new-browser &, \
+	gtk-launch libreoffice-writer &, \
+	gtk-launch lyx &, \
+	~/scripts/lof.sh gnome-disks &, \
+	~/scripts/lof.sh keepassx &, \
+	~/.dosbox/bin/dosbox-svn &, \
+	dmenu_run -l 15 -fn 'Monospace-13' &, \
+	~/scripts/lof.sh pulseeffects &, \
+	xscreensaver-command -lock &}
+
+super + alt + {t, i, n, F4}
+	{xterm -sl 0 -e "$HOME/scripts/tmux-auto-attach.sh" &, \
+	~/scripts/lof.sh firefox-esr -P default-state &, \
+	gtk-launch evim.desktop &, \
+	~/scripts/shutdown-menu.sh &}
+
+super + ctrl + {c, n, v}
+	{~/scripts/quodlibet-menu.sh &, \
+	~/scripts/edit-config.sh &, \
+	~/scripts/paste-by-typing.sh &}
+
+
+super + shift + {e, v, t, q}
+	{GTK_THEME=oomox-Geeko-Dark-Alt-3.5 thunderbird &, \
+	~/scripts/lof-virt-manager.sh &, \
+	#deluge-gtk &, \
+	lxde-logout &}
+
+ctrl + super + alt + {x}
+	{xkill &}
+
+ctrl + alt + shift + {BackSpace, backslash}
+	{systemctl poweroff, systemctl poweroff}
+
+
+## Long commands:
+super + space
+	~/scripts/kls.sh &
+
+super + alt + v
+	virt-viewer -v -f -H toggle-fullscreen=alt+enter --reconnect --attach --connect qemu:///session &
+
+super + shift + i
+	cd ~/.programs/tor-browser_en-US && exec ./start-tor-browser.desktop &
+
+super + shift + j
+	env WINEPREFIX="${HOME}/.wine/prefix/dbpoweramp" wine-stable 'C:\windows\command\start.exe' /Unix "${HOME}/.wine/prefix/dbpoweramp/dosdevices/c:/ProgramData/Microsoft/Windows/Start Menu/Programs/dBpoweramp/CD Ripper.lnk" &
+
+super + shift + g
+	~/.programs/gpg4usb/start_linux &
+
+super + shift + n
+	~/scripts/notification-toggle.sh &
+
+super + shift + r
+	pkill -USR1 -U "$(id -un)" -x "redshift" &
+
+super + {s,S} ; {_, super +} {f, s, S, F, c, C,}
+	{_,_}{_,_}~/scripts/screenshot.sh {f, s, S, F, c, C} &
+
+~button{8,9}
+	~/scripts/pcmanfm-forward-back.sh {Left,Right} &

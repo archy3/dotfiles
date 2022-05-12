@@ -1,0 +1,111 @@
+" Also see:
+" $VIMRUNTIME/evim.vim
+" $VIMRUNTIME/mswin.vim
+
+" TODO:
+" Make dragging mouse past left or right window border scroll left or right.
+" Make middle clicking a tab close that tab.
+" Make CTRL-A retain winview (low priority)
+
+" NOTE ABOUT INSERTMODE:
+" when <Esc> is used inside a mapping, it behaves like
+" 'insertmode' was not set.  This was done to be able to use the same
+" mappings with 'insertmode' set or not set.
+" When executing commands with ':normal' 'insertmode' is not used.
+
+
+" Disable syntax highlighting and autoindention
+" (evim is only used for simple tasks):
+syntax off
+set noautoindent
+au!
+filetype plugin indent off
+filetype off
+
+set shortmess+=I
+set encoding=utf-8
+set number
+set noshowmode
+
+set guioptions-=T
+"set colorcolumn=80
+
+set nobackup
+set noswapfile
+
+colorscheme torte
+
+" Prevent tildes from showing after EOF:
+highlight EndOfBuffer guifg=bg
+
+"highlight ColorColumn ctermbg=0 guibg=darkgrey
+
+set sidescroll=1
+
+
+" Use CTRL-g like CTRL-o:
+inoremap <C-g> <C-o>
+
+" Tab support:
+inoremap <silent> <C-t> <C-o>:tabe<cr>
+inoremap <C-w> <C-o>:confirm bd<cr>
+inoremap <C-Tab> <C-o>gt
+inoremap <C-S-Tab> <C-o>gT
+
+" Open new evim window:
+inoremap <silent> <C-n> <C-o>:silent exec '! gtk-launch evim.desktop &'<cr>
+
+" Print:
+inoremap <silent> <C-p> <C-o>:hardcopy<cr>
+
+" Open file:
+inoremap <silent> <C-o> <C-o>:browse confirm e<cr>
+
+" Toggle options and access command mode:
+inoremap <F1> <C-o>:
+inoremap <silent> <F2> <C-o>:set number!<cr>
+inoremap <silent> <F3> <C-o>:set wrap!<cr>
+inoremap <silent> <esc> <C-o>:nohlsearch<cr>
+
+" Make middle mouse button behave the same as in Mousepad:
+inoremap <MiddleMouse> <C-o>mm<LeftMouse><MiddleMouse><esc>i<C-o>`m
+snoremap <MiddleMouse> <C-g><MiddleMouse><esc>gv<C-g>
+" (For some reason when the x11-selection is empty, the * register
+"   contains a filename, usually '$HOME/.vim')
+
+" Use right click to copy/paste to/from the system clipboard (like Windows cmd):
+inoremap <RightMouse> <C-o>"+<MiddleMouse>
+snoremap <RightMouse> <C-g>"+y
+
+" Prevent scrolling past EOF:
+function! PageOrScrollDown(count, type)
+  let l:save_pos = getpos('.')
+  exec "norm! L"
+
+  " Check if already on last page:
+  if line('.') == line('$')
+    call setpos('.', l:save_pos)
+    return
+  endif
+
+  " Page down or scroll down:
+  call setpos('.', l:save_pos)
+  if a:type == 'page'
+    exec 'norm! ' . a:count . "\<C-f>"
+  else
+    exec 'norm! ' . a:count . "\<C-e>"
+  endif
+  let l:save_pos = getpos('.')
+  exec "norm! L"
+
+  " If on last page, reposition view so that the bottom line
+  " is the bottom of the winview:
+  if line('.') == line('$')
+    exec 'norm! zb'
+  endif
+
+  call setpos('.', l:save_pos)
+endfunction
+inoremap <silent> <PageDown> <C-o>:<C-u>call PageOrScrollDown(v:count1, 'page')<cr>
+inoremap <silent> <ScrollWheelDown> <C-o>:<C-u>call PageOrScrollDown(3, 'scroll')<cr>
+" (TODO: Make this work in select mode)

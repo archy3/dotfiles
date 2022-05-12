@@ -1,0 +1,2 @@
+[Command]
+Logout=sh -c '"$HOME/scripts/shutdown-menu.sh"'

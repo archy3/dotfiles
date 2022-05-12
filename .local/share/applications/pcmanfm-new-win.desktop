@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Icon=system-file-manager
+Name=PCManFM New Window
+Comment=Open directory in new window
+Categories=System;FileTools;FileManager;Utility;Core;GTK;
+Exec=pcmanfm --new-win -- %U
+StartupNotify=true
+NoDisplay=false
+Terminal=false
+MimeType=inode/directory;

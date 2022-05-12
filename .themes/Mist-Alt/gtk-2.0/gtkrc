@@ -1,0 +1,255 @@
+# Set colors to a combination of Gruvbox and Raleigh:
+gtk-color-scheme = "bg_color:#282828"
+gtk-color-scheme = "fg_color:#cccccc"
+gtk-color-scheme = "base_color:#333333"
+gtk-color-scheme = "text_color:#cccccc"
+gtk-color-scheme = "selected_bg_color:#4B6983"
+gtk-color-scheme = "selected_fg_color:#ffffff"
+
+# Use Redmond icon sizes:
+gtk-icon-sizes = "mini-commander-icon=32,32:print-manager=32,32:panel-button=32,32:gtk-dnd=32,32:gtk-menu=16,16:panel-menu=22,22:gtk-large-toolbar=16,16:gtk-small-toolbar=16,16:gtk-button=16,16:gtk-dialog=32,32"
+
+# Default Mist code from here on afterwards,
+# except where noted with indented comments:
+
+style "default"
+{
+        fg[NORMAL]              = @fg_color
+        fg[ACTIVE]              = @fg_color
+        fg[INSENSITIVE]         = mix (0.4, @fg_color, shade (0.85, @bg_color)) #shaded to bg[INSENSITIVE]
+
+        fg[PRELIGHT]            = @fg_color
+        fg[SELECTED]            = @selected_fg_color
+
+        # Default is 'bg[ACTIVE]              = shade (0.9, @bg_color)'
+        # (Shade values between 0.67 and 0.7 work well)
+        # (This affects tab and scrollbar contrast)
+        bg[ACTIVE]              = shade (0.7, @bg_color)
+	bg[NORMAL]              = @bg_color
+        bg[INSENSITIVE]         = shade (0.95, @bg_color)
+        # Default is 'bg[PRELIGHT]            = shade (1.03, @bg_color)'
+        # (Shade values between 1.13 and 1.23 work well)
+        # (This affects how bright buttons are highlighted when hovered over)
+        bg[PRELIGHT]            = shade (1.23, @bg_color)
+        bg[SELECTED]            = @selected_bg_color
+
+        base[NORMAL]            = @base_color
+        base[ACTIVE]            = shade (0.9, @selected_bg_color)
+        base[INSENSITIVE]       = shade (0.95, @base_color)
+        base[PRELIGHT]          = @bg_color
+	base[SELECTED]          = @selected_bg_color
+
+        text[NORMAL]            = @text_color
+        text[ACTIVE]            = @text_color
+        text[PRELIGHT]          = @text_color
+        text[SELECTED]          = @selected_fg_color
+        text[INSENSITIVE]       = mix (0.5, @text_color, @base_color)
+
+
+	GtkRange::trough_border = 0
+	GtkRange::slider_width = 15
+	GtkRange::stepper_size = 15
+
+	GtkEntry::progress-border = { 0, 0, 0, 0 }
+
+	GtkScrollbar::min_slider_length = 15
+	GtkCheckButton::indicator_size=10
+	GtkCheckMenuItem::indicator_size=10
+	GtkRadioButton::indicator_size=12
+
+	GtkNotebook::tab_vborder = 1
+	GtkNotebook::tab_hborder = 1
+	xthickness = 1
+	ythickness = 1
+
+	NautilusIconContainer::dark_info_color="#888888"
+	NautilusIconContainer::light_info_color="#bbbbbb"
+	NautilusIconContainer::highlight_alpha=200
+
+	GtkMenu::horizontal_padding=0
+	GtkMenu::vertical_padding=0
+
+        # Make hyperlinks readable:
+        # (From: https://ubuntuforums.org/showthread.php?p=9852107)
+        GtkWidget::link-color = "#acee00"
+        GtkWidget::visited-link-color = "#ffc100"
+        GtkHTML::alink_color = "#acee00"
+        GtkHTML::link_color = "#acee00"
+        GtkHTML::vlink_color = "#ffc100"
+        GnomeHref::link_color = "#acee00"
+        GtkIMHtml::hyperlink-color = "#acee00"
+        GtkIMHtml::hyperlink-prelight-color = "#ffc100"
+
+	engine "mist"
+ 	{
+	}
+}
+
+style "menuitem"
+{
+	ythickness = 2
+	xthickness = 2
+
+        fg[PRELIGHT]          = @selected_fg_color
+}
+
+style "menu"
+{
+	ythickness = 2
+	xthickness = 2
+}
+
+style "entry"
+{
+	bg[SELECTED] = mix(0.35, @selected_bg_color, @base_color)
+	fg[SELECTED] = @text_color
+}
+
+class "GtkWidget" style "default"
+class "GtkMenu" style "menu"
+class "GtkEntry" style "entry"
+
+widget_class "*<GtkMenuItem>*" style "menuitem"
+
+
+
+# Work around for http://bugzilla.gnome.org/show_bug.cgi?id=382646
+# Note that the work around assumes that the combobox is _not_ in
+# appears-as-list mode.
+# This style does not affect GtkComboBoxEntry, it does have an effect
+# on comboboxes in appears-as-list mode though.
+style "mist-text-is-fg-color-workaround"
+{
+        text[NORMAL]              = @fg_color
+        text[ACTIVE]              = @fg_color
+        text[INSENSITIVE]         = mix (0.4, @fg_color, shade (0.85, @bg_color)) #shaded to bg[INSENSITIVE]
+        text[PRELIGHT]            = @fg_color
+        text[SELECTED]            = @selected_fg_color
+}
+widget_class "*.<GtkComboBox>.<GtkCellView>"   style "mist-text-is-fg-color-workaround"
+
+style "mist-menuitem-text-is-fg-color-workaround"
+{
+        text[NORMAL]              = @fg_color
+        text[ACTIVE]              = @fg_color
+        text[INSENSITIVE]         = mix (0.4, @fg_color, shade (0.85, @bg_color)) #shaded to bg[INSENSITIVE]
+        text[PRELIGHT]            = @selected_fg_color
+        text[SELECTED]            = @selected_fg_color
+}
+widget "*.gtk-combobox-popup-menu.*"   style "mist-menuitem-text-is-fg-color-workaround"
+
+# Work around the usage of GtkLabel inside GtkListItems to display text.
+# This breaks because the label is shown on a background that is based on the
+# base color set.
+style "mist-fg-is-text-color-workaround"
+{
+        fg[NORMAL]            = @text_color
+        fg[ACTIVE]            = @text_color
+        fg[PRELIGHT]          = @text_color
+        fg[SELECTED]          = @selected_fg_color
+        fg[INSENSITIVE]       = mix (0.5, @text_color, @base_color)
+}
+widget_class "*<GtkListItem>*" style "mist-fg-is-text-color-workaround"
+# The same problem also exists for GtkCList and GtkCTree
+# Only match GtkCList and not the parent widgets, because that would also change the headers.
+widget_class "*<GtkCList>" style "mist-fg-is-text-color-workaround"
+
+# END ORIGINAL MIST CODE
+
+# BEGIN ADDITIONAL CUSTOM CODE:
+
+# Custom scroll bar code:
+style "scrollbar"
+{
+#  xthickness = 0
+#  ythickness = 0
+
+  # Scrollbar background:
+  bg[ACTIVE]      = shade (0.77, @bg_color)
+
+  # Scrollbar color:
+  bg[NORMAL]      = shade (1.23, @bg_color)
+
+  # Scrollbar highlight color:
+  bg[PRELIGHT]    = shade (1.23, shade (1.23, @bg_color))
+}
+
+class "GtkScrollbar"                   style "scrollbar"
+
+# Theme for sliders such as volume control:
+style "scale-style" {
+  # Slider background:
+  bg[ACTIVE]              = shade (0.7, @bg_color)
+
+  # Button color:
+  bg[NORMAL]              = shade (1.37, @base_color)
+
+  # Button highlight color:
+  bg[PRELIGHT]            = shade (1.17, shade (1.37, @base_color))
+}
+
+class "*Scale*" style "scale-style"
+
+style "separator-style" {
+    bg[ACTIVE]              = shade (0.6, @fg_color)
+    bg[PRELIGHT]            = shade (0.6, @fg_color)
+    bg[NORMAL]              = shade (0.6, @fg_color)
+    bg[INSENSITIVE]         = shade (0.6, @fg_color)
+}
+
+class "*GtkSeparator*" style "separator-style"
+
+
+# BEGIN LXPANEL-SPECIFIC SETTINGS:
+
+#style "panel" {
+#   # Make background of lxpanel darker than the color of an unactive
+#   # window in the taskbar. To make this work, don't expand the taskbar,
+#   # but instead place an expanded spacer after the taskbar.
+#   # EDIT: If the above is done, then the taskbar will not shrink the
+#   # window bars when needed for some reason.
+#   bg[NORMAL] = shade (0.4, @bg_color)
+#}
+#widget "*Panel*"     style "panel"
+
+style "taskbar-style" {
+    # Task button of unfocus windows:
+    fg[NORMAL]              = shade (1.10, @text_color)
+    bg[NORMAL]              = shade (1.02, @base_color)
+
+
+    # Task button of focused windows:
+    fg[ACTIVE]              = shade (0.90, @selected_fg_color)
+    bg[ACTIVE]              = shade (1.85, @bg_color)
+
+    # Task button when hovered over by mouse:
+    fg[PRELIGHT]            = @selected_fg_color
+    bg[PRELIGHT]            = @base_color
+
+    # These don't appear to do anything:
+    #fg[INSENSITIVE]         = mix (0.4, @fg_color, shade (0.85, @bg_color)) #shaded to bg[INSENSITIVE]
+    #fg[SELECTED]            = @selected_fg_color
+    #bg[INSENSITIVE]         = shade (0.95, @bg_color)
+    #bg[SELECTED]            = @selected_bg_color
+}
+widget "*taskbar*"   style "taskbar-style"
+
+style "pager-style" {
+    # fg is the border around windows.
+    # bg is the color of the window in the pager and
+    # a darker shade of it is used for the background.
+
+    # Task button of unfocused desktops:
+    fg[NORMAL]              = @bg_color
+    bg[NORMAL]              = shade (3.0, @base_color)
+
+    # Task button of focused desktops:
+    fg[SELECTED]            = @text_color
+    bg[SELECTED]            = @selected_bg_color
+
+    # Task button when hovered over by mouse:
+    fg[PRELIGHT]            = @text_color
+    bg[PRELIGHT]            = @selected_bg_color
+}
+widget "*pager*"   style "pager-style"
+

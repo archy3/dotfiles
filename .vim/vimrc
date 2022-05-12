@@ -1,0 +1,40 @@
+"source $VIMRUNTIME/defaults.vim
+
+"if filereadable("/etc/vim/vimrc.local")
+"  source /etc/vim/vimrc.local
+"endif
+
+set directory=~/.vim/.swap//
+set backupdir=~/.vim/.backup//
+" Do not remember marks ('0) nor registers (<0,s0) nor search (/0) nor
+" command-line (:0) nor input-line (@0) history, but do remember file marks (f1)
+" and previous jumps (included automatically?):
+set viminfo='0,<0,s0,h,/0,:0,@0,f1,n~/.vim/.viminfo
+
+filetype plugin indent on
+"filetype plugin on
+
+runtime! init/general.vim
+runtime! init/autocmd.vim
+runtime! init/autocmd.individual.vim
+runtime! init/remaps.vim
+runtime! init/remaps.bookmarks.vim
+runtime! init/functions.vim
+
+" help:  $HOME/.vim/after/ftplugin/help.vim
+" sh  :  $HOME/.vim/after/ftplugin/sh.vim
+" vim :  $HOME/.vim/after/ftplugin/vim.vim
+
+" gvimrc: $HOME/.vim/gvimrc
+" evimrc: $HOME/.vim/evim/evimrc
+
+" Make vim use the correct mouse when in a tmux session:
+set ttymouse=sgr
+" (I really should find a way to make tmux properly report this so that vim's
+" autodetect feature works.)
+
+" To try out (see also 'rulerformat'):
+" Status line that includes if DOS newlines are used:
+" set statusline=%<%f\ %h%r%=%{&ff=='dos'?'[dos]\ ':''}%-14.(%l,%c%V%)\ %P
+
+packadd! matchit

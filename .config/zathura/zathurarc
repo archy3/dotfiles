@@ -1,0 +1,18 @@
+map <Up> zoom in
+map <Down> zoom out
+
+map i set recolor
+map I set recolor-reverse-video
+map <A-i> set recolor-keephue
+
+set recolor "false"
+set recolor-reverse-video "true"
+set recolor-keephue "true"
+
+# Show the command line and statusbar:
+set guioptions cs
+
+set inputbar-bg "#000000"
+
+set notification-bg "#000000"
+set notification-fg "#ffffff"
