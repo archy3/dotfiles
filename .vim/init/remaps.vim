@@ -25,6 +25,13 @@ nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
 
 nnoremap Y y$
 
+" Delete to matching indent:
+nnoremap <silent> dsi ^"py0^d/^<C-r>p[^ \t]/+0<cr>
+nnoremap <silent> dsu ^"py00d?^<C-r>p[^ \t]?+0<cr>
+
+" Delete till end of function braces:
+nnoremap <silent> dsb 0d][
+
 " List buffers:
 nnoremap gb :ls<cr>:b<space><space><space><space><space><space><space><space>
 
@@ -111,7 +118,7 @@ nnoremap <Leader>/ /\<\><left><left>
 nnoremap <Leader>h :%s//g<left><left>
 
 " Replace every instance of current word:
-nnoremap <Leader>H "ayiw:%s/\<<C-r>a\>//gI<left><left><left>
+nnoremap <Leader>H "pyiw:%s/\<<C-r>p\>//gI<left><left><left>
 
 " Autocorrect current word:
 nnoremap <Leader>z 1z=

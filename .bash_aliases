@@ -82,7 +82,6 @@ alias ....='cd ../../..'
 alias dp='~/scripts/doom/p'
 alias i500='~/scripts/tags/img500x500.sh'
 alias ta='~/scripts/tmux-auto-attach.sh 0 false'
-alias ytdl='~/.programs/youtube-dl/youtube-dl'
 alias custom-tag='~/scripts/tags/custom-tag.sh'
 #alias tag-tools='~/scripts/tags/tag-tools.sh'
 tagtools()

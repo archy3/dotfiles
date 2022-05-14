@@ -21,6 +21,14 @@
 .config/zathura
 .themes/Mist-Alt
 .themes/Numix-Alt
+.local/share/applications/libreoffice-base.desktop
+.local/share/applications/libreoffice-calc.desktop
+.local/share/applications/libreoffice-draw.desktop
+.local/share/applications/libreoffice-impress.desktop
+.local/share/applications/libreoffice-math.desktop
+.local/share/applications/libreoffice-startcenter.desktop
+.local/share/applications/libreoffice-writer.desktop
+.local/share/applications/libreoffice-xsltfilter.desktop
 .local/share/applications/pcmanfm-new-win.desktop
 .local/share/applications/sxiv.desktop
 scripts/autostart
@@ -33,6 +41,7 @@ scripts/gruvbox_256palette.sh
 scripts/lof.sh
 scripts/lof-virt-manager.sh
 scripts/paste-by-typing.sh
+scripts/pcmanfm-forward-back.sh
 scripts/rifle_sxiv_cd_to_file.sh
 scripts/screenshot.sh
 scripts/shutdown-menu.sh

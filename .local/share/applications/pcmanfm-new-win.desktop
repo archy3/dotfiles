@@ -6,6 +6,6 @@ Comment=Open directory in new window
 Categories=System;FileTools;FileManager;Utility;Core;GTK;
 Exec=pcmanfm --new-win -- %U
 StartupNotify=true
-NoDisplay=false
+NoDisplay=true
 Terminal=false
 MimeType=inode/directory;
