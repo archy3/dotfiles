@@ -4,3 +4,4 @@
 .vim/*viminfo*
 .vim/*viminf?*
 .vim/*.tmp
+.vim/spell
