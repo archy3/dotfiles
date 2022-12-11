@@ -1,0 +1,661 @@
+" This file was automatically generated with a script.
+
+" From autocmd.vim:
+"{{{
+" Resize windows (panes) to equal when GUI window or terminal is resized:
+autocmd VimResized * wincmd =
+
+" Make buffers remember their view settings:
+"{{{
+    " Save current view settings on a per-window, per-buffer basis.
+    function! AutoSaveWinView()
+        if !exists("w:SavedBufView")
+            let w:SavedBufView = {}
+        endif
+        let w:SavedBufView[bufnr("%")] = winsaveview()
+    endfunction
+
+    " Restore current view settings.
+    function! AutoRestoreWinView()
+        let buf = bufnr("%")
+        if exists("w:SavedBufView") && has_key(w:SavedBufView, buf)
+            let v = winsaveview()
+            let atStartOfFile = v.lnum == 1 && v.col == 0
+            if atStartOfFile && !&diff
+                call winrestview(w:SavedBufView[buf])
+            endif
+            unlet w:SavedBufView[buf]
+        endif
+    endfunction
+
+    " When switching buffers, preserve window view.
+    if v:version >= 700
+        autocmd BufLeave * call AutoSaveWinView()
+        autocmd BufEnter * call AutoRestoreWinView()
+    endif
+"}}}
+
+" Highlight trailing whitespace: (Such as this:)	 
+"{{{
+    " The vimenter command prevent errors that occur
+    " from things loading too late or too early.
+    function HighlightExtraWhitespace()
+       highlight ExtraWhitespace ctermbg=red guibg=red
+       match ExtraWhitespace /\s\+$/
+
+       " Apply to entered buffers:
+       autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+
+       " Apply to new windows:
+       autocmd WinNew * match ExtraWhitespace /\s\+$/
+
+       " Disable on Insert Mode:
+       autocmd InsertEnter * match ExtraWhitespace //
+       autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+
+       " Disable on buffers that aren't being viewed:
+       autocmd BufWinLeave * call clearmatches()
+    endfunction
+    autocmd colorscheme * call HighlightExtraWhitespace()
+    " This was originally 'autocmd vimenter * call HighlightExtraWhitespace()'
+    " but that only worked when called after
+    " 'autocmd vimenter * colorscheme gruvbox'.
+    " Now that 'autocmd vimenter * nested colorscheme gruvbox' is being used,
+    " 'autocmd colorscheme * call HighlightExtraWhitespace()' works both when
+    " it is run before and when it is run after
+    " 'autocmd vimenter * nested colorscheme gruvbox'.
+
+   " set list listchars=tab:\ \ ,trail:@
+   " autocmd InsertEnter * set nolist
+   " autocmd InsertLeave * set list
+"}}}
+
+" Make help open in v-split if only one window, else in bottom-right.
+"{{{
+augroup vimrc_help
+  autocmd!
+  autocmd BufWinEnter *.txt if &buftype == 'help' | call HelpProperLocation() | endif
+  "{{{
+  " BufEnter was originally used but this sometimes ran more than once.
+  " BufWinEnter created weird behavior sometimes when switching windows
+  " (the non-help window would sometimes scroll up or down by a single line
+  " when entering it from the help window).
+  " BufAdd seems to work so far.
+  " Edit: BufAdd has some issues.
+  " Edit: Currently trying BufWinEnter again. Now that HelpProperLocation has
+  " changed a bit, I'm wondering if this will still have issues.
+  " Edit: Stopping BufWinEnter due to bug noted in the 'BUGS' section.
+  " Edit: Both BufEnter and BufAdd have this bug too so I'm switching back to
+  " BufWinEnter
+
+  " What doesn't work at all:
+  " BufNew
+  " BufNewFile
+  " BufReadPost
+  " filetype
+
+  " BUGS:
+  " With BufAdd:
+  " Sometimes this has now affect for some reason.
+  " It seems like a timming issue.
+  " Actually it seems this happens when going to a help page for the first time.
+  " Reason found: The body of the if-statement isn't executed when a help page
+  " is viewed for the first time.
+
+  " If a help window is already open, and help is called again, the help window
+  " location can change.
+
+  " With BufWinEnter:
+  " If a help window is already open, and help is called again, the help window
+  " location can change.
+
+  " With BufEnter:
+  " If a help window is already open, and help is called again, the help window
+  " location can change.
+
+  " OLD BUGS:
+  " Open help in a new tab.
+  " Then open another help in that tab.
+  " Then that help opens in the previouse tab.
+  " Using '<= 2' instead of '== 2' seems to have fixed this.
+
+  " Simple version that always opens in the far right:
+  "autocmd BufAdd *.txt if &buftype == 'help' | wincmd L | endif
+  "}}}
+augroup END
+
+function! HelpProperLocation()
+  " This count includes the new help window:
+  if winnr('$') <= 2
+    " Move to far right:
+    wincmd L
+  else
+    " Move to bottom of rightmost column (if not already there):
+    let l:curwin = winnr()
+    wincmd b
+    if winnr() != l:curwin
+      exe l:curwin . 'wincmd w'
+      let l:curbuf = bufnr('%')
+      hide
+      wincmd b
+      belowright split
+      exe 'buf' l:curbuf
+    endif
+  endif
+  "{{{
+  " 'if winnr() != l:curwin' prevents this from running multiple times
+  " (whihc would happen due to the buffer reentering after it was hidden).
+
+  " BUGS:
+  " If there is a single window, and a help window is then opened, and then
+  " the windows are exchanged, and then another help command is give, then
+  " the help window will be moved back to the right.
+  " The intended behavior is that this function has no affect if a help
+  " window is already opened in the tab.
+  " If the function could check if a help window was already open before
+  " the help command was given, then the 'if winnr() != l:curwin' could be
+  " removed and the highest level if-statement would be 'if not already opened
+  " when help command was given, then move far right if less than 2 windows,
+  " else move bottom right'.
+  "}}}
+endfunc
+"}}}
+
+"}}}
+
+" From general.vim:
+"{{{
+" These setting are defaults on some systems but not on
+" others so they are included here for safety.
+set backspace=indent,eol,start
+set noerrorbells visualbell t_vb=
+set encoding=utf-8
+set ruler
+set showcmd
+
+" disable vim intro screen
+set shortmess+=I
+
+" Show what search result (out of total number of search results) you're on:
+set shortmess-=S
+
+set incsearch
+
+set ignorecase
+set smartcase
+" use "/search_term\C" for case sensitive search
+
+set splitbelow
+set splitright
+set hidden
+
+syntax on
+set number relativenumber
+set mouse=a
+set colorcolumn=80
+set wildmenu
+
+" Outside of gvim, always show status line
+" (not needed in gvim because this is shown in the window title):
+if (has("gui_running") == 0)
+  set laststatus=2
+endif
+
+" Make vertical motions like CTRL-F, CTRL-B, gg, etc preserve horizontal
+" cursor position:
+set nostartofline
+
+" Make sidescrolling scroll one character at a time instead of the default
+" half a screen at a time.
+set sidescroll=1
+
+" See this for more options: https://www.reddit.com/r/vim/comments/4hoa6e/what_do_you_use_for_your_listchars/
+set listchars=space:·,tab:——>,eol:¶,nbsp:⍽
+
+" Disable cursor blink when not editing:
+"let &guicursor = substitute(&guicursor, 'n-v-c:', '&blinkon0-', '')
+
+
+autocmd vimenter * nested colorscheme gruvbox
+"autocmd vimenter * hi Normal guifg=#FFD7AF
+set background=dark
+
+"}}}
+
+" From remaps.vim:
+"{{{
+" Use right click to copy/paste to/from the system clipboard (like Windows cmd):
+nnoremap <RightMouse> "+<MiddleMouse>
+inoremap <RightMouse> <C-o>"+<MiddleMouse>
+vnoremap <RightMouse> "+y
+
+" remaps
+inoremap jk <esc>
+inoremap kj <esc>
+
+" Like remapping j/k to gj/gk but making relative line numbers work as expected:
+nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
+
+nnoremap Y y$
+
+" List buffers:
+nnoremap gb :ls<cr>:b<space><space><space><space><space><space><space><space>
+
+" Allow for easy putting of yanked and copied text:
+inoremap <C-f> <nop>
+inoremap <C-f><space> <C-r>0
+inoremap <C-f><C-v> <C-r>+
+inoremap <C-f>v <C-r>+
+
+cnoremap <C-f> <nop>
+cnoremap <C-f><space> <C-r>0
+cnoremap <C-f><C-v> <C-r>+
+cnoremap <C-f>v <C-r>+
+cnoremap <C-f><C-f> <C-f>
+
+" Make <C-n> feel natural on my keyboard:
+inoremap <home> <C-n>
+
+" Use modern shortcuts for system clipboard and saving:
+vnoremap <C-c> "+y
+inoremap <C-v> <C-r>+
+nnoremap <C-s> :update<cr>
+inoremap <C-s> <C-o>:update<cr>
+" (':update' is like ':w' but doesn't write when the file hasn't been modified)
+
+" Window remaps
+nnoremap <silent> <C-h> :wincmd h<cr>
+nnoremap <silent> <C-j> :wincmd j<cr>
+nnoremap <silent> <C-k> :wincmd k<cr>
+nnoremap <silent> <C-l> :wincmd l<cr>
+
+" Resize windows more easily:
+nnoremap <silent> <left> :vert resize -1<cr>
+nnoremap <silent> <right> :vert resize +1<cr>
+nnoremap <silent> <down> :resize -1<cr>
+nnoremap <silent> <up> :resize +1<cr>
+
+let mapleader = " "
+
+" Toggles:
+nnoremap <silent> <Leader>s :setlocal spell! spell?<cr>
+nnoremap <silent> <Leader><Leader>l :setlocal list! list?<cr>
+nnoremap <silent> <Leader><Leader>h :setlocal hlsearch! hlsearch?<cr>
+nnoremap <silent> <Leader><Leader>w :set wrap! wrap?<cr>
+nnoremap <expr> <silent> <Leader><Leader>y ToggleSystemClipboard()
+nnoremap <silent> <Leader><Leader>y :call ToggleSystemClipboard()<cr>
+"set clipboard^=unnamedplus clipboard?
+" (Make system clipboard the default)
+autocmd vimenter * set clipboard^=unnamedplus clipboard?
+
+" Toggle using internal registers or system clipboard:
+function! ToggleSystemClipboard()
+  if &clipboard =~# 'unnamedplus'
+    set clipboard-=unnamedplus clipboard?
+  else
+    set clipboard^=unnamedplus clipboard?
+  endif
+endfunction
+
+" Counterparts to C/D/Y:
+nnoremap <Leader>C c^
+nnoremap <Leader>D d^
+nnoremap <Leader>Y y^
+
+" Undo/redo to last save:
+nnoremap <Leader>u :earlier 1f<cr>
+nnoremap <Leader>U :later 1f<cr>
+
+" Find and replace:
+nnoremap <Leader>h :%s//g<left><left>
+
+" Replace current word:
+nnoremap <Leader><Leader>r yiw:%s/\<<C-r>"\>//gI<left><left><left>
+
+" Like 'yy' but does not copy the final newline (or the leading whitespace):
+nnoremap <silent> <Leader>yy :<C-u>exec 'norm! ^' . v:count1 . 'y$'<cr>
+
+" copy entire file into clipboard
+nnoremap <silent> <Leader>y :call CopyBufferToClipboard()<cr>
+function! CopyBufferToClipboard()
+  let l:current_winview=winsaveview()
+  normal! vgg0oG$"+y
+  call winrestview(l:current_winview)
+endfunction
+" (Just doing something like 'nnoremap <Leader>y :%y+<cr>' is much simpler,
+"  but that would also copy the EOF newline which usually isn't wanted.)
+
+" paste from clipboard
+nnoremap <Leader>p "+p
+nnoremap <Leader>P "+P
+
+"" change with yanked text
+"" (TODO: Make generic)
+"nnoremap <Leader>cw cw<C-r>0<esc>
+"nnoremap <Leader>ciw ciw<C-r>0<esc>
+"nnoremap <Leader>caw caw<C-r>0<esc>
+"nnoremap <Leader>cW cW<C-r>0<esc>
+"nnoremap <Leader>ciW ciW<C-r>0<esc>
+"nnoremap <Leader>caW caW<C-r>0<esc>
+
+" Code indentation
+nnoremap <Leader>i >
+nnoremap <Leader>i<Leader>i >>
+nnoremap <Leader>I <
+nnoremap <Leader>I<Leader>I <<
+
+" Buffer remaps:
+nnoremap <Leader>b :bn <cr>
+nnoremap <Leader>B :bp <cr>
+nnoremap <Leader>q :bp <BAR> bd #<cr>
+nnoremap <Leader><Leader>Q :bd!<cr>
+
+" Jump to next window:
+nnoremap <silent> <Leader>w :wincmd w<cr>
+nnoremap <silent> <Leader>W :wincmd W<cr>
+
+" Close windows and tabs:
+nnoremap <silent> <Leader>x :close<cr>
+nnoremap <silent> <Leader>X :tabclose<cr>
+
+" Move window to new tab:
+nnoremap <silent> <Leader>o :wincmd T<cr>
+
+" Create new window in the most likely desired way:
+nnoremap <silent> <Leader>v :if winwidth(0) >= (2 * &colorcolumn)<cr>execute 'vsp'<cr>else<cr>execute 'sp'<cr>endif<cr>
+
+" Quickly set the filetype:
+nnoremap <leader>ft :set filetype=
+" Would like to makes this an autocmd:
+" autocmd BufReadPost,BufNewFile * if empty(&filetype) | execute 'nnoremap <buffer> <leader>ft :set filetype=' | endif
+" but that doesn't work for things like 'new' 'vnew' 'tabe'.
+
+" Highlighting:
+"nnoremap / :setlocal hlsearch<cr>/
+"nnoremap ? :setlocal hlsearch<cr>?
+"nnoremap <silent> <esc> <esc>:setlocal nohlsearch<cr>
+"nnoremap <silent> <esc> <esc>:nohlsearch<cr>
+
+function! CenterMatch()
+  nnoremap <buffer> n nzz
+  nnoremap <buffer> N Nzz
+  nnoremap <buffer> * *zz
+  nnoremap <buffer> # #zz
+  nnoremap <buffer> g* g*zz
+  nnoremap <buffer> g# g#zz
+endfunction
+
+
+" Comments:
+"{{{
+  " from: https://vim.fandom.com/wiki/Commenting_with_opfunc
+
+  " Comment or uncomment lines from mark a to mark b.
+  function! CommentMark(docomment, a, b)
+    if !exists('b:comment')
+      "let b:comment = CommentStr() . ' '
+      " (Would nice to use the above but skip blank lines)
+      let b:comment = CommentStr()
+    endif
+    if a:docomment
+      exe "normal! '" . a:a . "_\<C-V>'" . a:b . 'I' . b:comment
+    else
+      exe "'".a:a.",'".a:b . 's/^\(\s*\)' . escape(b:comment,'/') . '/\1/e'
+    endif
+  endfunction
+
+  " Comment lines in marks set by g@ operator.
+  function! DoCommentOp(type)
+    call CommentMark(1, '[', ']')
+  endfunction
+
+  " Uncomment lines in marks set by g@ operator.
+  function! UnCommentOp(type)
+    call CommentMark(0, '[', ']')
+  endfunction
+
+  " Return string used to comment line for current filetype.
+  function! CommentStr()
+    if &ft == 'cpp' || &ft == 'java' || &ft == 'javascript'
+      return '//'
+    elseif &ft == 'vim'
+      return '"'
+    elseif &ft == 'python' || &ft == 'perl' || &ft == 'sh' || &ft == 'R'
+      return '#'
+    elseif &ft == 'lisp'
+      return ';'
+    elseif &ft == 'matlab'
+      return '%'
+    endif
+    return ''
+  endfunction
+
+  nnoremap gc <Esc>:set opfunc=DoCommentOp<CR>g@
+  nnoremap gC <Esc>:set opfunc=UnCommentOp<CR>g@
+  vnoremap gc <Esc>:call CommentMark(1,'<','>')<CR>
+  vnoremap gC <Esc>:call CommentMark(0,'<','>')<CR>
+"}}}
+
+
+" Prevent CTRL-F from scrolling into a tilde-abyss:
+"{{{
+" Page down but don't view anything lower than 'past_eof' lines below EOF.
+" (unless that is already the current viewing position).
+function! PageDown(count, past_eof)
+  let l:save_pos = getpos('.')
+  exec "norm! L"
+
+  " Check if already on last page:
+  if line('.') == line('$')
+    call PageDown_ScrollPastEOF(a:past_eof)
+    call setpos('.', l:save_pos)
+    return
+  endif
+
+  " Page down:
+  call setpos('.', l:save_pos)
+  exec 'norm! ' . a:count . "\<C-f>"
+  let l:save_pos = getpos('.')
+  exec "norm! L"
+
+  " If on last page, reposition view so that the bottom line
+  " is the bottom of the winview:
+  if line('.') == line('$')
+    exec 'norm! zb'
+  endif
+
+  call setpos('.', l:save_pos)
+endfunction
+
+function! PageDown_ScrollPastEOF(scroll_amount)
+  if a:scroll_amount <= 0
+    return
+  endif
+
+  exec 'norm! H'
+  let l:high_pos = line('.')
+  exec 'norm! Lzb' . a:scroll_amount . "\<C-e>H"
+
+  if line('.') <= l:high_pos
+    exec 'norm! ' . l:high_pos . 'ggzt'
+  endif
+endfunction
+
+nnoremap <silent> <C-f> :<C-u>call PageDown(v:count1, 5)<cr>
+
+" TODO: Make this work in visual mode.
+"}}}
+
+"}}}
+
+" From sh.vim:
+"{{{
+" folding
+" currently this this messes things up
+"set foldmethod=marker
+"set foldmarker={,}
+"set foldlevelstart=99
+function FoldBracesAndParenthesesSh()
+  let l:current_winview=winsaveview()
+  silent %g /^ *}$/ normal! zf%
+  silent %g /^ *)$/ normal! zf%
+  normal! zR
+  call winrestview(l:current_winview)
+endfunction
+
+" See https://stackoverflow.com/questions/1878974/redefine-tab-as-4-spaces/1878983 and
+" https://vi.stackexchange.com/questions/4141/how-to-indent-as-spaces-instead-of-tab
+function SetTabBehavior(space_count)
+  if a:space_count == 8
+    " This is the default behavior:
+    setlocal tabstop=8
+    setlocal shiftwidth=8
+    setlocal softtabstop=0
+    setlocal noexpandtab
+  else
+    setlocal tabstop=8 " set tab length to 8 (because that is the standard).
+    let &l:shiftwidth=a:space_count " make indent (with >>) set to "space_count" spaces
+    setlocal softtabstop=-1 " set softtabstop to shiftwidth
+    setlocal expandtab " replace tabs with softtabstop number of spaces
+    " Thus pressing tab in inset mode will insert "space_count" spaces but any
+    " literal tabs will still appear as 8 spaces long.
+  endif
+endfunction
+
+augroup filetype_shell
+  autocmd!
+  autocmd BufReadPost,BufNewFile *.sh,*.bash :call FoldBracesAndParenthesesSh()
+
+  autocmd BufReadPost,BufNewFile *.sh,*.bash call SetTabBehavior(2)
+  autocmd BufReadPost,BufNewFile *.sh,*.bash setlocal smartindent
+
+
+  " Remaps:
+  autocmd BufReadPost,BufNewFile *.sh,*.bash nnoremap <buffer> <Leader>R :!shellcheck --color=never -- %<cr>
+
+
+  " Snippets:
+  autocmd BufReadPost,BufNewFile *.sh,*.bash inoremap <buffer> <C-f>f () ##<CR>{<CR>}<C-o>O
+
+  " The temporary "T" is so that smartindent uses the correct indention level.
+  autocmd BufReadPost,BufNewFile *.sh,*.bash inoremap <buffer> <C-f>c T<C-o>ofi<up><end><BS>if [ "$" = "" ]; then<C-o>T$
+
+  autocmd BufReadPost,BufNewFile *.sh,*.bash inoremap <buffer> <C-f>C [ "$" = "" ]<C-o>T$
+  autocmd BufReadPost,BufNewFile *.sh,*.bash inoremap <buffer> <C-f>j "$"<left>
+  autocmd BufReadPost,BufNewFile *.sh,*.bash inoremap <buffer> <C-f>k ${}<left>
+  autocmd BufReadPost,BufNewFile *.sh,*.bash inoremap <buffer> <C-f>h "${}"<left><left>
+  autocmd BufReadPost,BufNewFile *.sh,*.bash inoremap <buffer> <C-f>g "$()"<left><left>
+augroup END
+
+"}}}
+
+" From vimrc.vim:
+"{{{
+augroup filetype_vim
+  autocmd!
+  autocmd BufReadPost,BufNewFile *.vimrc nnoremap <buffer> gf $gf
+
+  "autocmd BufReadPost,BufNewFile *.*vimrc nnoremap <Leader>r :%y"<cr>:@"<cr>
+  autocmd BufReadPost,BufNewFile *.vimrc,*.gvimrc,*.vim,_vimrc nnoremap <buffer> <Leader>r :source $MYVIMRC<cr>
+  autocmd BufReadPost,BufNewFile *.vimrc,*.gvimrc,*.vim,_vimrc cnoremap <buffer> <C-f><C-r> @"<cr>
+  autocmd BufReadPost,BufNewFile *.vimrc,*.gvimrc,*.vim,_vimrc cnoremap <buffer> <C-f>r @"<cr>
+
+  " Set folding around {{{,}}} for .vim files:
+  "autocmd BufReadPost,BufNewFile *.vim set foldlevelstart=99
+  autocmd BufReadPost,BufNewFile *.vimrc,*.gvimrc,*.vim,_vimrc setlocal foldmethod=marker
+  autocmd BufReadPost,BufNewFile *.vimrc,*.gvimrc,*.vim,_vimrc normal! zR
+augroup END
+
+"}}}
+
+" NEW NEW NEW STANDARD:
+
+  " From https://stackoverflow.com/a/5357194
+function! ReplaceWithYankOp(type, ...)
+  exe "normal! `[v`]\"_c"
+  exe "normal! p"
+endfunction
+function! ReplaceWithYankOp(type, ...)
+  exe "normal! `[v`]\"_c\<C-r>0"
+endfunction
+nnoremap <Leader>c <Esc>:set opfunc=ReplaceWithYankOp<CR>g@
+nnoremap <Leader>cc "_cc<C-r>0<esc>
+" BUG: ip motion doesn't delete last line of paragraph.
+
+" From https://www.reddit.com/r/vim/comments/a9nyqc/how_to_paste_without_losing_the_text_in_the/ecmt0li/?utm_source=reddit&utm_medium=web2x&context=3
+function! PasteOver(type, ...)
+  let saveSel = &selection
+  let &selection = "inclusive"
+  let saveReg = @@
+  let reg = v:register
+  let regContents = getreg(reg)
+
+  if a:0  " Invoked from Visual mode, use '< and '> marks.  
+    silent exe "normal! `<" . a:type . "`>"
+    execute "normal! \"_d\"" . reg . "P"
+  elseif a:type == 'line'
+    silent exe "normal! '[V']"
+    execute "normal! \"_d\"" . reg . "P"
+  elseif a:type == 'block'
+    silent exe "normal! `[\<C-V>`]"
+    execute "normal! \"_d\"" . reg . "P"
+  else
+    silent exe "normal! `[v`]"
+    execute "normal! \"_c\<C-r>" . reg
+  endif
+
+
+  let &selection = saveSel
+  let @@ = saveReg
+
+  call setreg(reg, regContents)
+endfunction
+function! SetPasteOver()
+  set opfunc=PasteOver
+  return "g@"
+endfunction
+nnoremap <expr> cp SetPasteOver()
+
+nnoremap <expr> <Leader>c SetPasteOver()
+nnoremap <expr> <Leader>cc (line('.') == line('$') ? '"_ddp' : '"_ddP')
+
+nnoremap <Leader>z 1z=
+nnoremap <Leader><Leader>; :setlocal linebreak!<cr>
+
+"set lazyredraw
+"autocmd VimEnter * redraw!
+
+"cnoremap <C-f><space> <C-r>"
+"inoremap <C-f><space> <C-r>"
+
+autocmd BufWinEnter *.txt if &buftype == 'help' | :silent wincmd T | endif
+
+
+" NEW NEW NEW NEW STANDARD:
+
+" copy entire file into clipboard
+" (See https://stackoverflow.com/a/20736435 and https://ww.reddit.com/r/vim/comments/sflgq2/how_to_paste_inline_the_content_i_deletedyanked/huqlxbr/)
+nnoremap <Leader>y :%y+ <bar> let @+=substitute(@+,'\n$','','g')<cr>
+nnoremap <expr> <Leader>v (winwidth(0) >= &colorcolumn ? ':vsp<cr>' : ':sp<cr>')
+
+set foldopen-=block
+
+nnoremap s }zz
+nnoremap S {zz
+
+nnoremap za zA
+nnoremap zA za
+nnoremap zm zM
+nnoremap zM zm
+nnoremap zr zR
+nnoremap zR zr
+
+nnoremap <silent> <Leader>cc :let @p=substitute(@",'\n$','','g')<cr>"_cc<C-r>p<esc>
+xnoremap il ^og_
+onoremap <silent> il :<C-u>normal! v^og_<cr>
+nnoremap dil 0D
+nnoremap <silent> <Leader>cil :let @p=substitute(@", '\s*\n\?$\<bar>^\s*', '', 'g') <bar> normal "_cil<C-r>p<cr>
+" ('normal' is used instead of 'normal!' so the remap 'il' can be
+" referenced. If only 'il' could be called by 'normal' and the rest by
+" 'normal!' -- that would be an improvement.)

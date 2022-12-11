@@ -76,6 +76,9 @@ let mapleader = " "
 " GUI save as:
 nnoremap <Leader><C-s> :browse<space>confirm<space>saveas<cr>
 
+" Print:
+nnoremap <Leader><C-p> :%w !lp -o print-quality=3 -o sides=one-sided -o outputorder=reverse -o ColorModel=Gray<cr>
+
 " GUI open folder of current file:
 nnoremap <silent> <Leader><C-e> :silent !pcmanfm --new-win -- %:p:h:S<cr>:redraw!<cr>
 

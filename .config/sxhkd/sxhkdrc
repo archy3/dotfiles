@@ -30,7 +30,7 @@ super + shift + {e, v, t, q}
 	{GTK_THEME=oomox-Geeko-Dark-Alt-3.5 thunderbird &, \
 	~/scripts/lof-virt-manager.sh &, \
 	#deluge-gtk &, \
-	lxde-logout &}
+	~/scripts/shutdown-menu.sh &}
 
 ctrl + super + alt + {x}
 	{xkill &}
@@ -51,6 +51,9 @@ super + shift + i
 
 super + shift + j
 	env WINEPREFIX="${HOME}/.wine/prefix/dbpoweramp" wine-stable 'C:\windows\command\start.exe' /Unix "${HOME}/.wine/prefix/dbpoweramp/dosdevices/c:/ProgramData/Microsoft/Windows/Start Menu/Programs/dBpoweramp/CD Ripper.lnk" &
+
+super + shift + p
+	env WINEPREFIX="${HOME}/.wine/prefix/pokerstars.net" wine-stable 'C:\windows\command\start.exe' /Unix "${HOME}/.wine/prefix/pokerstars.net/dosdevices/c:/users/Public/Start Menu/PokerStars.net.lnk" &
 
 super + shift + g
 	~/.programs/gpg4usb/start_linux &

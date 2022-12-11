@@ -4,6 +4,7 @@ Icon=system-file-manager
 Name=PCManFM New Window
 Comment=Open directory in new window
 Categories=System;FileTools;FileManager;Utility;Core;GTK;
+TryExec=pcmanfm
 Exec=pcmanfm --new-win -- %U
 StartupNotify=true
 NoDisplay=true

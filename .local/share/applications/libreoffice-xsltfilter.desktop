@@ -2,6 +2,7 @@
 Version=1.0
 Terminal=false
 Type=Application
+TryExec=libreoffice
 Exec=env GTK_THEME=Adwaita Logo=0 libreoffice %U
 MimeType=application/vnd.oasis.opendocument.text-flat-xml;application/vnd.oasis.opendocument.spreadsheet-flat-xml;application/vnd.oasis.opendocument.graphics-flat-xml;application/vnd.oasis.opendocument.presentation-flat-xml;
 Name=LibreOffice XSLT based filters

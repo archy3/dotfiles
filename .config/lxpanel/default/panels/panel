@@ -49,7 +49,7 @@ Plugin {
       id=pcmanfm.desktop
     }
     Button {
-      id=lxtask.desktop
+      id=htop.desktop
     }
     Button {
       id=debian-xterm.desktop
@@ -126,7 +126,7 @@ Plugin {
     DisplayRAM=1
     CPUColor=#008000
     RAMColor=#FF0000
-    Action=sh -c 'xterm -sl 0 -e htop -u "$USER" &'
+    Action=sh -c 'xterm -class htop -sl 0 -e htop -u "$USER" &'
   }
 }
 Plugin {

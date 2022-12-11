@@ -29,11 +29,11 @@ EDITOR="$VISUAL"
 export VISUAL
 export EDITOR
 
-## startx if on tty1
+# startx if on tty1
 startx_tty1_auto()
 {
   if [ "$(tty)" = "/dev/tty1" ] && command -v startx > /dev/null; then
-    startx
+    startx 2> ~/.xsession-errors
   fi
 }
 

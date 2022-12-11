@@ -137,7 +137,10 @@ hs() # [grep_expression]
 
 vmshare() # a|d libvirt-vm-domain
 {
-  local dir="${HOME}/virt-manager/share"
+  local attach_detach="$1"
+  local libvirt_domain="$2"
+  local script="${HOME}/virt-manager/share/share.sh"
+  local drive="${HOME}/virt-manager/share/e64.img"
 
   if [ "$#" != "2" ]; then
     printf '%s\n\n%s\n' \
@@ -146,9 +149,8 @@ vmshare() # a|d libvirt-vm-domain
     return 1
   fi
 
-  case "$1" in
-    a) "${dir}/share.sh" a "$2" "${dir}/e64.img" rw;;
-    d) "${dir}/share.sh" d "$2" "${dir}/e64.img" rw;;
+  case "$attach_detach" in
+    a|d) "$script" "$attach_detach" "$libvirt_domain" "$drive" rw;;
     *)
       printf '%s\n' \
         'First argument must be "a" (for attach) or "d" (for detach).' >&2
@@ -157,3 +159,4 @@ vmshare() # a|d libvirt-vm-domain
   esac
 }
 
+#alias up='su - root -c "apt-get update && apt upgrade && apt dist-upgrade && apt-get autoremove && apt-get clean"'

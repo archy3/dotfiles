@@ -21,6 +21,7 @@ Terminal=false
 Icon=libreoffice-draw
 Type=Application
 Categories=Office;Graphics;FlowChart;Graphics;2DGraphics;VectorGraphics;
+TryExec=libreoffice
 Exec=env GTK_THEME=Adwaita Logo=0 libreoffice --draw %U
 MimeType=application/vnd.oasis.opendocument.graphics;application/vnd.oasis.opendocument.graphics-flat-xml;application/vnd.oasis.opendocument.graphics-template;application/vnd.sun.xml.draw;application/vnd.sun.xml.draw.template;application/vnd.visio;application/x-wpg;application/vnd.corel-draw;application/vnd.ms-publisher;image/x-freehand;application/clarisworks;application/x-pagemaker;application/pdf;application/x-stardraw;
 Name=LibreOffice Draw

@@ -819,14 +819,14 @@
   # end of the example
 -->
     <!-- Open Thunderbird on workspace 4 -->
-    <application name="Thunderbird" class="thunderbird" role="Dialog">
+    <application name="thunderbird-default" class="thunderbird-default" role="">
       <desktop>4</desktop>
       <position>
          <x>center</x>
          <y>center</y>
        </position>
     </application>
-    <application name="Mail" class="thunderbird" role="3pane">
+    <application name="Mail" class="thunderbird-default" role="3pane">
       <desktop>4</desktop>
       <maximized>yes</maximized>
     </application>

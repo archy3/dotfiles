@@ -6,6 +6,7 @@
 .Xresources
 .xserverrc
 .config/dunst
+.config/galculator/galculator.conf
 .config/htop
 .config/libfm
 .config/lxpanel
@@ -35,6 +36,7 @@ scripts/autostart
 scripts/alt-highlight.sh
 scripts/center_around_cursor.sh
 scripts/color.sh
+scripts/config-new-user-for-first-login.sh
 scripts/edit-config.sh
 scripts/encrypt-to-tar-gz-gpg-aes256.sh
 scripts/gruvbox_256palette.sh
