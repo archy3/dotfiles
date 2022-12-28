@@ -68,36 +68,5 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Make tab-completion case-insensitive:
-# (consider making a dedicated ~/.inputrc)
-bind "set completion-ignore-case on"
-
-# From https://stackoverflow.com/a/48514114
-  # If there are multiple matches for completion, Tab should cycle through them
-  bind 'TAB:menu-complete'
-
-  # Display a list of the matching files
-  bind "set show-all-if-ambiguous on"
-
-  # Perform partial (common) completion on the first Tab press, only start
-  # cycling full results on the second Tab press (from bash version 5)
-  bind "set menu-complete-display-prefix on"
-
-  # Shift-Tab to go backwards
-  bind '"\e[Z": menu-complete-backward'
-
-# Display completion suggestions across rows instead of down columns
-bind 'set print-completions-horizontally'
-
-# From https://wiki.archlinux.org/title/Readline#Colorized_completion
-# Make completion menu have color
-bind 'set colored-stats on'
-
-# Do not allow history to be edited
-bind 'set revert-all-at-newline on'
-
-# More readline settings can be found here:
-# https://tiswww.case.edu/php/chet/readline/readline.html#SEC10
-
 # Set 256-colors to gruvbox:
 ~/scripts/gruvbox_256palette.sh

@@ -63,5 +63,6 @@ autocmd vimenter * nested colorscheme gruvbox
 set background=dark
 
 " Set path in order to use gf and :find effectively:
+set path+=~
 set path+=~/scripts
 set path+=~/scripts/autostart

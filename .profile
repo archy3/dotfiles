@@ -23,12 +23,6 @@ fi
 
 ## Customizations start:
 
-# Set text editor
-VISUAL='/usr/bin/vim'
-EDITOR="$VISUAL"
-export VISUAL
-export EDITOR
-
 # startx if on tty1
 startx_tty1_auto()
 {
@@ -37,8 +31,15 @@ startx_tty1_auto()
   fi
 }
 
+# Set text editor
+export VISUAL='/usr/bin/vim'
+export EDITOR="$VISUAL"
+
 # Prevent gtk scrollbar from autohiding
 export GTK_OVERLAY_SCROLLING=0
+
+# Tell gtk apps there is no screenreader (so at-spi2-core can be removed)
+export NO_AT_BRIDGE=1
 
 # Make qt5 apps use gtk2 theme (requries qt5-gtk2-platformtheme)
 export QT_QPA_PLATFORMTHEME=gtk2

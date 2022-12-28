@@ -14,8 +14,13 @@ if exists('b:undo_ftplugin')
 endif
 normal! zR
 
-setlocal path+=~/.vim/init/
-setlocal path+=~/.vim/after/ftplugin
+if has('win32')
+  setlocal path+=~/vimfiles/init/
+  setlocal path+=~/vimfiles/after/ftplugin
+else
+  setlocal path+=~/.vim/init/
+  setlocal path+=~/.vim/after/ftplugin
+endif
 
 " Remaps:
 nnoremap <buffer> gf $gf

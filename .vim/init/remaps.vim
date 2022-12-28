@@ -190,12 +190,6 @@ endfunction
 nnoremap <silent> <Leader>c :set opfunc=PasteOver<cr>g@
 nnoremap <silent> <Leader>cc 0:set opfunc=PasteOver<cr>g@$
 
-" Code indentation
-nnoremap <Leader>i >
-nnoremap <Leader>i<Leader>i >>
-nnoremap <Leader>I <
-nnoremap <Leader>I<Leader>I <<
-
 " Buffer remaps:
 nnoremap <Leader>b :bn <cr>
 nnoremap <Leader>B :bp <cr>
@@ -301,10 +295,12 @@ endfunction
       return '//'
     elseif &ft == 'vim'
       return '"'
-    elseif &ft == 'python' || &ft == 'perl' || &ft == 'sh' || &ft == 'R' || &ft == 'tmux'
+    elseif &ft == 'python' || &ft == 'perl' || &ft == 'sh' || &ft == 'R' || &ft == 'tmux' || &ft == 'readline'
       return '#'
     elseif &ft == 'lisp' || &ft == 'dosini'
       return ';'
+    elseif &ft == 'xdefaults'
+      return '!'
     elseif &ft == 'matlab'
       return '%'
     endif

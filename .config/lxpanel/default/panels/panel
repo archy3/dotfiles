@@ -126,7 +126,7 @@ Plugin {
     DisplayRAM=1
     CPUColor=#008000
     RAMColor=#FF0000
-    Action=sh -c 'xterm -class htop -sl 0 -e htop -u "$USER" &'
+    Action=xterm -class htop -sl 0 -e htop -u
   }
 }
 Plugin {

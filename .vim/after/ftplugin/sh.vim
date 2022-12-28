@@ -5,8 +5,12 @@
 "set foldlevelstart=99
 function FoldBracesAndParenthesesSh()
   let l:current_winview=winsaveview()
-  silent %g /^ *}$/ normal! zf%
-  silent %g /^ *)$/ normal! zf%
+  "silent %g /^ *}$/ normal! zf%
+  "silent %g /^ *)$/ normal! zf%
+  "silent %g /^)$/ exec 'normal!' "zf?^(?0\<CR>"
+  normal! zE
+  silent %g /^)$/ exec 'normal!' 'zf?^\([^ \t].*($\|^($\)?0' . "\<CR>"
+  silent %g /^}$/ normal! zf%
   normal! zR
   call winrestview(l:current_winview)
 endfunction

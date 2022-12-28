@@ -1,5 +1,7 @@
 .bash_aliases
 .bashrc
+.inputrc
+.lesskey
 .profile
 .vim
 .xinitrc

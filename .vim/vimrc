@@ -4,12 +4,18 @@
 "  source /etc/vim/vimrc.local
 "endif
 
-set directory=~/.vim/.swap//
-set backupdir=~/.vim/.backup//
-" Do not remember marks ('0) nor registers (<0,s0) nor search (/0) nor
-" command-line (:0) nor input-line (@0) history, but do remember file marks (f1)
-" and previous jumps (included automatically?):
-set viminfo='0,<0,s0,h,/0,:0,@0,f1,n~/.vim/.viminfo
+if has('win32')
+  set directory=~/vimfiles/.swap//
+  set backupdir=~/vimfiles/.backup//
+  set viminfo='0,<0,s0,h,/0,:0,@0,f1,n~/vimfiles/.viminfo
+else
+  set directory=~/.vim/.swap//
+  set backupdir=~/.vim/.backup//
+  " Do not remember marks ('0) nor registers (<0,s0) nor search (/0) nor
+  " command-line (:0) nor input-line (@0) history, but do remember file marks (f1)
+  " and previous jumps (included automatically?):
+  set viminfo='0,<0,s0,h,/0,:0,@0,f1,n~/.vim/.viminfo
+endif
 
 filetype plugin indent on
 "filetype plugin on
@@ -21,12 +27,12 @@ runtime! init/remaps.vim
 runtime! init/remaps.bookmarks.vim
 runtime! init/functions.vim
 
-" help:  $HOME/.vim/after/ftplugin/help.vim
-" sh  :  $HOME/.vim/after/ftplugin/sh.vim
-" vim :  $HOME/.vim/after/ftplugin/vim.vim
+" help:  after/ftplugin/help.vim
+" sh  :  after/ftplugin/sh.vim
+" vim :  after/ftplugin/vim.vim
 
-" gvimrc: $HOME/.vim/gvimrc
-" evimrc: $HOME/.vim/evim/evimrc
+" gvimrc: gvimrc
+" evimrc: evim/evimrc
 
 " Make vim use the correct mouse when in a tmux session:
 set ttymouse=sgr

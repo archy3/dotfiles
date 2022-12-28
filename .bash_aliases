@@ -9,7 +9,7 @@ alias ge='gvim'
 alias p='cat'
 alias o='xdg-open'
 alias tls='tmux ls'
-alias ht='htop -u "$USER"'
+alias ht='htop -u'
 ec() { printf %s\\n "$*"; }
 int() { [ -z "${TMUX:-}" ] && echo "Not in tmux." || echo "In tmux."; }
 

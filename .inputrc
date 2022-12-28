@@ -1,0 +1,38 @@
+$include /etc/inputrc
+
+# Make tab-completion case-insensitive:
+set completion-ignore-case on
+
+# From https://stackoverflow.com/a/48514114
+  # If there are multiple matches for completion, Tab should cycle through them
+  TAB:menu-complete
+
+  # Shift-Tab to go backwards
+  "\e[Z": menu-complete-backward
+
+  # Display a list of the matching files
+  set show-all-if-ambiguous on
+
+  # Perform partial (common) completion on the first Tab press, only start
+  # cycling full results on the second Tab press (from bash version 5)
+  set menu-complete-display-prefix on
+
+# Display completion suggestions across rows instead of down columns
+set print-completions-horizontally on
+
+# From https://wiki.archlinux.org/title/Readline#Colorized_completion
+# Make completion menu have color
+set colored-stats on
+
+# Do not allow history to be edited
+set revert-all-at-newline on
+
+# More readline settings can be found here:
+# https://tiswww.case.edu/php/chet/readline/readline.html#SEC10
+
+# use alt+j/k to search forward/backward through history starting with the
+# current line (or just contains the current line when alt+, or alt+m is used)
+"\ej": history-search-forward
+"\ek": history-search-backward
+"\em": history-substring-search-forward
+"\e,": history-substring-search-backward

@@ -1,0 +1,12 @@
+# If this does not work, run "lesskey" (no arguments) and it will
+# generate a binary ~/.less file that should work with less.
+
+#env
+# Set less colors (useful for manpages):
+# Treat bold as normal "yellow" (really dark pumpkin orange) (166 is also nice)
+LESS_TERMCAP_md = \033[33m
+LESS_TERMCAP_me = \033[0m
+
+# Treat underlines as normal cyan
+LESS_TERMCAP_us = \033[36m
+LESS_TERMCAP_ue = \033[0m
