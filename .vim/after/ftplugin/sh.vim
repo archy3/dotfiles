@@ -36,7 +36,8 @@ if exists('b:undo_ftplugin')
 endif
 
 " Remaps:
-nnoremap <buffer> <Leader>R :!shellcheck --color=never -- %:p:S<cr>
+"nnoremap <buffer> <Leader>R :!shellcheck --color=never -- %:p:S<cr>
+nnoremap <buffer> <Leader>R :w !shellcheck --color=never -- -<cr>
 
 
 " Snippets:

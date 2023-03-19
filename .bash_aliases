@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 
 # shorthand:
 alias c='clear'
@@ -13,56 +14,44 @@ alias ht='htop -u'
 ec() { printf %s\\n "$*"; }
 int() { [ -z "${TMUX:-}" ] && echo "Not in tmux." || echo "In tmux."; }
 
-if [ -x /usr/bin/dircolors ]; then
-  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  # enable color support of ls
-  alias ls="ls --color=auto -v --group-directories-first --time-style='+%Y %m-%d %H:%M'"
-  alias l="ls --color=auto -1v --group-directories-first --time-style='+%Y %m-%d %H:%M'"
-  alias la="ls --color=auto -1Av --group-directories-first --time-style='+%Y %m-%d %H:%M'"
-  alias lla="ls --color=auto -lAvh --group-directories-first --time-style='+%Y %m-%d %H:%M'"
-  alias ll="ls --color=auto -lvh --group-directories-first --time-style='+%Y %m-%d %H:%M'"
-  cdl() { cd "$@" && ls --color=auto -lvh --group-directories-first --time-style='+%Y %m-%d %H:%M'; }
-  lsd() { set -- */; if test -d "$1"; then ls -1 -d -v --group-directories-first --color=auto -- "$@"; fi; }
-  lad()
-  {
-    set --
-    local file
-    for file in .[!.]*/ ..?*/ */; do
-      if test -d "$file"; then
-        set -- "$file" "$@"
-      fi
-    done
-    if [ "$#" -ge "1" ]; then
-      ls -1 -d -v --group-directories-first --color=auto -- "$@"
+# colors:
+alias ls="ls --color=auto -v --group-directories-first --time-style='+%Y %m-%d %H:%M'"
+alias l="ls --color=auto -1v --group-directories-first --time-style='+%Y %m-%d %H:%M'"
+alias la="ls --color=auto -1Av --group-directories-first --time-style='+%Y %m-%d %H:%M'"
+alias lla="ls --color=auto -lAvh --group-directories-first --time-style='+%Y %m-%d %H:%M'"
+alias ll="ls --color=auto -lvh --group-directories-first --time-style='+%Y %m-%d %H:%M'"
+cdl() { cd "$@" && ls --color=auto -lvh --group-directories-first --time-style='+%Y %m-%d %H:%M'; }
+lsd() # [dir]
+(
+  if [ -n "$1" ]; then
+    cd -- "$1" || exit "$?"
+  fi
+
+  set -- */
+  if test -d "$1"; then
+    ls -1 -d -v --group-directories-first --color=auto -- "$@"
+  fi
+)
+lad() # [dir]
+(
+  if [ -n "$1" ]; then
+    cd -- "$1" || exit "$?"
+  fi
+
+  set --
+  local file
+  for file in .[!.]*/ ..?*/ */; do
+    if test -d "$file"; then
+      set -- "$file" "$@"
     fi
-  }
-  #alias dir='dir --color=auto'
-  #alias vdir='vdir --color=auto'
-  alias grep='grep --color=auto'
-  alias g='grep --color=auto'
-  #alias fgrep='fgrep --color=auto'
-  #alias egrep='egrep --color=auto'
-else
-  alias l='ls -1'
-  alias la='ls -1 -A'
-  alias lla='ls -1 -l -A'
-  alias ll='ls -l'
-  lsd() { set -- */; if test -d "$1"; then ls -1 -d -v --group-directories-first -- "$@"; fi; }
-  lad()
-  {
-    set --
-    local file
-    for file in .[!.]*/ ..?*/ */; do
-      if test -d "$file"; then
-        set -- "$file" "$@"
-      fi
-    done
-    if [ "$#" -ge "1" ]; then
-      ls -1 -d -v --group-directories-first -- "$@"
-    fi
-  }
-  alias g='grep'
-fi
+  done
+  if [ "$#" -ge "1" ]; then
+    ls -1 -d -v --group-directories-first --color=auto -- "$@"
+  fi
+)
+alias lsda=lad
+alias grep='grep --color=auto'
+alias g='grep --color=auto'
 
 # safety:
 alias saferm='rm -i'
@@ -83,7 +72,6 @@ alias dp='~/scripts/doom/p'
 alias i500='~/scripts/tags/img500x500.sh'
 alias ta='~/scripts/tmux-auto-attach.sh 0 false'
 alias custom-tag='~/scripts/tags/custom-tag.sh'
-#alias tag-tools='~/scripts/tags/tag-tools.sh'
 tagtools()
 {
   # Work on all flac files in the current directory (as well as files

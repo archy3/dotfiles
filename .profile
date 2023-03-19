@@ -31,9 +31,11 @@ startx_tty1_auto()
   fi
 }
 
-# Set text editor
+# Set default applications:
 export VISUAL='/usr/bin/vim'
 export EDITOR="$VISUAL"
+export PAGER='less'
+export MANPAGER='less +Gg'
 
 # Prevent gtk scrollbar from autohiding
 export GTK_OVERLAY_SCROLLING=0

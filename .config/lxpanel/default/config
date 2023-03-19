@@ -1,2 +1,2 @@
 [Command]
-Logout=sh -c '"$HOME/scripts/shutdown-menu.sh"'
+Logout=sh -c 'if command -v obsession-logout; then obsession-logout; else "$HOME/scripts/shutdown-menu.sh"; fi'

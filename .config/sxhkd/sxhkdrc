@@ -20,9 +20,10 @@ super + alt + {t, i, n, F4}
 	gtk-launch evim.desktop &, \
 	~/scripts/shutdown-menu.sh &}
 
-super + ctrl + {c, n, v}
+super + ctrl + {c, n, t, v}
 	{~/scripts/quodlibet-menu.sh &, \
 	~/scripts/edit-config.sh &, \
+	xterm &, \
 	~/scripts/paste-by-typing.sh &}
 
 
@@ -68,4 +69,4 @@ super + {s,S} ; {_, super +} {f, s, S, F, c, C,}
 	{_,_}{_,_}~/scripts/screenshot.sh {f, s, S, F, c, C} &
 
 ~button{8,9}
-	~/scripts/pcmanfm-forward-back.sh {Left,Right} &
+	~/scripts/pcmanfm-forward-back.sh {XF86Back,XF86Forward} &

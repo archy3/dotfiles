@@ -29,9 +29,6 @@ else
   ~/scripts/autostart/sound-as-xscreensaver-impedence.sh > /dev/null &
   ~/scripts/autostart/move-reminder.sh &
   ~/scripts/autostart/mem-watcher.sh &
-
-  # Remove old thumbnails (when older than 7 days)
-  find "${HOME%/}/.thumbnails/" -mindepth 1 -type f -mtime +7 -delete &
 fi
 
 exec openbox

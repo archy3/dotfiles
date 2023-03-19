@@ -26,6 +26,7 @@ text/x-makefile=gvim.desktop
 text/x-matlab=gvim.desktop
 video/webm=vlc.desktop
 text/x-tex=gvim.desktop
+application/xml=gvim.desktop
 
 [Added Associations]
 application/msword=libreoffice-writer.desktop;
@@ -58,3 +59,4 @@ text/x-matlab=gvim.desktop;mousepad.desktop;
 text/x-python=idle-python3.5.desktop;idle3.desktop;idle.desktop;
 video/webm=vlc.desktop;audacious.desktop;kid3-qt.desktop;
 text/x-tex=gvim.desktop;
+application/xml=gvim.desktop;

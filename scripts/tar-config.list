@@ -8,6 +8,7 @@
 .Xresources
 .xserverrc
 .config/dunst
+.config/fontconfig/fonts.conf
 .config/galculator/galculator.conf
 .config/htop
 .config/libfm

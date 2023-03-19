@@ -31,10 +31,17 @@ xterm.vt100.faceSize6: 20
 ! Remove border:
 xterm.vt100.internalBorder: 0
 
+! Make large output scroll by faster (TODO: test for visual artifacts):
+xterm.vt100.fastScroll: true
+xterm.vt100.multiScroll: true
+
 ! Make Alt behave as expected:
 xterm.vt100.metaSendsEscape: true
 
-! Set key bindings:
+! Allow mouse scrolling in alternate screens that do not support the mouse:
+xterm.vt100.alternateScroll: true
+
+! Set key bindings (see xterm(1) Default Key Bindings section for inspiration):
 xterm.vt100.translations: #override \n\
 	Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
 	Ctrl Shift <Key>V: insert-selection(CLIPBOARD) \n\

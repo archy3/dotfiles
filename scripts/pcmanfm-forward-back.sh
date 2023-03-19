@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Sends alt+left_arrow/alt+right_arrow to certain applications that don't use
+# Sends XF86Back/XF86Forward to certain applications that don't use
 # mouse_forward/mouse_back. Useful to map to mouse_forward/mouse_back.
 
 main() #<Left|Right>
@@ -9,7 +9,7 @@ main() #<Left|Right>
   trap '[ "$?" != "0" ] && printf \\n%s\\n "${0}: An error occurred." >&2' EXIT
 
   case "${1:-}" in
-    Left|Right) :;;
+    XF86Back|XF86Forward) :;;
     *) return 1;;
   esac
 
@@ -17,7 +17,7 @@ main() #<Left|Right>
   class="$(xprop -id "$id" WM_CLASS)"
 
   case "${class##*' '}" in
-    '"Pcmanfm"'|'"Virt-manager"') xdotool key --clearmodifiers -- "alt+${1}";;
+    '"Pcmanfm"'|'"Virt-manager"') xdotool key --clearmodifiers -- "$1";;
   esac
 }
 

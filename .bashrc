@@ -2,6 +2,10 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# shellcheck shell=bash
+# shellcheck disable=SC1090
+# shellcheck disable=SC1091
+
 # If not running interactively, don't do anything
 case $- in
   *i*) ;;
@@ -48,6 +52,9 @@ case "$TERM" in
   #screen*) export PROMPT_COMMAND='echo -ne "\033k\033\\" ';; # For tmux 2
   screen*) export PROMPT_COMMAND='echo -ne "\033]2\033\\" ';; # For tmux 3
 esac
+
+# Make prompt red if nonzero return code:
+PS1='\[\e[$(($?==0 ? 0 : 31))m\]'"$PS1"'\[\e[0m\]'
 
 # Disable CTRL-S freezing the terminal:
 stty -ixon

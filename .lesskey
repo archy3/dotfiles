@@ -2,6 +2,29 @@
 # generate a binary ~/.less file that should work with less.
 
 #env
+# BUG: If the LESS definition is instead placed at the bottom of this file
+#      it will for some reason have no effect.
+# NOTE: For some reason, setting LESS here also enables mouse scroll in tmux
+#       for programs that use LESS as a pager (systemctl, etc) that are not
+#       listed in the tmux.conf variable $tmux_commands_with_legacy_scroll
+#       (even without --mouse --wheel-lines=3 which causes tmux mouse selection
+#       to not work).
+#       EDIT: systemctrl by default sets LESS to "-FRSXMK" and the -X makes the
+#       terminal not use an alternate screen. My tmux config relies on the
+#       variable "#{alternate_on}" to determine when to send up/down keys
+#       when mouse scrolling which does not get set to true when -X is used.
+#       Since the LESS variable here overwrites the LESS variable in the
+#       environment, -X is not passed to less despite systemctl setting the
+#       environment variable.
+# NOTE: For some reason, when LESS is defined here, the usual manpage status
+#       bar is not used (even without -M).
+# NOTE: Even if LESS is set in the environment, this will overwrite it.
+#       Perhaps this is why the manpage status bar is not used if it defines
+#       it in the LESS variable instead of as arguments to less.
+# FLAGS: -i: smart case search; -R: process colors; -F: quit if fits on screen;
+#        -M: show line numbers in status bar; -S: wrap lines.
+LESS = -i -R -F -M -S
+
 # Set less colors (useful for manpages):
 # Treat bold as normal "yellow" (really dark pumpkin orange) (166 is also nice)
 LESS_TERMCAP_md = \033[33m

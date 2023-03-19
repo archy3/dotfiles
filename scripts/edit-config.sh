@@ -5,6 +5,7 @@ list()
   dmenu -i -l 15 -fn 'Monospace-13' << 'EOF'
 .bash_aliases
 .bashrc
+.inputrc
 .profile
 .xinitrc
 .Xresources
