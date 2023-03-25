@@ -36,3 +36,7 @@ set revert-all-at-newline on
 "\ek": history-search-backward
 "\em": history-substring-search-forward
 "\e,": history-substring-search-backward
+
+# Make PageUp/PageDown do nothing:
+"\e[5~": ""
+"\e[6~": ""

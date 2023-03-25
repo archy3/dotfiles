@@ -753,6 +753,8 @@
   # this is an example with comments through out. use these to make your
   # own rules, but without the comments of course.
 
+  # Run "obxprop | grep ^_OB_APP" to get relevant window properties.
+
   <application name="first element of window's WM_CLASS property (see xprop)"
               class="second element of window's WM_CLASS property (see xprop)"
                role="the window's WM_WINDOW_ROLE property (see xprop)">
@@ -821,6 +823,18 @@
   # end of the example
 -->
     <!-- Open Thunderbird on workspace 4 -->
+    <!--
+      The Thunderbird password prompt sometimes shows with (name,class,role) as
+      ("Thunderbird","thunderbird-default","Dialog") but other times shows as
+      ("thunderbird-default","thunderbird-default","").
+    -->
+    <application name="Thunderbird" class="thunderbird-default" role="Dialog">
+      <desktop>4</desktop>
+      <position>
+         <x>center</x>
+         <y>center</y>
+       </position>
+    </application>
     <application name="thunderbird-default" class="thunderbird-default" role="">
       <desktop>4</desktop>
       <position>

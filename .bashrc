@@ -49,8 +49,7 @@ esac
 
 # This is needed to make tmux rename the xterm window title (for some reason):
 case "$TERM" in
-  #screen*) export PROMPT_COMMAND='echo -ne "\033k\033\\" ';; # For tmux 2
-  screen*) export PROMPT_COMMAND='echo -ne "\033]2\033\\" ';; # For tmux 3
+  screen*|tmux*) export PROMPT_COMMAND='echo -ne "\033]2\033\\" ';;
 esac
 
 # Make prompt red if nonzero return code:
