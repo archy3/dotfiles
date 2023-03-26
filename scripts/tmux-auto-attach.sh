@@ -3,7 +3,7 @@
 # Modified TMUX start script from:
 #   http://forums.gentoo.org/viewtopic-t-836006-start-0.html
 
-main()
+main() # <base_session> <true|false>
 {
   set -euf
   trap '[ "$?" != "0" ] && printf \\n%s\\n "${0}: An error occurred." >&2' EXIT
@@ -11,16 +11,15 @@ main()
   base_session="${1:-0}"
   make_new_window="${2:-true}"
 
-  # This actually works without the trim() on all systems except OSX
-  tmux_nb="$(trim "$(tmux ls | grep -c "^$base_session" || true)")"
-
-  if [ "$tmux_nb" = "0" ]; then
+  # If base sesseion does not already exist, create it
+  if ! { tmux ls | grep -q "^${base_session}:"; }; then
     exec tmux new-session -s "$base_session"
 
-  # Make sure we are not already in a tmux session
+  # Else make sure we are not already in a tmux session
   elif [ -z "${TMUX:-}" ]; then
-    # Session id is date and time to prevent conflict
-    session_id="$(date +%Y%m%d%H%M%S)"
+    # Session id is base session with random suffix to prevent conflicts
+    session_suffix="$(LC_ALL=C tr -dc '[:alnum:]' < /dev/urandom | head -c 8)"
+    session_id="${base_session}-${session_suffix}"
 
     # Create a new session (without attaching it) and link to base session
     # to share windows
@@ -32,23 +31,10 @@ main()
     # Attach to the new session & kill it once orphaned
     exec tmux attach-session -t "$session_id" \; set-option destroy-unattached
   else
-    echo_portable "It appears you are already in tmux." >&2
+    printf %s\\n "It appears you are already in tmux." >&2
     trap '' EXIT
     return 1
   fi
-}
-
-# Works because the shell automatically trims by assigning to variables and by
-# passing arguments
-trim()
-{
-  # shellcheck disable=SC2086
-  echo_portable $1
-}
-
-echo_portable()
-{
-  printf '%s\n' "$*"
 }
 
 main "$@"

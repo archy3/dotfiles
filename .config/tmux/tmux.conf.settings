@@ -1,0 +1,44 @@
+# Scroll back:
+set -g history-limit 4096
+
+# VISUAL:
+# Count from 1 instead of 0:
+set -g base-index 1
+set -g pane-base-index 1
+
+# Place status bar on top and only show it when there are multiple windows:
+set -g status-position top
+if -F '#{==:#{session_windows},1}' 'set -g status off' 'set -g status on'
+set-hook -g window-linked "if -F '#{==:#{session_windows},1}' 'set -g status off' 'set -g status on'"
+set-hook -g window-unlinked "if -F '#{==:#{session_windows},1}' 'set -g status off' 'set -g status on'"
+set -g status-left ""
+set -g status-right ""
+#set -g status-bg '#262626'
+#set -g status-fg '#ffd7af'
+
+# Show messages for 4 seconds
+set -g display-time 4000
+
+# Show program name of window in status bar unless it's bash,
+# in which case show directory name:
+set -g status-interval 1
+set -g window-status-format '#I:#{?#{==:#{pane_current_command},bash},#{b:pane_current_path},#{pane_current_command}}#F'
+set -g window-status-current-format '#{E:window-status-format}'
+
+# Allow the current window to resize to the proper size even
+# if another client is attached to the session, but not
+# viewing the current window:
+setw -g aggressive-resize on
+
+
+# TERMINAL:
+
+# Do not start a login shell:
+set -g default-command "${SHELL}"
+
+# Allow for color:
+set -g default-terminal "tmux-256color"
+
+# Set xterm title:
+set -g set-titles on
+set -g set-titles-string "#{pane_title}"

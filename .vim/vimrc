@@ -44,3 +44,7 @@ set ttymouse=sgr
 " set statusline=%<%f\ %h%r%=%{&ff=='dos'?'[dos]\ ':''}%-14.(%l,%c%V%)\ %P
 
 packadd! matchit
+
+" Remove on next vim upgrade:
+" tmux configuration with arbitrary extension
+au BufNewFile,BufRead {.,}tmux*.conf*		setf tmux

@@ -1,0 +1,75 @@
+# BINDS:
+# List of top level keys not used by default: abeghjkuvy/
+# (along with '<' and '>' and all uppercase letters other than DLM).
+
+set -g mode-keys vi
+set -g status-keys emacs
+
+# Allow 5ms for escape to be recognized as a meta prefix
+set -s escape-time 5
+
+unbind C-b
+set -g prefix C-a
+bind C-a send-prefix
+
+bind r {
+  source-file ~/.config/tmux/tmux.conf
+  display "Reloaded!"
+}
+
+# Set new panes/windows to open in current directory
+# and use more ergonomic keybindings:
+bind h split-window -h -c "#{pane_current_path}"
+bind y split-window -c "#{pane_current_path}"
+bind u new-window -c "#{pane_current_path}"
+bind % split-window -h -c "#{pane_current_path}"
+bind '"' split-window -c "#{pane_current_path}"
+bind c new-window -c "#{pane_current_path}"
+
+# Use 'j' to go to next pane (more ergonomic than the default 'o'):
+bind j select-pane -t :.+
+bind J select-pane -t :.-
+
+# make '<Prefix>+n' act the same as '<Prefix>' then 'n' on my keyboard:
+bind -r Home next-window
+
+# Get to copy-mode more easily:
+bind v copy-mode
+bind C-v paste-buffer
+
+# Allow PageUp/PageDown to scroll via copy-mode:
+# From: https://gist.github.com/zsimic/03d4ac3cedf40a88f1d5
+bind -n PageUp {
+  if-shell -F "#{alternate_on}" {
+    send PageUp
+  } {
+    copy-mode -eu
+  }
+}
+
+# COPY-MODE BINDS:
+# Allow resizing in copy mode with arrow keys:
+bind -T copy-mode-vi Up resize-pane -U 5
+bind -T copy-mode-vi Down resize-pane -D 5
+bind -T copy-mode-vi Left resize-pane -L 5
+bind -T copy-mode-vi Right resize-pane -R 5
+
+bind -T copy-mode-vi Home send -X start-of-line
+bind -T copy-mode-vi End send -X end-of-line
+bind -T copy-mode-vi y send -X copy-selection
+
+bind -T copy-mode-vi v {
+  if-shell -F '#{selection_present}' {
+    send -X clear-selection
+  } {
+    send -X begin-selection
+  }
+}
+
+# #{@copy-clipboard} and #{@del-temp-buffers} are defined in the mouse section
+bind -T copy-mode-vi C-c {
+  if-shell -F '#{selection_present}' {
+    send -X copy-pipe "#{@copy-clipboard}" temp
+    run-shell -b "#{@del-temp-buffers}"
+  }
+}

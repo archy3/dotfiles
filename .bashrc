@@ -42,14 +42,10 @@ fi
 PS1="\w$ "
 PS1='${debian_chroot:+($debian_chroot)}'"${PS1}"
 
-# Set title if xterm:
+# Set title if xterm or tmux:
 case "$TERM" in
-  xterm*|rxvt*) PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\W\a\]${PS1}";;
-esac
-
-# This is needed to make tmux rename the xterm window title (for some reason):
-case "$TERM" in
-  screen*|tmux*) export PROMPT_COMMAND='echo -ne "\033]2\033\\" ';;
+  xterm*|rxvt*|tmux*|screen*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\W\a\]${PS1}";;
 esac
 
 # Make prompt red if nonzero return code:
