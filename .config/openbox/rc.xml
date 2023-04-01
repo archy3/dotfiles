@@ -846,5 +846,38 @@
       <desktop>4</desktop>
       <maximized>yes</maximized>
     </application>
+
+    <application name="Navigator" class="Firefox-esr" role="browser" type="normal">
+      <size>
+        <width>1280</width>
+        <height>923</height>
+      </size>
+      <maximized>no</maximized>
+    </application>
+
+    <application name="pcmanfm" class="Pcmanfm" type="normal">
+      <size>
+        <width>677</width>
+        <height>533</height>
+      </size>
+      <maximized>no</maximized>
+    </application>
+
+    <application name="gnome-disks" class="Gnome-disks" type="dialog" title="SMART Data &amp; Self-Tests">
+      <size>
+        <width>975</width>
+        <height>610</height>
+      </size>
+      <maximized>no</maximized>
+    </application>
+
+    <application name="soffice" class="Soffice" type="normal" title="LibreOffice*">
+      <size>
+        <width>1126</width>
+        <height>932</height>
+      </size>
+      <maximized>no</maximized>
+    </application>
+
   </applications>
 </openbox_config>

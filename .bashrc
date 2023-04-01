@@ -71,4 +71,4 @@ if ! shopt -oq posix; then
 fi
 
 # Set 256-colors to gruvbox:
-~/scripts/gruvbox_256palette.sh
+. ~/scripts/gruvbox_256palette.sh

@@ -36,7 +36,6 @@ export VISUAL='/usr/bin/vim'
 export EDITOR="$VISUAL"
 export PAGER='less'
 export MANPAGER='less --file-size --color=dy --color=uc'
-export MANPAGER='less +Gg' # Remove once switched to Debian 12, and edit and move .lesskey
 
 # Prevent gtk scrollbar from autohiding
 export GTK_OVERLAY_SCROLLING=0

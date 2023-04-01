@@ -307,7 +307,7 @@ generate_window_list() {
 		# Add icon prefixes
 		case "$cls" in
 			Pcmanfm) icon_prefix="" ;;
-			htop) icon_prefix="∿" ;;
+			HTop) icon_prefix="∿" ;;
 			XTerm) icon_prefix="" ;;
 			Gvim) icon_prefix="" ;;
 			Galculator|XCalc) icon_prefix="" ;;

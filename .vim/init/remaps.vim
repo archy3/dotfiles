@@ -130,7 +130,7 @@ nnoremap <Leader>z 1z=
 nnoremap <silent> <Leader>yy :<C-u>exec 'norm! ^' . v:count1 . 'y$'<cr>
 
 " copy entire file into clipboard
-nnoremap <silent> <Leader>y :call CopyBufferToClipboard()<cr>
+nnoremap <silent> <Leader>y<Leader> :call CopyBufferToClipboard()<cr>
 "function! CopyBufferToClipboard()
 "  let l:current_winview=winsaveview()
 "  normal! vgg0oG$"+y

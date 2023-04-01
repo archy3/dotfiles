@@ -16,16 +16,19 @@ set shortmess+=I
 set shortmess-=S
 
 set incsearch
-
 set ignorecase
 set smartcase
 " use "/search_term\C" for case sensitive search
+
+" No time limit for key mappings, but time limit in ms for escape sequences:
+set notimeout
+set ttimeout
+set ttimeoutlen=50
 
 set splitbelow
 set splitright
 set hidden
 
-syntax on
 set number relativenumber
 set mouse=a
 set colorcolumn=80
@@ -58,9 +61,12 @@ set nojoinspaces
 "let &guicursor = substitute(&guicursor, 'n-v-c:', '&blinkon0-', '')
 
 
-autocmd vimenter * nested colorscheme gruvbox
-"autocmd vimenter * hi Normal guifg=#FFD7AF
-set background=dark
+if &t_Co > 2 || has("gui_running")
+  syntax on
+  autocmd vimenter * nested colorscheme gruvbox
+  "autocmd vimenter * hi Normal guifg=#FFD7AF
+  set background=dark
+endif
 
 " Set path in order to use gf and :find effectively:
 set path+=~

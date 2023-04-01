@@ -1,4 +1,3 @@
-# BINDS:
 # List of top level keys not used by default: abeghjkuvy/
 # (along with '<' and '>' and all uppercase letters other than DLM).
 
@@ -66,10 +65,9 @@ bind -T copy-mode-vi v {
   }
 }
 
-# #{@copy-clipboard} and #{@del-temp-buffers} are defined in the mouse section
+# #{@copy-clipboard} is defined in the mouse section
 bind -T copy-mode-vi C-c {
   if-shell -F '#{selection_present}' {
-    send -X copy-pipe "#{@copy-clipboard}" temp
-    run-shell -b "#{@del-temp-buffers}"
+    send -X pipe "#{@copy-clipboard}"
   }
 }

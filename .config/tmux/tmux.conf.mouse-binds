@@ -1,33 +1,34 @@
-# MOUSE-BINDS:
 set -g mouse on
+
+# Make space the only word-separator:
+set -g word-separators " "
 
 # Will use xclip for clipboard instead:
 set -s set-clipboard off
 
-set -g @copy-primary "xclip -i > /dev/null"
+# Set default pipe to paste to primary select, and define a pipe to clipboard:
+set -g copy-command "xclip -i > /dev/null"
 set -g @copy-clipboard "xclip -i -selection clipboard > /dev/null"
 
-set -g @paste-primary {
+set -g @paste-primary '
   xclip -r -o | tmux load-buffer -b temp - &&
     tmux list-buffers -F "#{buffer_name}" | grep -q "^temp$"
-}
+'
 
-set -g @paste-clipboard {
+set -g @paste-clipboard '
   xclip -r -o -selection clipboard | tmux load-buffer -b temp - &&
     tmux list-buffers -F "#{buffer_name}" | grep -q "^temp$"
-}
+'
 
-# Store content to be sent to X11 clipboards in temp[0-9]* buffers, and
-# delete those buffers after the X11 clipboards are passed their contents.
-set -g @del-temp-buffers {
-  tmux list-buffers -F "#{buffer_name}" |
-    grep "^temp[0-9]*$" |
-    xargs -I % -- tmux delete-buffer -b %
-}
+# Make mouse-back and double right-click exit copy mode:
+bind -T copy-mode-vi MouseDown8Pane send -X cancel
+unbind -T copy-mode-vi DoubleClick3Pane
+bind -T copy-mode-vi SecondClick3Pane send -X cancel
 
 
 # Emulate scrolling by sending up and down keys if using an alternate screen
-# (but send regular mouse events if the program understands the mouse):
+# (but send regular mouse events if the program understands the mouse).
+# Also, make scrolling in copy-mode while in an alternate screen exit copy mode:
 # Note the less '-X' flag (default for systemctl) does not use an alternate screen.
 bind -T root WheelUpPane {
   if-shell -Ft= '#{?mouse_any_flag,1,#{pane_in_mode}}' {
@@ -43,15 +44,6 @@ bind -T root WheelUpPane {
   }
 }
 
-bind -T root WheelDownPane {
-  if-shell -Ft= '#{?pane_in_mode,1,#{?mouse_any_flag,1,#{?alternate_on,0,1}}}' {
-    send -Mt=
-  } {
-    send -t= -N 3 Down
-  }
-}
-
-# Make scrolling in copy-mode while in an alternate screen exit copy mode:
 bind-key -T copy-mode-vi WheelUpPane {
   if-shell -Ft= '#{?alternate_on,0,1}' {
     select-pane
@@ -63,6 +55,14 @@ bind-key -T copy-mode-vi WheelUpPane {
     } {
       send -t= -N 3 Up
     }
+  }
+}
+
+bind -T root WheelDownPane {
+  if-shell -Ft= '#{?pane_in_mode,1,#{?mouse_any_flag,1,#{?alternate_on,0,1}}}' {
+    send -Mt=
+  } {
+    send -t= -N 3 Down
   }
 }
 
@@ -92,6 +92,16 @@ bind -T root MouseDown2Pane {
   }
 }
 
+bind -T copy-mode-vi MouseDown2Pane {
+  if-shell -t= "#{@paste-primary}" {
+    send -X cancel
+    paste-buffer -dp -b temp
+  } {
+    select-pane
+    send -X clear-selection
+  }
+}
+
 bind -T root MouseDown3Pane {
   if-shell -Ft= '#{?pane_in_mode,1,#{?mouse_any_flag,1,#{alternate_on}}}' {
     send -Mt=
@@ -115,60 +125,36 @@ bind -T copy-mode-vi MouseDown1Pane {
 # Highlighted selection is sent to primary select:
 bind -T copy-mode-vi MouseDragEnd1Pane {
   if-shell -F '#{selection_present}' {
-    send -X copy-pipe-no-clear "#{@copy-primary}" temp
-    run-shell -b "#{@del-temp-buffers}"
+    send -X pipe-no-clear
  }
 }
 
 # Right-click to send highlighted selection to clipboard and then unselect the text:
 bind -T copy-mode-vi MouseDown3Pane {
   if-shell -F '#{selection_present}' {
-    send -X copy-pipe "#{@copy-clipboard}" temp
-    run-shell -b "#{@del-temp-buffers}"
-  }
-}
-
-# Get out of copy mode by double clicking the right mouse:
-bind -T copy-mode-vi DoubleClick3Pane send -X cancel
-
-# Middle click exits copy mode and pastes primary selection:
-bind -T copy-mode-vi MouseDown2Pane {
-  if-shell -t= "#{@paste-primary}" {
-    send -X cancel
-    paste-buffer -dp -b temp
-  } {
-    select-pane
-    send -X clear-selection
+    send -X pipe "#{@copy-clipboard}"
   }
 }
 
 # From: https://stackoverflow.com/q/31404140
-# Double LMB Select & Copy (Word)
-bind -T copy-mode-vi DoubleClick1Pane {
-  select-pane
-  send -X select-word
-  send -X copy-pipe-no-clear "#{@copy-primary}" temp
-  run-shell -b "#{@del-temp-buffers}"
-}
-
-bind -T root DoubleClick1Pane {
+# Make double/triple left-click select current word/line, respectively:
+unbind -T root DoubleClick1Pane
+bind -T root SecondClick1Pane {
   if-shell -Ft= '#{?pane_in_mode,1,#{mouse_any_flag}' {
     send -Mt=
   } {
     select-pane
     copy-mode -M
     send -X select-word
-    send -X copy-pipe-no-clear "#{@copy-primary}" temp
-    run-shell -b "#{@del-temp-buffers}"
+    send -X pipe-no-clear
   }
 }
 
-# Triple LMB Select & Copy (Line)
-bind -T copy-mode-vi TripleClick1Pane {
+unbind -T copy-mode-vi DoubleClick1Pane
+bind -T copy-mode-vi SecondClick1Pane {
   select-pane
-  send -X select-line
-  send -X copy-pipe-no-clear "#{@copy-primary}" temp
-  run-shell -b "#{@del-temp-buffers}"
+  send -X select-word
+  send -X pipe-no-clear
 }
 
 bind -T root TripleClick1Pane {
@@ -178,7 +164,12 @@ bind -T root TripleClick1Pane {
     select-pane
     copy-mode -M
     send -X select-line
-    send -X copy-pipe-no-clear "#{@copy-primary}" temp
-    run-shell -b "#{@del-temp-buffers}"
+    send -X pipe-no-clear
   }
+}
+
+bind -T copy-mode-vi TripleClick1Pane {
+  select-pane
+  send -X select-line
+  send -X pipe-no-clear
 }
