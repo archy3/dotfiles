@@ -1,6 +1,3 @@
-# If this does not work, run "lesskey" (no arguments) and it will
-# generate a binary ~/.less file that should work with less.
-
 #command
 ^W toggle-option ^PS
 
