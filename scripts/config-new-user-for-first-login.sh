@@ -17,6 +17,7 @@ main()
   make_xdg_user_dirs=false
   make_screenshots_dir=false
   firefox_esr_modify_shortcut=false
+  firefox_esr_config=false
   modify_shutdown_prompt_color=false
 
   if [ "$#" = "0" ]; then
