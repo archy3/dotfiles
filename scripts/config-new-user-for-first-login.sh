@@ -35,6 +35,7 @@ main()
       --make-xdg-user-dirs) make_xdg_user_dirs=true;;
       --make-screenshots-dir) make_screenshots_dir=true;;
       --firefox-esr-modify-shortcut) firefox_esr_modify_shortcut=true;;
+      --firefox-esr-config) firefox_esr_config=true;;
       --modify-shutdown-prompt-color) modify_shutdown_prompt_color=true;;
       *) printf %s\\n "Invalid argument: ${1}" >&2; return 1;;
     esac
@@ -61,6 +62,10 @@ main()
 
   if [ "$firefox_esr_modify_shortcut" = "true" ]; then
     firefox_esr_modify_shortcut
+  fi
+
+  if [ "$firefox_esr_config" = "true" ]; then
+    firefox_esr_config
   fi
 
   if [ "$modify_shutdown_prompt_color" = "true" ]; then
@@ -160,6 +165,156 @@ firefox_esr_modify_shortcut()
     return 1
   fi
 }
+
+firefox_esr_config() # <--force=false|--force=true>
+(
+  test_first_run "$1" ~/.mozilla
+
+  prefix=$(LC_ALL=C tr -dc '[:lower:][:digit:]' < /dev/urandom | head -c 8)
+  install_hash='3B6073811A6ABF12'
+    # Not sure how this hash in generated but that's what it is on debian FF-ESR.
+  mkdir -p -- ~/".mozilla/firefox/${prefix}.default-esr"
+
+  printf %s \
+  "
+    [Profile0]
+    Name=default-esr
+    IsRelative=1
+    Path=${prefix}.default-esr
+
+    [General]
+    StartWithLastProfile=1
+    Version=2
+
+    [Install${install_hash}]
+    Default=${prefix}.default-esr
+    Locked=1
+  " | sed -n -e 's/^[[:blank:]]*//' -e '/./,/^$/p' \
+    > ~/.mozilla/firefox/profiles.ini
+
+  printf %s \
+  "
+    [${install_hash}]
+    Default=${prefix}.default-esr
+    Locked=1
+  " | sed -n -e 's/^[[:blank:]]*//' -e '/./,/^$/p' \
+    > ~/.mozilla/firefox/install.ini
+
+  printf %s \
+  '
+    // -----------
+    // | General |
+    // -----------
+
+    // Ask for confirmation if closing multiple tabs:
+    pref("browser.tabs.warnOnClose", true);
+
+    // Ask where to download files:
+    pref("browser.download.useDownloadDir", false);
+    pref("browser.download.always_ask_before_handling_new_types", true);
+
+    // Enable middle mouse scroll:
+    pref("general.autoScroll", true);
+
+    // Disable extension and feature recommendations:
+    pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons", false);
+    pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features", false);
+
+    // --------
+    // | Home |
+    // --------
+
+    // Make homepage and new tabs blank:
+    pref("browser.startup.homepage", "about:blank");
+    pref("browser.newtabpage.enabled", false);
+
+    // Make "firefox home content" show nothing:
+    pref("browser.newtabpage.activity-stream.showSearch", false);
+    pref("browser.newtabpage.activity-stream.feeds.topsites", false);
+    pref("browser.newtabpage.activity-stream.showSponsoredTopSites", false);
+    pref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
+    pref("browser.newtabpage.activity-stream.showSponsored", false);
+
+    // ----------
+    // | Search |
+    // ----------
+
+    // Default search engine cannot be set in a .js file.
+
+    // ----------------------
+    // | Privacy & Security |
+    // ----------------------
+
+    // Start in private browsing mode:
+    pref("browser.privatebrowsing.autostart", true);
+
+    // Disable web recommendations (requires locking for some reason):
+    pref("browser.urlbar.suggest.quicksuggest.nonsponsored", false, locked);
+    pref("browser.urlbar.suggest.quicksuggest.sponsored", false, locked);
+
+    // Do not block "dangerous and deceptive" content:
+    pref("browser.safebrowsing.phishing.enabled", false);
+    pref("browser.safebrowsing.malware.enabled", false);
+    pref("browser.safebrowsing.downloads.enabled", false);
+    pref("browser.safebrowsing.downloads.remote.block_potentially_unwanted", false);
+    pref("browser.safebrowsing.downloads.remote.block_uncommon", false);
+
+    // ---------------------------------
+    // | Settings only in about:config |
+    // ---------------------------------
+
+    // Disable about:config warning:
+    pref("browser.aboutConfig.showWarning", false);
+
+    // When using "open with" when downloading, save to temp directory:
+    pref("browser.download.start_downloads_in_tmp_dir", true);
+
+    // Disable geolocation:
+    pref("geo.enabled", false);
+
+    // Disable pocket:
+    pref("extensions.pocket.enabled", false);
+
+    // Disable experiments and studies:
+    pref("messaging-system.rsexperimentloader.enabled", false);
+    pref("app.normandy.enabled", false);
+
+    // Disable "what is new" page after updates:
+    pref("browser.startup.homepage_override.mstone", "ignore");
+
+    // Disable "Firefox Privacy Notice" on first launch:
+    pref("datareporting.policy.dataSubmissionPolicyBypassNotification", true);
+
+    // Disable captive portal support:
+    // Note these are often required to be enabled in order to use public WiFi.
+    pref("network.captive-portal-service.enabled", false);
+    pref("network.connectivity-service.enabled", false);
+
+    // Do not send metadata of downloaded files to Google:
+    pref("browser.safebrowsing.downloads.remote.enabled", false);
+
+    // Disable automatic retrieval of addon metadata:
+    pref("extensions.getAddons.cache.enabled", false);
+
+    // Disable general disk cache and video disk cache:
+    pref("browser.cache.disk.enable", false);
+    pref("browser.privatebrowsing.forceMediaMemoryCache", true);
+  ' | sed \
+      -n -e 's/^[[:blank:]]*//' -e 's/^pref(/user_pref(/' \
+      -e 's/,[[:blank:]]*locked);$/);/' -e '/./,/^$/p' \
+        > ~/".mozilla/firefox/${prefix}.default-esr/prefs.js"
+
+  printf %s \
+  '
+    {
+      "uBlock0@raymondhill.net": {
+        "permissions": ["internal:privateBrowsingAllowed"],
+        "origins":[]
+      }
+    }
+  ' | sed -n -e 's/^[[:blank:]]*//' -e '/./,/^$/p' \
+    > ~/".mozilla/firefox/${prefix}.default-esr/extension-preferences.json"
+)
 
 # Uses non-posix sed '-i' flag
 modify_shutdown_prompt_color()
