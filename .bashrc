@@ -69,6 +69,3 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-# Set 256-colors to gruvbox:
-. ~/scripts/gruvbox_256palette.sh

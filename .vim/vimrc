@@ -35,9 +35,11 @@ runtime! init/functions.vim
 " evimrc: evim/evimrc
 
 " Make vim use the correct mouse when in a tmux session:
-set ttymouse=sgr
 " (I really should find a way to make tmux properly report this so that vim's
 " autodetect feature works.)
+if $TERM =~ '^\(tmux\|screen\)\(-.*\)\?$'
+  set ttymouse=sgr
+endif
 
 " To try out (see also 'rulerformat'):
 " Status line that includes if DOS newlines are used:

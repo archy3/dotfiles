@@ -63,7 +63,24 @@ set nojoinspaces
 
 if &t_Co > 2 || has("gui_running")
   syntax on
-  autocmd vimenter * nested colorscheme gruvbox
+  " Make gruvbox colors, italics, and spell underlining work in xterm w/wo tmux:
+  if $TERM =~ '^\(xterm\|tmux\)-.*color.*$' && $XTERM_VERSION != '' && (has("gui_running") == 0)
+    let g:gruvbox_italic=1
+    autocmd vimenter * nested colorscheme gruvbox
+    autocmd vimenter * hi SpellBad cterm=underline
+    autocmd vimenter * hi SpellRare cterm=underline
+    autocmd vimenter * hi SpellCap cterm=underline
+    autocmd vimenter * hi SpellLocal cterm=underline
+      " See also this: https://gist.github.com/romainl/379904f91fa40533175dfaec4c833f2f
+    set termguicolors
+    if $TERM =~ '^tmux-.*color.*$'
+      " See :h xterm-true-color
+      let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+      let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    endif
+  else
+    autocmd vimenter * nested colorscheme gruvbox
+  endif
   "autocmd vimenter * hi Normal guifg=#FFD7AF
   set background=dark
 endif

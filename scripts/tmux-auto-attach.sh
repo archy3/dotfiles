@@ -3,9 +3,6 @@
 # Modified TMUX start script from:
 #   http://forums.gentoo.org/viewtopic-t-836006-start-0.html
 
-# Remove this line once I figure out why this is not working /inside/ tmux:
-. ~/scripts/gruvbox_256palette.sh
-
 main() # <base_session> <true|false>
 {
   set -euf
