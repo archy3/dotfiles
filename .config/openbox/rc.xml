@@ -37,6 +37,7 @@
     <primaryMonitor/>
   </placement>
   <theme>
+    <!-- Numix-Alt theme is here: ~/.themes/Numix-Alt/openbox-3/themerc -->
     <name>Numix-Alt</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
@@ -867,6 +868,14 @@
       <size>
         <width>975</width>
         <height>610</height>
+      </size>
+      <maximized>no</maximized>
+    </application>
+
+    <application name="engrampa" class="Engrampa" type="normal">
+      <size>
+        <width>655</width>
+        <height>551</height>
       </size>
       <maximized>no</maximized>
     </application>
