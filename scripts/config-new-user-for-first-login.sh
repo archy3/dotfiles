@@ -65,7 +65,7 @@ main()
   fi
 
   if [ "$firefox_esr_config" = "true" ]; then
-    firefox_esr_config
+    firefox_esr_config --force="$force"
   fi
 
   if [ "$modify_shutdown_prompt_color" = "true" ]; then
