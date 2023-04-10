@@ -260,6 +260,10 @@ firefox_esr_config() # <--force=false|--force=true>
     pref("browser.safebrowsing.downloads.remote.block_potentially_unwanted", false);
     pref("browser.safebrowsing.downloads.remote.block_uncommon", false);
 
+    // Enable HTTPS only mode:
+    pref("dom.security.https_only_mode", true);
+    pref("dom.security.https_only_mode_ever_enabled", true);
+
     // ---------------------------------
     // | Settings only in about:config |
     // ---------------------------------
@@ -300,6 +304,9 @@ firefox_esr_config() # <--force=false|--force=true>
     // Disable general disk cache and video disk cache:
     pref("browser.cache.disk.enable", false);
     pref("browser.privatebrowsing.forceMediaMemoryCache", true);
+
+    // Do not shorten "http://example.com" to "example.com":
+    pref("browser.urlbar.trimURLs", false);
   ' | sed \
       -n -e 's/^[[:blank:]]*//' -e 's/^pref(/user_pref(/' \
       -e 's/,[[:blank:]]*locked);$/);/' -e '/./,/^$/p' \
