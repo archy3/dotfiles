@@ -16,7 +16,10 @@ set -g status-right ""
 #set -g status-bg '#262626'
 #set -g status-fg '#ffd7af'
 
-# Show messages for 4 seconds
+# Set selection color:
+set -g mode-style 'fg=color223 bg=color236'
+
+# Show messages for 4 seconds:
 set -g display-time 4000
 
 # Show program name of window in status bar unless it's bash,
