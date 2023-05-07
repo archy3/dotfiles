@@ -62,35 +62,35 @@ xterm.vt100.foreground: #aaaaaa
 xterm.vt100.color0: #000000
 xterm.vt100.color8: #555555
 
+! White
+xterm.vt100.color7: #aaaaaa
+xterm.vt100.color15: #ffffff
+
 ! Red
 xterm.vt100.color1: #bb0000
-xterm.vt100.color9: #ff0000
+xterm.vt100.color9: #ff5555
 
 ! Green
 xterm.vt100.color2: #00b200
 xterm.vt100.color10: #55ff55
+
+! Blue
+xterm.vt100.color4: #0e63c4
+xterm.vt100.color12: #5555ff
+
+! Cyan
+xterm.vt100.color6: #00bbbb
+xterm.vt100.color14: #55ffff
+
+! Magenta
+xterm.vt100.color5: #bb00bb
+xterm.vt100.color13: #ff55ff
 
 ! Yellow
 xterm.vt100.color3: #aa5500
 !xterm.vt100.color3: #cc7755
 !(Nice peach color)
 xterm.vt100.color11: #ffff55
-
-! Blue
-xterm.vt100.color4: #0e63c4
-xterm.vt100.color12: #5555ff
-
-! Magenta
-xterm.vt100.color5: #bb00bb
-xterm.vt100.color13: #ff55ff
-
-! Cyan
-xterm.vt100.color6: #00bbbb
-xterm.vt100.color14: #55ffff
-
-! White
-xterm.vt100.color7: #aaaaaa
-xterm.vt100.color15: #ffffff
 
 
 ! sxiv:
