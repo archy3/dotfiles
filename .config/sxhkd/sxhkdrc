@@ -23,7 +23,7 @@ super + alt + {t, i, n, F4}
 super + ctrl + {c, n, t, v}
 	{~/scripts/quodlibet-menu.sh &, \
 	~/scripts/edit-config.sh &, \
-	xterm -xrm "xterm*iconHint: xterm-color" &, \
+	xterm -xrm xterm.iconHint:xterm-color &, \
 	~/scripts/paste-by-typing.sh &}
 
 
