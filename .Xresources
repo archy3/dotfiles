@@ -31,6 +31,11 @@ xterm.vt100.faceSize6: 20
 ! Remove border:
 xterm.vt100.internalBorder: 0
 
+! Reduce flickering while scrolling
+! (causes weird graphical glitch when exiting from vim outside of tmux):
+xterm.buffered: true
+xterm.bufferedFPS: 100
+
 ! Make large output scroll by faster (TODO: test for visual artifacts):
 xterm.vt100.fastScroll: true
 xterm.vt100.multiScroll: true
