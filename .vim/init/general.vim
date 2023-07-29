@@ -54,6 +54,8 @@ set display+=lastline
 " See this for more options: https://www.reddit.com/r/vim/comments/4hoa6e/what_do_you_use_for_your_listchars/
 set listchars=space:·,tab:——>,eol:¶,nbsp:⍽
 
+set rulerformat=%24(%=%l/%L\ %-5.(%c%V%)\ [%{&fileformat}]%)
+
 " Insert 1 space after a period instead of 2 with 'J':
 set nojoinspaces
 
