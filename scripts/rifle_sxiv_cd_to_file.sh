@@ -50,7 +50,7 @@ cd -- "$dir" || exit 1
 
 listfiles () {
     find -L . -maxdepth 1 -type f -iregex \
-      '.*\(jpe?g\|bmp\|png\|gif\|tga\|xpm\)$' -print0 | sort -z
+      '.*\(jpe?g\|bmp\|png\|gif\|tga\|xpm\|webp\)$' -print0 | sort -z
 }
 
 count="$(listfiles | grep -m 1 -ZznF "./${selected_img}" | cut -d: -f1)"
