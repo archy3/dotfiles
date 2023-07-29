@@ -19,8 +19,8 @@ set recolor "true"
 set recolor-reverse-video "true"
 set recolor-keephue "true"
 
-# Show the command line and statusbar:
-set guioptions cs
+# Do not show the command line/statusbar:
+set guioptions ""
 
 set statusbar-home-tilde
 set statusbar-basename
