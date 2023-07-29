@@ -17,7 +17,7 @@ main() #<Left|Right>
   class="$(xprop -id "$id" WM_CLASS)"
 
   case "${class##*' '}" in
-    '"Pcmanfm"'|'"Virt-manager"') xdotool key --clearmodifiers -- "$1";;
+    '"Pcmanfm"') xdotool key --clearmodifiers -- "$1";;
   esac
 }
 
