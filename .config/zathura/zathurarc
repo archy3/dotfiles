@@ -5,7 +5,17 @@ map i set recolor
 map I set recolor-reverse-video
 map <A-i> set recolor-keephue
 
-set recolor "false"
+# For some reason, making f toggle fullscreen made i/I/<A-i> stop
+# working after pressing enough keys.
+#unmap f
+#map f toggle_fullscreen
+#map [fullscreen] f toggle_fullscreen
+#map <A-f> follow
+#map [fullscreen] <A-f> follow
+#map <F4> follow
+#map [fullscreen] <F4> follow
+
+set recolor "true"
 set recolor-reverse-video "true"
 set recolor-keephue "true"
 
