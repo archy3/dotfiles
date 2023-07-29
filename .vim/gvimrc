@@ -17,22 +17,3 @@ set mousefocus
 
 " Disable toolbar since it is so big in GTK3:
 set guioptions-=T
-
-" stupid but fixes a bug in vim-gtk3 (see github.com/vim/vim/issues/8799) that
-" prevents certain <C-x> commands (<C-x><C-f> in my case) from working in
-" insert mode when certain insert-mode control commands (<C-f> in my case) are
-" remapped.
-inoremap <C-x><C-]> <C-x><C-]>
-inoremap <C-x><C-d> <C-x><C-d>
-inoremap <C-x><C-e> <C-x><C-e>
-inoremap <C-x><C-f> <C-x><C-f>
-inoremap <C-x><C-i> <C-x><C-i>
-inoremap <C-x><C-k> <C-x><C-k>
-inoremap <C-x><C-l> <C-x><C-l>
-inoremap <C-x><C-n> <C-x><C-n>
-inoremap <C-x><C-o> <C-x><C-o>
-inoremap <C-x><C-p> <C-x><C-p>
-inoremap <C-x>s <C-x>s
-inoremap <C-x><C-u> <C-x><C-u>
-inoremap <C-x><C-v> <C-x><C-v>
-inoremap <C-x><C-y> <C-x><C-y>
