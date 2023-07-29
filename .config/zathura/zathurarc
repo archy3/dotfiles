@@ -30,4 +30,8 @@ set window-title-basename
 set inputbar-bg "#000000"
 
 set notification-bg "#000000"
-set notification-fg "#ffffff"
+set notification-fg "#aaaaaa"
+
+set statusbar-fg "#aaaaaa"
+
+set recolor-darkcolor "#bbbbbb"
