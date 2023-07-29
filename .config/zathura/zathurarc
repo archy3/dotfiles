@@ -22,6 +22,11 @@ set recolor-keephue "true"
 # Show the command line and statusbar:
 set guioptions cs
 
+set statusbar-home-tilde
+set statusbar-basename
+set window-title-home-tilde
+set window-title-basename
+
 set inputbar-bg "#000000"
 
 set notification-bg "#000000"
