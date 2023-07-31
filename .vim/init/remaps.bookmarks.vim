@@ -15,5 +15,5 @@ nnoremap <Leader><Tab>f :edit ~/scripts/tags/tag-tools-test.sh<cr>
 
 nnoremap <Leader><Tab>z :edit ~/.config/sxhkd/sxhkdrc<cr>
 nnoremap <Leader><Tab>x :edit ~/.config/zathura/zathurarc<cr>
-nnoremap <Leader><Tab>c :edit ~/.config/sxiv/exec/key-handler<cr>
+nnoremap <Leader><Tab>c :edit ~/.config/nsxiv/exec/key-handler<cr>
 nnoremap <Leader><Tab>v :edit ~/.config/tmux/tmux.conf<cr>

@@ -19,7 +19,7 @@
 .config/polybar
 .config/redshift.conf
 .config/sxhkd
-.config/sxiv
+.config/nsxiv
 .config/tmux
 .config/user-dirs.dirs
 .config/zathura
@@ -34,7 +34,7 @@
 .local/share/applications/libreoffice-writer.desktop
 .local/share/applications/libreoffice-xsltfilter.desktop
 .local/share/applications/pcmanfm-new-win.desktop
-.local/share/applications/sxiv.desktop
+.local/share/applications/nsxiv.desktop
 scripts/autostart
 scripts/alt-highlight.sh
 scripts/center_around_cursor.sh
@@ -46,7 +46,7 @@ scripts/lof.sh
 scripts/lof-virt-manager.sh
 scripts/paste-by-typing.sh
 scripts/pcmanfm-forward-back.sh
-scripts/rifle_sxiv_cd_to_file.sh
+scripts/rifle_nsxiv_cd_to_file.sh
 scripts/screenshot.sh
 scripts/shutdown-menu.sh
 scripts/tar-config.exclude

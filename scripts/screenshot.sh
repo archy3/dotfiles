@@ -3,9 +3,9 @@
 # TODO:
 # Process fulscreen images on multimonitor setups to split the image
 # into one separate image per monitor.
-# Give sxiv a crop command (longterm).
+# Give nsxiv a crop command (longterm).
 
-# Takes a screenshot with maim and then opens the screenshot with sxiv.
+# Takes a screenshot with maim and then opens the screenshot with nsxiv.
 # The first and only argument should be <f|s|S|F|c|C>.
 
 # Argument meanings:
@@ -34,5 +34,5 @@ case "$1" in
 esac || return "$?"
 
 if test -f "$screenshot"; then
-  sxiv -b -- "$screenshot"
+  nsxiv -b -- "$screenshot"
 fi

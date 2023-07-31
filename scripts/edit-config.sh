@@ -15,7 +15,7 @@ list()
 .config/openbox/rc.xml
 .config/polybar/config
 .config/sxhkd/sxhkdrc
-.config/sxiv/exec/key-handler
+.config/nsxiv/exec/key-handler
 .config/tmux/tmux.conf
 .config/zathura/zathurarc
 .vim/vimrc

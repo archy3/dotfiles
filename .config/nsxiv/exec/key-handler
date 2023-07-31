@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# See /usr/share/doc/sxiv/examples/key-handler for examples.
+# See /usr/share/doc/nsxiv/examples/key-handler for examples.
 
 # The key combo argument has the following form: "[C-][M-][S-]KEY",
 # where C/M/S indicate Ctrl/Meta(Alt)/Shift modifier states and KEY is the X
@@ -39,7 +39,7 @@ rename() {
 			notify-send --urgency=critical --hint=int:transient:1 -- "file ${new_name} already exists"
 			return 1
 		elif [ -f "$file" ]; then
-			mv -- "$file" "$new_name" && { sxiv -- "$new_name" & }
+			mv -- "$file" "$new_name" && { nsxiv -b -- "$new_name" & }
 		fi
 	done
 }
@@ -47,11 +47,11 @@ rename() {
 window_resize() {
 	while IFS= read -r file; do
 		#set -- $(wmctrl -lpG | grep "$PPID")
-		#set -- $(wmctrl -lpG | grep 'sxiv$')
+		#set -- $(wmctrl -lpG | grep 'nsxiv$')
 		id="$(printf '0x0*%x$' "$(xdotool getactivewindow)")"
 		set -- $(wmctrl -lpG | awk -v id="$id" '{ if ($1 ~ id) {print $0}}')
 		if [ "$#" != 9 ]; then
-			printf %s\\n "There may be multiple sxiv windows open. Aborting operation."
+			printf %s\\n "There may be multiple nsxiv windows open. Aborting operation."
 			return 0
 		fi
 		win_id="$1"

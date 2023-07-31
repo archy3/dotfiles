@@ -93,6 +93,6 @@ xterm.vt100.color3: #aa5500
 xterm.vt100.color11: #ffff55
 
 
-! sxiv:
-Sxiv.background: black
-Sxiv.foreground: #555555
+! nsxiv:
+Nsxiv.bar.background: #555555
+Nsxiv.bar.foreground: black
