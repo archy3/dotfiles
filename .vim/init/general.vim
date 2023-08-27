@@ -6,7 +6,7 @@ set encoding=utf-8
 set ruler
 set showcmd
 
-" For secuirity
+" For security
 set nomodeline
 
 " disable vim intro screen
