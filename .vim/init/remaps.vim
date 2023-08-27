@@ -301,7 +301,7 @@ endfunction
       return ';'
     elseif &ft == 'xdefaults'
       return '!'
-    elseif &ft == 'matlab'
+    elseif &ft == 'matlab' || &ft == 'tex'
       return '%'
     endif
     return ''
