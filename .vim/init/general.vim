@@ -9,6 +9,9 @@ set showcmd
 " For security
 set nomodeline
 
+" Preserve xattr's
+set backupcopy=yes
+
 " disable vim intro screen
 set shortmess+=I
 
