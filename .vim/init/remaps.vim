@@ -295,7 +295,7 @@ endfunction
       return '//'
     elseif &ft == 'vim'
       return '"'
-    elseif &ft == 'python' || &ft == 'perl' || &ft == 'sh' || &ft == 'R' || &ft == 'tmux' || &ft == 'readline'
+    elseif &ft == 'python' || &ft == 'perl' || &ft == 'sh' || &ft == 'R' || &ft == 'tmux' || &ft == 'readline' || &ft == 'ps1'
       return '#'
     elseif &ft == 'lisp' || &ft == 'dosini'
       return ';'

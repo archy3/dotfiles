@@ -27,9 +27,10 @@ runtime! init/remaps.vim
 runtime! init/remaps.bookmarks.vim
 runtime! init/functions.vim
 
-" help:  after/ftplugin/help.vim
-" sh  :  after/ftplugin/sh.vim
-" vim :  after/ftplugin/vim.vim
+" help: after/ftplugin/help.vim
+" sh  : after/ftplugin/sh.vim
+" vim : after/ftplugin/vim.vim
+" pwsh: after/ftplugin/ps1.vim
 
 " gvimrc: gvimrc
 " evimrc: evim/evimrc
