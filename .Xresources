@@ -96,3 +96,8 @@ xterm.vt100.color11: #ffff55
 ! nsxiv:
 Nsxiv.bar.background: #555555
 Nsxiv.bar.foreground: black
+
+
+! XScreenSaver:
+! Disable "New Login" button:
+xscreensaver-auth.*.newLoginCommand:
