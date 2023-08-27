@@ -1,5 +1,6 @@
 #command
 ^W toggle-option ^PS
+^_ forw-search \^\\s*
 
 #env
 # BUG: If the LESS definition is instead placed at the bottom of this file
