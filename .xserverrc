@@ -1,5 +1,5 @@
 #!/bin/sh
 
-# "-ardelay 300" sets key delay rate to 300 ms
+# "-ardelay 250" sets key delay rate to 250 ms
 # "-arinterval $((1000/40))" sets key repeat rate to 40hz.
-exec /usr/bin/X -nolisten tcp -ardelay 300 -arinterval $((1000/40)) "$@"
+exec /usr/bin/X -nolisten tcp -ardelay 250 -arinterval $((1000/40)) "$@"
