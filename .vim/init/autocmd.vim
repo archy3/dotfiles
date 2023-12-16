@@ -66,6 +66,29 @@ autocmd VimResized * wincmd =
    " autocmd InsertLeave * set list
 "}}}
 
+" Highlight multiple consecutive whitespace (such as  stuff  like  this  )
+" except for whitespace at the beginning of a line:
+"{{{
+    function HighlightMultipleWhitespace()
+       highlight MultipleWhitespace ctermbg=red guibg=red
+       match MultipleWhitespace /[^[:blank:]]\zs\s\s\+/
+
+       " Apply to entered buffers:
+       autocmd BufWinEnter * match MultipleWhitespace /[^[:blank:]]\zs\s\s\+/
+
+       " Apply to new windows:
+       autocmd WinNew * match MultipleWhitespace /[^[:blank:]]\zs\s\s\+/
+
+       " Disable on Insert Mode:
+       autocmd InsertEnter * match MultipleWhitespace //
+       autocmd InsertLeave * match MultipleWhitespace /[^[:blank:]]\zs\s\s\+/
+
+       " Disable on buffers that aren't being viewed:
+       autocmd BufWinLeave * call clearmatches()
+    endfunction
+    "autocmd colorscheme * call HighlightMultipleWhitespace()
+"}}}
+
 " Make help open in v-split if only one window, else in bottom-right.
 "{{{
 augroup vimrc_help
