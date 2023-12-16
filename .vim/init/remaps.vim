@@ -72,6 +72,7 @@ nnoremap <silent> <down> :resize -1<cr>
 nnoremap <silent> <up> :resize +1<cr>
 
 let mapleader = " "
+let maplocalleader = ","
 
 " GUI save as:
 nnoremap <Leader><C-s> :browse<space>confirm<space>saveas<cr>
