@@ -18,6 +18,7 @@ else
 fi
 
 dunst &
+~/scripts/autostart/unclean-shutdown-check.sh &
 
 if command -v spice-vdagent > /dev/null; then
   ~/scripts/vm-resize.sh &
