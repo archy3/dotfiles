@@ -71,6 +71,10 @@ nnoremap <silent> <right> :vert resize +1<cr>
 nnoremap <silent> <down> :resize -1<cr>
 nnoremap <silent> <up> :resize +1<cr>
 
+" Autocorrect last spelling mistake.
+" From https://castel.dev/post/lecture-notes-1/#correcting-spelling-mistakes-on-the-fly
+inoremap <C-z> <c-g>u<Esc>[s1z=`]a<c-g>u
+
 let mapleader = " "
 let maplocalleader = ","
 
@@ -296,7 +300,7 @@ endfunction
       return '//'
     elseif &ft == 'vim'
       return '"'
-    elseif &ft == 'python' || &ft == 'perl' || &ft == 'sh' || &ft == 'R' || &ft == 'tmux' || &ft == 'readline' || &ft == 'ps1'
+    elseif &ft == 'python' || &ft == 'perl' || &ft == 'sh' || &ft == 'R' || &ft == 'tmux' || &ft == 'readline' || &ft == 'ps1'|| &ft == 'snippets'
       return '#'
     elseif &ft == 'lisp' || &ft == 'dosini'
       return ';'
