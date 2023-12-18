@@ -4,7 +4,12 @@ else
   set guifont=Monospace\ 11
 endif
 
-set columns=85
+filetype detect " from https://stackoverflow.com/a/65367744
+if (&ft=='tex')
+  set columns=95
+else
+  set columns=85
+endif
 set lines=24
 
 " Disable beeping. It seems not all systems need this
