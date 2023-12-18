@@ -15,6 +15,9 @@ map <A-i> set recolor-keephue
 #map <F4> follow
 #map [fullscreen] <F4> follow
 
+# Good size when next to gvim:
+set window-width 801
+
 set recolor "true"
 set recolor-reverse-video "true"
 set recolor-keephue "true"
