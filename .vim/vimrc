@@ -17,7 +17,10 @@ else
   set viminfo='0,<0,s0,h,/0,:0,@0,f1,n~/.vim/.viminfo
 endif
 
-filetype plugin indent on
+packadd! matchit
+packadd! vimtex " Must load here (do not lazy-load in a ftplugin!)
+packadd! ultisnips
+filetype plugin indent on " This must come after loading plugins
 
 runtime! init/general.vim
 runtime! init/autocmd.vim
@@ -30,6 +33,7 @@ runtime! init/functions.vim
 " sh  : after/ftplugin/sh.vim
 " vim : after/ftplugin/vim.vim
 " pwsh: after/ftplugin/ps1.vim
+" tex : after/ftplugin/tex.vim
 
 " gvimrc: gvimrc
 " evimrc: evim/evimrc
@@ -44,5 +48,3 @@ endif
 " To try out (see also 'rulerformat'):
 " Status line that includes if DOS newlines are used:
 " set statusline=%<%f\ %h%r%=%{&ff=='dos'?'[dos]\ ':''}%-14.(%l,%c%V%)\ %P
-
-packadd! matchit
