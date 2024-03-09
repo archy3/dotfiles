@@ -81,6 +81,11 @@ nnoremap <silent> <right> :vert resize +1<cr>
 nnoremap <silent> <down> :resize -1<cr>
 nnoremap <silent> <up> :resize +1<cr>
 
+" Create inner line object (from https://vimrcfu.com/snippet/269):
+onoremap <silent> <expr> il v:count==0 ? ":<c-u>normal! ^vg_<cr>" : ":<c-u>normal! ^v" . (v:count) . "jkg_<cr>"
+vnoremap <silent> <expr> il v:count==0 ? ":<c-u>normal! ^vg_<cr>" : ":<c-u>normal! ^v" . (v:count) . "jkg_h<cr>"
+nnoremap dal 0D
+
 let mapleader = " "
 let maplocalleader = ","
 
