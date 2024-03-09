@@ -1,0 +1,174 @@
+global !p
+
+# Returns true when not in a comment or string.
+def code():
+	return int(vim.eval("GetHighLightType() =~ 'shComment\|shSingleQuote\|shDoubleQuote\|shTestDoubleQuote\|shHereDoc\|shHereString'")) == 0
+
+def double_quote():
+	return int(vim.eval("GetHighLightType() =~ 'shDoubleQuote\|shTestDoubleQuote\|shHereDoc\|shHereString'")) == 1
+
+# This doesn't work for some reason
+def case_esac():
+	return int(vim.eval("GetHighLightType() == 'shCaseEsac'")) == 1
+
+endglobal
+
+
+context "code()"
+snippet new "boilerplate" b
+#!/bin/sh
+
+main()
+{
+	set -euf
+	trap '[ "\$?" != 0 ] && printf \\\\n%s\\\\n "\${0}: An error occurred." >&2' EXIT
+
+	${0}
+}
+
+main "$@"
+endsnippet
+
+context "code()"
+snippet c "conditional" W
+[ "\$${2}" = "${3}" ]
+endsnippet
+
+context "code()"
+snippet 'if ' "if" rbA
+if ${1:[ "\$${2}" = "${3}" ]}; then
+	${0:body}
+fi
+endsnippet
+
+context "code()"
+snippet 'elif ' "else if" rbA
+elif ${1:[ "\$${2}" = "${3}" ]}; then
+	${0:body}
+endsnippet
+
+context "code()"
+snippet 'for ' "for" rbA
+for ${1:arg} in ${2:"$@"}; do
+	${0:body}
+done
+endsnippet
+
+context "code()"
+snippet 'forf ' "for file" rbA
+for ${1:file} in ./*${2:.txt}; do
+	${0:body}
+done
+endsnippet
+
+context "code()"
+snippet 'while ' "while" rbA
+while ${1:[ "\$${2}" = "${3}" ]}; do
+	${0:body}
+done
+endsnippet
+
+context "code()"
+snippet 'until ' "until" rbA
+until ${1:[ "\$${2:#}" = "${3:0}" ]}; do
+	${0:body}
+done
+endsnippet
+
+context "code()"
+snippet '\bwhiler ' "while read" rA
+while IFS= read -r ${1:_}; do
+	${0:body}
+done
+endsnippet
+
+context "code()"
+snippet 'case ' "case" rbA
+case "\$${1:choice}" in
+	${2:pattern}) ${3:action};;${0:}
+esac
+endsnippet
+
+#context "case_esac()" # This test case isn't working fro some reason
+context "code()"
+snippet ) "case continuation" bA
+${1:pattern}) ${2:action};;${0:}
+endsnippet
+
+priority 1
+context "code()"
+snippet f "function()" i
+()
+{
+	${0:body}
+}
+endsnippet
+
+priority 2
+context "code()"
+snippet ff "local function" i
+()
+(
+	${0:body}
+)
+endsnippet
+
+context "code()"
+snippet jj "quoted $" wA
+"\$${0}"
+endsnippet
+
+context "code()"
+snippet kk "quoted ${}" wA
+"\${${0}}"
+endsnippet
+
+context "code()"
+snippet ll "quoted $()" wA
+"\$(${0})"
+endsnippet
+
+priority 2
+context "code() or double_quote()"
+snippet KK "unqoted ${}" wA
+\${${0}}
+endsnippet
+
+priority 2
+context "code() or double_quote()"
+snippet LL "unqoted $()" wA
+\$(${0})
+endsnippet
+
+priority 1
+snippet KK "unqoted ${}" i
+\${${0}}
+endsnippet
+
+priority 1
+snippet LL "unqoted $()" i
+\$(${0})
+endsnippet
+
+context "code()"
+snippet ec "printf" W
+printf '${2:%s\\n}' "${1}"
+endsnippet
+
+context "code()"
+snippet er "printf to stderr" W
+printf '${2:%s\\n}' "${1}" >&2
+endsnippet
+
+snippet '' "single quotes" A
+'${1}'
+endsnippet
+
+snippet "" "single quotes" A
+"${1}"
+endsnippet
+
+snippet {} "braces" A
+{ ${1}; }
+endsnippet
+
