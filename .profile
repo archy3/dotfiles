@@ -37,6 +37,9 @@ export EDITOR="$VISUAL"
 export PAGER='less'
 export MANPAGER='less --file-size --color=dy --color=uc'
 
+# Use compose key in GTK apps
+#export GTK_IM_MODULE=xim
+
 # Prevent gtk scrollbar from autohiding
 export GTK_OVERLAY_SCROLLING=0
 

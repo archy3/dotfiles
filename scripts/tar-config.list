@@ -4,6 +4,7 @@
 .lesskey
 .profile
 .vim
+.XCompose
 .xinitrc
 .Xresources
 .xserverrc

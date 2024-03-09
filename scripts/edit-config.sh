@@ -2,12 +2,13 @@
 
 list()
 {
-  dmenu -i -l 16 -fn 'Monospace-13' << 'EOF'
+  dmenu -i -l 17 -fn 'Monospace-13' << 'EOF'
 .bash_aliases
 .bashrc
 .inputrc
 .lesskey
 .profile
+.XCompose
 .xinitrc
 .Xresources
 .xserverrc

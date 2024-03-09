@@ -13,12 +13,13 @@ if [ polybar = p ]; then
   sleep 0.2 && # Wait for openbox to create the workspaces
   polybar -r mybar &
 else
-  pcmanfm --desktop &
+  GTK_IM_MODULE=xim pcmanfm --desktop &
   lxpanel &
 fi
 
 dunst &
 ~/scripts/autostart/unclean-shutdown-check.sh &
+~/scripts/autostart/set-keyboard-layout-on-usb-connect.sh &
 
 if command -v spice-vdagent > /dev/null; then
   ~/scripts/vm-resize.sh &
