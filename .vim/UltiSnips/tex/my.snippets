@@ -33,6 +33,11 @@ snippet eee "emphatic" wA
 \\emph{${1:${VISUAL}}}$0
 endsnippet
 
+context "not math()"
+snippet ttt "monospace" wA
+\\texttt{${1:${VISUAL}}}$0
+endsnippet
+
 
 # ENVIRONMENTS:
 snippet beg "begin{} / end{}" bA
@@ -236,10 +241,10 @@ snippet "([a-zA-Z])hat" "hat" riA
 \hat{`!p snip.rv=match.group(1)`}
 endsnippet
 
-context "math()"
-snippet pp "prime" iA
-\p
-endsnippet
+#context "math()"
+#snippet pp "prime" iA
+#\p
+#endsnippet
 
 
 # MATRICES:
@@ -525,6 +530,11 @@ snippet gff "phi" iA
 endsnippet
 
 context "math()"
+snippet Gff "phi" iA
+\Phi
+endsnippet
+
+context "math()"
 snippet gii "iota" iA
 \iota
 endsnippet
@@ -540,6 +550,11 @@ snippet gyy "psi" iA
 endsnippet
 
 context "math()"
+snippet gtt "psi" iA
+\tau
+endsnippet
+
+context "math()"
 snippet FF "Mathcal F" iA
 \mathcal{F}
 endsnippet
@@ -551,7 +566,7 @@ endsnippet
 
 context "math()"
 snippet CC "Mathcal C" iA
-\mathcal{C}
+\C
 endsnippet
 
 context "math()"
