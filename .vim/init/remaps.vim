@@ -4,8 +4,6 @@ inoremap <RightMouse> <C-o>"+<MiddleMouse>
 vnoremap <RightMouse> "+y
 
 " Use mouse back button to open a new line below the mouse cursor:
-nnoremap <X1Mouse> <LeftMouse>o<esc>
-" Use mouse back button to open a new line below the mouse cursor:
 " (The '0d$' make sure the line is blank [it sometimes isn't depending on the ftplugin])
 nnoremap <X1Mouse> <LeftMouse>o<esc>0d$
 
