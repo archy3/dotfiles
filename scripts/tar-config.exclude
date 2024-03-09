@@ -5,4 +5,5 @@
 .vim/*viminf?*
 .vim/*.tmp
 .vim/spell
-.vim/UltiSnips/tex/*specific*
+.vim/UltiSnips/*specific*
+.vim/UltiSnips/*retired*
