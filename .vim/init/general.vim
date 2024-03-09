@@ -9,6 +9,9 @@ set showcmd
 " For security
 set nomodeline
 
+" Disable wrapping
+set nowrap
+
 " Preserve xattr's
 set backupcopy=yes
 
