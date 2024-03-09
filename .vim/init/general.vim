@@ -42,9 +42,9 @@ set wildmenu
 
 " Outside of gvim, always show status line
 " (not needed in gvim because this is shown in the window title):
-if (has("gui_running") == 0)
-  set laststatus=2
-endif
+"if (has("gui_running") == 0)
+"  set laststatus=2
+"endif
 
 " Make vertical motions like CTRL-F, CTRL-B, gg, etc preserve horizontal
 " cursor position:
