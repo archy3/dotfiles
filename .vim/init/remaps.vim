@@ -162,44 +162,67 @@ endfunction
 nnoremap <Leader>p "+p
 nnoremap <Leader>P "+P
 
-" Append yanked test to end of line or after cursor, separated by a space:
-nnoremap <Leader>A A<space><C-r><C-o>0<esc>
-nnoremap <Leader>a a<space><C-r><C-o>0<esc>
+" Advanced pasting commands:
+"{{{
+  " From https://www.reddit.com/r/vim/comments/a9nyqc/how_to_paste_without_losing_the_text_in_the/ecmt0li/?utm_source=reddit&utm_medium=web2x&context=3
+  " but just the pasting and command part.
+  function! CustomPasteAction(replaceRegEx, prePasteCmd)
+    let saveReg = @@
+    let reg = v:register
+    let regContents = getreg(reg)
 
-" change with yanked text
-" From https://www.reddit.com/r/vim/comments/a9nyqc/how_to_paste_without_losing_the_text_in_the/ecmt0li/?utm_source=reddit&utm_medium=web2x&context=3
-function! PasteOver(type, ...)
-  let saveSel = &selection
-  let &selection = "inclusive"
-  let saveReg = @@
-  let reg = v:register
-  let regContents = getreg(reg)
+    " Remove substrings represented by a:replaceRegEx
+    call setreg(reg, substitute(regContents, a:replaceRegEx, '', 'g'))
 
-  " Remove trailing newline from yanks like "yy"
-  if len(regContents) > 1 && regContents[-1:-1] == "\n" && regContents[-2:-2] != "\n"
-    call setreg(reg, regContents[:-2])
-  endif
+    execute "normal! " . a:prePasteCmd . "\<C-r>\<C-o>" . reg
 
-  if a:0 " Invoked from Visual mode, use '< and '> marks.
-    silent exe "normal! `<" . a:type . "`>"
-  elseif a:type == 'line'
-    silent exe "normal! '[V']"
-  elseif a:type == 'block'
-    silent exe "normal! `[\<C-V>`]"
-  else
-    silent exe "normal! `[v`]"
-  endif
+    let @@ = saveReg
+    call setreg(reg, regContents)
+  endfunction
 
-  "execute "normal! \"_d\"" . reg . "P"
-  execute "normal! \"_c\<C-r>\<C-o>" . reg
+  " Append yanked test to end of line or after cursor, separated by a space:
+  function! PasteAtEndOfLine(...)
+    " Remove leading and trailing white space (including newlines)
+    call CustomPasteAction('\_s*$\|^\_s*', "A\<space>")
+  endfunction
+  function! PasteAtEndOfCursor(...)
+    " Remove leading and trailing white space (including newlines)
+    call CustomPasteAction('\_s*$\|^\_s*', "a\<space>")
+  endfunction
+  nnoremap <Leader>A :set opfunc=PasteAtEndOfLine<cr>g@<space>
+  nnoremap <Leader>a :set opfunc=PasteAtEndOfCursor<cr>g@<space>
 
-  let &selection = saveSel
-  let @@ = saveReg
+  function! PasteOverInnerLine(...)
+    " Remove leading spaces and any trailing newline from register:
+    call CustomPasteAction('\s*\n\?$\|^\s*', "^\"_cg_")
+  endfunction
+  nnoremap <silent> <Leader>cil :set opfunc=PasteOverInnerLine<cr>g@<space>
 
-  call setreg(reg, regContents)
-endfunction
-nnoremap <silent> <Leader>c :set opfunc=PasteOver<cr>g@
-nnoremap <silent> <Leader>cc 0:set opfunc=PasteOver<cr>g@$
+  " change with yanked text
+  " From https://www.reddit.com/r/vim/comments/a9nyqc/how_to_paste_without_losing_the_text_in_the/ecmt0li/?utm_source=reddit&utm_medium=web2x&context=3
+  function! PasteOver(type, ...)
+    let saveSel = &selection
+    let &selection = "inclusive"
+
+    if a:0 " Invoked from Visual mode, use '< and '> marks.
+      silent exe "normal! `<" . a:type . "`>"
+    elseif a:type == 'line'
+      silent exe "normal! '[V']"
+    elseif a:type == 'block'
+      silent exe "normal! `[\<C-V>`]"
+    else
+      silent exe "normal! `[v`]"
+    endif
+
+    " Remove final trailing newline from yanks like "yy"
+    call CustomPasteAction('\n$', "\"_c")
+
+    let &selection = saveSel
+  endfunction
+  nnoremap <silent> <Leader>c :set opfunc=PasteOver<cr>g@
+  nnoremap <silent> <Leader>cc 0:set opfunc=PasteOver<cr>g@$
+  nnoremap <silent> <Leader>C :set opfunc=PasteOver<cr>g@$
+"}}}
 
 " Buffer remaps:
 nnoremap <Leader>b :bn <cr>
