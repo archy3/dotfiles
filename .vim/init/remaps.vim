@@ -225,39 +225,41 @@ nnoremap <Leader>P "+P
 "}}}
 
 " Buffer remaps:
-nnoremap <Leader>b :bn <cr>
-nnoremap <Leader>B :bp <cr>
-nnoremap <Leader>q :call DeleteBuffer(0)<cr>
-nnoremap <Leader>Q :call DeleteBuffer(1)<cr>
-function! DeleteBuffer(force)
-  let l:del_cmd = (a:force ? "bdelete!" : "bdelete")
+"{{{
+  nnoremap <Leader>b :bn <cr>
+  nnoremap <Leader>B :bp <cr>
+  nnoremap <Leader>q :call DeleteBuffer(0)<cr>
+  nnoremap <Leader>Q :call DeleteBuffer(1)<cr>
+  function! DeleteBuffer(force)
+    let l:del_cmd = (a:force ? "bdelete!" : "bdelete")
 
-  " If there is an alternative buffer (AKA buffer 0), go to it and delete this
-  " buffer from it. Otherwise, go to the previous buffer and do the same.
-  if buflisted(0)
-    let l:command = ":buffer # | " . l:del_cmd . " #"
-  else
-    let l:command = ":bprevious | " . l:del_cmd . " #"
-  endif
+    " If there is an alternative buffer (AKA buffer 0), go to it and delete this
+    " buffer from it. Otherwise, go to the previous buffer and do the same.
+    if buflisted(0)
+      let l:command = ":buffer # | " . l:del_cmd . " #"
+    else
+      let l:command = ":bprevious | " . l:del_cmd . " #"
+    endif
 
-  " If the buffer isn't listed (e.g. help), just simply delete it:
-  if ! buflisted(expand("%"))
-      exec l:del_cmd
-  " Only delete the current listed buffer if it is not the only listed buffer:
-  elseif len(getbufinfo({'buflisted':1})) >= 2
-    try
-      exec l:command
-    catch
-      " Go back to buffer that failed to delete:
-      exec "buffer #"
-      " Run this so the error message will display (there's probably a better
-      " way to do this than having to run the bdelete command again):
-      exec l:del_cmd
-    endtry
-  else
-    echo "DeleteBuffer(): This is the only buffer."
-  endif
-endfunction
+    " If the buffer isn't listed (e.g. help), just simply delete it:
+    if ! buflisted(expand("%"))
+        exec l:del_cmd
+    " Only delete the current listed buffer if it is not the only listed buffer:
+    elseif len(getbufinfo({'buflisted':1})) >= 2
+      try
+        exec l:command
+      catch
+        " Go back to buffer that failed to delete:
+        exec "buffer #"
+        " Run this so the error message will display (there's probably a better
+        " way to do this than having to run the bdelete command again):
+        exec l:del_cmd
+      endtry
+    else
+      echo "DeleteBuffer(): This is the only buffer."
+    endif
+  endfunction
+"}}}
 
 " Jump to next window:
 nnoremap <silent> <Leader>w :wincmd w<cr>
