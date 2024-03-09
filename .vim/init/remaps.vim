@@ -27,6 +27,10 @@ nnoremap l <space>
 
 nnoremap Y y$
 
+" Scroll left and right quickly:
+nnoremap - 10zh
+nnoremap + 10zl
+
 " Delete to matching indent:
 nnoremap <silent> dsi ^"py0^d/^<C-r>p[^ \t]/+0<cr>
 nnoremap <silent> dsu ^"py00d?^<C-r>p[^ \t]?+0<cr>
