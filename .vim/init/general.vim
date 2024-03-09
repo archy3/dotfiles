@@ -60,7 +60,16 @@ set display+=lastline
 " See this for more options: https://www.reddit.com/r/vim/comments/4hoa6e/what_do_you_use_for_your_listchars/
 set listchars=space:·,tab:——>,eol:¶,nbsp:⍽
 
-set rulerformat=%24(%=%l/%L\ %-5.(%c%V%)\ [%{&fileformat}]%)
+"set rulerformat=%24(%=%l/%L\ %-5.(%c%V%)\ [%{&fileformat}]%)
+set rulerformat=%17(%=%l/%L\ %-5.(%c%V%)%)
+
+set titlestring=%t
+set titlestring+=%(\ %{&readonly&&&modifiable?\"=\":\"\"}
+set titlestring+=%{&modified?\"+\":\"\"}
+set titlestring+=%{&modifiable?\"\":\"-\"}%)
+set titlestring+=%(\ \(%{&filetype==\"help\"?\"help\":expand(\"%:~:h\")}\)%)
+set titlestring+=%{%&filetype==\"help\"?\"\":\"\ -\ [%{&fileformat}\ %{&filetype}]\"%}
+set titlestring+=%a\ -\ %{v:servername==\"\"?\"VIM\":v:servername}
 
 " Insert 1 space after a period instead of 2 with 'J':
 set nojoinspaces
