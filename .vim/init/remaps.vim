@@ -127,7 +127,7 @@ nnoremap <Leader>/ /\<\><left><left>
 nnoremap <Leader>h :%s//g<left><left>
 
 " Replace every instance of current word:
-nnoremap <Leader>H "pyiw:%s/\<<C-r>p\>//gI<left><left><left>
+nnoremap <Leader>H :%s/\<<C-r><C-w>\>//gI<left><left><left>
 
 " Autocorrect current word:
 nnoremap <Leader>z 1z=
