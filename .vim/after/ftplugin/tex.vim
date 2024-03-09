@@ -13,3 +13,4 @@ if exists('b:undo_ftplugin')
 endif
 
 nnoremap <buffer> <Leader>r :call UltiSnips#RefreshSnippets()<cr>
+vnoremap <buffer> <Leader>c <plug>(vimtex-cmd-create)
