@@ -56,7 +56,7 @@ cnoremap <C-f>v <C-r>+
 cnoremap <C-f><C-f> <C-f>
 
 " Make <C-n> feel natural on my keyboard:
-inoremap <home> <C-n>
+"inoremap <home> <C-n>
 
 " Use modern shortcuts for system clipboard and saving:
 vnoremap <C-c> "+y
@@ -115,11 +115,6 @@ function! ToggleSystemClipboard()
     set clipboard^=unnamedplus clipboard?
   endif
 endfunction
-
-" Counterparts to C/D/Y:
-nnoremap <Leader>C c^
-nnoremap <Leader>D d^
-nnoremap <Leader>Y y^
 
 " Undo/redo to last save:
 nnoremap <Leader>u :earlier 1f<cr>
