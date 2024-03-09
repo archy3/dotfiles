@@ -14,8 +14,8 @@ nnoremap <X2Mouse> u
 vnoremap <X2Mouse> d
 
 " remaps
-inoremap jk <esc>
-inoremap kj <esc>
+"inoremap jk <esc>
+"inoremap kj <esc>
 
 " Like remapping j/k to gj/gk but making relative line numbers work as expected:
 nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
