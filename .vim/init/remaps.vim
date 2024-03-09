@@ -297,11 +297,11 @@ endfunction
 
   " Return string used to comment line for current filetype.
   function! CommentStr()
-    if &ft == 'cpp' || &ft == 'java' || &ft == 'javascript'
+    if &ft == 'c' || 'cpp' || &ft == 'java' || &ft == 'javascript'
       return '//'
     elseif &ft == 'vim'
       return '"'
-    elseif &ft == 'python' || &ft == 'perl' || &ft == 'sh' || &ft == 'R' || &ft == 'tmux' || &ft == 'readline' || &ft == 'ps1'|| &ft == 'snippets'
+    elseif &ft == 'make' || 'python' || &ft == 'perl' || &ft == 'sh' || &ft == 'R' || &ft == 'tmux' || &ft == 'readline' || &ft == 'ps1' || &ft == 'snippets' || &ft == 'conf'
       return '#'
     elseif &ft == 'lisp' || &ft == 'dosini'
       return ';'
