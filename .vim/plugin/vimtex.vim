@@ -1,3 +1,7 @@
+if ! (has_key(g:plugins_i_want_to_load, 'vimtex') && g:plugins_i_want_to_load['vimtex'])
+  finish
+endif
+
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0

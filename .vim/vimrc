@@ -17,9 +17,16 @@ else
   set viminfo='0,<0,s0,h,/0,:0,@0,f1,n~/.vim/.viminfo
 endif
 
-packadd! matchit
-packadd! vimtex " Must load here (do not lazy-load in a ftplugin!)
-packadd! ultisnips
+" This dictionary tells scripts in ~/.vim/plugin that these plugins are loaded:
+let g:plugins_i_want_to_load = {}
+let g:plugins_i_want_to_load['matchit'] = 1
+let g:plugins_i_want_to_load['vimtex'] = 1 " Must load here (do not lazy-load in a ftplugin!)
+let g:plugins_i_want_to_load['ultisnips'] = 1
+for [s:key, s:value] in items(g:plugins_i_want_to_load)
+  if s:value
+    exec "packadd! " . s:key
+  endif
+endfor
 filetype plugin indent on " This must come after loading plugins
 
 runtime! init/general.vim

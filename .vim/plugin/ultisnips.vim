@@ -1,3 +1,7 @@
+if ! (has_key(g:plugins_i_want_to_load, 'ultisnips') && g:plugins_i_want_to_load['ultisnips'])
+  finish
+endif
+
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
