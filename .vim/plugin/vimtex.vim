@@ -17,3 +17,6 @@ let g:vimtex_delim_toggle_mod_list = [
 let g:vimtex_compiler_latexmk = {
     \ 'out_dir' : 'out',
     \}
+
+" Disable conceal (because conceal messes with plugins like vim-sneak)
+let g:vimtex_syntax_conceal_disable=1
