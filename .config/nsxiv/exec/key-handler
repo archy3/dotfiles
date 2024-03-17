@@ -11,103 +11,103 @@
 # crop
 
 rotate() {
-	degree="$1"
-	tr '\n' '\0' | xargs -0 realpath | sort | uniq | while read file; do
-		case "$(file -b -i "$file")" in
-		image/jpeg*) jpegtran -rotate "$degree" -copy all -outfile "$file" "$file" ;;
-		*)           mogrify  -rotate "$degree" "$file" ;;
-		esac
-	done
+  degree="$1"
+  tr '\n' '\0' | xargs -0 realpath | sort | uniq | while read file; do
+    case "$(file -b -i "$file")" in
+    image/jpeg*) jpegtran -rotate "$degree" -copy all -outfile "$file" "$file" ;;
+    *)           mogrify  -rotate "$degree" "$file" ;;
+    esac
+  done
 }
 
 delete() {
-	while IFS= read -r file; do
-		choice=$(printf %s\\n no yes | dmenu -p "Delete ${file}?" -fn 'Monosapce-13')
-		case "$choice" in
-			yes) rm -- "$file";;
-		esac
-	done
+  while IFS= read -r file; do
+    choice=$(printf %s\\n no yes | dmenu -p "Delete ${file}?" -fn 'Monosapce-13')
+    case "$choice" in
+      yes) rm -- "$file";;
+    esac
+  done
 }
 
 rename() {
-	while IFS= read -r file; do
-		new_name=$(printf %s "$file" | dmenu -p "Rename ${file}: (Shift+Enter to confirm)" -fn 'Monosapce-13') || return 0
-		if [ "$new_name" = "$file" ]; then
-			notify-send --urgency=critical --hint=int:transient:1 -- "$(printf %s\\n\\n%s "file ${new_name} already exists" "(Did you forget to use Shift+Enter?)")"
-			return 1
-		elif [ -e "$new_name" ]; then
-			notify-send --urgency=critical --hint=int:transient:1 -- "file ${new_name} already exists"
-			return 1
-		elif [ -f "$file" ]; then
-			mv -- "$file" "$new_name" && { nsxiv -b -- "$new_name" & }
-		fi
-	done
+  while IFS= read -r file; do
+    new_name=$(printf %s "$file" | dmenu -p "Rename ${file}: (Shift+Enter to confirm)" -fn 'Monosapce-13') || return 0
+    if [ "$new_name" = "$file" ]; then
+      notify-send --urgency=critical --hint=int:transient:1 -- "$(printf %s\\n\\n%s "file ${new_name} already exists" "(Did you forget to use Shift+Enter?)")"
+      return 1
+    elif [ -e "$new_name" ]; then
+      notify-send --urgency=critical --hint=int:transient:1 -- "file ${new_name} already exists"
+      return 1
+    elif [ -f "$file" ]; then
+      mv -- "$file" "$new_name" && { nsxiv -b -- "$new_name" & }
+    fi
+  done
 }
 
 window_resize() {
-	while IFS= read -r file; do
-		id="$(printf '0x0*%x$' "$(xdotool getactivewindow)")"
-		set -- $(wmctrl -lpG | awk -v id="$id" '{ if ($1 ~ id) {print $0}}')
-		win_id="$1"
-		win_x="$4"
-		win_y="$5"
-		win_w="$6"
-		win_h="$7"
+  while IFS= read -r file; do
+    id="$(printf '0x0*%x$' "$(xdotool getactivewindow)")"
+    set -- $(wmctrl -lpG | awk -v id="$id" '{ if ($1 ~ id) {print $0}}')
+    win_id="$1"
+    win_x="$4"
+    win_y="$5"
+    win_w="$6"
+    win_h="$7"
 
-		set -- $(identify -format '%w %h' -- "$file")
-		img_w="$1"
-		img_h="$2"
+    set -- $(identify -format '%w %h' -- "$file")
+    img_w="$1"
+    img_h="$2"
 
-		win_new_x="$((win_x + (win_w - img_w)/2))"
-		#win_new_y="$((win_y + (win_h - img_h)/2))"
-		win_new_y="$((-44 + win_y + (win_h - img_h)/2))"
-			# Not sure why this '-44' is needed
-			# (without out it the window is places 44 pixels lower than it should be).
-			# It may be specific to openbox.
-			# ('44' may be the combined height of the panel plus the window title bar).
-		win_new_w="$((img_w))"
-		win_new_h="$((img_h))"
+    win_new_x="$((win_x + (win_w - img_w)/2))"
+    #win_new_y="$((win_y + (win_h - img_h)/2))"
+    win_new_y="$((-44 + win_y + (win_h - img_h)/2))"
+      # Not sure why this '-44' is needed
+      # (without out it the window is places 44 pixels lower than it should be).
+      # It may be specific to openbox.
+      # ('44' may be the combined height of the panel plus the window title bar).
+    win_new_w="$((img_w))"
+    win_new_h="$((img_h))"
 
-		if [ "$win_new_x" -lt 0 ]; then
-			win_new_x=0
-		fi
+    if [ "$win_new_x" -lt 0 ]; then
+      win_new_x=0
+    fi
 
-		if [ "$win_new_y" -lt 0 ]; then
-			win_new_y=0
-		fi
+    if [ "$win_new_y" -lt 0 ]; then
+      win_new_y=0
+    fi
 
-		#wmctrl -e "0,${win_new_x},${win_new_y},${win_new_w},${win_new_h}" -ir "$win_id"
-		wmctrl -e "0,${win_new_x},${win_new_y},${win_new_w},${win_new_h}" -r ":ACTIVE:"
-		#wmctrl -e "0,${win_x},${win_y},${win_new_w},${win_new_h}" -ir "$win_id"
-		break
-	done
+    #wmctrl -e "0,${win_new_x},${win_new_y},${win_new_w},${win_new_h}" -ir "$win_id"
+    wmctrl -e "0,${win_new_x},${win_new_y},${win_new_w},${win_new_h}" -r ":ACTIVE:"
+    #wmctrl -e "0,${win_x},${win_y},${win_new_w},${win_new_h}" -ir "$win_id"
+    break
+  done
 }
 
 case "$1" in
-	## Copy filename to clipboard:
-	"C-x"|"x") xclip -in -filter | tr '\n' ' ' | xclip -in -selection clipboard ;;
+  # Copy filename to clipboard:
+  "C-x"|"x") xclip -in -filter | tr '\n' ' ' | xclip -in -selection clipboard ;;
 
-	## Copy image to clipboard:
-	"C-c"|"c") while IFS= read -r file; do xclip -selection clipboard -target image/png "$file"; done ;;
+  # Copy image to clipboard:
+  "C-c"|"c") while IFS= read -r file; do xclip -selection clipboard -target image/png "$file"; done ;;
 
-	## rotate CCW:
-	"C-comma"|"comma") rotate 270 ;;
+  # rotate CCW:
+  "C-comma"|"comma") rotate 270 ;;
 
-	## rotate CW:
-	"C-period"|"period") rotate  90 ;;
+  # rotate CW:
+  "C-period"|"period") rotate  90 ;;
 
-	## Resize window to image resolution:
-	"C-w"|"w") window_resize ;;
+  # Resize window to image resolution:
+  "C-w"|"w") window_resize ;;
 
-	## Open folder location:
-	"C-e"|"e") while IFS= read -r file; do pcmanfm -- "${file%/*}" & done ;;
+  # Open folder location:
+  "C-e"|"e") while IFS= read -r file; do pcmanfm -- "${file%/*}" & done ;;
 
-	## Set image as desktop background:
-	"C-b"|"b") while IFS= read -r file; do xwallpaper --zoom "$file" & done ;;
+  # Set image as desktop background:
+  "C-b"|"b") while IFS= read -r file; do xwallpaper --zoom "$file" & done ;;
 
-	## Delete file:
-	"C-d"|"d") delete ;;
+  # Delete file:
+  "C-d"|"d") delete ;;
 
-	## Rename file:
-	"C-r"|"r") rename ;;
+  # Rename file:
+  "C-r"|"r") rename ;;
 esac
