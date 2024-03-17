@@ -5,11 +5,7 @@ else
 endif
 
 filetype detect " from https://stackoverflow.com/a/65367744
-if (&ft=='tex')
-  set columns=95
-else
-  set columns=85
-endif
+exec 'set columns=' . (&filetype == 'tex' ? 95 : 85)
 set lines=24
 
 " Disable beeping. It seems not all systems need this
