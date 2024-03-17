@@ -9,17 +9,16 @@ call SetTabBehavior(2,8)
 " Set folding around {{{,}}} for .vim files:
 "set foldlevelstart=99
 setlocal foldmethod=marker
-if exists('b:undo_ftplugin')
-  let b:undo_ftplugin .= '|setlocal foldmethod<'
-endif
 normal! zR
 
 if has('win32')
   setlocal path+=~/vimfiles/init/
   setlocal path+=~/vimfiles/after/ftplugin
+  setlocal path+=~/vimfiles/plugin
 else
   setlocal path+=~/.vim/init/
   setlocal path+=~/.vim/after/ftplugin
+  setlocal path+=~/.vim/plugin
 endif
 
 " Remaps:
@@ -34,3 +33,10 @@ cnoremap <buffer> <C-f>r @"<cr>
 " Reverts:
 " Stop 'o' from adding '" ' to the line bellow a comment:
 setlocal formatoptions-=o
+
+
+if exists('b:undo_ftplugin')
+  let b:undo_ftplugin .= '|setlocal foldmethod<'
+  let b:undo_ftplugin .= '|setlocal formatoptions<'
+  let b:undo_ftplugin .= '|setlocal path<'
+endif
