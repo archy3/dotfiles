@@ -100,7 +100,7 @@ case "$1" in
   "C-w"|"w") window_resize ;;
 
   # Open folder location:
-  "C-e"|"e") while IFS= read -r file; do pcmanfm -- "${file%/*}" & done ;;
+  "C-e"|"e") while IFS= read -r file; do pcmanfm --new-win -- "${file%/*}" & done ;;
 
   # Set image as desktop background:
   "C-b"|"b") while IFS= read -r file; do xwallpaper --zoom "$file" & done ;;
