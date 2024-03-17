@@ -46,14 +46,8 @@ rename() {
 
 window_resize() {
 	while IFS= read -r file; do
-		#set -- $(wmctrl -lpG | grep "$PPID")
-		#set -- $(wmctrl -lpG | grep 'nsxiv$')
 		id="$(printf '0x0*%x$' "$(xdotool getactivewindow)")"
 		set -- $(wmctrl -lpG | awk -v id="$id" '{ if ($1 ~ id) {print $0}}')
-		if [ "$#" != 9 ]; then
-			printf %s\\n "There may be multiple nsxiv windows open. Aborting operation."
-			return 0
-		fi
 		win_id="$1"
 		win_x="$4"
 		win_y="$5"
