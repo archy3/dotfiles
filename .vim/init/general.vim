@@ -63,6 +63,7 @@ set listchars=space:·,tab:——>,eol:¶,nbsp:⍽
 "set rulerformat=%24(%=%l/%L\ %-5.(%c%V%)\ [%{&fileformat}]%)
 set rulerformat=%17(%=%l/%L\ %-5.(%c%V%)%)
 
+set titlelen=0
 set titlestring=%t
 set titlestring+=%(\ %{&readonly&&&modifiable?\"=\":\"\"}
 set titlestring+=%{&modified?\"+\":\"\"}
