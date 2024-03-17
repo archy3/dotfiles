@@ -46,8 +46,7 @@ rename() {
 
 window_resize() {
   while IFS= read -r file; do
-    id="$(printf '0x0*%x$' "$(xdotool getactivewindow)")"
-    set -- $(wmctrl -lpG | awk -v id="$id" '{ if ($1 ~ id) {print $0}}')
+    set -- $(wmctrl -lpG | awk -v PPID="$PPID" '$3 == PPID {print $0}')
     win_id="$1"
     win_x="$4"
     win_y="$5"
@@ -76,9 +75,7 @@ window_resize() {
       win_new_y=0
     fi
 
-    #wmctrl -e "0,${win_new_x},${win_new_y},${win_new_w},${win_new_h}" -ir "$win_id"
-    wmctrl -e "0,${win_new_x},${win_new_y},${win_new_w},${win_new_h}" -r ":ACTIVE:"
-    #wmctrl -e "0,${win_x},${win_y},${win_new_w},${win_new_h}" -ir "$win_id"
+    wmctrl -e "0,${win_new_x},${win_new_y},${win_new_w},${win_new_h}" -ir "$win_id"
     break
   done
 }
