@@ -57,6 +57,10 @@ set sidescroll=1
 " Prevent long lines at the bottom of the screen from making an @-abyss:
 set display+=lastline
 
+" Make <enter> while in a comment start the next line on a comment, and
+" make J remove leading <comment string> from comments below current line.
+set formatoptions+=rj
+
 " See this for more options: https://www.reddit.com/r/vim/comments/4hoa6e/what_do_you_use_for_your_listchars/
 set listchars=space:·,tab:——>,eol:¶,nbsp:⍽
 
