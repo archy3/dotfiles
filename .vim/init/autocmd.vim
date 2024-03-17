@@ -179,16 +179,3 @@ function! HelpProperLocation()
   "}}}
 endfunc
 "}}}
-
-" If no filetype detected, set it to text
-" (from https://vi.stackexchange.com/a/13293):
-" {{{
-  augroup NoFileType
-    autocmd!
-    autocmd BufNewFile,BufRead * if &filetype ==# '' | setlocal filetype=text | endif
-  augroup END
-
-  " Make this work even when vim starts without a file
-  " (from https://vi.stackexchange.com/a/2559):
-  autocmd vimenter * if @% == "" | setlocal filetype=text | endif
-" }}}
