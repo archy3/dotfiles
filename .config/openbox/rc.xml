@@ -269,6 +269,31 @@
         <desktop>4</desktop>
       </action>
     </keybind>
+    <!-- Move windows -->
+    <keybind key="S-C-W-A-h">
+      <action name="MoveRelative">
+        <x>-30</x>
+        <y>0</y>
+      </action>
+    </keybind>
+    <keybind key="S-C-W-A-j">
+      <action name="MoveRelative">
+        <x>0</x>
+        <y>30</y>
+      </action>
+    </keybind>
+    <keybind key="S-C-W-A-k">
+      <action name="MoveRelative">
+        <x>0</x>
+        <y>-30</y>
+      </action>
+    </keybind>
+    <keybind key="S-C-W-A-l">
+      <action name="MoveRelative">
+        <x>30</x>
+        <y>0</y>
+      </action>
+    </keybind>
     <!-- Move windows to other desktops -->
     <keybind key="S-C-W-A-g">
       <keybind key="q">
