@@ -10,7 +10,7 @@ main()
 
   # From https://superuser.com/a/1565544
   # Running the below code in the background and waiting
-  # allows this script to still response to signals.
+  # allows this script to still respond to signals.
   xev -root -event randr |
     grep --line-buffered 'subtype XRROutputChangeNotifyEvent' |
       while read -r pointlessvar; do
