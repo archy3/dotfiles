@@ -36,6 +36,7 @@
 .local/share/applications/libreoffice-xsltfilter.desktop
 .local/share/applications/pcmanfm-new-win.desktop
 .local/share/applications/nsxiv.desktop
+.local/share/file-manager/actions/gvimdiff.desktop
 scripts/autostart
 scripts/alt-highlight.sh
 scripts/center_around_cursor.sh
