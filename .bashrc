@@ -51,6 +51,10 @@ esac
 # Make prompt red if nonzero return code:
 PS1='\[\e[$(($?==0 ? 0 : 31))m\]'"$PS1"'\[\e[0m\]'
 
+# Show exit code on left:
+#PS1='\[$(__display_exit_code_on_left__)\]'"$PS1"
+PROMPT_COMMAND=__display_exit_code_on_left__
+
 # Disable CTRL-S freezing the terminal:
 stty -ixon
 
@@ -69,3 +73,13 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# Idea from https://wiki.archlinux.org/title/Bash/Prompt_customization#Right-justified_text
+# See also https://superuser.com/a/517110
+# (backspacing for some reason deletes the right-hand prompt)
+__display_exit_code_on_left__()
+{
+  case "$?" in
+    [!0]*) printf '\e[31m%*s\e[0m\r' "$COLUMNS" '('"$?"')';;
+  esac
+}
