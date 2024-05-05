@@ -22,7 +22,7 @@ let g:plugins_i_want_to_load = {}
 let g:plugins_i_want_to_load['matchit'] = 1
 let g:plugins_i_want_to_load['vimtex'] = 1 " Must load here (do not lazy-load in a ftplugin!)
 let g:plugins_i_want_to_load['ultisnips'] = 1
-let g:plugins_i_want_to_load['vim-hardtime'] = 1
+"let g:plugins_i_want_to_load['vim-hardtime'] = 1
 let g:plugins_i_want_to_load['vim-sneak'] = 1
 for [s:key, s:value] in items(g:plugins_i_want_to_load)
   if s:value
