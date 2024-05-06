@@ -249,53 +249,53 @@
         <desktop>4</desktop>
       </action>
     </keybind>
-    <keybind key="S-C-W-A-q">
+    <keybind key="H-q">
       <action name="Desktop">
         <desktop>1</desktop>
       </action>
     </keybind>
-    <keybind key="S-C-W-A-w">
+    <keybind key="H-w">
       <action name="Desktop">
         <desktop>2</desktop>
       </action>
     </keybind>
-    <keybind key="S-C-W-A-e">
+    <keybind key="H-e">
       <action name="Desktop">
         <desktop>3</desktop>
       </action>
     </keybind>
-    <keybind key="S-C-W-A-r">
+    <keybind key="H-r">
       <action name="Desktop">
         <desktop>4</desktop>
       </action>
     </keybind>
     <!-- Move windows -->
-    <keybind key="S-C-W-A-h">
+    <keybind key="H-h">
       <action name="MoveRelative">
         <x>-30</x>
         <y>0</y>
       </action>
     </keybind>
-    <keybind key="S-C-W-A-j">
+    <keybind key="H-j">
       <action name="MoveRelative">
         <x>0</x>
         <y>30</y>
       </action>
     </keybind>
-    <keybind key="S-C-W-A-k">
+    <keybind key="H-k">
       <action name="MoveRelative">
         <x>0</x>
         <y>-30</y>
       </action>
     </keybind>
-    <keybind key="S-C-W-A-l">
+    <keybind key="H-l">
       <action name="MoveRelative">
         <x>30</x>
         <y>0</y>
       </action>
     </keybind>
     <!-- Move windows to other desktops -->
-    <keybind key="S-C-W-A-g">
+    <keybind key="H-g">
       <keybind key="q">
         <action name="SendToDesktop">
           <to>1</to>
@@ -345,15 +345,15 @@
         </action>
       </keybind>
     </keybind>
-    <keybind key="S-C-W-A-y">
+    <keybind key="H-y">
       <action name="Move"/>
     </keybind>
-    <keybind key="S-C-W-A-u">
+    <keybind key="H-u">
       <action name="MoveResizeTo">
           <x>0</x>
       </action>
     </keybind>
-    <keybind key="S-C-W-A-i">
+    <keybind key="H-i">
       <action name="MoveResizeTo">
           <x>-0</x>
       </action>
@@ -379,7 +379,7 @@
     <keybind key="A-Tab">
       <action name="NextWindow"/>
     </keybind>
-    <keybind key="S-C-W-A-Tab">
+    <keybind key="H-Tab">
       <action name="NextWindow"/>
     </keybind>
     <keybind key="A-S-Tab">
@@ -403,10 +403,10 @@
         <command>lxpanelctl menu</command>
       </action>
     </keybind>
-    <keybind key="S-C-W-A-n">
+    <keybind key="H-n">
       <action name="ToggleMaximizeFull"/>
     </keybind>
-    <keybind key="S-C-W-A-m">
+    <keybind key="H-m">
       <action name="ToggleMaximizeVert"/>
     </keybind>
     <keybind key="A-Return">
