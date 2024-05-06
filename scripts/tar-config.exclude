@@ -7,3 +7,17 @@
 .vim/spell
 .vim/UltiSnips/*specific*
 .vim/UltiSnips/*retired*
+.vim/pack/plugins/opt/ultisnips/**.pyc
+.vim/pack/plugins/opt/ultisnips/**.swp
+.vim/pack/plugins/opt/ultisnips/doc/tags
+.vim/pack/plugins/opt/ultisnips/.ropeproject/
+.vim/pack/plugins/opt/ultisnips/.mypy_cache/
+.vim/pack/plugins/opt/ultisnips/pythonx/UltiSnips/**__pycache__
+.vim/pack/plugins/opt/vim-sneak/doc/tags
+.vim/pack/plugins/opt/vimtex/doc/tags
+.vim/pack/plugins/opt/vimtex/doc/test/test-compiler/latexrun
+.vim/pack/plugins/opt/vimtex/doc/test/test-syntax/syntax/
+.vim/pack/plugins/opt/vimtex/doc/test/test-textobj-targets/targets.vim/
+.vim/pack/plugins/opt/vimtex/doc/test/issues
+.vim/pack/plugins/opt/vimtex/test/test-completion-bibtex/test_parser_*
+.vim/pack/plugins/opt/vimtex/test/test-quickfix-fix-path/test-hbox*
