@@ -1,5 +1,5 @@
 super + {e, t, n, m, c, i, w, y, j, x, g, r, v, l}
-	{pcmanfm &, \
+	{GTK_IM_MODULE=xim pcmanfm &, \
 	~/scripts/lof.sh xterm -sl 0 -e "$HOME/scripts/tmux-auto-attach.sh" &, \
 	gvim &, \
 	~/scripts/lof.sh xterm -class HTop -sl 0 -e htop -u &, \
