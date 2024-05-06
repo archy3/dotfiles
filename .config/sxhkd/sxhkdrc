@@ -70,3 +70,9 @@ super + {s,S} ; {_, super +} {f, s, S, F, c, C,}
 
 ~button{8,9}
 	~/scripts/pcmanfm-forward-back.sh {XF86Back,XF86Forward} &
+
+#{XF86AudioRaiseVolume, XF86AudioLowerVolume}
+#	amixer -q -D pulse sset Master 5%{+,-}
+
+{XF86MonBrightnessUp, XF86MonBrightnessDown}
+	brightnessctl set 5%{+,-}
