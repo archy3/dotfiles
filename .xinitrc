@@ -22,7 +22,7 @@ dunst &
 ~/scripts/autostart/set-keyboard-layout-on-usb-connect.sh &
 
 if command -v spice-vdagent > /dev/null; then
-  ~/scripts/vm-resize.sh &
+  ~/scripts/autostart/vm-resize.sh &
 else
   redshift &
   xscreensaver -no-splash &
