@@ -5,13 +5,33 @@ main()
   set -euf
   trap '[ "$?" != 0 ] && printf \\n%s\\n "${0}: An error occurred." >&2' EXIT
 
+  set_keyboard_layout
+
   # udevadm command from https://unix.stackexchange.com/questions/458961/execute-script-on-external-keyboard-connection#comment883131_458961
-  udevadm monitor -k | while IFS= read -r _; do
-    setxkbmap -layout us -option '' -option compose:ralt
+  # (we want the line to be word-split, so no `IFS= ` before `read`)
+  udevadm monitor -k -s hidraw | while read -r _ _event_type __ ___; do
+    if [ "${_event_type:-}" = "add" ]; then
+      set_keyboard_layout
+    fi
   done
 
   # The above loop should never end (if it does, it is an error)
   return 1
+}
+
+set_keyboard_layout()
+{
+  setxkbmap -layout us -option '' -option compose:ralt
+
+  # Replace right super with right hyper
+  # (from https://wiki.archlinux.org/title/Xmodmap#Turn_Super_R_into_Hyper_R):
+  xmodmap \
+    -e 'remove  mod4 = Super_R' \
+    -e 'keycode  134 = Hyper_R' \
+    -e 'add     mod3 = Hyper_R' \
+    -e 'remove  mod4 = Hyper_L' \
+    -e 'add     mod3 = Hyper_L' \
+    -e 'keycode 206 = NoSymbol Super_R NoSymbol Super_R'
 }
 
 main "$@"
