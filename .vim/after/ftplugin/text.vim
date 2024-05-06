@@ -1,4 +1,6 @@
-setlocal spelllang=en,es
+if filereadable($HOME . "/.vim/spell/es.utf-8.spl")
+  setlocal spelllang=en,es
+endif
 setlocal wrap
 setlocal linebreak
 
