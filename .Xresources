@@ -101,3 +101,7 @@ Nsxiv.bar.foreground: black
 ! XScreenSaver:
 ! Disable "New Login" button:
 xscreensaver-auth.*.newLoginCommand:
+
+
+! Laptop DPI:
+!Xft.dpi: 132
