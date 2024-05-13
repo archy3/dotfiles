@@ -280,6 +280,9 @@ firefox_esr_config() # <--force=false|--force=true>
     // Disable pocket:
     pref("extensions.pocket.enabled", false);
 
+    // Disable firefox view:
+    pref("browser.tabs.firefox-view", false);
+
     // Disable experiments and studies:
     pref("messaging-system.rsexperimentloader.enabled", false);
     pref("app.normandy.enabled", false);
