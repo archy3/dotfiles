@@ -182,12 +182,16 @@ nnoremap <Leader>P "+P
 
   " Append yanked test to end of line or after cursor, separated by a space:
   function! PasteAtEndOfLine(...)
+    " Check if line already ends in whitespace or not
+    let l:prePasteCmd = (getline('.') =~ '\s\+$' ? 'A' : "A\<space>")
     " Remove leading and trailing white space (including newlines)
-    call CustomPasteAction('\_s*$\|^\_s*', "A\<space>")
+    call CustomPasteAction('\_s*$\|^\_s*', l:prePasteCmd)
   endfunction
   function! PasteAtEndOfCursor(...)
+    " Check if character under cursor is already whitespace or not
+    let l:prePasteCmd = (getline('.')[col('.') - 1] =~ '\s' ? 'a' : "a\<space>")
     " Remove leading and trailing white space (including newlines)
-    call CustomPasteAction('\_s*$\|^\_s*', "a\<space>")
+    call CustomPasteAction('\_s*$\|^\_s*', l:prePasteCmd)
   endfunction
   nnoremap <Leader>A :set opfunc=PasteAtEndOfLine<cr>g@<space>
   nnoremap <Leader>a :set opfunc=PasteAtEndOfCursor<cr>g@<space>
