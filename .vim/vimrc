@@ -1,62 +1,64 @@
-"source $VIMRUNTIME/defaults.vim
+if has('eval') " vim-tiny does not have `eval`
+  "source $VIMRUNTIME/defaults.vim
 
-"if filereadable("/etc/vim/vimrc.local")
-"  source /etc/vim/vimrc.local
-"endif
+  "if filereadable("/etc/vim/vimrc.local")
+  "  source /etc/vim/vimrc.local
+  "endif
 
-if has('win32')
-  set directory=~/vimfiles/.swap//
-  set backupdir=~/vimfiles/.backup//
-  set viminfo='0,<0,s0,h,/0,:0,@0,f1,n~/vimfiles/.viminfo
-else
-  set directory=~/.vim/.swap//
-  set backupdir=~/.vim/.backup//
-  " Do not remember marks ('0) nor registers (<0,s0) nor search (/0) nor
-  " command-line (:0) nor input-line (@0) history, but do remember file marks (f1)
-  " and previous jumps (included automatically?):
-  set viminfo='0,<0,s0,h,/0,:0,@0,f1,n~/.vim/.viminfo
-endif
-
-" This dictionary tells scripts in ~/.vim/plugin that these plugins are loaded:
-let g:plugins_i_want_to_load = {}
-let g:plugins_i_want_to_load['matchit'] = 1
-let g:plugins_i_want_to_load['vimtex'] = 1 " Must load here (do not lazy-load in a ftplugin!)
-let g:plugins_i_want_to_load['ultisnips'] = 1
-"let g:plugins_i_want_to_load['vim-hardtime'] = 1
-let g:plugins_i_want_to_load['vim-sneak'] = 1
-for [s:key, s:value] in items(g:plugins_i_want_to_load)
-  if s:value
-    exec "packadd! " . s:key
+  if has('win32')
+    set directory=~/vimfiles/.swap//
+    set backupdir=~/vimfiles/.backup//
+    set viminfo='0,<0,s0,h,/0,:0,@0,f1,n~/vimfiles/.viminfo
+  else
+    set directory=~/.vim/.swap//
+    set backupdir=~/.vim/.backup//
+    " Do not remember marks ('0) nor registers (<0,s0) nor search (/0) nor
+    " command-line (:0) nor input-line (@0) history, but do remember file marks (f1)
+    " and previous jumps (included automatically?):
+    set viminfo='0,<0,s0,h,/0,:0,@0,f1,n~/.vim/.viminfo
   endif
-endfor
-filetype plugin indent on " This must come after loading plugins
 
-runtime! init/general.vim
-runtime! init/autocmd.vim
-runtime! init/autocmd.individual.vim
-runtime! init/remaps.vim
-runtime! init/remaps.bookmarks.vim
-runtime! init/functions.vim
+  " This dictionary tells scripts in ~/.vim/plugin that these plugins are loaded:
+  let g:plugins_i_want_to_load = {}
+  let g:plugins_i_want_to_load['matchit'] = 1
+  let g:plugins_i_want_to_load['vimtex'] = 1 " Must load here (do not lazy-load in a ftplugin!)
+  let g:plugins_i_want_to_load['ultisnips'] = 1
+  "let g:plugins_i_want_to_load['vim-hardtime'] = 1
+  let g:plugins_i_want_to_load['vim-sneak'] = 1
+  for [s:key, s:value] in items(g:plugins_i_want_to_load)
+    if s:value
+      exec "packadd! " . s:key
+    endif
+  endfor
+  filetype plugin indent on " This must come after loading plugins
 
-" help: after/ftplugin/help.vim
-" sh  : after/ftplugin/sh.vim
-" vim : after/ftplugin/vim.vim
-" pwsh: after/ftplugin/ps1.vim
-" tex : after/ftplugin/tex.vim
-" text: after/ftplugin/text.vim
+  runtime! init/general.vim
+  runtime! init/autocmd.vim
+  runtime! init/autocmd.individual.vim
+  runtime! init/remaps.vim
+  runtime! init/remaps.bookmarks.vim
+  runtime! init/functions.vim
 
-" gvimrc: gvimrc
-" evimrc: evim/evimrc
+  " help: after/ftplugin/help.vim
+  " sh  : after/ftplugin/sh.vim
+  " vim : after/ftplugin/vim.vim
+  " pwsh: after/ftplugin/ps1.vim
+  " tex : after/ftplugin/tex.vim
+  " text: after/ftplugin/text.vim
 
-" Make vim use the correct mouse when in a tmux session:
-" (I really should find a way to make tmux properly report this so that vim's
-" autodetect feature works.)
-if $TERM =~ '^\(tmux\|screen\)\(-.*\)\?$'
-  set ttymouse=sgr
+  " gvimrc: gvimrc
+  " evimrc: evim/evimrc
+
+  " Make vim use the correct mouse when in a tmux session:
+  if $TERM =~ '^\(tmux\|screen\)\(-.*\)\?$'
+    set ttymouse=sgr
+  endif
+
+  " To try out (see also 'rulerformat'):
+  " Status line that includes if DOS newlines are used:
+  " set statusline=%<%f\ %h%r%=%{&ff=='dos'?'[dos]\ ':''}%-14.(%l,%c%V%)\ %P
+
+  helptags ALL
 endif
 
-" To try out (see also 'rulerformat'):
-" Status line that includes if DOS newlines are used:
-" set statusline=%<%f\ %h%r%=%{&ff=='dos'?'[dos]\ ':''}%-14.(%l,%c%V%)\ %P
-
-helptags ALL
+runtime! init/vim-tiny.vim
