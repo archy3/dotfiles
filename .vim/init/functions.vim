@@ -1,9 +1,8 @@
-" See https://stackoverflow.com/questions/1878974/redefine-tab-as-4-spaces/1878983 and
-" https://vi.stackexchange.com/questions/4141/how-to-indent-as-spaces-instead-of-tab
-" tabstop: How may apparent spaces a literal tab takes up
-" shiftwidth: How may apparent spaces '>>' indents
-" softtabstop: How may apparent spaces pressing 'tab' in insert mode inserts
-" expandtab: If true, pressing tab in insert mode inserts literal spaces instead of a literal tab
+" See https://stackoverflow.com/q/1878974 & https://vi.stackexchange.com/q/4141
+" tabstop:     How many apparent spaces a literal tab takes up
+" shiftwidth:  How many apparent spaces `>>` indents
+" softtabstop: How many apparent spaces pressing `tab` in insert mode inserts
+" expandtab:   If true, tab inserts literal spaces instead of a literal tab
 function SetTabBehavior(indent_length, literal_tab_length)
   let &l:shiftwidth=a:indent_length
   let &l:tabstop=a:literal_tab_length
