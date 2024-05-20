@@ -79,6 +79,15 @@ set titlestring+=%a\ -\ %{v:servername==\"\"?\"VIM\":v:servername}
 " Insert 1 space after a period instead of 2 with 'J':
 set nojoinspaces
 
+" tabstop:     How many apparent spaces a literal tab takes up
+" shiftwidth:  How many apparent spaces `>>` indents
+" softtabstop: How many apparent spaces pressing `tab` in insert mode inserts
+" expandtab:   If true, tab inserts literal spaces instead of a literal tab
+set tabstop=8
+set shiftwidth=4
+set softtabstop=-1 " set softtabstop to shiftwidth
+set expandtab
+
 " Disable cursor blink when not editing:
 "let &guicursor = substitute(&guicursor, 'n-v-c:', '&blinkon0-', '')
 
