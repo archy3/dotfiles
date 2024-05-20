@@ -37,7 +37,7 @@ set hidden
 
 set number relativenumber
 set mouse=a
-set colorcolumn=80
+set colorcolumn=80,100,120
 set wildmenu
 
 " Outside of gvim, always show status line
