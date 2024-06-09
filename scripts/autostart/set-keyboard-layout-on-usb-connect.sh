@@ -21,9 +21,8 @@ main()
 
 set_keyboard_layout()
 {
-  setxkbmap -layout us -option '' -option compose:ralt
-
-  # Replace right super with right hyper
+  # Replace right super with right hyper,
+  # and make right alt the compose key.
   # (from https://wiki.archlinux.org/title/Xmodmap#Turn_Super_R_into_Hyper_R):
   xmodmap \
     -e 'remove  mod4 = Super_R' \
@@ -31,7 +30,8 @@ set_keyboard_layout()
     -e 'add     mod3 = Hyper_R' \
     -e 'remove  mod4 = Hyper_L' \
     -e 'add     mod3 = Hyper_L' \
-    -e 'keycode 206 = NoSymbol Super_R NoSymbol Super_R'
+    -e 'keycode  206 = NoSymbol  Super_R   NoSymbol  Super_R' \
+    -e 'keycode  108 = Multi_key Multi_key Multi_key Multi_key'
 }
 
 main "$@"
