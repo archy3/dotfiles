@@ -25,6 +25,9 @@ bind -T copy-mode-vi MouseDown8Pane send -X cancel
 unbind -T copy-mode-vi DoubleClick3Pane
 bind -T copy-mode-vi SecondClick3Pane send -X cancel
 
+# Make mouse-forward toggle rectangular select:
+bind -T copy-mode-vi MouseDown9Pane send -X rectangle-toggle
+
 
 # Emulate scrolling by sending up and down keys if using an alternate screen
 # (but send regular mouse events if the program understands the mouse).
