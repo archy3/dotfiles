@@ -32,6 +32,11 @@ set_keyboard_layout()
     -e 'add     mod3 = Hyper_L' \
     -e 'keycode  206 = NoSymbol  Super_R   NoSymbol  Super_R' \
     -e 'keycode  108 = Multi_key Multi_key Multi_key Multi_key'
+
+  # When the above xmodmap command is called repeatedly with
+  # no time between calls, sometimes the keymap reverts to the default.
+  # This short sleep is an inelegant way to combat that.
+  sleep 1
 }
 
 main "$@"
