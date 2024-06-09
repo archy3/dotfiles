@@ -21,8 +21,14 @@ main()
 
 set_keyboard_layout()
 {
+  # Make right alt the compose key.
+  setxkbmap -layout us -option '' -option compose:ralt
+
   # Replace right super with right hyper,
-  # and make right alt the compose key.
+  # and make right alt the compose key
+  # (we have xmodmap also set right alt
+  # as the compose key because in some configurations,
+  # xmodmap will undo the settings set by setxkbmap).
   # (from https://wiki.archlinux.org/title/Xmodmap#Turn_Super_R_into_Hyper_R):
   xmodmap \
     -e 'remove  mod4 = Super_R' \
