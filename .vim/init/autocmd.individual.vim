@@ -11,6 +11,7 @@ function! BuffWriteAutoCmds() abort
   call ExecAndNotify('~/.Xresources', 'xrdb -merge ~/.Xresources', 'Xresources')
   call ExecAndNotify('~/.config/sxhkd/sxhkdrc', 'pkill -USR1 -U "$(id -un)" -x sxhkd', 'sxhkd')
   call ExecAndNotify('~/.config/openbox/rc.xml', 'openbox --reconfigure', 'Openbox')
+  call ExecAndNotify('~/.themes/Numix-Alt/openbox-3/themerc', 'openbox --reconfigure', 'Openbox')
 
   let l:file = '~/scripts/tags/tag-tools.sh'
   let l:script = 'printf %s\\n\\n "RUNNING TEST:";
