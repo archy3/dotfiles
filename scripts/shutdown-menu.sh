@@ -10,8 +10,9 @@ main()
 {
   set -euf
 
-  selection="$(printf '%s\n' cancel poweroff reboot suspend logout | dmenu)"
+  selection="$(printf '%s\n' cancel poweroff reboot suspend logout firmware | dmenu)"
   case "$selection" in
+    firmware) proceed_if_no_other_users_logged_in reboot --firmware-setup -i;;
     poweroff|reboot) proceed_if_no_other_users_logged_in "$selection" -i;;
     suspend) xscreensaver-command -lock; systemctl suspend -i;;
     logout) openbox --exit;;
