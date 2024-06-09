@@ -10,9 +10,9 @@ main()
   # udevadm command from https://unix.stackexchange.com/questions/458961/execute-script-on-external-keyboard-connection#comment883131_458961
   # (we want the line to be word-split, so no `IFS= ` before `read`)
   udevadm monitor -k -s hidraw | while read -r _ _event_type __ ___; do
-    if [ "${_event_type:-}" = "add" ]; then
-      set_keyboard_layout
-    fi
+    case "${_event_type:-}" in
+      add|remove) set_keyboard_layout;;
+    esac
   done
 
   # The above loop should never end (if it does, it is an error)
