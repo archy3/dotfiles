@@ -106,6 +106,7 @@ Plugin {
     GroupedTasks=0
     DisableUpscale=0
     UseSmallerIcons=-1
+    SameMonitorOnly=-1
   }
 }
 Plugin {

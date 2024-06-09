@@ -6,7 +6,9 @@ dbus-update-activation-environment DISPLAY XAUTHORITY
 
 xrdb -merge ~/.Xresources
 SXHKD_SHELL="/bin/sh" sxhkd -m -1 &
-xrandr --output DVI-0 --auto --set TearFree on
+#xrandr --output DVI-0 --auto --set TearFree on
+xrandr --output HDMI-0 --auto --set TearFree on --rotate left \
+  --output DVI-0 --auto --primary --set TearFree on --left-of HDMI-0
 
 if [ polybar = p ]; then
   xwallpaper --zoom ~/pictures/wallpapers/hd-desktop-wallpaper-9.jpg &&
