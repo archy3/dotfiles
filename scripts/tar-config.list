@@ -40,6 +40,8 @@
 scripts/autostart
 scripts/alt-highlight.sh
 scripts/center_around_cursor.sh
+scripts/change-and-display-brightness.sh
+scripts/change-and-display-volume.sh
 scripts/color.sh
 scripts/config-new-user-for-first-login.sh
 scripts/edit-config.sh
