@@ -27,7 +27,12 @@ fi
 startx_tty1_auto()
 {
   if [ "$(tty)" = "/dev/tty1" ] && command -v startx > /dev/null; then
-    startx 2> ~/.xsession-errors
+    if [ -c /dev/dri/card0 ]; then
+      until [ "$(stat -c %G /dev/dri/card0)" = video ]; do
+        :
+      done
+      startx 2> ~/.xsession-errors
+    fi
   fi
 }
 
