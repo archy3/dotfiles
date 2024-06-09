@@ -5,6 +5,7 @@
 dbus-update-activation-environment DISPLAY XAUTHORITY
 
 xrdb -merge ~/.Xresources
+#printf '%s\n' 'Xft.dpi: 114' | xrdb -merge
 SXHKD_SHELL="/bin/sh" sxhkd -m -1 &
 #xrandr --output DVI-0 --auto --set TearFree on
 xrandr --output HDMI-0 --auto --set TearFree on --rotate left \
