@@ -5,7 +5,7 @@ set completion-ignore-case on
 
 # From https://stackoverflow.com/a/48514114
   # If there are multiple matches for completion, Tab should cycle through them
-  TAB:menu-complete
+  TAB: menu-complete
 
   # Shift-Tab to go backwards
   "\e[Z": menu-complete-backward
