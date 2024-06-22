@@ -69,3 +69,4 @@ text/x-matlab=gvim.desktop;
 text/x-python=idle-python3.5.desktop;idle3.desktop;idle.desktop;
 text/x-tex=gvim.desktop;
 video/webm=vlc.desktop;audacious.desktop;kid3-qt.desktop;
+image/x-ms-bmp=nsxiv.desktop;
