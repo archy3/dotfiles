@@ -37,10 +37,13 @@ startx_tty1_auto()
 }
 
 # Set default applications:
-export VISUAL='/usr/bin/vim'
+export VISUAL="$(command -v vim || command -v vi)"
 export EDITOR="$VISUAL"
-export PAGER='less'
-export MANPAGER='less --file-size --color=dy --color=uc'
+
+if command -v less > /dev/null; then
+  export PAGER="$(command -v less)"
+  export MANPAGER="${PAGER} --file-size --color=dy --color=uc"
+fi
 
 # Use compose key in GTK apps
 #export GTK_IM_MODULE=xim
