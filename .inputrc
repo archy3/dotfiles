@@ -27,6 +27,10 @@ set colored-stats on
 # Do not allow history to be edited
 set revert-all-at-newline on
 
+# Perform history expansion on current line and insert a space
+# (see https://www.gnu.org/software/bash/manual/html_node/Miscellaneous-Commands.html)
+Space: magic-space
+
 # More readline settings can be found here:
 # https://tiswww.case.edu/php/chet/readline/readline.html#SEC10
 
