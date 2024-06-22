@@ -1,8 +1,6 @@
-if has('win32')
-  set guifont=DejaVu_Sans_Mono:h12:cANSI:qDRAFT
-else
-  set guifont=Monospace\ 11
-endif
+set guifont=Monospace\ 11
+set guifont+=DejaVu_Sans_Mono:h12:cANSI:qDRAFT
+set guifont+=Consolas:h14:cANSI:qDRAFT
 
 filetype detect " from https://stackoverflow.com/a/65367744
 exec 'set columns=' . get({'tex': 95, 'ps1': 120}, &filetype, 85)
