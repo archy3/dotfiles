@@ -3,7 +3,7 @@
 "set foldmethod=marker
 "set foldmarker={,}
 "set foldlevelstart=99
-function FoldBracesAndParenthesesSh()
+function! FoldBracesAndParenthesesSh()
   if !(&diff) " skip when using vimdiff
     let l:current_winview=winsaveview()
     "silent %g /^ *}$/ normal! zf%

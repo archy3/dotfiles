@@ -35,7 +35,7 @@ autocmd VimResized * wincmd =
 "{{{
     " The vimenter command prevent errors that occur
     " from things loading too late or too early.
-    function HighlightExtraWhitespace()
+    function! HighlightExtraWhitespace()
        highlight ExtraWhitespace ctermbg=red guibg=red
        match ExtraWhitespace /\s\+$/
 
@@ -69,7 +69,7 @@ autocmd VimResized * wincmd =
 " Highlight multiple consecutive whitespace (such as  stuff  like  this  )
 " except for whitespace at the beginning of a line:
 "{{{
-    function HighlightMultipleWhitespace()
+    function! HighlightMultipleWhitespace()
        highlight MultipleWhitespace ctermbg=red guibg=red
        match MultipleWhitespace /[^[:blank:]]\zs\s\s\+/
 
