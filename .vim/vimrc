@@ -46,6 +46,7 @@ if has('eval') " vim-tiny does not have `eval`
   runtime! init/functions.vim
 
   " help: after/ftplugin/help.vim
+  " c   : after/ftplugin/c.vim
   " sh  : after/ftplugin/sh.vim
   " vim : after/ftplugin/vim.vim
   " pwsh: after/ftplugin/ps1.vim
