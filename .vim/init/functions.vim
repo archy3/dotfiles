@@ -25,3 +25,14 @@ function SetTabBehavior(indent_length, literal_tab_length)
     let b:undo_ftplugin .= '|setlocal expandtab<'
   endif
 endfunction
+
+
+function! FoldBraces()
+  if !(&diff) " skip when using vimdiff
+    let l:current_winview=winsaveview()
+    normal! zE
+    silent %g /^}$/ normal! zf%
+    normal! zR
+    call winrestview(l:current_winview)
+  endif
+endfunction

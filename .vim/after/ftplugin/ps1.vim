@@ -1,12 +1,3 @@
-" folding
-function FoldBraces()
-  let l:current_winview=winsaveview()
-  normal! zE
-  silent %g /^}$/ normal! zf%
-  normal! zR
-  call winrestview(l:current_winview)
-endfunction
-
 call FoldBraces()
 call SetTabBehavior(4,8)
 
