@@ -2,6 +2,23 @@ set guifont=Monospace\ 11
 set guifont+=DejaVu_Sans_Mono:h12:cANSI:qDRAFT
 set guifont+=Consolas:h14:cANSI:qDRAFT
 
+function! ZoomInOut(delta)
+  let l:font = substitute(&guifont, '\d\+', '\=submatch(0) + ' . a:delta, 'g')
+
+  " Set the new font size, but if it is now zero, make it 1:
+  let &guifont = substitute(l:font, '\(^\|[^0-9]\)0', '\11', 'g')
+
+  " Show current font size (for first font)
+  redraw
+  echo matchstr(&guifont, '\d\+')
+endfunction
+
+nnoremap <expr> <M-j> ZoomInOut(-1)
+nnoremap <expr> <M-k> ZoomInOut(1)
+nnoremap <expr> <C-ScrollWheelDown> ZoomInOut(-1)
+nnoremap <expr> <C-ScrollWheelUp> ZoomInOut(1)
+
+
 filetype detect " from https://stackoverflow.com/a/65367744
 let &columns = get({'tex': 95, 'ps1': 120}, &filetype, 85)
 set lines=24
