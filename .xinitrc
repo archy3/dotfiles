@@ -34,7 +34,7 @@ else
 
   ~/scripts/autostart/sound-as-xscreensaver-impedence.sh > /dev/null &
   ~/scripts/autostart/move-reminder.sh &
-  ~/scripts/autostart/mem-watcher.sh &
+  ~/scripts/autostart/mem-watcher.sh 10 &
 fi
 
 exec openbox

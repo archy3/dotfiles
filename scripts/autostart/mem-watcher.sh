@@ -11,14 +11,16 @@ main()
     < /dev/urandom tr -dc 0123456789 | head -c 8
   )
 
+  mem_avail_percent_warning_threshold="${1:-15}"
+
   while true; do
     # shellcheck disable=SC2046
     set -- $(get_mem_info)
-    mem_available_percent="$1"
-    mem_available="${2}${3}"
+    mem_avail_percent="$1"
+    mem_avail="${2}${3}"
 
-    if [ "$mem_available_percent" -le 15 ]; then
-      warn_low_mem "Low on RAM (${mem_available} free)" "$notification_id"
+    if [ "$mem_avail_percent" -le "$mem_avail_percent_warning_threshold" ]; then
+      warn_low_mem "Low on RAM (${mem_avail} free)" "$notification_id"
     fi
 
     sleep 5
