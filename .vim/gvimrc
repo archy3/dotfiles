@@ -3,7 +3,7 @@ set guifont+=DejaVu_Sans_Mono:h12:cANSI:qDRAFT
 set guifont+=Consolas:h14:cANSI:qDRAFT
 
 filetype detect " from https://stackoverflow.com/a/65367744
-exec 'set columns=' . get({'tex': 95, 'ps1': 120}, &filetype, 85)
+let &columns = get({'tex': 95, 'ps1': 120}, &filetype, 85)
 set lines=24
 
 " Disable beeping. It seems not all systems need this
