@@ -21,10 +21,6 @@ vnoremap <X2Mouse> d
 nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
 nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
 
-" Let h and l wrap:
-nnoremap h <bs>
-nnoremap l <space>
-
 nnoremap Y y$
 
 " Scroll left and right quickly:
