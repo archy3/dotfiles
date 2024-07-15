@@ -274,7 +274,7 @@ nnoremap <silent> <Leader>x :close<cr>
 nnoremap <silent> <Leader>X :tabclose<cr>
 
 " Move window to new tab:
-nnoremap <silent> <Leader>o :wincmd T<cr>
+nnoremap <silent> <Leader>o :wincmd T<cr>ze
 
 " Create new window in the most likely desired way:
 nnoremap <silent> <Leader>v :execute (winwidth(0) >= (2 * &colorcolumn) ? 'vsp' : 'sp')<cr>
