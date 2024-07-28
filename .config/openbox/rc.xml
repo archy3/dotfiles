@@ -915,5 +915,13 @@
       <maximized>no</maximized>
     </application>
 
+    <application name="gpick" class="Gpick" type="normal">
+      <size>
+        <width>728</width>
+        <height>443</height>
+      </size>
+      <maximized>no</maximized>
+    </application>
+
   </applications>
 </openbox_config>
