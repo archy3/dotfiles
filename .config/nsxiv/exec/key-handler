@@ -6,10 +6,6 @@
 # where C/M/S indicate Ctrl/Meta(Alt)/Shift modifier states and KEY is the X
 # keysym as listed in /usr/include/X11/keysymdef.h without the "XK_" prefix.
 
-# TODO:
-# rotate
-# crop
-
 rotate() {
   degree="$1"
   tr '\n' '\0' | xargs -0 realpath | sort -u | while read -r file; do
@@ -41,6 +37,12 @@ rename() {
     elif [ -f "$file" ]; then
       mv -- "$file" "$new_name" && { nsxiv -b -- "$new_name" & }
     fi
+  done
+}
+
+markup() {
+  while IFS= read -r file; do
+    photoflare -- "$file"
   done
 }
 
@@ -109,4 +111,7 @@ case "$1" in
 
   # Rename file:
   "C-r"|"r") rename ;;
+
+  # Markup file:
+  "C-m"|"m") markup ;;
 esac
