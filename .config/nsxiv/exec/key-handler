@@ -12,7 +12,7 @@
 
 rotate() {
   degree="$1"
-  tr '\n' '\0' | xargs -0 realpath | sort | uniq | while read file; do
+  tr '\n' '\0' | xargs -0 realpath | sort -u | while read -r file; do
     case "$(file -b -i "$file")" in
     image/jpeg*) jpegtran -rotate "$degree" -copy all -outfile "$file" "$file" ;;
     *)           mogrify  -rotate "$degree" "$file" ;;
@@ -46,6 +46,7 @@ rename() {
 
 window_resize() {
   while IFS= read -r file; do
+    # shellcheck disable=SC2046
     set -- $(wmctrl -lpG | awk -v PPID="$PPID" '$3 == PPID {print $0}')
     win_id="$1"
     win_x="$4"
@@ -53,6 +54,7 @@ window_resize() {
     win_w="$6"
     win_h="$7"
 
+    # shellcheck disable=SC2046
     set -- $(identify -format '%w %h' -- "$file")
     img_w="$1"
     img_h="$2"
