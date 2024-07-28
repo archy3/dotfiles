@@ -57,17 +57,18 @@ window_resize() {
     win_h="$7"
 
     # shellcheck disable=SC2046
+    # Retrieve window decoration border sizes:
+    set -- $(xprop -id "$win_id" _NET_FRAME_EXTENTS)
+    win_dec_left="${3%,}"
+    win_dec_top="${5%,}"
+
+    # shellcheck disable=SC2046
     set -- $(identify -format '%w %h' -- "$file")
     img_w="$1"
     img_h="$2"
 
-    win_new_x="$((win_x + (win_w - img_w)/2))"
-    #win_new_y="$((win_y + (win_h - img_h)/2))"
-    win_new_y="$((-44 + win_y + (win_h - img_h)/2))"
-      # Not sure why this '-44' is needed
-      # (without out it the window is places 44 pixels lower than it should be).
-      # It may be specific to openbox.
-      # ('44' may be the combined height of the panel plus the window title bar).
+    win_new_x="$((win_x + (win_w - img_w)/2 - 2 * win_dec_left))"
+    win_new_y="$((win_y + (win_h - img_h)/2 - 2 * win_dec_top))"
     win_new_w="$((img_w))"
     win_new_h="$((img_h))"
 
