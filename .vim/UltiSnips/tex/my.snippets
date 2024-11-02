@@ -11,6 +11,45 @@ def env(name):
 
 endglobal
 
+snippet new "boilerplate" b
+\RequirePackage[l2tabu, orthodox]{nag} % linter (must be before \documentclass)
+%\documentclass[addpoints]{exam}
+\documentclass{article}
+\usepackage[fontsize=10.75, overfullrule=true]{scrextend} \setlength{\textwidth}{357pt} % Set font size
+\usepackage[T1]{fontenc}
+\usepackage{mlmodern,exscale}
+\usepackage[top=0.8in, bottom=1in, marginparsep=0.95cm, marginparwidth=1.8cm, textwidth=\textwidth]{geometry}
+\usepackage{amsmath,amssymb,amsfonts,amsthm,mathtools,nicefrac,oubraces,leftindex}
+\usepackage{enumitem}
+\usepackage{parskip}
+\usepackage[colorlinks=true, linkcolor=black, urlcolor=blue]{hyperref} % For TOC
+\usepackage{changepage} % For indenting text blocks with \begin{adjustwidth}{1.5em}{1.5em}
+\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,factor=1100,stretch=10,shrink=10]{microtype}
+\usepackage[all]{onlyamsmath} % linter
+\usepackage{marginnote}
+\usepackage{xcolor}
+\usepackage{tikz,pgfplots}
+\usepackage{lastpage}
+\usepackage{multicol}
+\usepackage{venndiagram}
+\usepackage{pgffor,ifthen} % For foreach loops & if statements
+%\usepackage{booktabs}
+
+\pgfplotsset{compat=1.18}
+
+\newcommand{\mymarginr}[1]{\normalmarginpar\marginnote{\footnotesize {#1}}}
+\newcommand{\mymarginl}[1]{\reversemarginpar\marginnote{\footnotesize {#1}}}
+
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}}
+\newcommand{\Q}{\ensuremath{\mathbb{Q}}}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\C}{\ensuremath{\mathbb{C}}}
+
+\begin{document}
+	$0
+\end{document}
+endsnippet
 
 # TEXT SNIPPETS:
 context "not math()"
