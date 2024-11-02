@@ -41,3 +41,10 @@ set statusbar-fg "#aaaaaa"
 set recolor-darkcolor "#ffdead"
 set recolor-darkcolor "#f2d3a4"
 set recolor-lightcolor "#111111"
+
+"set recolor-darkcolor "#e9e9e9"
+set recolor-lightcolor "#121212"
+
+set recolor-darkcolor "#d2d2d2"
+set recolor-darkcolor "#90ee90"
+set recolor-lightcolor "#212121"
