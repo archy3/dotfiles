@@ -1,0 +1,113 @@
+global !p
+def math():
+	return vim.eval('vimtex#syntax#in_mathzone()') == '1'
+
+def comment():
+	return vim.eval('vimtex#syntax#in_comment()') == '1'
+
+def env(name):
+	[x,y] = vim.eval("vimtex#env#is_inside('" + name + "')")
+	return x != '0' and y != '0'
+
+endglobal
+
+# ENVIRONMENTS:
+context "not math()"
+snippet quest "Questions" b
+\begin{questions}
+	\question
+		${1:${VISUAL}}
+\end{questions}
+endsnippet
+
+context "not math()"
+snippet parts "Parts" b
+\begin{parts}
+	\part
+		${1:${VISUAL}}
+\end{parts}
+endsnippet
+
+context "not math()"
+snippet cent "Center text" b
+\begin{center}
+	${1:${VISUAL}}
+\end{center}
+endsnippet
+
+context "not math()"
+snippet adj "Adjustwidth" b
+\begin{adjustwidth}{$1}{$2}
+	${3:${VISUAL}}
+\end{adjustwidth}
+endsnippet
+
+context "not math()"
+snippet mcols "Multiple columns" b
+\begin{multicols}{$1}
+	${2:${VISUAL}}
+\end{multicols}
+endsnippet
+
+context "not math()"
+snippet mcc "Multiple Choice circle" b
+\begin{checkboxes}
+	\choice ${1:${VISUAL}}
+\end{checkboxes}
+endsnippet
+
+context "not math()"
+snippet mcb "Multiple Choice box" b
+\begin{checkboxes}
+	\checkboxchar{$\Box$}\checkedchar{$\blacksquare$}
+	\choice ${1:${VISUAL}}
+\end{checkboxes}
+endsnippet
+
+context "not math()"
+snippet mccol "Multiple Choice circle one line" b
+\begin{oneparcheckboxes}
+	\choice ${1:${VISUAL}}
+\end{oneparcheckboxes}
+endsnippet
+
+context "not math()"
+snippet mcbol "Multiple Choice box one line" b
+\begin{oneparcheckboxes}
+	\checkboxchar{$\Box$}\checkedchar{$\blacksquare$}
+	\choice ${1:${VISUAL}}
+\end{oneparcheckboxes}
+endsnippet
+
+context "not math()"
+snippet mctf "Multiple Choice true/false" b
+\begin{oneparcheckboxes}
+	\choice True.
+	\choice False.
+\end{oneparcheckboxes}
+endsnippet
+
+# new question in a questions environement
+context "not math()"
+snippet q "question" b
+\question
+	${1:${VISUAL}}
+endsnippet
+
+# new part in a parts environement
+context "not math()"
+snippet p "part" b
+\part
+	${1:${VISUAL}}
+endsnippet
+
+# new choice in a multiple choice question
+context "not math()"
+snippet c "choice" b
+\choice ${1:${VISUAL}}
+endsnippet
+
+context "not math()"
+snippet vss "vertical space stretch" b
+\vspace{\stretch{1}}
+endsnippet
