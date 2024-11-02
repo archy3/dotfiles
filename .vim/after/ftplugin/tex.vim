@@ -14,3 +14,4 @@ endif
 
 nnoremap <buffer> <Leader>r :call UltiSnips#RefreshSnippets()<cr>
 vnoremap <buffer> <Leader>c <plug>(vimtex-cmd-create)
+nnoremap <buffer> gz /\\begin{document}<cr>zt
