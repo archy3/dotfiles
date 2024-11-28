@@ -37,7 +37,7 @@ endsnippet
 
 context "not math()"
 snippet adj "Adjustwidth" b
-\begin{adjustwidth}{$1}{$2}
+\begin{adjustwidth}{${1:-6.5em}}{${2:$1}}
 	${3:${VISUAL}}
 \end{adjustwidth}
 endsnippet
