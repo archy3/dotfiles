@@ -15,3 +15,5 @@ endif
 nnoremap <buffer> <Leader>r :call UltiSnips#RefreshSnippets()<cr>
 vnoremap <buffer> <Leader>c <plug>(vimtex-cmd-create)
 nnoremap <buffer> gz /\\begin{document}<cr>zt
+nnoremap <buffer> <LocalLeader><C-s> :silent! if bufname('%') == '' <bar> exec ':saveas ' . tempname() . '.tex' <bar> endif <bar> redraw<cr>
+  " We use `:saveas` instead of `:w` because of https://github.com/lervag/vimtex/issues/3042
