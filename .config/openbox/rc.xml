@@ -875,7 +875,7 @@
       <maximized>yes</maximized>
     </application>
 
-    <application name="Navigator" class="Firefox-esr" role="browser" type="normal">
+    <application name="Navigator" class="firefox-esr" role="browser" type="normal">
       <size>
         <width>1280</width>
         <height>923</height>
