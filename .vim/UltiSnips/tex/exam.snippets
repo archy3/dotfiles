@@ -15,7 +15,7 @@ endglobal
 context "not math()"
 snippet quest "Questions" b
 \begin{questions}
-	\question
+	\question[1]
 		${1:${VISUAL}}
 \end{questions}
 endsnippet
@@ -23,7 +23,7 @@ endsnippet
 context "not math()"
 snippet parts "Parts" b
 \begin{parts}
-	\part
+	\part[1]
 		${1:${VISUAL}}
 \end{parts}
 endsnippet
@@ -90,14 +90,14 @@ endsnippet
 # new question in a questions environement
 context "not math()"
 snippet q "question" b
-\question
+\question[1]
 	${1:${VISUAL}}
 endsnippet
 
 # new part in a parts environement
 context "not math()"
 snippet p "part" b
-\part
+\part[1]
 	${1:${VISUAL}}
 endsnippet
 
