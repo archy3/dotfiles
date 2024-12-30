@@ -21,3 +21,4 @@
 .vim/pack/plugins/opt/vimtex/doc/test/issues
 .vim/pack/plugins/opt/vimtex/test/test-completion-bibtex/test_parser_*
 .vim/pack/plugins/opt/vimtex/test/test-quickfix-fix-path/test-hbox*
+.vim/pack/plugins/opt/vimtex/*.log

@@ -40,7 +40,7 @@ $
 
 \begin{document}
 
-Test accents \v! and \v@ here.
+Test accents \v! and \v@ here. And errors: _ ^
 
 Line with inline verbatim: \verb+verb+
 Line with inline verbatim: \verb*+verb+
@@ -128,5 +128,10 @@ Let \(F = \{f : S \to S \mid \textnormal{$f$ is a cool function}\}\).
 \begin{tabular}{*{1}{p{1cm}}}
   0
 \end{tabular}
+
+%% Some basic stuff re. #2877
+foo\\~bar \~More test; in math: $f(x) ~ \~ 1$
+
+Foo \phantom{\{} bar
 
 \end{document}

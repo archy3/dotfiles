@@ -11,7 +11,7 @@ let g:vimtex#re#tex_input_root =
       \ '\v^\c\s*\%\s*!?\s*tex\s+root\s*[=:]\s*\zs.*\ze\s*$'
 let g:vimtex#re#tex_input_latex = '\v\\%('
       \ . join(get(g:, 'vimtex_include_indicators',
-      \            ['input', 'include', 'includeonly']),
+      \            ['input', 'include']),
       \        '|')
       \ . ')\s*\{'
 let g:vimtex#re#tex_input_import = '\v\\%('
@@ -33,10 +33,12 @@ let g:vimtex#re#tex_include = g:vimtex#re#tex_input_root
       \ . '|' . g:vimtex#re#tex_input . '\zs[^\}]*\ze\}?'
       \ . '|' . g:vimtex#re#tex_input_package
 
+let g:vimtex#re#cite_cmd = '\v%(%(\a*cite|Cite)\a*|bibentry|%(text|block|%(for|hy)\w+)cquote)'
+
 " {{{1 Completion regexes
 let g:vimtex#re#neocomplete =
       \ '\v\\%('
-      \ .  '%(\a*cite|Cite)\a*\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+      \ .  '%(\a*cite|Cite)\a*\*?%(\s*\[[^]]*\]|\s*\<[^>]*\>){0,2}\s*\{[^}]*'
       \ . '|%(\a*cites|Cites)%(\s*\([^)]*\)){0,2}'
       \     . '%(%(\s*\[[^]]*\]){0,2}\s*\{[^}]*\})*'
       \     . '%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'

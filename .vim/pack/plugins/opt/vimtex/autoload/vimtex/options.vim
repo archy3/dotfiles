@@ -95,6 +95,7 @@ function! vimtex#options#init() abort " {{{1
   call s:init_option('vimtex_fold_types_defaults', {
         \ 'preamble' : {},
         \ 'items' : {},
+        \ 'comment_pkg' : {},
         \ 'comments' : { 'enabled' : 0 },
         \ 'envs' : {
         \   'blacklist' : [],
@@ -391,6 +392,15 @@ function! vimtex#options#init() abort " {{{1
         \ 'babel': {'conceal': 1},
         \ 'hyperref': {'conceal': 1},
         \ 'fontawesome5': {'conceal': 1},
+        \ 'robust_externalize': {
+        \   'presets': [
+        \     ['bash', 'bash'],
+        \     ['python', 'python'],
+        \     ['gnuplot', 'gnuplot'],
+        \     ['tikz', '@texClusterTikz'],
+        \     ['latex', 'TOP'],
+        \   ],
+        \ },
         \})
 
   " Disable conceals if chosen

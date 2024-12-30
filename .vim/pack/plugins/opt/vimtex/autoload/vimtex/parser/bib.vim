@@ -28,7 +28,7 @@ function! vimtex#parser#bib#parse_cheap(start_line, end_line, opts) abort " {{{1
   let l:entries = []
   let l:firstlines = filter(
         \ range(a:start_line, a:end_line),
-        \ {_, i -> vimtex#util#trim(getline(i))[0] == "@"})
+        \ {_, i -> trim(getline(i))[0] == "@"})
   let l:total_entries = len(l:firstlines)
   let l:entry_lines = map(l:firstlines, {idx, val -> [val,
         \ idx == l:total_entries - 1
@@ -362,6 +362,9 @@ function! s:parse_item(item, strings) abort " {{{1
   while l:head >= 0
     if empty(l:tag)
       let [l:tag, l:head] = s:get_tag_name(l:body, l:head)
+      if l:tag == 'key'
+        let l:tag = 'keyfield'
+      endif
     else
       let [l:value, l:head] = s:get_tag_value(l:body, l:head, a:strings)
       let a:item[l:tag] = l:value

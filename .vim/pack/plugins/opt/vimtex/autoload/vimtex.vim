@@ -178,6 +178,7 @@ function! s:init_default_mappings() abort " {{{1
   call s:map(0, 'n', 'tsc',  '<plug>(vimtex-cmd-toggle-star)')
   call s:map(0, 'n', 'tsf',  '<plug>(vimtex-cmd-toggle-frac)')
   call s:map(0, 'x', 'tsf',  '<plug>(vimtex-cmd-toggle-frac)')
+  call s:map(0, 'n', 'tsb',  '<plug>(vimtex-cmd-toggle-break)')
   call s:map(0, 'i', '<F7>', '<plug>(vimtex-cmd-create)')
   call s:map(0, 'n', '<F7>', '<plug>(vimtex-cmd-create)')
   call s:map(0, 'x', '<F7>', '<plug>(vimtex-cmd-create)')
@@ -364,9 +365,11 @@ function! s:filename_changed_post() abort " {{{1
 
     if has_key(b:vimtex, 'compiler')
       if b:vimtex.compiler.is_running()
-        call vimtex#log#warning('Compilation stopped!')
         call vimtex#compiler#stop()
+        call vimtex#log#warning('Compilation stopped!')
       endif
+
+      call vimtex#compiler#init_state(b:vimtex)
     endif
   endif
 endfunction
