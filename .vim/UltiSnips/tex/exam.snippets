@@ -36,6 +36,20 @@ snippet cent "Center text" b
 endsnippet
 
 context "not math()"
+snippet fl "Flush left text" b
+\begin{flushleft}
+	${1:${VISUAL}}
+\end{flushleft}
+endsnippet
+
+context "not math()"
+snippet fr "Flush right text" b
+\begin{flushright}
+	${1:${VISUAL}}
+\end{flushright}
+endsnippet
+
+context "not math()"
 snippet adj "Adjustwidth" b
 \begin{adjustwidth}{${1:-6.5em}}{${2:$1}}
 	${3:${VISUAL}}
