@@ -253,6 +253,9 @@ firefox_esr_config() # <--force=false|--force=true>
     pref("browser.urlbar.suggest.quicksuggest.nonsponsored", false, locked);
     pref("browser.urlbar.suggest.quicksuggest.sponsored", false, locked);
 
+    // Disable Privacy-Preserving Attribution:
+    pref("dom.private-attribution.submission.enabled", false);
+
     // Do not block "dangerous and deceptive" content:
     pref("browser.safebrowsing.phishing.enabled", false);
     pref("browser.safebrowsing.malware.enabled", false);
