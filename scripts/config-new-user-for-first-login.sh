@@ -315,6 +315,7 @@ firefox_esr_config() # <--force=false|--force=true>
 
     // Disable general disk cache and video disk cache:
     pref("browser.cache.disk.enable", false);
+    pref("browser.cache.offline.enable", false);
     pref("browser.privatebrowsing.forceMediaMemoryCache", true);
 
     // Do not shorten "http://example.com" to "example.com":
