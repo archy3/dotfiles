@@ -310,6 +310,9 @@ firefox_esr_config() # <--force=false|--force=true>
     // Disable automatic retrieval of addon metadata:
     pref("extensions.getAddons.cache.enabled", false);
 
+    // Disable speculative connections to URL suggestions:
+    pref("browser.urlbar.speculativeConnect.enabled", false);
+
     // Disable general disk cache and video disk cache:
     pref("browser.cache.disk.enable", false);
     pref("browser.privatebrowsing.forceMediaMemoryCache", true);
