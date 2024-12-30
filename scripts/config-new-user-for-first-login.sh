@@ -296,6 +296,9 @@ firefox_esr_config() # <--force=false|--force=true>
     // Disable "Firefox Privacy Notice" on first launch:
     pref("datareporting.policy.dataSubmissionPolicyBypassNotification", true);
 
+    // Disable warning about speech synthesis not working:
+    pref("media.webspeech.synth.dont_notify_on_error", true);
+
     // Disable captive portal support:
     // Note these are often required to be enabled in order to use public WiFi.
     pref("network.captive-portal-service.enabled", false);
