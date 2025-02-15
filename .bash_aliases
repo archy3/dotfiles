@@ -133,7 +133,7 @@ vmshare() # a|d libvirt-vm-domain
   if [ "$#" != "2" ]; then
     printf '%s\n\n%s\n' \
       'This function requires two arguments.' \
-      'Usage: vmshare a|d libvirt-vm-domain' >&2
+      "Usage: ${FUNCNAME[0]} a|d libvirt-vm-domain" >&2
     return 1
   fi
 
