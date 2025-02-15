@@ -132,7 +132,7 @@ vmshare() # a|d libvirt-vm-domain
 
   if [ "$#" != "2" ]; then
     printf '%s\n\n%s\n' \
-      'Thus function requires two arguments.' \
+      'This function requires two arguments.' \
       'Usage: vmshare a|d libvirt-vm-domain' >&2
     return 1
   fi
