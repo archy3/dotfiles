@@ -94,7 +94,7 @@ repeat() # count commands...
   local i
 
   if [ "$#" -lt 2 ]; then
-    printf %s\\n "Usage: ${FUNCNAME} <count> <commands...>"
+    printf %s\\n "Usage: ${FUNCNAME[0]} <count> <commands...>"
     return 1
   fi
 
