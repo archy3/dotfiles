@@ -273,10 +273,7 @@ nnoremap <silent> <Leader>o :wincmd T<cr>ze
 nnoremap <silent> <Leader>v :execute (winwidth(0) >= (2 * &colorcolumn) ? 'vsp' : 'sp')<cr>
 
 " Quickly set the filetype:
-nnoremap <leader>ft :set filetype=
-" Would like to makes this an autocmd:
-" autocmd BufReadPost,BufNewFile * if empty(&filetype) | execute 'nnoremap <buffer> <leader>ft :set filetype=' | endif
-" but that doesn't work for things like 'new' 'vnew' 'tabe'.
+nnoremap <leader>ft :setfiletype<space>
 
 " Highlighting:
 "nnoremap / :setlocal hlsearch<cr>/

@@ -27,7 +27,7 @@ delfunction BuffWriteAutoCmds
 delfunction SilentScriptExec
 delfunction ExecAndNotify
 
-autocmd BufRead ~/.xinitrc set filetype=sh
-autocmd BufRead ~/.config/polybar/config set filetype=dosini
-autocmd BufRead ~/.config/dunst/dunstrc set filetype=dosini
-autocmd BufRead ~/.config/zathura/zathurarc set filetype=vim
+autocmd BufRead ~/.xinitrc setfiletype sh
+autocmd BufRead ~/.config/polybar/config setfiletype dosini
+autocmd BufRead ~/.config/dunst/dunstrc setfiletype dosini
+autocmd BufRead ~/.config/zathura/zathurarc setfiletype vim
