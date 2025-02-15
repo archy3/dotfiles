@@ -147,4 +147,44 @@ vmshare() # a|d libvirt-vm-domain
   esac
 }
 
+# Generate <count> random strings of length <length>
+# using the characters <chars> separated by <sep>.
+rands() # <chars> <length> [count] [sep]
+{
+  local chars="$1"
+  local length="$2"
+  local count="${3:-1}"
+  local sep="${4-$'\n'}"
+  local number
+  local i
+
+  if [ "$#" -lt "2" ] || [ "$#" -gt "4" ] ; then
+    printf '%s\n\n%s\n' \
+      'This function takes two to four arguments.' \
+      "Usage: ${FUNCNAME[0]} <chars> <length> [count] [separator]" >&2
+    return 1
+  fi
+
+  for number in "$length" "$count"; do
+    case "$number" in
+      *[!0-9]*|'')
+        printf %s\\n \
+          "The second (and third if provided) argument must be a number" >&2
+        return 1
+        ;;
+    esac
+  done
+
+  for (( i=1; i<=count; i++ )); do
+    < /dev/urandom tr -dc -- "$chars" | head -c "$length"
+    if [ "$i" -ne "$count" ]; then
+      printf '%s' "$sep"
+    fi
+  done
+
+  if [ -t 1 ]; then
+    printf '\n'
+  fi
+}
+
 #alias up='su - root -c "apt-get update && apt upgrade && apt dist-upgrade && apt-get autoremove && apt-get clean"'
