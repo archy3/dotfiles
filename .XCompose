@@ -129,6 +129,9 @@
 <Multi_key> <minus>      : "—" U2014 # EM DASH
 <Multi_key> <underscore> <underscore> : "–" U2013 # EN DASH
 
+# Vulgar fractions:
+# Type "<Multi_key> <1> <2>" to get "½".
+
 # Greek letters:
 <Multi_key> <b> <a> : "α"
 <Multi_key> <b> <b> : "β"
