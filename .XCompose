@@ -132,6 +132,12 @@
 # Vulgar fractions:
 # Type "<Multi_key> <1> <2>" to get "½".
 
+# Currency symbols:
+<Multi_key> <dollar>     : "¢"
+<Multi_key> <numbersign> : "£"
+<Multi_key> <ampersand>  : "€"
+<Multi_key> <at>         : "¥"
+
 # Greek letters:
 <Multi_key> <b> <a> : "α"
 <Multi_key> <b> <b> : "β"
