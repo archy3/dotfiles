@@ -254,6 +254,7 @@
 <Multi_key> <m> <slash>  : "÷"
 <Multi_key> <m> <x>      : "∙"
 <Multi_key> <m> <X>      : "×"
+<Multi_key> <m> <c>      : "•" # Big center dot (aka a text bullet)
 <Multi_key> <m> <p>      : "±"
 <Multi_key> <m> <P>      : "∓"
 <Multi_key> <m> <r>      : "√"
