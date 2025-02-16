@@ -248,7 +248,7 @@
 
 # General symbols
 <Multi_key> <m> <exclam> <equal> : "≠"
-<Multi_key> <m> <equal> : "≈"
+<Multi_key> <m> <equal>  : "≈"
 <Multi_key> <m> <comma>  : "≤"
 <Multi_key> <m> <period> : "≥"
 <Multi_key> <m> <slash>  : "÷"
