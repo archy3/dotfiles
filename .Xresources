@@ -4,10 +4,6 @@
 *customization: -color
 #endif
 
-!TODO:
-! Make underscores look the same as in lxtermianl
-!(low priority, just interested if it can be done)
-
 xterm.vt100.geometry: 85x26
 xterm.termName: xterm-256color
 xterm.vt100.forceBoxChars: true
@@ -37,7 +33,7 @@ xterm.vt100.internalBorder: 0
 xterm.buffered: true
 xterm.bufferedFPS: 100
 
-! Make large output scroll by faster (TODO: test for visual artifacts):
+! Make large output scroll by faster
 xterm.vt100.fastScroll: true
 xterm.vt100.multiScroll: true
 
