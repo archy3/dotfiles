@@ -42,7 +42,7 @@ set wildmenu
 
 " Outside of gvim, always show status line
 " (not needed in gvim because this is shown in the window title):
-"if (has("gui_running") == 0)
+"if !has("gui_running")
 "  set laststatus=2
 "endif
 
@@ -97,7 +97,7 @@ if &t_Co > 2 || has("gui_running")
   syntax on
 
   " Make gruvbox colors, italics, and spell underlining work in xterm w/wo tmux:
-  if $TERM =~ '^\(xterm\|tmux\)-.*color.*$' && $XTERM_VERSION != '' && (has("gui_running") == 0)
+  if $TERM =~ '^\(xterm\|tmux\)-.*color.*$' && $XTERM_VERSION != '' && !has("gui_running")
     let g:gruvbox_italic=1
     autocmd vimenter * ++nested colorscheme gruvbox
     autocmd vimenter * hi SpellBad cterm=underline

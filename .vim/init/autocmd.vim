@@ -183,6 +183,6 @@ endfunc
 " Work around bug in xterm where setting `xterm.buffered: true` in
 " ~/.Xresources causes the terminal background color to become the
 " background color of the vim colorscheme when vim exits:
-if ($TERM == 'xterm-256color') && (has("gui_running") == 0)
+if ($TERM == 'xterm-256color') && !has("gui_running")
   autocmd! VimLeave * syntax off | highlight clear | redraw
 endif
