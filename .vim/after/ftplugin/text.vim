@@ -4,11 +4,11 @@ endif
 setlocal wrap
 setlocal linebreak
 
-" We want spellcheck on new files
+" We want spellcheck on new (i.e. empty) files
 " (e.g. vim just opened without opening a file, opened a file that doesn't exist,
 " opened an empty file, or an `enew`):
 " (from https://vi.stackexchange.com/a/2559):
-if ((@% == "") || (filereadable(@%) == 0) || (line('$') == 1 && col('$') == 1))
+if line('$') == 1 && col('$') == 1
   setlocal spell
 
   " For some reason, `b:undo_ftplugin` isn't activated in this case which
