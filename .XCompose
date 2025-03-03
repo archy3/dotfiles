@@ -1,5 +1,17 @@
 #include "%L"
 
+# Defaults: /usr/share/X11/locale/en_US.UTF-8/Compose
+
+# NOTE: GTK 2 apps ignore the bindings in
+# /usr/share/X11/locale/en_US.UTF-8/Compose when that file
+# isn't sourced (and sourcing with `include "%L"` creates
+# problems when ~/.XCompose has bindings that are proper
+# substrings of bindings in /usr/share/X11/locale/en_US.UTF-8/Compose).
+
+# Use the command
+#    < ~/.XCompose tr -s '\t' ' ' | sed -e 's/^ *//' -e 's/ :.*$//g' -e 's/ *$//' -e '/^$/d' -e '/^#/d' | LC_ALL=C sort | uniq -d
+# to list duplicate multi-key sequences.
+
 # Acute accent:
 <Multi_key> <a> : "á"
 <Multi_key> <e> : "é"
@@ -61,6 +73,7 @@
 <Multi_key> <h> <e> : "ê"
 <Multi_key> <h> <i> : "î"
 <Multi_key> <h> <j> : "ĵ"
+<Multi_key> <h> <k> : "k̂" # Uses combing circumflex (not standalone)
 <Multi_key> <h> <o> : "ô"
 <Multi_key> <h> <u> : "û"
 <Multi_key> <h> <y> : "ŷ"
@@ -68,6 +81,7 @@
 <Multi_key> <h> <E> : "Ê"
 <Multi_key> <h> <I> : "Î"
 <Multi_key> <h> <J> : "Ĵ"
+<Multi_key> <h> <K> : "K̂" # Uses combing circumflex (not standalone)
 <Multi_key> <h> <O> : "Ô"
 <Multi_key> <h> <U> : "Û"
 <Multi_key> <h> <Y> : "Ŷ"
@@ -99,44 +113,329 @@
 <Multi_key> <T> <u> : "Ũ"
 <Multi_key> <T> <y> : "Ỹ"
 
+# Caron accent:
+<Multi_key> <v> <a> : "ǎ"
+<Multi_key> <v> <c> : "č"
+<Multi_key> <v> <d> : "ď" # Caron may render as a small stroke
+<Multi_key> <v> <e> : "ě"
+<Multi_key> <v> <g> : "ǧ"
+<Multi_key> <v> <h> : "ȟ"
+<Multi_key> <v> <i> : "ǐ"
+<Multi_key> <v> <j> : "ǰ"
+<Multi_key> <v> <k> : "ǩ"
+<Multi_key> <v> <l> : "ľ" # Caron may render as a small stroke
+<Multi_key> <v> <n> : "ň"
+<Multi_key> <v> <o> : "ǒ"
+<Multi_key> <v> <r> : "ř"
+<Multi_key> <v> <s> : "š"
+<Multi_key> <v> <t> : "ť" # Caron may render as a small stroke
+<Multi_key> <v> <u> : "ǔ"
+<Multi_key> <v> <z> : "ž"
+<Multi_key> <v> <A> : "Ǎ"
+<Multi_key> <v> <C> : "Č"
+<Multi_key> <v> <D> : "Ď"
+<Multi_key> <v> <E> : "Ě"
+<Multi_key> <v> <G> : "Ǧ"
+<Multi_key> <v> <H> : "Ȟ"
+<Multi_key> <v> <I> : "Ǐ"
+<Multi_key> <v> <K> : "Ǩ"
+<Multi_key> <v> <L> : "Ľ" # Caron may render as a small stroke
+<Multi_key> <v> <N> : "Ň"
+<Multi_key> <v> <O> : "Ǒ"
+<Multi_key> <v> <R> : "Ř"
+<Multi_key> <v> <S> : "Š"
+<Multi_key> <v> <T> : "Ť"
+<Multi_key> <v> <U> : "Ǔ"
+<Multi_key> <v> <Z> : "Ž"
+<Multi_key> <V> <a> : "Ǎ"
+<Multi_key> <V> <c> : "Č"
+<Multi_key> <V> <d> : "Ď"
+<Multi_key> <V> <e> : "Ě"
+<Multi_key> <V> <g> : "Ǧ"
+<Multi_key> <V> <h> : "Ȟ"
+<Multi_key> <V> <i> : "Ǐ"
+<Multi_key> <V> <k> : "Ǩ"
+<Multi_key> <V> <l> : "Ľ" # Caron may render as a small stroke
+<Multi_key> <V> <n> : "Ň"
+<Multi_key> <V> <o> : "Ǒ"
+<Multi_key> <V> <r> : "Ř"
+<Multi_key> <V> <s> : "Š"
+<Multi_key> <V> <t> : "Ť"
+<Multi_key> <V> <u> : "Ǔ"
+<Multi_key> <V> <z> : "Ž"
+
+# Ring accent:
+<Multi_key> <r> <a> : "å"
+<Multi_key> <r> <u> : "ů"
+<Multi_key> <r> <y> : "ẙ"
+<Multi_key> <r> <w> : "ẘ"
+<Multi_key> <r> <A> : "Å"
+<Multi_key> <r> <U> : "Ů"
+<Multi_key> <R> <a> : "Å"
+<Multi_key> <R> <u> : "Ů"
+
+# Macron accent:
+<Multi_key> <k> <a> : "ā"
+<Multi_key> <k> <e> : "ē"
+<Multi_key> <k> <g> : "ḡ"
+<Multi_key> <k> <i> : "ī"
+<Multi_key> <k> <o> : "ō"
+<Multi_key> <k> <u> : "ū"
+<Multi_key> <k> <y> : "ȳ"
+<Multi_key> <k> <A> : "Ā"
+<Multi_key> <k> <E> : "Ē"
+<Multi_key> <k> <G> : "Ḡ"
+<Multi_key> <k> <I> : "Ī"
+<Multi_key> <k> <O> : "Ō"
+<Multi_key> <k> <U> : "Ū"
+<Multi_key> <k> <Y> : "Ȳ"
+<Multi_key> <K> <a> : "Ā"
+<Multi_key> <K> <e> : "Ē"
+<Multi_key> <K> <g> : "Ḡ"
+<Multi_key> <K> <i> : "Ī"
+<Multi_key> <K> <o> : "Ō"
+<Multi_key> <K> <u> : "Ū"
+<Multi_key> <K> <y> : "Ȳ"
+
+# Dot above accent:
+<Multi_key> <period> <a> : "ȧ"
+<Multi_key> <period> <b> : "ḃ"
+<Multi_key> <period> <c> : "ċ"
+<Multi_key> <period> <d> : "ḋ"
+<Multi_key> <period> <e> : "ė"
+<Multi_key> <period> <f> : "ḟ"
+<Multi_key> <period> <g> : "ġ"
+<Multi_key> <period> <h> : "ḣ"
+<Multi_key> <period> <m> : "ṁ"
+<Multi_key> <period> <n> : "ṅ"
+<Multi_key> <period> <o> : "ȯ"
+<Multi_key> <period> <p> : "ṗ"
+<Multi_key> <period> <r> : "ṙ"
+<Multi_key> <period> <s> : "ṡ"
+<Multi_key> <period> <t> : "ṫ"
+<Multi_key> <period> <w> : "ẇ"
+<Multi_key> <period> <x> : "ẋ"
+<Multi_key> <period> <y> : "ẏ"
+<Multi_key> <period> <z> : "ż"
+<Multi_key> <period> <A> : "Ȧ"
+<Multi_key> <period> <B> : "Ḃ"
+<Multi_key> <period> <C> : "Ċ"
+<Multi_key> <period> <D> : "Ḋ"
+<Multi_key> <period> <E> : "Ė"
+<Multi_key> <period> <F> : "Ḟ"
+<Multi_key> <period> <G> : "Ġ"
+<Multi_key> <period> <H> : "Ḣ"
+<Multi_key> <period> <I> : "İ"
+<Multi_key> <period> <M> : "Ṁ"
+<Multi_key> <period> <N> : "Ṅ"
+<Multi_key> <period> <O> : "Ȯ"
+<Multi_key> <period> <P> : "Ṗ"
+<Multi_key> <period> <R> : "Ṙ"
+<Multi_key> <period> <S> : "Ṡ"
+<Multi_key> <period> <T> : "Ṫ"
+<Multi_key> <period> <W> : "Ẇ"
+<Multi_key> <period> <X> : "Ẋ"
+<Multi_key> <period> <Y> : "Ẏ"
+<Multi_key> <period> <Z> : "Ż"
+
+# Cedilla accent:
+<Multi_key> <comma> <c> : "ç"
+<Multi_key> <comma> <d> : "ḑ"
+<Multi_key> <comma> <g> : "ģ"
+<Multi_key> <comma> <h> : "ḩ"
+<Multi_key> <comma> <k> : "ķ"
+<Multi_key> <comma> <l> : "ļ"
+<Multi_key> <comma> <n> : "ņ"
+<Multi_key> <comma> <r> : "ŗ"
+<Multi_key> <comma> <s> : "ş"
+<Multi_key> <comma> <t> : "ţ"
+<Multi_key> <comma> <C> : "Ç"
+<Multi_key> <comma> <D> : "Ḑ"
+<Multi_key> <comma> <G> : "Ģ"
+<Multi_key> <comma> <H> : "Ḩ"
+<Multi_key> <comma> <K> : "Ķ"
+<Multi_key> <comma> <L> : "Ļ"
+<Multi_key> <comma> <N> : "Ņ"
+<Multi_key> <comma> <R> : "Ŗ"
+<Multi_key> <comma> <S> : "Ş"
+<Multi_key> <comma> <T> : "Ţ"
+
+# Ogonek accent:
+<Multi_key> <comma> <a> : "ą"
+<Multi_key> <comma> <e> : "ę"
+<Multi_key> <comma> <i> : "į"
+<Multi_key> <comma> <o> : "ǫ"
+<Multi_key> <comma> <u> : "ų"
+<Multi_key> <comma> <A> : "Ą"
+<Multi_key> <comma> <E> : "Ę"
+<Multi_key> <comma> <I> : "Į"
+<Multi_key> <comma> <O> : "Ǫ"
+<Multi_key> <comma> <U> : "Ų"
+
+# Breve accent:
+<Multi_key> <parenleft> <a> : "ă"
+<Multi_key> <parenleft> <e> : "ĕ"
+<Multi_key> <parenleft> <g> : "ğ"
+<Multi_key> <parenleft> <i> : "ĭ"
+<Multi_key> <parenleft> <o> : "ŏ"
+<Multi_key> <parenleft> <u> : "ŭ"
+<Multi_key> <parenleft> <A> : "Ă"
+<Multi_key> <parenleft> <E> : "Ĕ"
+<Multi_key> <parenleft> <G> : "Ğ"
+<Multi_key> <parenleft> <I> : "Ĭ"
+<Multi_key> <parenleft> <O> : "Ŏ"
+<Multi_key> <parenleft> <U> : "Ŭ"
+
+# Inverted breve accent:
+<Multi_key> <parenright> <a> : "ȃ"
+<Multi_key> <parenright> <e> : "ȇ"
+<Multi_key> <parenright> <i> : "ȋ"
+<Multi_key> <parenright> <o> : "ȏ"
+<Multi_key> <parenright> <r> : "ȓ"
+<Multi_key> <parenright> <u> : "ȗ"
+<Multi_key> <parenright> <A> : "Ȃ"
+<Multi_key> <parenright> <E> : "Ȇ"
+<Multi_key> <parenright> <I> : "Ȋ"
+<Multi_key> <parenright> <O> : "Ȏ"
+<Multi_key> <parenright> <R> : "Ȓ"
+<Multi_key> <parenright> <U> : "Ȗ"
+
+# Double acute accent:
+<Multi_key> <equal> <o> : "ő"
+<Multi_key> <equal> <u> : "ű"
+<Multi_key> <equal> <O> : "Ő"
+<Multi_key> <equal> <U> : "Ű"
+
+# Double grave accent:
+<Multi_key> <equal> <equal> <a> : "ȁ"
+<Multi_key> <equal> <equal> <e> : "ȅ"
+<Multi_key> <equal> <equal> <i> : "ȉ"
+<Multi_key> <equal> <equal> <o> : "ȍ"
+<Multi_key> <equal> <equal> <r> : "ȑ"
+<Multi_key> <equal> <equal> <u> : "ȕ"
+<Multi_key> <equal> <equal> <A> : "Ȁ"
+<Multi_key> <equal> <equal> <E> : "Ȅ"
+<Multi_key> <equal> <equal> <I> : "Ȉ"
+<Multi_key> <equal> <equal> <O> : "Ȍ"
+<Multi_key> <equal> <equal> <R> : "Ȑ"
+<Multi_key> <equal> <equal> <U> : "Ȕ"
+
+# Eth & Thorn:
+<Multi_key> <d> <d> : "ð"
+<Multi_key> <d> <D> : "Ð"
+<Multi_key> <D> <d> : "Ð"
+<Multi_key> <t> <t> : "þ"
+<Multi_key> <t> <T> : "Þ"
+<Multi_key> <T> <t> : "Þ"
+#
 # AE/OE ligature:
 <Multi_key> <z> : "æ"
 <Multi_key> <x> : "œ"
 <Multi_key> <Z> : "Æ"
 <Multi_key> <X> : "Œ"
 
-# Cedilla:
+# C-cedilla:
 <Multi_key> <c> : "ç"
 <Multi_key> <C> : "Ç"
 
 # German double-s:
 <Multi_key> <s> : "ß"
+<Multi_key> <S> : "ẞ"
 
 # Enye:
 <Multi_key> <n> : "ñ"
 <Multi_key> <N> : "Ñ"
+
+# Polish L with stroke:
+<Multi_key> <l> : "ł"
+<Multi_key> <L> : "Ł"
+
+# Danish O with stroke:
+<Multi_key> <q> : "ø"
+<Multi_key> <Q> : "Ø"
 
 # Spanish begin !/?
 <Multi_key> <exclam>   : "¡"
 <Multi_key> <question> : "¡"
 <Multi_key> <slash>    : "¿"
 
+# Ellipsis:
+<Multi_key> <period> <period> : "…"
+
+# Broken pipe:
+<Multi_key> <bar> : "¦"
+
+# Triangular Colon:
+<Multi_key> <colon> <colon> : "ː"
+
+# Caron:
+<Multi_key> <asciicircum> <asciicircum> : "ˇ"
+
 # French quotes:
-<Multi_key> <less>    : "«"
-<Multi_key> <greater> : "»"
+<Multi_key> <less>             : "«"
+<Multi_key> <greater>          : "»"
+<Multi_key> <period> <greater> : "›"
+<Multi_key> <period> <less>    : "‹"
 
 # Dashes
-<Multi_key> <minus>      : "—" U2014 # EM DASH
+<Multi_key> <minus>                   : "—" U2014 # EM DASH
 <Multi_key> <underscore> <underscore> : "–" U2013 # EN DASH
-
-# Vulgar fractions:
-# Type "<Multi_key> <1> <2>" to get "½".
 
 # Currency symbols:
 <Multi_key> <dollar>     : "¢"
 <Multi_key> <numbersign> : "£"
 <Multi_key> <ampersand>  : "€"
 <Multi_key> <at>         : "¥"
+
+# Footnote symbols, IP symbols, and others:
+<Multi_key> <asterisk> <asterisk> : "★"
+<Multi_key> <asterisk> <d>        : "†"
+<Multi_key> <asterisk> <D>        : "‡"
+<Multi_key> <asterisk> <s>        : "§"
+<Multi_key> <asterisk> <p>        : "¶"
+<Multi_key> <asterisk> <bar>      : "‖"
+<Multi_key> <asterisk> <c>        : "©"
+<Multi_key> <asterisk> <C>        : "℗" # sound recording copyright
+<Multi_key> <asterisk> <r>        : "®"
+<Multi_key> <asterisk> <t>        : "™"
+<Multi_key> <asterisk> <w>        : "⚠" # Warning
+<Multi_key> <asterisk> <b>        : "☣"
+<Multi_key> <asterisk> <n>        : "☢"
+<Multi_key> <asterisk> <v>        : "♻"
+<Multi_key> <asterisk> <V>        : "♲"
+<Multi_key> <asterisk> <R>        : "℞" # Prescription
+<Multi_key> <asterisk> <l>        : "◊" # Lozenge
+<Multi_key> <asterisk> <m>        : "♂"
+<Multi_key> <asterisk> <f>        : "♀"
+<Multi_key> <asterisk> <e>        : "☀"
+<Multi_key> <asterisk> <E>        : "☼"
+<Multi_key> <asterisk> <period>   : "◉" # Fisheye
+
+# Smilies:
+<Multi_key> <colon> <parenright>     : "☺"
+<Multi_key> <semicolon> <parenright> : "☻"
+<Multi_key> <colon> <parenleft>      : "☹"
+
+# Vulgar fractions:
+<Multi_key> <1> <2>     : "½"
+<Multi_key> <0> <3>     : "↉"
+<Multi_key> <1> <3>     : "⅓"
+<Multi_key> <2> <3>     : "⅔"
+<Multi_key> <1> <4>     : "¼"
+<Multi_key> <3> <4>     : "¾"
+<Multi_key> <1> <5>     : "⅕"
+<Multi_key> <2> <5>     : "⅖"
+<Multi_key> <3> <5>     : "⅗"
+<Multi_key> <4> <5>     : "⅘"
+<Multi_key> <1> <6>     : "⅙"
+<Multi_key> <5> <6>     : "⅚"
+<Multi_key> <1> <7>     : "⅐"
+<Multi_key> <1> <8>     : "⅛"
+<Multi_key> <3> <8>     : "⅜"
+<Multi_key> <5> <8>     : "⅝"
+<Multi_key> <7> <8>     : "⅞"
+<Multi_key> <1> <9>     : "⅑"
+<Multi_key> <1> <1> <0> : "⅒" # [WIDE]
 
 # Greek letters:
 <Multi_key> <b> <a> : "α"
@@ -157,12 +456,14 @@
 <Multi_key> <b> <p> : "π"
 <Multi_key> <b> <r> : "ρ"
 <Multi_key> <b> <s> : "σ"
+<Multi_key> <b> <w> : "ς" # Final form sigma
 <Multi_key> <b> <t> : "τ"
 <Multi_key> <b> <u> : "θ"
 <Multi_key> <b> <v> : "ω"
 <Multi_key> <b> <x> : "χ"
 <Multi_key> <b> <y> : "υ"
 <Multi_key> <b> <z> : "ζ"
+<Multi_key> <b> <q> : "ϝ" # Digamma
 <Multi_key> <b> <A> : "Α"
 <Multi_key> <b> <B> : "Β"
 <Multi_key> <b> <C> : "Ψ"
@@ -187,6 +488,7 @@
 <Multi_key> <b> <X> : "Χ"
 <Multi_key> <b> <Y> : "Υ"
 <Multi_key> <b> <Z> : "Ζ"
+<Multi_key> <b> <Q> : "Ϝ" # Digamma
 <Multi_key> <B> <a> : "Α"
 <Multi_key> <B> <b> : "Β"
 <Multi_key> <B> <c> : "Ψ"
@@ -211,110 +513,337 @@
 <Multi_key> <B> <x> : "Χ"
 <Multi_key> <B> <y> : "Υ"
 <Multi_key> <B> <z> : "Ζ"
+<Multi_key> <B> <q> : "Ϝ" # Digamma
 
 # Subscript/superscript numbers (and some letters)
-<Multi_key> <asciicircum> <0> : "⁰"
-<Multi_key> <asciicircum> <1> : "¹"
-<Multi_key> <asciicircum> <2> : "²"
-<Multi_key> <asciicircum> <3> : "³"
-<Multi_key> <asciicircum> <4> : "⁴"
-<Multi_key> <asciicircum> <5> : "⁵"
-<Multi_key> <asciicircum> <6> : "⁶"
-<Multi_key> <asciicircum> <7> : "⁷"
-<Multi_key> <asciicircum> <8> : "⁸"
-<Multi_key> <asciicircum> <9> : "⁹"
-<Multi_key> <asciicircum> <p> : "⁺"
-<Multi_key> <asciicircum> <m> : "⁻"
-<Multi_key> <asciicircum> <x> : "ˣ"
-<Multi_key> <asciicircum> <y> : "ʸ"
-<Multi_key> <asciicircum> <z> : "ᶻ"
-<Multi_key> <asciicircum> <t> : "ᵗ"
-<Multi_key> <asciicircum> <n> : "ⁿ"
-<Multi_key> <asciicircum> <i> : "ⁱ"
-<Multi_key> <asciicircum> <j> : "ʲ"
-<Multi_key> <asciicircum> <k> : "ᵏ"
-<Multi_key> <underscore> <0>  : "₀"
-<Multi_key> <underscore> <1>  : "₁"
-<Multi_key> <underscore> <2>  : "₂"
-<Multi_key> <underscore> <3>  : "₃"
-<Multi_key> <underscore> <4>  : "₄"
-<Multi_key> <underscore> <5>  : "₅"
-<Multi_key> <underscore> <6>  : "₆"
-<Multi_key> <underscore> <7>  : "₇"
-<Multi_key> <underscore> <8>  : "₈"
-<Multi_key> <underscore> <9>  : "₉"
-<Multi_key> <underscore> <i>  : "ᵢ"
-<Multi_key> <underscore> <j>  : "ⱼ"
-<Multi_key> <underscore> <k>  : "ₖ"
-<Multi_key> <underscore> <m>  : "ₘ"
-<Multi_key> <underscore> <n>  : "ₙ"
+<Multi_key> <asciicircum> <0>          : "⁰"
+<Multi_key> <asciicircum> <1>          : "¹"
+<Multi_key> <asciicircum> <2>          : "²"
+<Multi_key> <asciicircum> <3>          : "³"
+<Multi_key> <asciicircum> <4>          : "⁴"
+<Multi_key> <asciicircum> <5>          : "⁵"
+<Multi_key> <asciicircum> <6>          : "⁶"
+<Multi_key> <asciicircum> <7>          : "⁷"
+<Multi_key> <asciicircum> <8>          : "⁸"
+<Multi_key> <asciicircum> <9>          : "⁹"
+<Multi_key> <asciicircum> <e>          : "ᵉ"
+<Multi_key> <asciicircum> <h>          : "ʰ"
+<Multi_key> <asciicircum> <i>          : "ⁱ"
+<Multi_key> <asciicircum> <j>          : "ʲ"
+<Multi_key> <asciicircum> <k>          : "ᵏ"
+<Multi_key> <asciicircum> <l>          : "ˡ"
+<Multi_key> <asciicircum> <m>          : "ᵐ"
+<Multi_key> <asciicircum> <n>          : "ⁿ"
+<Multi_key> <asciicircum> <r>          : "ʳ"
+<Multi_key> <asciicircum> <s>          : "ˢ"
+<Multi_key> <asciicircum> <t>          : "ᵗ"
+<Multi_key> <asciicircum> <u>          : "ᵘ"
+<Multi_key> <asciicircum> <v>          : "ᵛ"
+<Multi_key> <asciicircum> <w>          : "ʷ"
+<Multi_key> <asciicircum> <x>          : "ˣ"
+<Multi_key> <asciicircum> <y>          : "ʸ"
+<Multi_key> <asciicircum> <z>          : "ᶻ"
+<Multi_key> <asciicircum> <plus>       : "⁺"
+<Multi_key> <asciicircum> <minus>      : "⁻"
+<Multi_key> <asciicircum> <equal>      : "⁼"
+<Multi_key> <asciicircum> <parenleft>  : "⁽"
+<Multi_key> <asciicircum> <parenright> : "⁾"
+<Multi_key> <underscore> <0>           : "₀"
+<Multi_key> <underscore> <1>           : "₁"
+<Multi_key> <underscore> <2>           : "₂"
+<Multi_key> <underscore> <3>           : "₃"
+<Multi_key> <underscore> <4>           : "₄"
+<Multi_key> <underscore> <5>           : "₅"
+<Multi_key> <underscore> <6>           : "₆"
+<Multi_key> <underscore> <7>           : "₇"
+<Multi_key> <underscore> <8>           : "₈"
+<Multi_key> <underscore> <9>           : "₉"
+<Multi_key> <underscore> <e>           : "ₑ"
+<Multi_key> <underscore> <h>           : "ₕ"
+<Multi_key> <underscore> <i>           : "ᵢ"
+<Multi_key> <underscore> <j>           : "ⱼ"
+<Multi_key> <underscore> <k>           : "ₖ"
+<Multi_key> <underscore> <l>           : "ₗ"
+<Multi_key> <underscore> <m>           : "ₘ"
+<Multi_key> <underscore> <n>           : "ₙ"
+<Multi_key> <underscore> <r>           : "ᵣ"
+<Multi_key> <underscore> <s>           : "ₛ"
+<Multi_key> <underscore> <t>           : "ₜ"
+<Multi_key> <underscore> <u>           : "ᵤ"
+<Multi_key> <underscore> <v>           : "ᵥ"
+<Multi_key> <underscore> <x>           : "ₓ"
+<Multi_key> <underscore> <plus>        : "₊"
+<Multi_key> <underscore> <minus>       : "₋"
+<Multi_key> <underscore> <equal>       : "₌"
+<Multi_key> <underscore> <parenleft>   : "₍"
+<Multi_key> <underscore> <parenright>  : "₎"
 
 
 # MATH SYMBOLS:
 
 # General symbols
 <Multi_key> <m> <exclam> <equal> : "≠"
-<Multi_key> <m> <equal>  : "≈"
-<Multi_key> <m> <comma>  : "≤"
-<Multi_key> <m> <period> : "≥"
-<Multi_key> <m> <slash>  : "÷"
-<Multi_key> <m> <x>      : "∙"
-<Multi_key> <m> <X>      : "×"
-<Multi_key> <m> <c>      : "•" # Big center dot (aka a text bullet)
-<Multi_key> <m> <p>      : "±"
-<Multi_key> <m> <P>      : "∓"
-<Multi_key> <m> <r>      : "√"
-<Multi_key> <m> <n>      : "‖"
-<Multi_key> <m> <d>      : "°"
-<Multi_key> <m> <o>      : "∞"
-<Multi_key> <m> <n>      : "∇"
-<Multi_key> <m> <D>      : "∂"
-<Multi_key> <m> <i>      : "∫"
-<Multi_key> <m> <I>      : "∮"
-<Multi_key> <m> <F>      : "ℱ"
-<Multi_key> <m> <L>      : "ℒ"
+<Multi_key> <m> <equal>    : "≈"
+<Multi_key> <m> <comma>    : "≤"
+<Multi_key> <m> <period>   : "≥"
+<Multi_key> <m> <slash>    : "÷"
+<Multi_key> <m> <x>        : "∙"
+<Multi_key> <m> <X>        : "×"
+<Multi_key> <m> <c>        : "•" # Big center dot (aka a text bullet)
+<Multi_key> <m> <C>        : "⊙" # Circled center dot
+<Multi_key> <m> <asterisk> : "⊛" # Circled asterisk
+<Multi_key> <m> <f>        : "∘" # Function composition operator
+<Multi_key> <m> <p>        : "±"
+<Multi_key> <m> <P>        : "∓"
+<Multi_key> <m> <r>        : "√"
+<Multi_key> <m> <3> <r>    : "∛"
+<Multi_key> <m> <4> <r>    : "∜"
+<Multi_key> <m> <R>        : "✓" # Check mark
+<Multi_key> <m> <n>        : "‖"
+<Multi_key> <m> <d>        : "°"
+<Multi_key> <m> <o>        : "∞"
+<Multi_key> <m> <N>        : "∇"
+<Multi_key> <m> <D>        : "∂"
+<Multi_key> <m> <t>        : "⊗" # Tensor
+<Multi_key> <m> <bar>      : "∤" # Does not divide
+<Multi_key> <m> <colon>    : "∝" # Proportional to
+<Multi_key> <m> <i>        : "∫"
+<Multi_key> <m> <2> <i>    : "∬"
+<Multi_key> <m> <3> <i>    : "∭"
+<Multi_key> <m> <4> <i>    : "⨌" # [WIDE]
+<Multi_key> <m> <I>        : "∮"
+<Multi_key> <m> <2> <I>    : "∯"
+<Multi_key> <m> <3> <I>    : "∰"
+<Multi_key> <m> <F>        : "ℱ" # [WIDE]
+<Multi_key> <m> <L>        : "ℒ" # [WIDE]
+<Multi_key> <m> <h>        : "ℏ" # Plank constant over two pi
+<Multi_key> <m> <percent>  : "‰" # Per mille
+<Multi_key> <m> <at>       : "‱" # Per ten thousand
 
 # Logic symbols
 <Multi_key> <m> <l> <a> : "∧"
 <Multi_key> <m> <l> <o> : "∨"
 <Multi_key> <m> <l> <x> : "⊕"
+<Multi_key> <m> <l> <X> : "⊻"
 <Multi_key> <m> <l> <n> : "¬"
 <Multi_key> <m> <l> <i> : "→"
 <Multi_key> <m> <l> <I> : "↔"
-<Multi_key> <m> <l> <equal> : "≡"
+<Multi_key> <m> <l> <t> : "∴"
+<Multi_key> <m> <l> <T> : "∵"
+<Multi_key> <m> <l> <e> : "∃"
+<Multi_key> <m> <l> <E> : "∄"
+<Multi_key> <m> <l> <A> : "∀"
+<Multi_key> <m> <l> <q> : "∎" # QED
+<Multi_key> <m> <l> <c> : "⨳" # Contradiction
+<Multi_key> <m> <l> <C> : "↯" # Contradiction (alt. notation)
+<Multi_key> <m> <l> <numbersign>     : "※" # Contradiction (alt. notation) [WIDE]
+<Multi_key> <m> <l> <equal>          : "≡"
 <Multi_key> <m> <l> <exclam> <equal> : "≢"
 
 # Set symbols
-<Multi_key> <m> <s> <u>        : "⋃"
-<Multi_key> <m> <s> <U>        : "⋂"
-<Multi_key> <m> <s> <comma>    : "⊆"
-<Multi_key> <m> <s> <period>   : "⊇"
-<Multi_key> <m> <s> <k>        : "⊂"
-<Multi_key> <m> <s> <l>        : "⊃"
-<Multi_key> <m> <s> <less>     : "⊈"
-<Multi_key> <m> <s> <greater>  : "⊉"
-<Multi_key> <m> <s> <slash>    : "⊊"
-<Multi_key> <m> <s> <quotedbl> : "⊋"
-<Multi_key> <m> <s> <K>        : "⊄"
-<Multi_key> <m> <s> <L>        : "⊅"
-<Multi_key> <m> <s> <i>        : "∈"
-<Multi_key> <m> <s> <I>        : "∉"
-<Multi_key> <m> <s> <o>        : "∅"
-<Multi_key> <m> <s> <n>        : "ℕ"
-<Multi_key> <m> <s> <z>        : "ℤ"
-<Multi_key> <m> <s> <q>        : "ℚ"
-<Multi_key> <m> <s> <r>        : "ℝ"
-<Multi_key> <m> <s> <c>        : "ℂ"
-<Multi_key> <m> <s> <a>        : "ℵ"
-<Multi_key> <m> <s> <b>        : "ℶ"
-<Multi_key> <m> <s> <d>        : "ℷ"
-<Multi_key> <m> <s> <g>        : "ℸ"
+<Multi_key> <m> <s> <s>         : "∆" # Symmetric difference
+<Multi_key> <m> <s> <S>         : "⊖" # Symmetric difference (alt. notation)
+<Multi_key> <m> <s> <y>         : "⊍"
+<Multi_key> <m> <s> <Y>         : "⊎"
+<Multi_key> <m> <s> <u>         : "∪"
+<Multi_key> <m> <s> <U>         : "∩"
+<Multi_key> <m> <s> <semicolon> : "⊔"
+<Multi_key> <m> <s> <colon>     : "⊓"
+<Multi_key> <m> <s> <P>         : "⨿" # Coproduct/amalgamation
+<Multi_key> <m> <s> <comma>     : "⊆"
+<Multi_key> <m> <s> <period>    : "⊇"
+<Multi_key> <m> <s> <k>         : "⊂"
+<Multi_key> <m> <s> <l>         : "⊃"
+<Multi_key> <m> <s> <less>      : "⊈"
+<Multi_key> <m> <s> <greater>   : "⊉"
+<Multi_key> <m> <s> <slash>     : "⊊"
+<Multi_key> <m> <s> <quotedbl>  : "⊋"
+<Multi_key> <m> <s> <K>         : "⊄"
+<Multi_key> <m> <s> <L>         : "⊅"
+<Multi_key> <m> <s> <i>         : "∈"
+<Multi_key> <m> <s> <I>         : "∉"
+<Multi_key> <m> <s> <o>         : "∋"
+<Multi_key> <m> <s> <O>         : "∌"
+<Multi_key> <m> <s> <e>         : "∅"
+<Multi_key> <m> <s> <n>         : "ℕ"
+<Multi_key> <m> <s> <z>         : "ℤ"
+<Multi_key> <m> <s> <q>         : "ℚ"
+<Multi_key> <m> <s> <r>         : "ℝ"
+<Multi_key> <m> <s> <c>         : "ℂ"
+<Multi_key> <m> <s> <a>         : "ℵ"
+<Multi_key> <m> <s> <b>         : "ℶ"
+<Multi_key> <m> <s> <d>         : "ℷ"
+<Multi_key> <m> <s> <g>         : "ℸ"
+
+# Double Struck
+<Multi_key> <m> <s> <B> <a>     : "𝔸" # [WIDE]
+<Multi_key> <m> <s> <B> <b>     : "𝔹" # [WIDE]
+<Multi_key> <m> <s> <B> <c>     : "ℂ"
+<Multi_key> <m> <s> <B> <d>     : "𝔻" # [WIDE]
+<Multi_key> <m> <s> <B> <e>     : "𝔼" # [WIDE]
+<Multi_key> <m> <s> <B> <f>     : "𝔽"
+<Multi_key> <m> <s> <B> <g>     : "𝔾" # [WIDE]
+<Multi_key> <m> <s> <B> <h>     : "ℍ"
+<Multi_key> <m> <s> <B> <i>     : "𝕀"
+<Multi_key> <m> <s> <B> <j>     : "𝕁"
+<Multi_key> <m> <s> <B> <k>     : "𝕂" # [WIDE]
+<Multi_key> <m> <s> <B> <l>     : "𝕃" # [WIDE]
+<Multi_key> <m> <s> <B> <m>     : "𝕄" # [WIDE]
+<Multi_key> <m> <s> <B> <n>     : "ℕ"
+<Multi_key> <m> <s> <B> <o>     : "𝕆" # [WIDE]
+<Multi_key> <m> <s> <B> <p>     : "ℙ"
+<Multi_key> <m> <s> <B> <q>     : "ℚ"
+<Multi_key> <m> <s> <B> <r>     : "ℝ"
+<Multi_key> <m> <s> <B> <s>     : "𝕊" # [WIDE]
+<Multi_key> <m> <s> <B> <t>     : "𝕋" # [WIDE]
+<Multi_key> <m> <s> <B> <u>     : "𝕌" # [WIDE]
+<Multi_key> <m> <s> <B> <v>     : "𝕍" # [WIDE]
+<Multi_key> <m> <s> <B> <w>     : "𝕎" # [WIDE]
+<Multi_key> <m> <s> <B> <x>     : "𝕏" # [WIDE]
+<Multi_key> <m> <s> <B> <y>     : "𝕐" # [WIDE]
+<Multi_key> <m> <s> <B> <z>     : "ℤ"
+<Multi_key> <m> <s> <B> <0>     : "𝟘" # [WIDE]
+<Multi_key> <m> <s> <B> <1>     : "𝟙"
+<Multi_key> <m> <s> <B> <2>     : "𝟚"
+<Multi_key> <m> <s> <B> <3>     : "𝟛"
+<Multi_key> <m> <s> <B> <4>     : "𝟜"
+<Multi_key> <m> <s> <B> <5>     : "𝟝"
+<Multi_key> <m> <s> <B> <6>     : "𝟞"
+<Multi_key> <m> <s> <B> <7>     : "𝟟"
+<Multi_key> <m> <s> <B> <8>     : "𝟠" # [WIDE]
+<Multi_key> <m> <s> <B> <9>     : "𝟡"
+
+# Big (large) n-ary operators
+<Multi_key> <m> <B> <p>         : "∏" # Product
+<Multi_key> <m> <B> <P>         : "∐" # Coproduct
+<Multi_key> <m> <B> <s>         : "∑"
+<Multi_key> <m> <B> <a>         : "⋀"
+<Multi_key> <m> <B> <o>         : "⋁"
+<Multi_key> <m> <B> <u>         : "⋃"
+<Multi_key> <m> <B> <U>         : "⋂"
+<Multi_key> <m> <B> <y>         : "⨃"
+<Multi_key> <m> <B> <Y>         : "⨄"
+<Multi_key> <m> <B> <semicolon> : "⨆"
+<Multi_key> <m> <B> <colon>     : "⨅"
+<Multi_key> <m> <B> <t>         : "⨂"
+<Multi_key> <m> <B> <x>         : "⨁"
+<Multi_key> <m> <B> <c>         : "⦿" # Circled (large) bullet point [WIDE]
+<Multi_key> <m> <B> <C>         : "⨀" # Circled center dot
 
 # Arrows
 <Multi_key> <m> <a> <comma>   : "←"
 <Multi_key> <m> <a> <period>  : "→"
 <Multi_key> <m> <a> <less>    : "⇐"
 <Multi_key> <m> <a> <greater> : "⇒"
-<Multi_key> <m> <a> <m>       : "↦"
 <Multi_key> <m> <a> <b>       : "↔"
 <Multi_key> <m> <a> <B>       : "⇔"
+<Multi_key> <m> <a> <n>       : "↤"
+<Multi_key> <m> <a> <m>       : "↦"
+<Multi_key> <m> <a> <u>       : "↑"
+<Multi_key> <m> <a> <j>       : "↓"
+<Multi_key> <m> <a> <U>       : "⇑"
+<Multi_key> <m> <a> <J>       : "⇓"
+<Multi_key> <m> <a> <g>       : "↕"
+<Multi_key> <m> <a> <G>       : "⇕"
+<Multi_key> <m> <a> <q>       : "↖"
+<Multi_key> <m> <a> <w>       : "↗"
+<Multi_key> <m> <a> <a>       : "↙"
+<Multi_key> <m> <a> <s>       : "↘"
+<Multi_key> <m> <a> <Q>       : "⇖"
+<Multi_key> <m> <a> <W>       : "⇗"
+<Multi_key> <m> <a> <A>       : "⇙"
+<Multi_key> <m> <a> <S>       : "⇘"
+<Multi_key> <m> <a> <k>       : "↩"
+<Multi_key> <m> <a> <l>       : "↪"
+<Multi_key> <m> <a> <K>       : "↞"
+<Multi_key> <m> <a> <L>       : "↠"
+<Multi_key> <m> <a> <I>       : "⇜"
+<Multi_key> <m> <a> <O>       : "⇝"
+<Multi_key> <m> <a> <d>       : "☚"
+<Multi_key> <m> <a> <f>       : "☛"
+<Multi_key> <m> <a> <D>       : "☜"
+<Multi_key> <m> <a> <F>       : "☞"
+<Multi_key> <m> <a> <c>       : "🖚" # [WIDE]
+<Multi_key> <m> <a> <v>       : "🖛" # [WIDE]
+<Multi_key> <m> <a> <C>       : "🖘" # [WIDE]
+<Multi_key> <m> <a> <V>       : "🖙" # [WIDE]
+<Multi_key> <m> <a> <slash> <comma>   : "↚"
+<Multi_key> <m> <a> <slash> <period>  : "↛"
+<Multi_key> <m> <a> <slash> <less>    : "⇍"
+<Multi_key> <m> <a> <slash> <greater> : "⇏"
+<Multi_key> <m> <a> <slash> <b>       : "↮"
+<Multi_key> <m> <a> <slash> <B>       : "⇎"
+
+# Brackets and ordered operators
+<Multi_key> <m> <b> <comma>        : "⟨"
+<Multi_key> <m> <b> <period>       : "⟩"
+<Multi_key> <m> <b> <less>         : "⟪"
+<Multi_key> <m> <b> <greater>      : "⟫"
+<Multi_key> <m> <b> <d>            : "⌊"
+<Multi_key> <m> <b> <f>            : "⌋"
+<Multi_key> <m> <b> <a>            : "⌈"
+<Multi_key> <m> <b> <s>            : "⌉"
+<Multi_key> <m> <b> <bracketleft>  : "⟦"
+<Multi_key> <m> <b> <bracketright> : "⟧"
+<Multi_key> <m> <b> <braceleft>    : "⟅"
+<Multi_key> <m> <b> <braceright>   : "⟆"
+<Multi_key> <m> <b> <n>            : "≺" # Precedes
+<Multi_key> <m> <b> <m>            : "≻" # Succeeds
+<Multi_key> <m> <b> <N>            : "≼"
+<Multi_key> <m> <b> <M>            : "≽"
+<Multi_key> <m> <b> <i>            : "⊏"
+<Multi_key> <m> <b> <o>            : "⊐"
+<Multi_key> <m> <b> <k>            : "⊑"
+<Multi_key> <m> <b> <l>            : "⊒"
+<Multi_key> <m> <b> <K>            : "⋢"
+<Multi_key> <m> <b> <L>            : "⋣"
+<Multi_key> <m> <b> <I>            : "⋤"
+<Multi_key> <m> <b> <O>            : "⋥"
+
+# Geometry symbols (and some topology)
+<Multi_key> <m> <G> <exclam> <equal> : "≇"
+<Multi_key> <m> <G> <equal>          : "≅"
+<Multi_key> <m> <G> <c>   : "≅" # Congruent
+<Multi_key> <m> <G> <C>   : "≇"
+<Multi_key> <m> <G> <h>   : "≃" # Homotopy equivalence
+<Multi_key> <m> <G> <H>   : "≄"
+<Multi_key> <m> <G> <t>   : "∆"
+<Multi_key> <m> <G> <a>   : "∠"
+<Multi_key> <m> <G> <A>   : "∡"
+<Multi_key> <m> <G> <r>   : "∟"
+<Multi_key> <m> <G> <p>   : "⟂"
+<Multi_key> <m> <G> <l>   : "ℓ" # Often used for slant height
+<Multi_key> <m> <G> <P>   : "∥" # Different from "‖"
+<Multi_key> <m> <G> <bar> : "∥" # Different from "‖"
+<Multi_key> <m> <G> <exclam> <bar> : "∦"
+
+# Game symbols
+<Multi_key> <m> <g> <c> : "♣"
+<Multi_key> <m> <g> <d> : "♦"
+<Multi_key> <m> <g> <h> : "♥"
+<Multi_key> <m> <g> <s> : "♠"
+<Multi_key> <m> <g> <C> : "♧"
+<Multi_key> <m> <g> <D> : "♢"
+<Multi_key> <m> <g> <H> : "♡"
+<Multi_key> <m> <g> <S> : "♤"
+<Multi_key> <m> <g> <k> : "♚"
+<Multi_key> <m> <g> <q> : "♛"
+<Multi_key> <m> <g> <r> : "♜"
+<Multi_key> <m> <g> <b> : "♝"
+<Multi_key> <m> <g> <n> : "♞"
+<Multi_key> <m> <g> <p> : "♟"
+<Multi_key> <m> <g> <K> : "♔"
+<Multi_key> <m> <g> <Q> : "♕"
+<Multi_key> <m> <g> <R> : "♖"
+<Multi_key> <m> <g> <B> : "♗"
+<Multi_key> <m> <g> <N> : "♘"
+<Multi_key> <m> <g> <P> : "♙"
+
+# Music symbols
+<Multi_key> <m> <m> <f> : "♭"
+<Multi_key> <m> <m> <s> : "♯"
+<Multi_key> <m> <m> <n> : "♮"
+<Multi_key> <m> <m> <q> : "♩" # Quarter note
+<Multi_key> <m> <m> <e> : "♪" # Eighth note
+<Multi_key> <m> <m> <E> : "♫" # Beamed eighth notes
+<Multi_key> <m> <m> <S> : "♬" # Beamed sixteenth notes
