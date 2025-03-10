@@ -24,7 +24,7 @@
 # argument so it can use short relative pathnames instead of long absolute
 # pathnames as long absolute pathnames can make "$@" larger than what the
 # OS allows when in a directory of many files.
-# When more than 1 argument is given, this just launches sixv with those
+# When more than 1 argument is given, this just launches nsxiv with those
 # arguments.
 
 if [ $# -eq 0 ]; then
