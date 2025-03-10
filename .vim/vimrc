@@ -59,6 +59,12 @@ if has('eval') " vim-tiny does not have `eval`
   " gvimrc: gvimrc
   " evimrc: evim/evimrc
 
+  " Snippets:
+  " sh : UltiSnips/sh.snippets
+  " tex: UltiSnips/tex/my.snippets
+  " tex: UltiSnips/tex/exam.snippets
+  " tex: UltiSnips/tex/castel.snippets
+
   " Make vim use the correct mouse when in a tmux session:
   if $TERM =~ '^\(tmux\|screen\)\(-.*\)\?$'
     set ttymouse=sgr
