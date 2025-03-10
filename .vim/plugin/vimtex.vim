@@ -20,3 +20,9 @@ let g:vimtex_compiler_latexmk = {
 
 " Disable conceal (because conceal messes with plugins like vim-sneak)
 let g:vimtex_syntax_conceal_disable=1
+
+" Disable `]]` insert mode mapping (`<plug>(vimtex-delim-close)`)
+" since it makes typing "[]" annoying.
+let g:vimtex_mappings_disable = {
+      \ 'i': [']]'],
+      \}
