@@ -514,96 +514,6 @@ snippet ZZ "Z" iA
 endsnippet
 
 context "math()"
-snippet Omm "Omega" iA
-\Omega
-endsnippet
-
-context "math()"
-snippet omm "omega" iA
-\omega
-endsnippet
-
-context "math()"
-snippet gaa "alpha" iA
-\alpha
-endsnippet
-
-context "math()"
-snippet gbb "beta" iA
-\beta
-endsnippet
-
-context "math()"
-snippet gss "sigma" iA
-\sigma
-endsnippet
-
-context "math()"
-snippet gmm "mu" iA
-\mu
-endsnippet
-
-context "math()"
-snippet gee "epsilon" iA
-\epsilon
-endsnippet
-
-context "math()"
-snippet ghh "eta" iA
-\eta
-endsnippet
-
-context "math()"
-snippet gdd "delta" iA
-\delta
-endsnippet
-
-context "math()"
-snippet ggg "gamma" iA
-\gamma
-endsnippet
-
-context "math()"
-snippet goo "theta" iA
-\theta
-endsnippet
-
-context "math()"
-snippet Goo "Theta" iA
-\Theta
-endsnippet
-
-context "math()"
-snippet gff "phi" iA
-\phi
-endsnippet
-
-context "math()"
-snippet Gff "phi" iA
-\Phi
-endsnippet
-
-context "math()"
-snippet gii "iota" iA
-\iota
-endsnippet
-
-context "math()"
-snippet gll "lambda" iA
-\lambda
-endsnippet
-
-context "math()"
-snippet gyy "psi" iA
-\psi
-endsnippet
-
-context "math()"
-snippet gtt "psi" iA
-\tau
-endsnippet
-
-context "math()"
 snippet FF "Mathcal F" iA
 \mathcal{F}
 endsnippet
@@ -621,6 +531,190 @@ endsnippet
 context "math()"
 snippet DD "Mathcal D" iA
 \mathcal{D}
+endsnippet
+
+
+# GREEK LETTERS
+context "math()"
+snippet gaa "alpha" iA
+\alpha
+endsnippet
+
+context "math()"
+snippet gbb "beta" iA
+\beta
+endsnippet
+
+context "math()"
+snippet ggg "gamma" iA
+\gamma
+endsnippet
+
+context "math()"
+snippet gdd "delta" iA
+\delta
+endsnippet
+
+context "math()"
+snippet gee "epsilon" iA
+\epsilon
+endsnippet
+
+context "math()"
+snippet gzz "zeta" iA
+\zeta
+endsnippet
+
+context "math()"
+snippet ghh "eta" iA
+\eta
+endsnippet
+
+context "math()"
+snippet guu "theta" iA
+\theta
+endsnippet
+
+context "math()"
+snippet gii "iota" iA
+\iota
+endsnippet
+
+context "math()"
+snippet gkk "kappa" iA
+\kappa
+endsnippet
+
+context "math()"
+snippet gll "lambda" iA
+\lambda
+endsnippet
+
+context "math()"
+snippet gmm "mu" iA
+\mu
+endsnippet
+
+context "math()"
+snippet gnn "nu" iA
+\nu
+endsnippet
+
+context "math()"
+snippet gjj "xi" iA
+\xi
+endsnippet
+
+context "math()"
+snippet gpp "pi" iA
+\pi
+endsnippet
+
+context "math()"
+snippet grr "rho" iA
+\rho
+endsnippet
+
+context "math()"
+snippet gss "sigma" iA
+\sigma
+endsnippet
+
+context "math()"
+snippet gww "varsigma" iA
+\varsigma
+endsnippet
+
+context "math()"
+snippet gtt "tau" iA
+\tau
+endsnippet
+
+context "math()"
+snippet gyy "upsilon" iA
+\upsilon
+endsnippet
+
+context "math()"
+snippet gff "phi" iA
+\phi
+endsnippet
+
+# The priority avoids conflict with the "xx" snippet.
+priority 200
+context "math()"
+snippet gxx "chi" iA
+\chi
+endsnippet
+
+context "math()"
+snippet gcc "psi" iA
+\psi
+endsnippet
+
+context "math()"
+snippet gvv "omega" iA
+\omega
+endsnippet
+
+context "math()"
+snippet gqq "digamma" iA
+\digamma
+endsnippet
+
+context "math()"
+snippet '(Ggg|gGG)' "Gamma" iAr
+\Gamma
+endsnippet
+
+context "math()"
+snippet '(Gdd|gDD)' "Delta" iAr
+\Delta
+endsnippet
+
+context "math()"
+snippet '(Guu|gUU)' "Theta" iAr
+\Theta
+endsnippet
+
+context "math()"
+snippet '(Gll|gLL)' "Lambda" iAr
+\Lambda
+endsnippet
+
+context "math()"
+snippet '(Gjj|gJJ)' "Xi" iAr
+\Xi
+endsnippet
+
+context "math()"
+snippet '(Gpp|gPP)' "Pi" iAr
+\Pi
+endsnippet
+
+context "math()"
+snippet '(Gss|gSS)' "Sigma" iAr
+\Sigma
+endsnippet
+
+context "math()"
+snippet '(Gyy|gYY)' "Upsilon" iAr
+\Upsilon
+endsnippet
+
+context "math()"
+snippet '(Gff|gFF)' "Phi" iAr
+\Phi
+endsnippet
+
+context "math()"
+snippet '(Gcc|gCC)' "Psi" iAr
+\Psi
+endsnippet
+
+context "math()"
+snippet '(Gvv|gVV)' "Omega" iAr
+\Omega
 endsnippet
 
 
@@ -668,6 +762,7 @@ snippet ccn "subset and !=" Ai
 \subsetneq 
 endsnippet
 
+priority 100
 context "math()"
 snippet xx "cross" iA
 \times 
