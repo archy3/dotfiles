@@ -49,6 +49,8 @@ snippet new "boilerplate" b
 \newcommand{\R}{\ensuremath{\mathbb{R}}}
 \newcommand{\C}{\ensuremath{\mathbb{C}}}
 \renewcommand{\d}{\ensuremath{\, d}}
+\let\temp\kappa \let\kappa\varkappa \let\varkappa\temp
+\let\temp\epsilon \let\epsilon\varepsilon \let\varepsilon\temp
 
 \begin{document}
 	$0
