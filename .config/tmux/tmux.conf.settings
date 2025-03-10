@@ -42,6 +42,17 @@ set -g default-command "${SHELL}"
 # Allow for 256 colors if supported:
 set -gF default-terminal '#{?#{m/r:^.*color.*$,#{TERM}},tmux-256color,tmux}'
 
+# Allow for truecolor if environment variables suggest it is
+# supported (truecolor support works in xterm without this
+# check [and xterm doesn't even set $COLORTERM], but it's
+# needed on many other terminals [such as LXTerminal and
+# Windows Console (hence the WSL check since Windows
+# Console doesn't set $COLORTERM)]):
+# From: https://github.com/tmux/tmux/issues/4300#issuecomment-2588138037
+%if "#{||:#{m/r:^truecolor$|^24bit$,#{COLORTERM}},#{!=:#{WSL_DISTRO_NAME},}}"
+  set -asF terminal-features ",#{TERM}:RGB"
+%endif
+
 # Set xterm title:
 set -g set-titles on
 set -g set-titles-string "#{pane_title}"
