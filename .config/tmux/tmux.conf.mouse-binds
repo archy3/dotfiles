@@ -6,17 +6,29 @@ set -g word-separators " "
 # Will use xclip for clipboard instead:
 set -s set-clipboard off
 
-# Set default pipe to paste to primary select, and define a pipe to clipboard:
-set -g copy-command "xclip -i > /dev/null"
-set -g @copy-clipboard "xclip -i -selection clipboard > /dev/null"
+# Set default pipe to copy into primary select, and define a
+# pipe to clipboard, and create shell commands to copy the
+# contents of primary select & clipboard into a tmux paste
+# buffer (for the purposes of then pasting from that tmux paste buffer).
+set -g copy-command '
+  command -v xclip > /dev/null &&
+    xclip -i > /dev/null
+'
+
+set -g @copy-clipboard '
+  command -v xclip > /dev/null &&
+    xclip -i -selection clipboard > /dev/null
+'
 
 set -g @paste-primary '
-  xclip -r -o | tmux load-buffer -b temp - &&
+  command -v xclip > /dev/null &&
+    xclip -r -o | tmux load-buffer -b temp - &&
     tmux list-buffers -F "#{buffer_name}" | grep -q "^temp$"
 '
 
 set -g @paste-clipboard '
-  xclip -r -o -selection clipboard | tmux load-buffer -b temp - &&
+  command -v xclip > /dev/null &&
+    xclip -r -o -selection clipboard | tmux load-buffer -b temp - &&
     tmux list-buffers -F "#{buffer_name}" | grep -q "^temp$"
 '
 
