@@ -52,6 +52,9 @@ if has('eval') " vim-tiny does not have `eval`
   " pwsh: after/ftplugin/ps1.vim
   " tex : after/ftplugin/tex.vim
   " text: after/ftplugin/text.vim
+  " tmux: after/ftplugin/tmux.vim
+  " snippets : after/ftplugin/snippets.vim
+  " gitcommit: after/ftplugin/gitcommit.vim
 
   " gvimrc: gvimrc
   " evimrc: evim/evimrc
