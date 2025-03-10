@@ -39,8 +39,8 @@ setw -g aggressive-resize on
 # Do not start a login shell:
 set -g default-command "${SHELL}"
 
-# Allow for color:
-set -g default-terminal "tmux-256color"
+# Allow for 256 colors if supported:
+set -gF default-terminal '#{?#{m/r:^.*color.*$,#{TERM}},tmux-256color,tmux}'
 
 # Set xterm title:
 set -g set-titles on
