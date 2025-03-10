@@ -107,17 +107,14 @@ if &t_Co > 2 || has("gui_running")
     autocmd vimenter * hi SpellLocal cterm=underline
       " See also this: https://gist.github.com/romainl/379904f91fa40533175dfaec4c833f2f
     set termguicolors
-    if $TERM =~ '^tmux-.*color.*$'
-      " See :h xterm-true-color
-      let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-      let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-    endif
   else
     autocmd vimenter * ++nested colorscheme gruvbox
   endif
+
   "autocmd vimenter * hi Normal guifg=#FFD7AF
   set background=dark
 endif
+
 
 " Set path in order to use gf and :find effectively:
 set path+=~
