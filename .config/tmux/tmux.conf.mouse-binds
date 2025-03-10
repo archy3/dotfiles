@@ -6,10 +6,7 @@ set -g word-separators " "
 # Will use xclip for clipboard instead:
 set -s set-clipboard off
 
-# Set default pipe to copy into primary select, and define a
-# pipe to clipboard, and create shell commands to copy the
-# contents of primary select & clipboard into a tmux paste
-# buffer (for the purposes of then pasting from that tmux paste buffer).
+# Set default pipe to copy into primary select, and define a pipe to clipboard:
 set -g copy-command '
   command -v xclip > /dev/null &&
     xclip -i > /dev/null
@@ -20,17 +17,23 @@ set -g @copy-clipboard '
     xclip -i -selection clipboard > /dev/null
 '
 
-set -g @paste-primary '
+# Create shell commands to copy the contents of primary select
+# and clipboard into a tmux paste buffer (for the purposes of
+# then pasting from that tmux paste buffer).
+set -g @ephemeral-paste-buffer 'ephemeral-paste-buffer'
+
+set -gF @paste-primary '
   command -v xclip > /dev/null &&
-    xclip -r -o | tmux load-buffer -b temp - &&
-    tmux list-buffers -F "#{buffer_name}" | grep -q "^temp$"
+    xclip -r -o | tmux load-buffer -b "#{@ephemeral-paste-buffer}" - &&
+    tmux list-buffers -F "##{buffer_name}" | grep -q "^#{@ephemeral-paste-buffer}$"
 '
 
-set -g @paste-clipboard '
+set -gF @paste-clipboard '
   command -v xclip > /dev/null &&
-    xclip -r -o -selection clipboard | tmux load-buffer -b temp - &&
-    tmux list-buffers -F "#{buffer_name}" | grep -q "^temp$"
+    xclip -r -o -selection clipboard | tmux load-buffer -b "#{@ephemeral-paste-buffer}" - &&
+    tmux list-buffers -F "##{buffer_name}" | grep -q "^#{@ephemeral-paste-buffer}$"
 '
+
 
 # Make mouse-back and double right-click exit copy mode:
 bind -T copy-mode-vi MouseDown8Pane send -X cancel
@@ -102,7 +105,7 @@ set -gF @paste-primary-from-copy-mode {
   select-pane
   if-shell -t= "##{@paste-primary}" {
     send -X cancel
-    paste-buffer -dp -b temp
+    paste-buffer -dp -b "#{@ephemeral-paste-buffer}"
   } {
     send -X clear-selection
   }
@@ -113,7 +116,7 @@ set -gF @paste-primary-from-root {
     send -Mt=
   } {
     if-shell -t= "##{@paste-primary}" {
-      paste-buffer -dp -b temp
+      paste-buffer -dp -b "#{@ephemeral-paste-buffer}"
     }
   }
   select-pane
@@ -124,7 +127,7 @@ set -gF @paste-clipboard-from-root {
     send -Mt=
   } {
     if-shell -t= "##{@paste-clipboard}" {
-      paste-buffer -dp -b temp
+      paste-buffer -dp -b "#{@ephemeral-paste-buffer}"
     }
   }
   select-pane
