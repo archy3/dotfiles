@@ -15,7 +15,9 @@ set -g status-left ""
 set -g status-right ""
 
 # Set selection color:
-set -g mode-style 'fg=color223 bg=color236'
+%if "#{m/r:^.*color.*$,#{TERM}}"
+  set -g mode-style 'fg=color223 bg=color236'
+%endif
 
 # Show messages for 4 seconds:
 set -g display-time 4000
