@@ -13,8 +13,6 @@ set-hook -g window-linked "if -F '#{==:#{session_windows},1}' 'set -g status off
 set-hook -g window-unlinked "if -F '#{==:#{session_windows},1}' 'set -g status off' 'set -g status on'"
 set -g status-left ""
 set -g status-right ""
-#set -g status-bg '#262626'
-#set -g status-fg '#ffd7af'
 
 # Set selection color:
 set -g mode-style 'fg=color223 bg=color236'
