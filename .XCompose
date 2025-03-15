@@ -787,11 +787,16 @@
 <Multi_key> <asciicircum> <o> : "º"
 
 # Currency symbols:
-<Multi_key> <dollar>      : "¢"
+<Multi_key> <dollar>      : "¢" # Cent
 <Multi_key> <numbersign>  : "£"
 <Multi_key> <ampersand>   : "€"
 <Multi_key> <at>          : "¥"
-<Multi_key> <percent> <c> : "¤"
+<Multi_key> <percent> <c> : "₡" # Colón
+<Multi_key> <percent> <C> : "₵" # Cedi
+<Multi_key> <percent> <b> : "₿" # Bitcoin
+<Multi_key> <percent> <r> : "₹" # Rupee
+<Multi_key> <percent> <R> : "₨" # Rupee old style
+<Multi_key> <percent> <m> : "¤"
 
 # Footnote symbols, IP symbols, whitespace indicators, and others:
 <Multi_key> <asterisk> <asterisk> : "★"
