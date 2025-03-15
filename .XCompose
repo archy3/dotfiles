@@ -725,7 +725,7 @@
 <Multi_key> <Q> : "Ø"
 
 # Long s
-<Multi_key> <f> <s> :"ſ"
+<Multi_key> <f> <s> : "ſ"
 
 # Spanish begin !/?
 <Multi_key> <exclam>   : "¡"
