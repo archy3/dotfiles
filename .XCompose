@@ -124,6 +124,57 @@
 <Multi_key> <G> <Multi_key> <u> : "Ủ"
 <Multi_key> <G> <Multi_key> <y> : "Ỷ"
 
+# Hook diacritic:
+<Multi_key> <g> <Multi_key> <b> : "ɓ"
+<Multi_key> <g> <Multi_key> <c> : "ƈ"
+<Multi_key> <g> <Multi_key> <d> : "ɗ"
+<Multi_key> <g> <Multi_key> <f> : "ƒ"
+<Multi_key> <g> <Multi_key> <g> : "ɠ"
+<Multi_key> <g> <Multi_key> <h> : "ɦ"
+<Multi_key> <g> <Multi_key> <k> : "ƙ"
+<Multi_key> <g> <Multi_key> <m> : "ɱ"
+<Multi_key> <g> <Multi_key> <n> : "ɲ" # Specifically, n with left hook
+<Multi_key> <g> <Multi_key> <p> : "ƥ"
+<Multi_key> <g> <Multi_key> <q> : "ʠ"
+<Multi_key> <g> <Multi_key> <s> : "ʂ"
+<Multi_key> <g> <Multi_key> <t> : "ƭ"
+<Multi_key> <g> <Multi_key> <v> : "ʋ"
+<Multi_key> <g> <Multi_key> <w> : "ⱳ"
+<Multi_key> <g> <Multi_key> <j> : "ƴ" # Key should be y but that's taken for ỷ
+<Multi_key> <g> <Multi_key> <z> : "ȥ"
+<Multi_key> <g> <Multi_key> <B> : "Ɓ"
+<Multi_key> <g> <Multi_key> <C> : "Ƈ"
+<Multi_key> <g> <Multi_key> <D> : "Ɗ"
+<Multi_key> <g> <Multi_key> <F> : "Ƒ"
+<Multi_key> <g> <Multi_key> <G> : "Ɠ"
+<Multi_key> <g> <Multi_key> <H> : "Ɦ"
+<Multi_key> <g> <Multi_key> <K> : "Ƙ"
+<Multi_key> <g> <Multi_key> <M> : "Ɱ"
+<Multi_key> <g> <Multi_key> <N> : "Ɲ" # Specifically, N with left hook
+<Multi_key> <g> <Multi_key> <P> : "Ƥ"
+<Multi_key> <g> <Multi_key> <S> : "Ʂ"
+<Multi_key> <g> <Multi_key> <T> : "Ƭ"
+<Multi_key> <g> <Multi_key> <V> : "Ʋ"
+<Multi_key> <g> <Multi_key> <W> : "Ⱳ"
+<Multi_key> <g> <Multi_key> <J> : "Ƴ" # Key should be Y but that's taken for Ỷ
+<Multi_key> <g> <Multi_key> <Z> : "Ȥ"
+<Multi_key> <G> <Multi_key> <b> : "Ɓ"
+<Multi_key> <G> <Multi_key> <c> : "Ƈ"
+<Multi_key> <G> <Multi_key> <d> : "Ɗ"
+<Multi_key> <G> <Multi_key> <f> : "Ƒ"
+<Multi_key> <G> <Multi_key> <g> : "Ɠ"
+<Multi_key> <G> <Multi_key> <h> : "Ɦ"
+<Multi_key> <G> <Multi_key> <k> : "Ƙ"
+<Multi_key> <G> <Multi_key> <m> : "Ɱ"
+<Multi_key> <G> <Multi_key> <n> : "Ɲ" # Specifically, N with left hook
+<Multi_key> <G> <Multi_key> <p> : "Ƥ"
+<Multi_key> <G> <Multi_key> <s> : "Ʂ"
+<Multi_key> <G> <Multi_key> <t> : "Ƭ"
+<Multi_key> <G> <Multi_key> <v> : "Ʋ"
+<Multi_key> <G> <Multi_key> <w> : "Ⱳ"
+<Multi_key> <G> <Multi_key> <j> : "Ƴ" # Key should be y but that's taken for Ỷ
+<Multi_key> <G> <Multi_key> <z> : "Ȥ"
+
 # Diaeresis diacritic:
 <Multi_key> <d> <a> : "ä"
 <Multi_key> <d> <e> : "ë"
@@ -732,8 +783,6 @@
 <Multi_key> <asterisk> <period>   : "·" # Interpunct
 <Multi_key> <asterisk> <slash>    : "⍽" # Non-breaking space indicator
 <Multi_key> <asterisk> <greater>  : "◉" # Fisheye
-<Multi_key> <asterisk> <f>        : "ƒ" # f with hook
-<Multi_key> <asterisk> <F>        : "Ƒ"
 
 # Smilies:
 <Multi_key> <colon> <parenright>     : "☺"
