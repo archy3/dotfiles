@@ -313,6 +313,24 @@
 <Multi_key> <T> <Multi_key> <i> : "Ḭ"
 <Multi_key> <T> <Multi_key> <u> : "Ṵ"
 
+# Tilde in middle diacritic:
+<Multi_key> <t> <Multi_key> <b> : "ᵬ"
+<Multi_key> <t> <Multi_key> <d> : "ᵭ"
+<Multi_key> <t> <Multi_key> <f> : "ᵮ"
+<Multi_key> <t> <Multi_key> <l> : "ɫ"
+<Multi_key> <t> <Multi_key> <m> : "ᵯ"
+<Multi_key> <t> <Multi_key> <n> : "ᵰ"
+<Multi_key> <t> <Multi_key> <o> : "ɵ" # Barred o
+<Multi_key> <t> <Multi_key> <p> : "ᵱ"
+<Multi_key> <t> <Multi_key> <r> : "ᵲ"
+<Multi_key> <t> <Multi_key> <s> : "ᵴ"
+<Multi_key> <t> <Multi_key> <t> : "ᵵ"
+<Multi_key> <t> <Multi_key> <z> : "ᵶ"
+<Multi_key> <t> <Multi_key> <L> : "Ɫ"
+<Multi_key> <t> <Multi_key> <O> : "Ɵ" # Capital O with middle tilde (renders as barred O)
+<Multi_key> <T> <Multi_key> <l> : "Ɫ"
+<Multi_key> <T> <Multi_key> <o> : "Ɵ" # Capital O with middle tilde (renders as barred O)
+
 # Caron diacritic:
 <Multi_key> <v> <a> : "ǎ"
 <Multi_key> <v> <c> : "č"
