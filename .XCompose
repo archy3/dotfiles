@@ -799,38 +799,43 @@
 <Multi_key> <percent> <m> : "¤"
 
 # Footnote symbols, IP symbols, whitespace indicators, and others:
-<Multi_key> <asterisk> <asterisk> : "★"
-<Multi_key> <asterisk> <d>        : "†"
-<Multi_key> <asterisk> <D>        : "‡"
-<Multi_key> <asterisk> <s>        : "§"
-<Multi_key> <asterisk> <p>        : "¶"
-<Multi_key> <asterisk> <bar>      : "‖"
-<Multi_key> <asterisk> <P>        : "↵"
-<Multi_key> <asterisk> <c>        : "©"
-<Multi_key> <asterisk> <C>        : "℗" # sound recording copyright
-<Multi_key> <asterisk> <r>        : "®"
-<Multi_key> <asterisk> <t>        : "™"
-<Multi_key> <asterisk> <w>        : "⚠" # Warning
-<Multi_key> <asterisk> <b>        : "☣"
-<Multi_key> <asterisk> <n>        : "☢"
-<Multi_key> <asterisk> <v>        : "♻"
-<Multi_key> <asterisk> <V>        : "♲"
-<Multi_key> <asterisk> <R>        : "℞" # Prescription
-<Multi_key> <asterisk> <l>        : "⧫" # Lozenge
-<Multi_key> <asterisk> <L>        : "◊"
-<Multi_key> <asterisk> <j>        : "▼"
-<Multi_key> <asterisk> <k>        : "▲"
-<Multi_key> <asterisk> <J>        : "◄"
-<Multi_key> <asterisk> <K>        : "►"
-<Multi_key> <asterisk> <h>        : "■"
-<Multi_key> <asterisk> <H>        : "□"
-<Multi_key> <asterisk> <g>        : "♂"
-<Multi_key> <asterisk> <G>        : "♀"
-<Multi_key> <asterisk> <e>        : "☀"
-<Multi_key> <asterisk> <E>        : "☼"
-<Multi_key> <asterisk> <comma>    : "␣" # Whitespace indicator
-<Multi_key> <asterisk> <period>   : "·" # Interpunct
-<Multi_key> <asterisk> <slash>    : "⍽" # Non-breaking space indicator
+<Multi_key> <asterisk> <asterisk>   : "★"
+<Multi_key> <asterisk> <d>          : "†"
+<Multi_key> <asterisk> <D>          : "‡"
+<Multi_key> <asterisk> <s>          : "§"
+<Multi_key> <asterisk> <p>          : "¶"
+<Multi_key> <asterisk> <bar>        : "‖"
+<Multi_key> <asterisk> <P>          : "↵"
+<Multi_key> <asterisk> <c>          : "©"
+<Multi_key> <asterisk> <C>          : "℗" # sound recording copyright
+<Multi_key> <asterisk> <r>          : "®"
+<Multi_key> <asterisk> <t>          : "™"
+<Multi_key> <asterisk> <w>          : "⚠" # Warning
+<Multi_key> <asterisk> <b>          : "☣"
+<Multi_key> <asterisk> <n>          : "☢"
+<Multi_key> <asterisk> <v>          : "♻"
+<Multi_key> <asterisk> <V>          : "♲"
+<Multi_key> <asterisk> <R>          : "℞" # Prescription
+<Multi_key> <asterisk> <numbersign> : "№" # No.
+<Multi_key> <asterisk> <l>          : "⧫" # Lozenge
+<Multi_key> <asterisk> <L>          : "◊"
+<Multi_key> <asterisk> <j>          : "▼"
+<Multi_key> <asterisk> <k>          : "▲"
+<Multi_key> <asterisk> <J>          : "◄"
+<Multi_key> <asterisk> <K>          : "►"
+<Multi_key> <asterisk> <h>          : "■"
+<Multi_key> <asterisk> <H>          : "□"
+<Multi_key> <asterisk> <g>          : "♂"
+<Multi_key> <asterisk> <G>          : "♀"
+<Multi_key> <asterisk> <e>          : "☀"
+<Multi_key> <asterisk> <E>          : "☼"
+<Multi_key> <asterisk> <comma>      : "␣" # Whitespace indicator
+<Multi_key> <asterisk> <period>     : "·" # Interpunct
+<Multi_key> <asterisk> <slash>      : "⍽" # Non-breaking space indicator
+<Multi_key> <asterisk> <greater>    : "⇥" # Tab
+<Multi_key> <asterisk> <less>       : "⇤"
+<Multi_key> <asterisk> <Multi_key> <d> : "⹋"
+<Multi_key> <asterisk> <Multi_key> <g> : "⚥"
 
 # Smilies:
 <Multi_key> <colon> <parenright>     : "☺"
