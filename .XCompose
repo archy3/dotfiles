@@ -831,7 +831,6 @@
 <Multi_key> <asterisk> <comma>    : "␣" # Whitespace indicator
 <Multi_key> <asterisk> <period>   : "·" # Interpunct
 <Multi_key> <asterisk> <slash>    : "⍽" # Non-breaking space indicator
-<Multi_key> <asterisk> <greater>  : "◉" # Fisheye
 
 # Smilies:
 <Multi_key> <colon> <parenright>     : "☺"
@@ -1047,6 +1046,16 @@
 <Multi_key> <m> <2> <slash>     : "⫽"
 <Multi_key> <m> <3> <slash>     : "⫻" # [WIDE]
 <Multi_key> <m> <2> <backslash> : "⑊"
+<Multi_key> <m> <Multi_key> <p> : "∏" # Product (n-ary)
+<Multi_key> <m> <Multi_key> <P> : "∐" # Coproduct (n-ary)
+<Multi_key> <m> <Multi_key> <s> : "∑" # Sum (n-ary)
+<Multi_key> <m> <Multi_key> <t> : "⨂" # Tensor (n-ary)
+<Multi_key> <m> <Multi_key> <c> : "⨀" # Circled center dot (n-ary)
+<Multi_key> <m> <Multi_key> <x> : "⦿"  # Circled (large) bullet point [WIDE]
+<Multi_key> <m> <Multi_key> <X> : "⦾" # Circled circle [WIDE]
+<Multi_key> <m> <Multi_key> <greater>  : "◎" # Circled circle
+<Multi_key> <m> <Multi_key> <period>   : "◉" # Fisheye
+<Multi_key> <m> <Multi_key> <asterisk> : "⍟" # Circled star
 
 # Logic symbols
 <Multi_key> <m> <l> <a> : "∧"
@@ -1065,9 +1074,12 @@
 <Multi_key> <m> <l> <q> : "∎" # QED
 <Multi_key> <m> <l> <c> : "⨳" # Contradiction
 <Multi_key> <m> <l> <C> : "↯" # Contradiction (alt. notation)
-<Multi_key> <m> <l> <numbersign>     : "※" # Contradiction (alt. notation) [WIDE]
+<Multi_key> <m> <l> <Multi_key> <c>  : "※" # Contradiction (alt. notation) [WIDE]
 <Multi_key> <m> <l> <equal>          : "≡"
 <Multi_key> <m> <l> <exclam> <equal> : "≢"
+<Multi_key> <m> <l> <Multi_key> <a>  : "⋀" # And (n-ary)
+<Multi_key> <m> <l> <Multi_key> <o>  : "⋁" # Or (n-ary)
+<Multi_key> <m> <l> <Multi_key> <x>  : "⨁" # Xor (n-ary)
 
 # Set symbols
 <Multi_key> <m> <s> <s>         : "∆" # Symmetric difference
@@ -1103,61 +1115,50 @@
 <Multi_key> <m> <s> <b>         : "ℶ"
 <Multi_key> <m> <s> <d>         : "ℷ"
 <Multi_key> <m> <s> <g>         : "ℸ"
+<Multi_key> <m> <s> <Multi_key> <u>         : "⋃" # (n-ary)
+<Multi_key> <m> <s> <Multi_key> <U>         : "⋂" # (n-ary)
+<Multi_key> <m> <s> <Multi_key> <y>         : "⨃" # (n-ary)
+<Multi_key> <m> <s> <Multi_key> <Y>         : "⨄" # (n-ary)
+<Multi_key> <m> <s> <Multi_key> <semicolon> : "⨆" # (n-ary)
+<Multi_key> <m> <s> <Multi_key> <colon>     : "⨅" # (n-ary)
 
 # Double Struck
-<Multi_key> <m> <s> <B> <a>     : "𝔸" # [WIDE]
-<Multi_key> <m> <s> <B> <b>     : "𝔹" # [WIDE]
-<Multi_key> <m> <s> <B> <c>     : "ℂ"
-<Multi_key> <m> <s> <B> <d>     : "𝔻" # [WIDE]
-<Multi_key> <m> <s> <B> <e>     : "𝔼" # [WIDE]
-<Multi_key> <m> <s> <B> <f>     : "𝔽"
-<Multi_key> <m> <s> <B> <g>     : "𝔾" # [WIDE]
-<Multi_key> <m> <s> <B> <h>     : "ℍ"
-<Multi_key> <m> <s> <B> <i>     : "𝕀"
-<Multi_key> <m> <s> <B> <j>     : "𝕁"
-<Multi_key> <m> <s> <B> <k>     : "𝕂" # [WIDE]
-<Multi_key> <m> <s> <B> <l>     : "𝕃" # [WIDE]
-<Multi_key> <m> <s> <B> <m>     : "𝕄" # [WIDE]
-<Multi_key> <m> <s> <B> <n>     : "ℕ"
-<Multi_key> <m> <s> <B> <o>     : "𝕆" # [WIDE]
-<Multi_key> <m> <s> <B> <p>     : "ℙ"
-<Multi_key> <m> <s> <B> <q>     : "ℚ"
-<Multi_key> <m> <s> <B> <r>     : "ℝ"
-<Multi_key> <m> <s> <B> <s>     : "𝕊" # [WIDE]
-<Multi_key> <m> <s> <B> <t>     : "𝕋" # [WIDE]
-<Multi_key> <m> <s> <B> <u>     : "𝕌" # [WIDE]
-<Multi_key> <m> <s> <B> <v>     : "𝕍" # [WIDE]
-<Multi_key> <m> <s> <B> <w>     : "𝕎" # [WIDE]
-<Multi_key> <m> <s> <B> <x>     : "𝕏" # [WIDE]
-<Multi_key> <m> <s> <B> <y>     : "𝕐" # [WIDE]
-<Multi_key> <m> <s> <B> <z>     : "ℤ"
-<Multi_key> <m> <s> <B> <0>     : "𝟘" # [WIDE]
-<Multi_key> <m> <s> <B> <1>     : "𝟙"
-<Multi_key> <m> <s> <B> <2>     : "𝟚"
-<Multi_key> <m> <s> <B> <3>     : "𝟛"
-<Multi_key> <m> <s> <B> <4>     : "𝟜"
-<Multi_key> <m> <s> <B> <5>     : "𝟝"
-<Multi_key> <m> <s> <B> <6>     : "𝟞"
-<Multi_key> <m> <s> <B> <7>     : "𝟟"
-<Multi_key> <m> <s> <B> <8>     : "𝟠" # [WIDE]
-<Multi_key> <m> <s> <B> <9>     : "𝟡"
-
-# Big (large) n-ary operators
-<Multi_key> <m> <B> <p>         : "∏" # Product
-<Multi_key> <m> <B> <P>         : "∐" # Coproduct
-<Multi_key> <m> <B> <s>         : "∑"
-<Multi_key> <m> <B> <a>         : "⋀"
-<Multi_key> <m> <B> <o>         : "⋁"
-<Multi_key> <m> <B> <u>         : "⋃"
-<Multi_key> <m> <B> <U>         : "⋂"
-<Multi_key> <m> <B> <y>         : "⨃"
-<Multi_key> <m> <B> <Y>         : "⨄"
-<Multi_key> <m> <B> <semicolon> : "⨆"
-<Multi_key> <m> <B> <colon>     : "⨅"
-<Multi_key> <m> <B> <t>         : "⨂"
-<Multi_key> <m> <B> <x>         : "⨁"
-<Multi_key> <m> <B> <c>         : "⦿" # Circled (large) bullet point [WIDE]
-<Multi_key> <m> <B> <C>         : "⨀" # Circled center dot
+<Multi_key> <m> <B> <a>     : "𝔸" # [WIDE]
+<Multi_key> <m> <B> <b>     : "𝔹" # [WIDE]
+<Multi_key> <m> <B> <c>     : "ℂ"
+<Multi_key> <m> <B> <d>     : "𝔻" # [WIDE]
+<Multi_key> <m> <B> <e>     : "𝔼" # [WIDE]
+<Multi_key> <m> <B> <f>     : "𝔽"
+<Multi_key> <m> <B> <g>     : "𝔾" # [WIDE]
+<Multi_key> <m> <B> <h>     : "ℍ"
+<Multi_key> <m> <B> <i>     : "𝕀"
+<Multi_key> <m> <B> <j>     : "𝕁"
+<Multi_key> <m> <B> <k>     : "𝕂" # [WIDE]
+<Multi_key> <m> <B> <l>     : "𝕃" # [WIDE]
+<Multi_key> <m> <B> <m>     : "𝕄" # [WIDE]
+<Multi_key> <m> <B> <n>     : "ℕ"
+<Multi_key> <m> <B> <o>     : "𝕆" # [WIDE]
+<Multi_key> <m> <B> <p>     : "ℙ"
+<Multi_key> <m> <B> <q>     : "ℚ"
+<Multi_key> <m> <B> <r>     : "ℝ"
+<Multi_key> <m> <B> <s>     : "𝕊" # [WIDE]
+<Multi_key> <m> <B> <t>     : "𝕋" # [WIDE]
+<Multi_key> <m> <B> <u>     : "𝕌" # [WIDE]
+<Multi_key> <m> <B> <v>     : "𝕍" # [WIDE]
+<Multi_key> <m> <B> <w>     : "𝕎" # [WIDE]
+<Multi_key> <m> <B> <x>     : "𝕏" # [WIDE]
+<Multi_key> <m> <B> <y>     : "𝕐" # [WIDE]
+<Multi_key> <m> <B> <z>     : "ℤ"
+<Multi_key> <m> <B> <0>     : "𝟘" # [WIDE]
+<Multi_key> <m> <B> <1>     : "𝟙"
+<Multi_key> <m> <B> <2>     : "𝟚"
+<Multi_key> <m> <B> <3>     : "𝟛"
+<Multi_key> <m> <B> <4>     : "𝟜"
+<Multi_key> <m> <B> <5>     : "𝟝"
+<Multi_key> <m> <B> <6>     : "𝟞"
+<Multi_key> <m> <B> <7>     : "𝟟"
+<Multi_key> <m> <B> <8>     : "𝟠" # [WIDE]
+<Multi_key> <m> <B> <9>     : "𝟡"
 
 # Arrows
 <Multi_key> <m> <a> <comma>   : "←"
