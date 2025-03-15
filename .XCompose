@@ -1044,6 +1044,9 @@
 <Multi_key> <m> <percent>  : "‰" # Per mille
 <Multi_key> <m> <at>       : "‱" # Per ten thousand
 <Multi_key> <m> <greater>  : "⋯" # Center dots
+<Multi_key> <m> <2> <slash>     : "⫽"
+<Multi_key> <m> <3> <slash>     : "⫻" # [WIDE]
+<Multi_key> <m> <2> <backslash> : "⑊"
 
 # Logic symbols
 <Multi_key> <m> <l> <a> : "∧"
