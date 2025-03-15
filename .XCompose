@@ -1211,6 +1211,8 @@
 <Multi_key> <m> <b> <s>            : "⌉"
 <Multi_key> <m> <b> <bracketleft>  : "⟦"
 <Multi_key> <m> <b> <bracketright> : "⟧"
+<Multi_key> <m> <b> <parenleft>    : "⸨"
+<Multi_key> <m> <b> <parenright>   : "⸩"
 <Multi_key> <m> <b> <braceleft>    : "⟅"
 <Multi_key> <m> <b> <braceright>   : "⟆"
 <Multi_key> <m> <b> <n>            : "≺" # Precedes
