@@ -494,6 +494,7 @@
 <Multi_key> <K> <r> : "Ɍ"
 <Multi_key> <K> <t> : "Ŧ"
 <Multi_key> <K> <z> : "Ƶ"
+<Multi_key> <k> <2> : "ƻ" # 2 with stroke
 
 # Stroke vowel diacritic:
 <Multi_key> <k> <Multi_key> <a> : "ⱥ"
