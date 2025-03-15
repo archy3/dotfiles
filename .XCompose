@@ -1442,3 +1442,287 @@
 <Multi_key> <m> <m> <e> : "♪" # Eighth note
 <Multi_key> <m> <m> <E> : "♫" # Beamed eighth notes
 <Multi_key> <m> <m> <S> : "♬" # Beamed sixteenth notes
+
+
+# IPA SYMBOLS:
+
+# Misc toplevel symbols:
+<Multi_key> <p> <m> <b> : "ƃ" # b with topbar
+<Multi_key> <p> <m> <B> : "Ƃ"
+<Multi_key> <p> <m> <c> : "ɔ" # Open o/turned c
+<Multi_key> <p> <m> <C> : "Ɔ"
+<Multi_key> <p> <m> <d> : "ð" # Eth
+<Multi_key> <p> <m> <D> : "Ð"
+<Multi_key> <p> <m> <e> : "ə" # Schwa
+<Multi_key> <p> <m> <E> : "Ə"
+<Multi_key> <p> <m> <g> : "ɡ" # Script g
+<Multi_key> <p> <m> <G> : "Ɡ"
+<Multi_key> <p> <m> <h> : "ꜧ" # Heng
+<Multi_key> <p> <m> <H> : "Ꜧ"
+<Multi_key> <p> <m> <l> : "ɮ" # Lezh
+<Multi_key> <p> <m> <n> : "ŋ" # Eng
+<Multi_key> <p> <m> <N> : "Ŋ"
+<Multi_key> <p> <m> <r> : "ɼ" # r with long leg
+<Multi_key> <p> <m> <z> : "ʒ" # Ezh
+<Multi_key> <p> <m> <Z> : "Ʒ"
+<Multi_key> <p> <m> <Multi_key> <d> : "ƌ" # d with topbar
+<Multi_key> <p> <m> <Multi_key> <D> : "Ƌ"
+<Multi_key> <p> <m> <Multi_key> <g> : "ᵹ" # Insular g
+<Multi_key> <p> <m> <Multi_key> <G> : "Ᵹ"
+<Multi_key> <p> <m> <Multi_key> <N> : "Ƞ" # Capital N with long right leg
+<Multi_key> <p> <m> <Multi_key> <z> : "ꝣ" # Visigothic z
+<Multi_key> <p> <m> <Multi_key> <Z> : "Ꝣ"
+<Multi_key> <p> <m> <comma>    : "ʕ" # Reversed glottal stop
+<Multi_key> <p> <m> <period>   : "ʔ" # Glottal stop
+<Multi_key> <p> <m> <less>     : "ʢ" # Reversed glottal stop with stroke
+<Multi_key> <p> <m> <greater>  : "ʡ" # Glottal stop with stroke
+<Multi_key> <p> <m> <slash>    : "ʖ" # Inverted glottal stop
+<Multi_key> <p> <m> <question> : "ƾ" # Inverted glottal stop with stroke
+<Multi_key> <p> <m> <ampersand>  : "ǀ" # Dental click
+<Multi_key> <p> <m> <bar>        : "ǁ" # Lateral click
+<Multi_key> <p> <m> <braceleft>  : "ǃ" # Alveolar click
+<Multi_key> <p> <m> <braceright> : "ǂ" # Palatal click
+<Multi_key> <p> <m> <at>         : "ʘ" # Bilabial click
+<Multi_key> <p> <m> <Multi_key> <braceleft> : "ʗ" # Stretched C (old symbol for alveolar click)
+
+# Latin Greek letters:
+<Multi_key> <p> <g> <a> : "ɑ"
+<Multi_key> <p> <g> <A> : "Ɑ"
+<Multi_key> <p> <g> <b> : "ꞵ"
+<Multi_key> <p> <g> <B> : "Ꞵ"
+<Multi_key> <p> <g> <d> : "ẟ"
+<Multi_key> <p> <g> <e> : "ɛ" # Also called "open e"
+<Multi_key> <p> <g> <E> : "Ɛ"
+<Multi_key> <p> <g> <g> : "ɣ"
+<Multi_key> <p> <g> <G> : "Ɣ"
+<Multi_key> <p> <g> <Multi_key> <g> : "ɤ" # Ram's horn
+<Multi_key> <p> <g> <Multi_key> <G> : "Ɤ" # Missing from many fonts
+<Multi_key> <p> <g> <i> : "ɩ"
+<Multi_key> <p> <g> <I> : "Ɩ"
+<Multi_key> <p> <g> <l> : "ƛ" # Lambda with stroke
+<Multi_key> <p> <g> <v> : "ꞷ"
+<Multi_key> <p> <g> <V> : "Ꞷ"
+<Multi_key> <p> <g> <o> : "ȣ" # Ou (ligature)
+<Multi_key> <p> <g> <O> : "Ȣ" # Ou (ligature)
+<Multi_key> <p> <g> <f> : "ɸ"
+<Multi_key> <p> <g> <s> : "ʃ" # Esh
+<Multi_key> <p> <g> <S> : "Ʃ" # Esh
+<Multi_key> <p> <g> <y> : "ʊ" # Upsilon
+<Multi_key> <p> <g> <Y> : "Ʊ" # Upsilon
+<Multi_key> <p> <g> <x> : "ꭕ"
+<Multi_key> <p> <g> <Multi_key> <x> : "ꭔ"
+<Multi_key> <p> <g> <Multi_key> <a> : "ɒ" # Turned alpha
+<Multi_key> <p> <g> <Multi_key> <A> : "Ɒ"
+<Multi_key> <p> <g> <Multi_key> <d> : "ƍ" # Turned delta
+<Multi_key> <p> <g> <Multi_key> <e> : "ɜ" # Reversed open e
+<Multi_key> <p> <g> <Multi_key> <E> : "Ɜ"
+<Multi_key> <p> <g> <Multi_key> <v> : "ɷ" # Closed omega
+<Multi_key> <p> <g> <Multi_key> <f> : "ⱷ" # Tailless phi
+<Multi_key> <p> <g> <Multi_key> <i> : "ᵼ" # Iota with stroke
+<Multi_key> <p> <g> <Multi_key> <y> : "ᵿ" # Upsilon with stroke
+
+# Small capitals (note "X" is missing):
+<Multi_key> <p> <s> <a> : "ᴀ"
+<Multi_key> <p> <s> <b> : "ʙ"
+<Multi_key> <p> <s> <c> : "ᴄ"
+<Multi_key> <p> <s> <d> : "ᴅ"
+<Multi_key> <p> <s> <e> : "ᴇ"
+<Multi_key> <p> <s> <f> : "ꜰ"
+<Multi_key> <p> <s> <g> : "ɢ"
+<Multi_key> <p> <s> <h> : "ʜ"
+<Multi_key> <p> <s> <i> : "ɪ"
+<Multi_key> <p> <s> <I> : "Ɪ" # Yes, some small caps have capital versions!
+<Multi_key> <p> <s> <j> : "ᴊ"
+<Multi_key> <p> <s> <k> : "ᴋ"
+<Multi_key> <p> <s> <l> : "ʟ"
+<Multi_key> <p> <s> <m> : "ᴍ"
+<Multi_key> <p> <s> <n> : "ɴ"
+<Multi_key> <p> <s> <o> : "ᴏ"
+<Multi_key> <p> <s> <p> : "ᴘ"
+<Multi_key> <p> <s> <q> : "ꞯ"
+<Multi_key> <p> <s> <r> : "ʀ"
+<Multi_key> <p> <s> <s> : "ꜱ"
+<Multi_key> <p> <s> <t> : "ᴛ"
+<Multi_key> <p> <s> <u> : "ᴜ"
+<Multi_key> <p> <s> <v> : "ᴠ"
+<Multi_key> <p> <s> <w> : "ᴡ"
+<Multi_key> <p> <s> <y> : "ʏ"
+<Multi_key> <p> <s> <z> : "ᴢ"
+<Multi_key> <p> <s> <Multi_key> <g> : "ʛ" # Small caps g wit hook
+<Multi_key> <p> <s> <Multi_key> <i> : "ᵻ" # Small caps i with stroke
+<Multi_key> <p> <s> <Multi_key> <k> : "𝼐" # Turned small capital k
+<Multi_key> <p> <s> <Multi_key> <l> : "𝼄" # Small caps l with belt
+<Multi_key> <p> <s> <Multi_key> <o> : "ɶ" # Small caps OE
+<Multi_key> <p> <s> <Multi_key> <r> : "ʁ" # Small capital inverted r
+
+# Turned (upside down) letters:
+<Multi_key> <p> <t> <a> : "ɐ"
+<Multi_key> <p> <t> <A> : "Ɐ"
+<Multi_key> <p> <t> <c> : "ɔ" # Also called "open o"
+<Multi_key> <p> <t> <C> : "Ɔ"
+<Multi_key> <p> <t> <e> : "ǝ" # Not to be confused with the schwa ⟨ə⟩.
+<Multi_key> <p> <t> <E> : "Ǝ"
+<Multi_key> <p> <t> <g> : "ᵷ"
+<Multi_key> <p> <t> <h> : "ɥ"
+<Multi_key> <p> <t> <H> : "Ɥ" # Still looks lowercase in some fonts
+<Multi_key> <p> <t> <i> : "ᴉ"
+<Multi_key> <p> <t> <k> : "ʞ"
+<Multi_key> <p> <t> <K> : "Ʞ"
+<Multi_key> <p> <t> <l> : "Ꞁ"
+<Multi_key> <p> <t> <L> : "ꞁ"
+<Multi_key> <p> <t> <r> : "ɹ"
+<Multi_key> <p> <t> <t> : "ʇ"
+<Multi_key> <p> <t> <T> : "Ʇ"
+<Multi_key> <p> <t> <m> : "ɯ"
+<Multi_key> <p> <t> <M> : "Ɯ" # Looks like a big lowercase ⟨m⟩ in some fonts
+<Multi_key> <p> <t> <v> : "ʌ"
+<Multi_key> <p> <t> <V> : "Ʌ"
+<Multi_key> <p> <t> <w> : "ʍ"
+<Multi_key> <p> <t> <y> : "ʎ"
+<Multi_key> <p> <t> <Multi_key> <e> : "ᴈ" # Turned open e
+<Multi_key> <p> <t> <Multi_key> <E> : "ʚ" # Turned closed open e
+<Multi_key> <p> <t> <Multi_key> <f> : "ꝿ" # Turned insular g
+<Multi_key> <p> <t> <Multi_key> <F> : "Ꝿ"
+<Multi_key> <p> <t> <Multi_key> <g> : "𝼂" # Turned smalls caps g
+<Multi_key> <p> <t> <Multi_key> <K> : "𝼐" # Turned small capital k
+<Multi_key> <p> <t> <Multi_key> <r> : "ɺ" # Turned r with long leg
+<Multi_key> <p> <t> <Multi_key> <R> : "ɻ" # Turned r with hook
+<Multi_key> <p> <t> <Multi_key> <s> : "ʅ" # Squat reversed esh
+<Multi_key> <p> <t> <Multi_key> <S> : "ƪ" # Reversed esh loop
+<Multi_key> <p> <t> <Multi_key> <m> : "ɰ" # Turned m with long leg
+<Multi_key> <p> <t> <Multi_key> <y> : "𝼆" # Turned y with belt
+
+# Reversed (mirrored) letters:
+<Multi_key> <p> <r> <e> : "ɘ"
+<Multi_key> <p> <r> <k> : "𝼃"
+<Multi_key> <p> <r> <n> : "𝼇" # Reversed eng
+<Multi_key> <p> <r> <N> : "ᴎ"
+<Multi_key> <p> <r> <s> : "ƨ" # Called "tone two"
+<Multi_key> <p> <r> <S> : "Ƨ"
+<Multi_key> <p> <r> <z> : "ƹ" # Reversed ezh
+<Multi_key> <p> <r> <Z> : "Ƹ"
+<Multi_key> <p> <r> <Multi_key> <e> : "ɞ" # Reversed open e
+<Multi_key> <p> <r> <g> : "𝼁" # Reversed script g
+<Multi_key> <p> <r> <Multi_key> <r> : "ɿ" # Reversed R with fishhook
+
+# Curls:
+<Multi_key> <p> <c> <c> : "ɕ"
+<Multi_key> <p> <c> <d> : "ȡ"
+<Multi_key> <p> <c> <j> : "ʝ" # Unicode calls this a tail instead of a curl
+<Multi_key> <p> <c> <J> : "Ʝ"
+<Multi_key> <p> <c> <l> : "ȴ"
+<Multi_key> <p> <c> <Multi_key> <l> : "ɬ" # l with belt
+<Multi_key> <p> <c> <Multi_key> <L> : "Ɬ"
+<Multi_key> <p> <c> <n> : "ȵ"
+<Multi_key> <p> <c> <s> : "𝼞"
+<Multi_key> <p> <c> <Multi_key> <s> : "ʆ" # Esh with curl
+<Multi_key> <p> <c> <t> : "ȶ"
+<Multi_key> <p> <c> <v> : "ⱴ"
+<Multi_key> <p> <c> <y> : "ỿ" # Y with loop
+<Multi_key> <p> <c> <Y> : "Ỿ"
+<Multi_key> <p> <c> <z> : "ʑ"
+<Multi_key> <p> <c> <Multi_key> <z> : "ʓ" # Small ezh with curl
+<Multi_key> <p> <c> <question> : "𝼎" # Inverted glottal stop with curl
+
+# Tails:
+<Multi_key> <p> <C> <d> : "ᶑ" # Hook and tail
+<Multi_key> <p> <C> <g> : "ꬶ" # Script g
+<Multi_key> <p> <C> <m> : "ꬺ"
+<Multi_key> <p> <C> <n> : "ꬻ"
+<Multi_key> <p> <C> <Multi_key> <n> : "ꬼ" # Eng
+<Multi_key> <p> <C> <Multi_key> <r> : "ꭉ"
+<Multi_key> <p> <C> <Multi_key> <R> : "ꭊ" # Double (little) r
+<Multi_key> <p> <C> <j> : "ʝ"
+<Multi_key> <p> <C> <J> : "Ʝ"
+<Multi_key> <p> <C> <p> : "ꝕ" # ⟨p⟩ with squirrel tail
+<Multi_key> <p> <C> <P> : "Ꝕ" # ⟨P⟩ with squirrel tail
+<Multi_key> <p> <C> <q> : "ɋ" # Small q with hook tail
+<Multi_key> <p> <C> <Q> : "Ɋ" # Capital small q with hook tail
+<Multi_key> <p> <C> <r> : "ɽ" # Tail is not crossed
+<Multi_key> <p> <C> <R> : "Ɽ" # Tail is not crossed
+<Multi_key> <p> <C> <s> : "ȿ" # Swash tail
+<Multi_key> <p> <C> <S> : "Ȿ" # Swash tail
+<Multi_key> <p> <C> <z> : "ɀ" # Swash tail
+<Multi_key> <p> <C> <Z> : "Ɀ" # Swash tail
+<Multi_key> <p> <C> <Multi_key> <z> : "ƺ" # Ezh with tail
+
+# Retroflex hook:
+<Multi_key> <p> <h> <a> : "ᶏ"
+<Multi_key> <p> <h> <c> : "𝼝"
+<Multi_key> <p> <h> <d> : "ɖ" # African D with tail (really a retroflex hook)
+<Multi_key> <p> <h> <D> : "Ɖ" # African D (no hook on capital)
+<Multi_key> <p> <h> <e> : "ᶒ"
+<Multi_key> <p> <h> <i> : "ᶖ"
+<Multi_key> <p> <h> <l> : "ɭ"
+<Multi_key> <p> <h> <n> : "ɳ"
+<Multi_key> <p> <h> <o> : "𝼛"
+<Multi_key> <p> <h> <s> : "ʂ"
+<Multi_key> <p> <h> <S> : "Ʂ"
+<Multi_key> <p> <h> <t> : "ʈ"
+<Multi_key> <p> <h> <T> : "Ʈ"
+<Multi_key> <p> <h> <u> : "ᶙ"
+<Multi_key> <p> <h> <v> : "ⱱ" # v with right hook (not really retroflex)
+<Multi_key> <p> <h> <z> : "ʐ"
+<Multi_key> <p> <h> <E> : "ᶕ" # Schwa with retroflex hook
+<Multi_key> <p> <h> <F> : "ɚ" # Schwa with hook (not really retroflex)
+<Multi_key> <p> <h> <h> : "ɧ" # Heng with hook (not really retroflex)
+<Multi_key> <p> <h> <r> : "𝼈" # Turned long r with retroflex hook
+<Multi_key> <p> <h> <Multi_key> <a> : "ᶐ" # Alpha with retroflex hook
+<Multi_key> <p> <h> <Multi_key> <c> : "ᶗ" # Open o/turned c with retroflex hook
+<Multi_key> <p> <h> <Multi_key> <e> : "ᶓ" # Open e with retroflex hook
+<Multi_key> <p> <h> <Multi_key> <E> : "ᶔ" # Reversed open e with retroflex hook
+<Multi_key> <p> <h> <Multi_key> <f> : "ɝ" # Reversed open e with retroflex hook
+<Multi_key> <p> <h> <Multi_key> <l> : "ꞎ" # l with hook and belt
+<Multi_key> <p> <h> <Multi_key> <L> : "𝼅" # Lezh with retroflex hook
+<Multi_key> <p> <h> <Multi_key> <r> : "ɾ" # r with fishhook (not really retroflex)
+<Multi_key> <p> <h> <Multi_key> <u> : "ꭒ" # u with left hook (hot really retroflex)
+<Multi_key> <p> <h> <Multi_key> <z> : "ᶚ" # Ezh with retroflex hook
+
+# Palatal hook:
+<Multi_key> <p> <p> <b> : "ᶀ"
+<Multi_key> <p> <p> <c> : "ꞔ"
+<Multi_key> <p> <p> <C> : "Ꞔ"
+<Multi_key> <p> <p> <d> : "ᶁ"
+<Multi_key> <p> <p> <f> : "ᶂ"
+<Multi_key> <p> <p> <g> : "ᶃ"
+<Multi_key> <p> <p> <h> : "ꞕ"
+<Multi_key> <p> <p> <k> : "ᶄ"
+<Multi_key> <p> <p> <l> : "ᶅ"
+<Multi_key> <p> <p> <m> : "ᶆ"
+<Multi_key> <p> <p> <n> : "ᶇ"
+<Multi_key> <p> <p> <p> : "ᶈ"
+<Multi_key> <p> <p> <r> : "ᶉ"
+<Multi_key> <p> <p> <s> : "ᶊ"
+<Multi_key> <p> <p> <t> : "ƫ"
+<Multi_key> <p> <p> <v> : "ᶌ"
+<Multi_key> <p> <p> <x> : "ᶍ"
+<Multi_key> <p> <p> <z> : "ᶎ"
+<Multi_key> <p> <p> <Multi_key> <n> : "𝼔" # Eng with palatal hook
+<Multi_key> <p> <p> <Multi_key> <r> : "𝼕" # Turned r with palatal hook
+<Multi_key> <p> <p> <Multi_key> <s> : "ᶋ" # Esh with palatal hook
+<Multi_key> <p> <p> <Multi_key> <z> : "𝼘" # Ezh with palatal hook
+
+# Strokes and middle tildes:
+<Multi_key> <p> <slash> <j> : "ɟ" # Dotless J with stroke
+<Multi_key> <p> <slash> <Multi_key> <j> : "ʄ" # Dotless J with stroke and hook
+<Multi_key> <p> <slash> <o> : "ɵ" # barred O (not theta)
+<Multi_key> <p> <slash> <Multi_key> <r> : "ᵳ" # r with fishhook and middle tilde
+<Multi_key> <p> <slash> <Multi_key> <s> : "𝼋" # Esh with double bar
+<Multi_key> <p> <slash> <Multi_key> <S> : "𝼌" # Esh with double bar and curl
+<Multi_key> <p> <slash> <u> : "ʉ" # u with (middle) bar
+
+# Digraphs
+<Multi_key> <p> <d> <d> <b> : "ȸ"
+<Multi_key> <p> <d> <d> <z> : "ʣ"
+<Multi_key> <p> <d> <d> <c> <z> : "ʥ" # DZ digraph with curl
+<Multi_key> <p> <d> <d> <h> <z> : "ꭦ" # DZ digraph with retroflex hook
+<Multi_key> <p> <d> <d> <Multi_key> <z> : "ʤ" # Dezh digraph
+<Multi_key> <p> <d> <f> <n> : "ʩ" # Feng digraph
+<Multi_key> <p> <d> <Multi_key> <f> <n> : "𝼀" # Feng digraph with trill
+<Multi_key> <p> <d> <l> <s> : "ʪ"
+<Multi_key> <p> <d> <l> <z> : "ʫ"
+<Multi_key> <p> <d> <q> <p> : "ȹ"
+<Multi_key> <p> <d> <t> <c> : "ʨ" # TC digraph with curl
+<Multi_key> <p> <d> <t> <s> : "ʦ" # Tesh digraph
+<Multi_key> <p> <d> <t> <Multi_key> <s> : "ꭧ" # TS digraph with retroflex hook
+<Multi_key> <p> <d> <t> <Multi_key> <S> : "ʧ" # Tesh digraph
