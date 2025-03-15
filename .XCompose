@@ -12,6 +12,10 @@
 #    < ~/.XCompose tr -s '\t' ' ' | sed -e 's/^ *//' -e 's/ :.*$//g' -e 's/ *$//' -e '/^$/d' -e '/^#/d' | LC_ALL=C sort | uniq -d
 # to list duplicate multi-key sequences.
 
+# DIACRITICS:
+# https://en.wikipedia.org/wiki/List_of_precomposed_Latin_characters_in_Unicode
+# and http://xahlee.info/comp/unicode_latin.html are good resources.
+
 # Acute diacritic:
 <Multi_key> <a> : "á"
 <Multi_key> <e> : "é"
