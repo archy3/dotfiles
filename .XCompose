@@ -838,27 +838,6 @@
 <Multi_key> <semicolon> <parenright> : "☻"
 <Multi_key> <colon> <parenleft>      : "☹"
 
-# Vulgar fractions:
-<Multi_key> <1> <2>     : "½"
-<Multi_key> <0> <3>     : "↉"
-<Multi_key> <1> <3>     : "⅓"
-<Multi_key> <2> <3>     : "⅔"
-<Multi_key> <1> <4>     : "¼"
-<Multi_key> <3> <4>     : "¾"
-<Multi_key> <1> <5>     : "⅕"
-<Multi_key> <2> <5>     : "⅖"
-<Multi_key> <3> <5>     : "⅗"
-<Multi_key> <4> <5>     : "⅘"
-<Multi_key> <1> <6>     : "⅙"
-<Multi_key> <5> <6>     : "⅚"
-<Multi_key> <1> <7>     : "⅐"
-<Multi_key> <1> <8>     : "⅛"
-<Multi_key> <3> <8>     : "⅜"
-<Multi_key> <5> <8>     : "⅝"
-<Multi_key> <7> <8>     : "⅞"
-<Multi_key> <1> <9>     : "⅑"
-<Multi_key> <1> <1> <0> : "⅒" # [WIDE]
-
 # Greek letters:
 <Multi_key> <b> <a> : "α"
 <Multi_key> <b> <b> : "β"
@@ -936,6 +915,27 @@
 <Multi_key> <B> <y> : "Υ"
 <Multi_key> <B> <z> : "Ζ"
 <Multi_key> <B> <q> : "Ϝ" # Digamma
+
+# Vulgar fractions:
+<Multi_key> <1> <2>     : "½"
+<Multi_key> <0> <3>     : "↉"
+<Multi_key> <1> <3>     : "⅓"
+<Multi_key> <2> <3>     : "⅔"
+<Multi_key> <1> <4>     : "¼"
+<Multi_key> <3> <4>     : "¾"
+<Multi_key> <1> <5>     : "⅕"
+<Multi_key> <2> <5>     : "⅖"
+<Multi_key> <3> <5>     : "⅗"
+<Multi_key> <4> <5>     : "⅘"
+<Multi_key> <1> <6>     : "⅙"
+<Multi_key> <5> <6>     : "⅚"
+<Multi_key> <1> <7>     : "⅐"
+<Multi_key> <1> <8>     : "⅛"
+<Multi_key> <3> <8>     : "⅜"
+<Multi_key> <5> <8>     : "⅝"
+<Multi_key> <7> <8>     : "⅞"
+<Multi_key> <1> <9>     : "⅑"
+<Multi_key> <1> <1> <0> : "⅒" # [WIDE]
 
 # Subscript/superscript numbers (and some letters)
 <Multi_key> <asciicircum> <0>          : "⁰"
