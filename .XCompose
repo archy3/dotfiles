@@ -999,6 +999,7 @@
 <Multi_key> <underscore> <equal>       : "₌"
 <Multi_key> <underscore> <parenleft>   : "₍"
 <Multi_key> <underscore> <parenright>  : "₎"
+<Multi_key> <underscore> <asterisk>    : "⁎"
 
 
 # MATH SYMBOLS:
