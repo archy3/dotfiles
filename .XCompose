@@ -765,8 +765,9 @@
 # Triangular colon:
 <Multi_key> <colon> <colon> : "ː"
 
- # Per mille:
+ # Per mille & per ten thousand:
 <Multi_key> <percent> <percent> : "‰"
+<Multi_key> <percent> <at>      : "‱"
 
 # Caron:
 <Multi_key> <asciicircum> <asciicircum> : "ˇ"
