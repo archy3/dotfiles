@@ -1239,6 +1239,7 @@
 <Multi_key> <m> <G> <a>   : "∠"
 <Multi_key> <m> <G> <A>   : "∡"
 <Multi_key> <m> <G> <r>   : "∟"
+<Multi_key> <m> <G> <R>   : "⦜"
 <Multi_key> <m> <G> <p>   : "⟂"
 <Multi_key> <m> <G> <l>   : "ℓ" # Often used for slant height
 <Multi_key> <m> <G> <P>   : "∥" # Different from "‖"
