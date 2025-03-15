@@ -381,6 +381,10 @@
 <Multi_key> <V> <t> : "Ť"
 <Multi_key> <V> <u> : "Ǔ"
 <Multi_key> <V> <z> : "Ž"
+<Multi_key> <v> <Multi_key>  <f> <z> : "ǯ"
+<Multi_key> <v> <Multi_key>  <f> <Z> : "Ǯ"
+<Multi_key> <v> <Multi_key>  <F> <z> : "Ǯ"
+<Multi_key> <V> <Multi_key>  <f> <z> : "Ǯ"
 
 # Ring diacritic:
 <Multi_key> <r> <a> : "å"
@@ -726,6 +730,26 @@
 
 # Long s
 <Multi_key> <f> <s> : "ſ"
+
+# Ezh
+<Multi_key> <f> <z> : "ʒ"
+<Multi_key> <f> <Z> : "Ʒ"
+<Multi_key> <F> <z> : "Ʒ"
+
+# Eng
+<Multi_key> <f> <n> : "ŋ"
+<Multi_key> <f> <N> : "Ŋ"
+<Multi_key> <F> <n> : "Ŋ"
+
+# Heng
+<Multi_key> <f> <h> : "ꜧ"
+<Multi_key> <f> <H> : "Ꜧ"
+<Multi_key> <F> <h> : "Ꜧ"
+
+# Schwa
+<Multi_key> <f> <e> : "ə"
+<Multi_key> <f> <E> : "Ə"
+<Multi_key> <F> <e> : "Ə"
 
 # Spanish begin !/?
 <Multi_key> <exclam>   : "¡"
