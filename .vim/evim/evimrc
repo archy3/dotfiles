@@ -77,6 +77,16 @@ inoremap <silent> <C-p> <C-o>:<C-u>hardcopy<cr>
 " Open file:
 inoremap <silent> <C-o> <C-o>:<C-u>browse confirm e<cr>
 
+" Save:
+inoremap <expr> <C-S> "\<C-o>:\<C-u>".(@% == "" ? 'browse confirm saveas' : 'update')."\<CR>"
+nnoremap <expr> <C-S> ":\<C-u>".(@% == "" ? 'browse confirm saveas' : 'update')."\<CR>"
+vnoremap <expr> <C-S> ":\<C-u>".(@% == "" ? 'browse confirm saveas' : 'update')."\<CR>"
+
+" Save as:
+inoremap <C-S-s> <C-o>:<C-u>browse confirm saveas<cr>
+nnoremap <C-S-s> :<C-u>browse confirm saveas<cr>
+vnoremap <C-S-s> :<C-u>browse confirm saveas<cr>
+
 " Toggle options and access command mode:
 inoremap <F1> <C-o>:
 inoremap <silent> <F2> <C-o>:<C-u>set number!<cr>
