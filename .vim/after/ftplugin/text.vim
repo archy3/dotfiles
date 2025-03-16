@@ -8,7 +8,7 @@ setlocal linebreak
 " (e.g. vim just opened without opening a file, opened a file that doesn't exist,
 " opened an empty file, or an `enew`):
 " (from https://vi.stackexchange.com/a/2559):
-if line('$') == 1 && col('$') == 1
+if line('$') ==# 1 && col('$') ==# 1
   setlocal spell
 
   " For some reason, `b:undo_ftplugin` isn't always activated when the
@@ -17,7 +17,7 @@ if line('$') == 1 && col('$') == 1
   " new filetype is entered. Thus we make an autocmd to set the filetype
   " back to `text` and then reset it back to whatever it was before to
   " activate the `b:undo_ftplugin'.
-  if (@% == "")
+  if (@% ==# "")
     let w:text_ftplugin_may_need_to_be_undone = 1
     autocmd BufNewFile,BufRead * if exists('w:text_ftplugin_may_need_to_be_undone') | let s:filetype_save = &filetype | set filetype=text | exec 'set filetype=' . s:filetype_save | unlet w:text_ftplugin_may_need_to_be_undone | endif
       " Without the guard `if exists('w:text_ftplugin_may_need_to_be_undone')`,

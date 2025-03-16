@@ -15,8 +15,8 @@ vnoremap <X2Mouse> d
 
 
 " Like remapping j/k to gj/gk but making relative line numbers work as expected:
-nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
-nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
+nnoremap <expr> j (v:count ==# 0 ? 'gj' : 'j')
+nnoremap <expr> k (v:count ==# 0 ? 'gk' : 'k')
 
 nnoremap Y y$
 
@@ -79,8 +79,8 @@ nnoremap <silent> <down> :resize -1<cr>
 nnoremap <silent> <up> :resize +1<cr>
 
 " Create inner line object (from https://vimrcfu.com/snippet/269):
-onoremap <silent> <expr> il v:count==0 ? ":<c-u>normal! ^vg_<cr>" : ":<c-u>normal! ^v" . (v:count) . "jkg_<cr>"
-vnoremap <silent> <expr> il v:count==0 ? ":<c-u>normal! ^vg_<cr>" : ":<c-u>normal! ^v" . (v:count) . "jkg_h<cr>"
+onoremap <silent> <expr> il v:count==#0 ? ":<c-u>normal! ^vg_<cr>" : ":<c-u>normal! ^v" . (v:count) . "jkg_<cr>"
+vnoremap <silent> <expr> il v:count==#0 ? ":<c-u>normal! ^vg_<cr>" : ":<c-u>normal! ^v" . (v:count) . "jkg_h<cr>"
 nnoremap dal 0D
 
 let mapleader = " "
@@ -96,7 +96,7 @@ nnoremap <Leader><C-p> :%w !lp -o print-quality=3 -o sides=one-sided -o outputor
 nnoremap <silent> <Leader><C-e> :silent !pcmanfm --new-win -- %:p:h:S<cr>:redraw!<cr>
 
 " Delete current file (GUI prompt):
-nnoremap <silent> <Leader><Leader>D :if confirm("Delete ". expand('%:p') . "?", "No\nYes", 1) == 2 <bar> call delete(expand('%:p')) <bar> endif<cr>
+nnoremap <silent> <Leader><Leader>D :if confirm("Delete ". expand('%:p') . "?", "No\nYes", 1) ==# 2 <bar> call delete(expand('%:p')) <bar> endif<cr>
 
 " Make file executable:
 nnoremap <Leader><C-x> :!chmod u+x -- %:p:S<cr>
@@ -150,7 +150,7 @@ function! CopyBufferToClipboard()
   %y+
   " Remove EOF newline which usually isn't wanted:
   let l:regContents = getreg('+')
-  if len(l:regContents) > 1 && l:regContents[-1:-1] == "\n"
+  if len(l:regContents) > 1 && l:regContents[-1:-1] ==# "\n"
     call setreg('+', l:regContents[:-2])
   endif
 endfunction
@@ -180,13 +180,13 @@ nnoremap <Leader>P "+P
   " Append yanked test to end of line or after cursor, separated by a space:
   function! PasteAtEndOfLine(...)
     " Check if line already ends in whitespace or not
-    let l:prePasteCmd = (getline('.') =~ '\s\+$' ? 'A' : "A\<space>")
+    let l:prePasteCmd = (getline('.') =~# '\s\+$' ? 'A' : "A\<space>")
     " Remove leading and trailing white space (including newlines)
     call CustomPasteAction('\_s*$\|^\_s*', l:prePasteCmd)
   endfunction
   function! PasteAtEndOfCursor(...)
     " Check if character under cursor is already whitespace or not
-    let l:prePasteCmd = (getline('.')[col('.') - 1] =~ '\s' ? 'a' : "a\<space>")
+    let l:prePasteCmd = (getline('.')[col('.') - 1] =~# '\s' ? 'a' : "a\<space>")
     " Remove leading and trailing white space (including newlines)
     call CustomPasteAction('\_s*$\|^\_s*', l:prePasteCmd)
   endfunction
@@ -207,9 +207,9 @@ nnoremap <Leader>P "+P
 
     if a:0 " Invoked from Visual mode, use '< and '> marks.
       silent exe "normal! `<" . a:type . "`>"
-    elseif a:type == 'line'
+    elseif a:type ==# 'line'
       silent exe "normal! '[V']"
-    elseif a:type == 'block'
+    elseif a:type ==# 'block'
       silent exe "normal! `[\<C-V>`]"
     else
       silent exe "normal! `[v`]"

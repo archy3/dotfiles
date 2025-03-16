@@ -78,9 +78,9 @@ inoremap <silent> <C-p> <C-o>:<C-u>hardcopy<cr>
 inoremap <silent> <C-o> <C-o>:<C-u>browse confirm e<cr>
 
 " Save:
-inoremap <expr> <C-S> "\<C-o>:\<C-u>".(@% == "" ? 'browse confirm saveas' : 'update')."\<CR>"
-nnoremap <expr> <C-S> ":\<C-u>".(@% == "" ? 'browse confirm saveas' : 'update')."\<CR>"
-vnoremap <expr> <C-S> ":\<C-u>".(@% == "" ? 'browse confirm saveas' : 'update')."\<CR>"
+inoremap <expr> <C-S> "\<C-o>:\<C-u>".(@% ==# "" ? 'browse confirm saveas' : 'update')."\<CR>"
+nnoremap <expr> <C-S> ":\<C-u>".(@% ==# "" ? 'browse confirm saveas' : 'update')."\<CR>"
+vnoremap <expr> <C-S> ":\<C-u>".(@% ==# "" ? 'browse confirm saveas' : 'update')."\<CR>"
 
 " Save as:
 inoremap <C-S-s> <C-o>:<C-u>browse confirm saveas<cr>
@@ -109,14 +109,14 @@ function! PageOrScrollDown(count, type)
   exec "norm! L"
 
   " Check if already on last page:
-  if line('.') == line('$')
+  if line('.') ==# line('$')
     call setpos('.', l:save_pos)
     return
   endif
 
   " Page down or scroll down:
   call setpos('.', l:save_pos)
-  if a:type == 'page'
+  if a:type ==# 'page'
     exec 'norm! ' . a:count . "\<C-f>"
   else
     exec 'norm! ' . a:count . "\<C-e>"
@@ -126,7 +126,7 @@ function! PageOrScrollDown(count, type)
 
   " If on last page, reposition view so that the bottom line
   " is the bottom of the winview:
-  if line('.') == line('$')
+  if line('.') ==# line('$')
     exec 'norm! zb'
   endif
 

@@ -7,7 +7,7 @@ function! SetTabBehavior(indent_length, literal_tab_length)
   let &l:shiftwidth=a:indent_length
   let &l:tabstop=a:literal_tab_length
 
-  if a:indent_length == a:literal_tab_length
+  if a:indent_length ==# a:literal_tab_length
     " This is the default behavior when both args equal 8:
     setlocal softtabstop=0 " pressing tab just inserts a tab
     setlocal noexpandtab

@@ -16,7 +16,7 @@ autocmd VimResized * wincmd =
         let buf = bufnr("%")
         if exists("w:SavedBufView") && has_key(w:SavedBufView, buf)
             let v = winsaveview()
-            let atStartOfFile = v.lnum == 1 && v.col == 0
+            let atStartOfFile = v.lnum ==# 1 && v.col ==# 0
             if atStartOfFile && !&diff
                 call winrestview(w:SavedBufView[buf])
             endif
@@ -93,7 +93,7 @@ autocmd VimResized * wincmd =
 "{{{
 augroup vimrc_help
   autocmd!
-  autocmd BufWinEnter *.txt if &buftype == 'help' | call HelpProperLocation() | endif
+  autocmd BufWinEnter *.txt if &buftype ==# 'help' | call HelpProperLocation() | endif
   "{{{
   " BufEnter was originally used but this sometimes ran more than once.
   " BufWinEnter created weird behavior sometimes when switching windows
@@ -136,10 +136,10 @@ augroup vimrc_help
   " Open help in a new tab.
   " Then open another help in that tab.
   " Then that help opens in the previouse tab.
-  " Using '<= 2' instead of '== 2' seems to have fixed this.
+  " Using '<= 2' instead of '==# 2' seems to have fixed this.
 
   " Simple version that always opens in the far right:
-  "autocmd BufAdd *.txt if &buftype == 'help' | wincmd L | endif
+  "autocmd BufAdd *.txt if &buftype ==# 'help' | wincmd L | endif
   "}}}
 augroup END
 
@@ -183,6 +183,6 @@ endfunc
 " Work around bug in xterm where setting `xterm.buffered: true` in
 " ~/.Xresources causes the terminal background color to become the
 " background color of the vim colorscheme when vim exits:
-if ($TERM == 'xterm-256color') && !has("gui_running")
+if ($TERM ==# 'xterm-256color') && !has("gui_running")
   autocmd! VimLeave * syntax off | highlight clear | redraw
 endif

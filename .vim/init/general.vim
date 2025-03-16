@@ -72,9 +72,9 @@ set titlestring=%t
 set titlestring+=%(\ %{&readonly&&&modifiable?\"=\":\"\"}
 set titlestring+=%{&modified?\"+\":\"\"}
 set titlestring+=%{&modifiable?\"\":\"-\"}%)
-set titlestring+=%(\ \(%{&filetype==\"help\"?\"help\":expand(\"%:~:h\")}\)%)
-set titlestring+=%{%&filetype==\"help\"?\"\":\"\ -\ [%{&fileformat}\ %{&filetype}]\"%}
-set titlestring+=%a\ -\ %{v:servername==\"\"?\"VIM\":v:servername}
+set titlestring+=%(\ \(%{&filetype==#\"help\"?\"help\":expand(\"%:~:h\")}\)%)
+set titlestring+=%{%&filetype==#\"help\"?\"\":\"\ -\ [%{&fileformat}\ %{&filetype}]\"%}
+set titlestring+=%a\ -\ %{v:servername==#\"\"?\"VIM\":v:servername}
 
 " Insert 1 space after a period instead of 2 with 'J':
 set nojoinspaces
@@ -98,7 +98,7 @@ if &t_Co > 2 || has("gui_running")
 
   " Make gruvbox colors, italics, and spell underlining work in
   " xterm (or terminals that report as xterm) and tmux:
-  if $TERM =~ '^\(xterm\|tmux\)-.*color.*$' && !has("gui_running")
+  if $TERM =~# '^\(xterm\|tmux\)-.*color.*$' && !has("gui_running")
     let g:gruvbox_italic=1
     autocmd vimenter * ++nested colorscheme gruvbox
     autocmd vimenter * hi SpellBad cterm=underline
