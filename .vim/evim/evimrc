@@ -63,25 +63,25 @@ set sidescroll=1
 inoremap <C-g> <C-o>
 
 " Tab support:
-inoremap <silent> <C-t> <C-o>:tabe<cr>
-inoremap <C-w> <C-o>:confirm bd<cr>
+inoremap <silent> <C-t> <C-o>:<C-u>tabe<cr>
+inoremap <C-w> <C-o>:<C-u>confirm bd<cr>
 inoremap <C-Tab> <C-o>gt
 inoremap <C-S-Tab> <C-o>gT
 
 " Open new evim window:
-inoremap <silent> <C-n> <C-o>:silent exec '! gtk-launch evim.desktop &'<cr>
+inoremap <silent> <C-n> <C-o>:<C-u>silent exec '! gtk-launch evim.desktop &'<cr>
 
 " Print:
-inoremap <silent> <C-p> <C-o>:hardcopy<cr>
+inoremap <silent> <C-p> <C-o>:<C-u>hardcopy<cr>
 
 " Open file:
-inoremap <silent> <C-o> <C-o>:browse confirm e<cr>
+inoremap <silent> <C-o> <C-o>:<C-u>browse confirm e<cr>
 
 " Toggle options and access command mode:
 inoremap <F1> <C-o>:
-inoremap <silent> <F2> <C-o>:set number!<cr>
-inoremap <silent> <F3> <C-o>:set wrap!<cr>
-inoremap <silent> <esc> <C-o>:nohlsearch<cr>
+inoremap <silent> <F2> <C-o>:<C-u>set number!<cr>
+inoremap <silent> <F3> <C-o>:<C-u>set wrap!<cr>
+inoremap <silent> <esc> <C-o>:<C-u>nohlsearch<cr>
 
 " Make middle mouse button behave the same as in Mousepad:
 inoremap <MiddleMouse> <C-o>mm<LeftMouse><MiddleMouse><esc>i<C-o>`m
