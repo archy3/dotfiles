@@ -34,6 +34,8 @@ set nobackup
 set noswapfile
 set viminfofile=NONE
 
+set nomodeline
+
 colorscheme torte
 
 " Prevent tildes from showing after EOF:
