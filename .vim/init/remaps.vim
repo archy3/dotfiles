@@ -256,6 +256,10 @@ nnoremap <Leader>P "+P
       echo "DeleteBuffer(): This is the only buffer."
     endif
   endfunction
+
+  " The above function does not work in the command history window
+  autocmd CmdwinEnter * nnoremap <buffer> <Leader>q <C-c>
+  autocmd CmdwinEnter * nnoremap <buffer> <Leader>Q :quit<cr>
 "}}}
 
 " Jump to next window:
