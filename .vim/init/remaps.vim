@@ -68,6 +68,10 @@ nnoremap <silent> <C-j> :wincmd j<cr>
 nnoremap <silent> <C-k> :wincmd k<cr>
 nnoremap <silent> <C-l> :wincmd l<cr>
 
+" Change splits to horizontal/vertical (from https://stackoverflow.com/a/1269631):
+nnoremap <silent> <F5> :wincmd t <bar> wincmd K<cr><C-w><C-p>
+nnoremap <silent> <F2> :wincmd t <bar> wincmd H<cr><C-w><C-p>
+
 " Resize windows more easily:
 nnoremap <silent> <left> :vert resize -1<cr>
 nnoremap <silent> <right> :vert resize +1<cr>
