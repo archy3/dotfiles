@@ -47,6 +47,8 @@ set hidden
 " cursor position:
 set nostartofline
 
+set listchars=space:·,tab:——>,eol:¶,nbsp:⍽
+
 colorscheme torte
 
 " Prevent tildes from showing after EOF:
