@@ -1,4 +1,4 @@
-if ! (has_key(g:plugins_i_want_to_load, 'vimtex') && g:plugins_i_want_to_load['vimtex'])
+if ! (exists('g:plugins_i_want_to_load') && has_key(g:plugins_i_want_to_load, 'vimtex') && g:plugins_i_want_to_load['vimtex'])
   finish
 endif
 

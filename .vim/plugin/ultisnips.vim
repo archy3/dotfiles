@@ -1,4 +1,4 @@
-if ! (has_key(g:plugins_i_want_to_load, 'ultisnips') && g:plugins_i_want_to_load['ultisnips'])
+if ! (exists('g:plugins_i_want_to_load') && has_key(g:plugins_i_want_to_load, 'ultisnips') && g:plugins_i_want_to_load['ultisnips'])
   finish
 endif
 

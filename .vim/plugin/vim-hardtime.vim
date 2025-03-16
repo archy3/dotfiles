@@ -1,4 +1,4 @@
-if ! (has_key(g:plugins_i_want_to_load, 'vim-hardtime') && g:plugins_i_want_to_load['vim-hardtime'])
+if ! (exists('g:plugins_i_want_to_load') && has_key(g:plugins_i_want_to_load, 'vim-hardtime') && g:plugins_i_want_to_load['vim-hardtime'])
   finish
 endif
 
