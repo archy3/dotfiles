@@ -36,7 +36,7 @@ nnoremap <silent> dsb 0d][
 inoremap <C-z> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " List buffers:
-nnoremap gb :ls<cr>:b<space><space><space><space><space><space><space><space>
+nnoremap gb :ls<cr>:<space><space><space><space><space><space><space><space>b
 
 " Allow for easy putting of yanked and copied text:
 " Note: <C-r><C-o> is like <C-r> but prevents autoindent from altering the text.
