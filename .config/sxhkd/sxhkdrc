@@ -40,14 +40,8 @@ super + shift + {e, v, t, q}
 ctrl + super + alt + {x}
 	{xkill &}
 
-ctrl + alt + shift + {BackSpace, backslash}
-	{systemctl poweroff, systemctl poweroff}
-
 
 ## Long commands:
-super + space
-	~/scripts/kls.sh &
-
 super + alt + v
 	virt-viewer -v -f -H toggle-fullscreen=alt+enter --reconnect --attach --connect qemu:///session &
 
@@ -59,9 +53,6 @@ super + shift + j
 
 super + shift + p
 	env WINEPREFIX="${HOME}/.wine/prefix/pokerstars.net" wine-stable 'C:\windows\command\start.exe' /Unix "${HOME}/.wine/prefix/pokerstars.net/dosdevices/c:/users/Public/Start Menu/PokerStars.net.lnk" &
-
-super + shift + g
-	~/.programs/gpg4usb/start_linux &
 
 super + shift + n
 	~/scripts/notification-toggle.sh &
