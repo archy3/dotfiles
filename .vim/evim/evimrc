@@ -36,6 +36,9 @@ set viminfofile=NONE
 
 set nomodeline
 
+" Preserve xattr's
+set backupcopy=yes
+
 colorscheme torte
 
 " Prevent tildes from showing after EOF:
