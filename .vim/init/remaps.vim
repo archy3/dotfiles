@@ -329,17 +329,17 @@ endfunction
 
   " Return string used to comment line for current filetype.
   function! CommentStr()
-    if &ft == 'c' || 'cpp' || &ft == 'java' || &ft == 'javascript'
+    if index(['c', 'cpp', 'java', 'javascript'], &ft) != -1
       return '//'
-    elseif &ft == 'vim'
+    elseif index(['vim'], &ft) != -1
       return '"'
-    elseif &ft == 'make' || 'python' || &ft == 'perl' || &ft == 'sh' || &ft == 'R' || &ft == 'tmux' || &ft == 'readline' || &ft == 'ps1' || &ft == 'snippets' || &ft == 'conf'
+    elseif index(['conf', 'make', 'perl', 'ps1', 'python', 'r', 'readline', 'sh', 'snippets', 'tmux'], &ft) != -1
       return '#'
-    elseif &ft == 'lisp' || &ft == 'dosini'
+    elseif index(['dosini', 'lisp'], &ft) != -1
       return ';'
-    elseif &ft == 'xdefaults'
+    elseif index(['xdefaults'], &ft) != -1
       return '!'
-    elseif &ft == 'matlab' || &ft == 'tex'
+    elseif index(['matlab', 'tex'], &ft) != -1
       return '%'
     endif
     return ''
