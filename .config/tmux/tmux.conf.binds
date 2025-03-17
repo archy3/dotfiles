@@ -71,8 +71,18 @@ bind -T copy-mode-vi y send -X copy-selection
 
 bind -T copy-mode-vi v {
   if-shell -F '#{selection_present}' {
-    send -X clear-selection
+    send -X rectangle-off
   } {
+    send -X rectangle-off
+    send -X begin-selection
+  }
+}
+
+bind -T copy-mode-vi C-v {
+  if-shell -F '#{selection_present}' {
+    send -X rectangle-toggle
+  } {
+    send -X rectangle-on
     send -X begin-selection
   }
 }
