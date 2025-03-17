@@ -28,6 +28,10 @@ set -g status-interval 1
 set -g window-status-format '#I:#{?#{==:#{pane_current_command},bash},#{b:pane_current_path},#{pane_current_command}}#F'
 set -g window-status-current-format '#{E:window-status-format}'
 
+# Set default width/height of main pane in preset layouts:
+set -g main-pane-width 50%
+set -g main-pane-height 50%
+
 # Allow the current window to resize to the proper size even
 # if another client is attached to the session, but not
 # viewing the current window:

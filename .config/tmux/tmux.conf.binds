@@ -49,7 +49,16 @@ bind -n PageUp {
   }
 }
 
+# Switch layouts:
+bind , select-layout tiled
+bind F5 select-layout main-horizontal
+bind F2 select-layout main-vertical
+bind S-F5 select-layout even-vertical
+bind S-F2 select-layout even-horizontal
+
+
 # COPY-MODE BINDS:
+
 # Allow resizing in copy mode with arrow keys:
 bind -T copy-mode-vi Up resize-pane -U 5
 bind -T copy-mode-vi Down resize-pane -D 5
