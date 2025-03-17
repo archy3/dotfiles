@@ -29,6 +29,9 @@ bind c new-window -c "#{pane_current_path}"
 bind j select-pane -t :.+
 bind J select-pane -t :.-
 
+# Move pane to new window:
+bind o break-pane
+
 # make '<Prefix>+n' act the same as '<Prefix>' then 'n' on my keyboard:
 bind -r Home next-window
 
