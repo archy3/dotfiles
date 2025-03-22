@@ -58,6 +58,9 @@ colorscheme torte
 " Prevent tildes from showing after EOF:
 highlight EndOfBuffer guifg=bg
 
+" Prevent long lines at the bottom of the screen from making an @-abyss:
+set display+=lastline
+
 "highlight ColorColumn ctermbg=0 guibg=darkgrey
 
 set sidescroll=1
