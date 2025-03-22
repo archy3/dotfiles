@@ -71,6 +71,9 @@ set mousemodel=extend
 " Print without syntax highlighting:
 set printoptions+=syntax:n
 
+" Let Zathura (with ps support) handle printing:
+let &printexpr="system('< ' . v:fname_in . ' zathura - &') . delete(v:fname_in) + v:shell_error"
+
 
 " Use CTRL-g like CTRL-o:
 inoremap <C-g> <C-o>
