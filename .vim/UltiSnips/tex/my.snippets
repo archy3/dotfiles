@@ -34,6 +34,7 @@ snippet new "boilerplate" b
 \usepackage{venndiagram}
 \usepackage{pgffor,xifthen} % For foreach loops & if statements
 %\usepackage{booktabs}
+\usepackage{newunicodechar}
 
 \pgfplotsset{compat=1.18}
 
@@ -43,6 +44,7 @@ snippet new "boilerplate" b
 \DeclareMathOperator{\arcsec}{arcsec}
 \DeclareMathOperator{\arccsc}{arccsc}
 \DeclareMathOperator{\arccot}{arccot}
+\renewcommand{\O}{\ensuremath{\varnothing}}
 \newcommand{\N}{\ensuremath{\mathbb{N}}}
 \newcommand{\Z}{\ensuremath{\mathbb{Z}}}
 \newcommand{\Q}{\ensuremath{\mathbb{Q}}}
