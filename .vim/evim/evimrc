@@ -103,6 +103,11 @@ inoremap <C-S-s> <C-o>:<C-u>browse confirm saveas<cr>
 nnoremap <C-S-s> :<C-u>browse confirm saveas<cr>
 vnoremap <C-S-s> :<C-u>browse confirm saveas<cr>
 
+" Select all (without the newline of the last line):
+inoremap <C-a> <C-o>vgg0oGg_
+nnoremap <C-a> vgg0oGg_
+vnoremap <C-a> gg0oGg_
+
 " Toggle options and access command mode:
 inoremap <F1> <C-o>:
 inoremap <silent> <F2> <C-o>:<C-u>set number!<cr>
