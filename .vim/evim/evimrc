@@ -142,6 +142,18 @@ inoremap <RightMouse> <C-g>u<C-o>"+<MiddleMouse>
 snoremap <RightMouse> <C-g>"+y
 xnoremap <RightMouse> "+y
 
+" Use mouse back button to open a new line below the mouse cursor:
+" (The '0d$' make sure the line is blank [it sometimes isn't depending on the ftplugin])
+nnoremap <X1Mouse> <LeftMouse>o<esc>0d$
+inoremap <X1Mouse> <C-o><LeftMouse><C-o>:exec "norm! o<\esc>"<cr><C-o>0<C-o>d$
+
+" Mouse undo:
+nnoremap <X2Mouse> u
+inoremap <X2Mouse> <C-o>u
+
+" Mouse visual delete:
+vnoremap <X2Mouse> d
+
 " Zoom in/out:
 function! ZoomInOut(delta)
   let l:font = substitute(&guifont, '\d\+', '\=submatch(0) + ' . a:delta, 'g')
