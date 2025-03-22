@@ -341,6 +341,8 @@ endfunction
       return '!'
     elseif index(['matlab', 'tex'], &ft) != -1
       return '%'
+    elseif index(['dosbatch'], &ft) != -1
+      return 'rem '
     endif
     return ''
   endfunction
