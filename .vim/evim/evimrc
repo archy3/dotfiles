@@ -68,6 +68,9 @@ set sidescroll=1
 " Do not use mouse context menus
 set mousemodel=extend
 
+" Print without syntax highlighting:
+set printoptions+=syntax:n
+
 
 " Use CTRL-g like CTRL-o:
 inoremap <C-g> <C-o>
