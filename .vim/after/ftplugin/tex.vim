@@ -5,11 +5,20 @@ setlocal spell
 setlocal nowrap
 setlocal iskeyword-=_
 
+" vimtex (the plugin) does not define `b:undo_ftplugin`.
+if !exists('b:undo_ftplugin')
+  let b:undo_ftplugin = ''
+endif
+
 if exists('b:undo_ftplugin')
   let b:undo_ftplugin .= '|setlocal colorcolumn<'
   let b:undo_ftplugin .= '|setlocal spell<'
   let b:undo_ftplugin .= '|setlocal wrap<'
   let b:undo_ftplugin .= '|setlocal iskeyword<'
+
+  " If `b:undo_ftplugin` was defined as '' before this if-block,
+  " then there's an erroneous leading '|'.
+  let b:undo_ftplugin = substitute(b:undo_ftplugin, '^|*', '', '')
 endif
 
 nnoremap <buffer> <Leader>r :call UltiSnips#RefreshSnippets()<cr>
