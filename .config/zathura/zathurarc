@@ -5,6 +5,8 @@ map i set recolor
 map I set recolor-reverse-video
 map <A-i> set recolor-keephue
 
+map b toggle_statusbar
+
 # For some reason, making f toggle fullscreen made i/I/<A-i> stop
 # working after pressing enough keys.
 #unmap f
