@@ -1,7 +1,10 @@
 " Use right click to copy/paste to/from the system clipboard (like Windows cmd):
 nnoremap <RightMouse> "+<MiddleMouse>
-inoremap <RightMouse> <C-o>"+<MiddleMouse>
+inoremap <RightMouse> <C-g>u<C-o>"+<MiddleMouse>
 vnoremap <RightMouse> "+y
+
+" Also make middle click count as a separate insert action for undo purposes:
+inoremap <MiddleMouse> <C-g>u<MiddleMouse>
 
 " Use mouse back button to open a new line below the mouse cursor:
 " (The '0d$' make sure the line is blank [it sometimes isn't depending on the ftplugin])
@@ -40,10 +43,11 @@ nnoremap gb :ls<cr>:<space><space><space><space><space><space><space><space>b
 
 " Allow for easy putting of yanked and copied text:
 " Note: <C-r><C-o> is like <C-r> but prevents autoindent from altering the text.
+"       <C-g>u creates an undo checkpoint before pasting.
 inoremap <C-f> <nop>
-inoremap <C-f><space> <C-r><C-o>0
-inoremap <C-f><C-v> <C-r><C-o>+
-inoremap <C-f>v <C-r><C-o>+
+inoremap <C-f><space> <C-g>u<C-r><C-o>0
+inoremap <C-f><C-v> <C-g>u<C-r><C-o>+
+inoremap <C-f>v <C-g>u<C-r><C-o>+
 
 cnoremap <C-f> <nop>
 cnoremap <C-f><space> <C-r>0
@@ -57,7 +61,7 @@ cnoremap <C-f><C-f> <C-f>
 
 " Use modern shortcuts for system clipboard and saving:
 vnoremap <C-c> "+y
-inoremap <C-v> <C-r><C-o>+
+inoremap <C-v> <C-g>u<C-r><C-o>+
 nnoremap <C-s> :update<cr>
 inoremap <C-s> <C-o>:update<cr>
 " (':update' is like ':w' but doesn't write when the file hasn't been modified)
