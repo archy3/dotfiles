@@ -91,6 +91,17 @@ set shiftwidth=4
 set softtabstop=-1 " set softtabstop to shiftwidth
 set expandtab
 
+" Let Zathura (with ps support) handle printing:
+let &printexpr="system('< ' . v:fname_in . ' zathura - &') . delete(v:fname_in) + v:shell_error"
+
+" Set printer margins:
+set printoptions+=left:5pc,right:5pc,top:5pc,bottom:5pc
+
+" Print without syntax highlighting, and with line numbers:
+set printoptions+=syntax:n
+set printoptions+=number:y
+
+
 " Disable cursor blink when not editing:
 "let &guicursor = substitute(&guicursor, 'n-v-c:', '&blinkon0-', '')
 
