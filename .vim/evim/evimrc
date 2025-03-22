@@ -114,6 +114,10 @@ inoremap <C-x> <nop>
 " Insert timestamp:
 inoremap <F5> <C-r>=strftime("%Y-%m-%d %H:%M")<cr>
 
+" Delete a word at a time:
+inoremap <C-backspace> <C-g>u<C-w>
+inoremap <C-delete> <C-o>dw
+
 " Toggle options and access command mode:
 inoremap <F1> <C-o>:
 inoremap <silent> <F2> <C-o>:<C-u>set number!<cr>
