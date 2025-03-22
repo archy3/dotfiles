@@ -133,12 +133,14 @@ inoremap <MiddleMouse> <C-g>u<MiddleMouse>
 
 " Make middle mouse behave the same as in Mousepad during selections:
 snoremap <MiddleMouse> <C-g><MiddleMouse><esc>gv<C-g>
+xnoremap <MiddleMouse> <MiddleMouse><esc>gv
 " (For some reason when the x11-selection is empty, the * register
 "   contains a filename, usually '$HOME/.vim')
 
 " Use right click to copy/paste to/from the system clipboard (like Windows cmd):
 inoremap <RightMouse> <C-g>u<C-o>"+<MiddleMouse>
 snoremap <RightMouse> <C-g>"+y
+xnoremap <RightMouse> "+y
 
 " Zoom in/out:
 function! ZoomInOut(delta)
