@@ -65,6 +65,9 @@ set display+=lastline
 
 set sidescroll=1
 
+" Do not use mouse context menus
+set mousemodel=extend
+
 
 " Use CTRL-g like CTRL-o:
 inoremap <C-g> <C-o>
