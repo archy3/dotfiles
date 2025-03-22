@@ -22,6 +22,8 @@ au!
 filetype plugin indent off
 filetype off
 
+set lines=24
+
 set shortmess+=I
 set encoding=utf-8
 set number
