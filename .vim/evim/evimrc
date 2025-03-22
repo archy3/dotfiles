@@ -114,6 +114,10 @@ inoremap <C-x> <nop>
 " Insert timestamp:
 inoremap <F5> <C-r>=strftime("%Y-%m-%d %H:%M")<cr>
 
+" Make <backspace>/<delete> trigger a new undo block:
+inoremap <backspace> <C-g>u<backspace>
+inoremap <delete> <C-g>u<delete>
+
 " Delete a word at a time:
 inoremap <C-backspace> <C-g>u<C-w>
 inoremap <C-delete> <C-o>dw
@@ -124,14 +128,16 @@ inoremap <silent> <F2> <C-o>:<C-u>set number!<cr>
 inoremap <silent> <F3> <C-o>:<C-u>set wrap!<cr>
 inoremap <silent> <esc> <C-o>:<C-u>nohlsearch<cr>
 
-" Make middle mouse button behave the same as in Mousepad:
-inoremap <MiddleMouse> <C-o>mm<LeftMouse><MiddleMouse><esc>i<C-o>`m
+" Make middle mouse count as a new action for undo purposes:
+inoremap <MiddleMouse> <C-g>u<MiddleMouse>
+
+" Make middle mouse behave the same as in Mousepad during selections:
 snoremap <MiddleMouse> <C-g><MiddleMouse><esc>gv<C-g>
 " (For some reason when the x11-selection is empty, the * register
 "   contains a filename, usually '$HOME/.vim')
 
 " Use right click to copy/paste to/from the system clipboard (like Windows cmd):
-inoremap <RightMouse> <C-o>"+<MiddleMouse>
+inoremap <RightMouse> <C-g>u<C-o>"+<MiddleMouse>
 snoremap <RightMouse> <C-g>"+y
 
 " Zoom in/out:
