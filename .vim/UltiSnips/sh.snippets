@@ -35,41 +35,41 @@ snippet c "conditional" W
 endsnippet
 
 context "code()"
-snippet 'if ' "if" rbA
+snippet '\bif ' "if" rbA
 if ${1:[ "\$${2}" = "${3}" ]}; then
 	${0:body}
 fi
 endsnippet
 
 context "code()"
-snippet 'elif ' "else if" rbA
+snippet '\belif ' "else if" rbA
 elif ${1:[ "\$${2}" = "${3}" ]}; then
 	${0:body}
 endsnippet
 
 context "code()"
-snippet 'for ' "for" rbA
+snippet '\bfor ' "for" rbA
 for ${1:arg} in ${2:"$@"}; do
 	${0:body}
 done
 endsnippet
 
 context "code()"
-snippet 'forf ' "for file" rbA
+snippet '\bforf ' "for file" rbA
 for ${1:file} in ./*${2:.txt}; do
 	${0:body}
 done
 endsnippet
 
 context "code()"
-snippet 'while ' "while" rbA
+snippet '\bwhile ' "while" rbA
 while ${1:[ "\$${2}" = "${3}" ]}; do
 	${0:body}
 done
 endsnippet
 
 context "code()"
-snippet 'until ' "until" rbA
+snippet '\buntil ' "until" rbA
 until ${1:[ "\$${2:#}" = "${3:0}" ]}; do
 	${0:body}
 done
@@ -83,7 +83,7 @@ done
 endsnippet
 
 context "code()"
-snippet 'case ' "case" rbA
+snippet '\bcase ' "case" rbA
 case "\$${1:choice}" in
 	${2:pattern}) ${3:action};;${0:}
 esac
