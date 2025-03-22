@@ -180,6 +180,15 @@ xnoremap <C-ScrollWheelUp> :<C-u>call ZoomInOut(1) <bar> norm! gv<cr>
 " Create an undo checkpoint for every &updatetime milliseconds of idle time:
 autocmd CursorHoldI * call feedkeys("\<c-g>u", 'n')
 
+" Create undo checkpoints when writing prose:
+inoremap <buffer> . .<c-g>u
+inoremap <buffer> , ,<c-g>u
+inoremap <buffer> ; ;<c-g>u
+inoremap <buffer> : :<c-g>u
+inoremap <buffer> ! !<c-g>u
+inoremap <buffer> ? ?<c-g>u
+inoremap <buffer> <cr> <cr><c-g>u
+
 " Prevent scrolling past EOF:
 function! PageOrScrollDown(count, type)
   let l:save_pos = getpos('.')
