@@ -23,6 +23,7 @@ filetype plugin indent off
 filetype off
 
 set lines=24
+set visualbell t_vb=
 
 set shortmess+=I
 set encoding=utf-8
