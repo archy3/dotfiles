@@ -39,6 +39,7 @@ set hidden
 set number
 set relativenumber
 set mouse=a
+set mousemodel=extend
 set colorcolumn=80,100,120
 set wildmenu
 
