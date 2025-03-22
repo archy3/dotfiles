@@ -97,8 +97,8 @@ endsnippet
 
 priority 1
 context "code()"
-snippet f "function()" i
-()
+snippet '\b([a-zA-Z_]+[0-9a-zA-Z_]*)f' "function()" rb
+`!p snip.rv = match.group(1)`()
 {
 	${0:body}
 }
@@ -106,8 +106,8 @@ endsnippet
 
 priority 2
 context "code()"
-snippet ff "local function" i
-()
+snippet '\b([a-zA-Z_]+[0-9a-zA-Z_]*)F' "local function" rb
+`!p snip.rv = match.group(1)`()
 (
 	${0:body}
 )
