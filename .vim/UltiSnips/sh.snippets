@@ -172,3 +172,17 @@ snippet {} "braces" A
 { ${1}; }
 endsnippet
 
+priority 1
+snippet > "redirect stdout to /dev/null"
+> /dev/null
+endsnippet
+
+priority 2
+snippet 2> "redirect stderr to /dev/null"
+2> /dev/null
+endsnippet
+
+priority 2
+snippet &> "redirect all to /dev/null"
+> /dev/null 2>&1
+endsnippet
