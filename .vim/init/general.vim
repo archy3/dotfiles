@@ -1,7 +1,8 @@
 " These setting are defaults on some systems but not on
 " others so they are included here for safety.
 set backspace=indent,eol,start
-set noerrorbells visualbell t_vb=
+set noerrorbells
+set visualbell t_vb=
 set encoding=utf-8
 set ruler
 set showcmd
@@ -35,7 +36,8 @@ set splitbelow
 set splitright
 set hidden
 
-set number relativenumber
+set number
+set relativenumber
 set mouse=a
 set colorcolumn=80,100,120
 set wildmenu
