@@ -125,8 +125,22 @@ inoremap <C-delete> <C-o>dw
 " Toggle options and access command mode:
 inoremap <F1> <C-o>:
 inoremap <silent> <F2> <C-o>:<C-u>set number!<cr>
-inoremap <silent> <F3> <C-o>:<C-u>set wrap!<cr>
+inoremap <silent> <F3> <C-o>:<C-u>call ToggleWrapAndLinebreak()<cr>
 inoremap <silent> <esc> <C-o>:<C-u>nohlsearch<cr>
+
+function! ToggleWrapAndLinebreak()
+  if !(&wrap)
+    set wrap
+    set guioptions-=b
+  elseif !(&linebreak)
+    set linebreak
+    set guioptions-=b
+  else
+    set nowrap
+    set nolinebreak
+    set guioptions+=b
+  endif
+endfunction
 
 " Make middle mouse count as a new action for undo purposes:
 inoremap <MiddleMouse> <C-g>u<MiddleMouse>
