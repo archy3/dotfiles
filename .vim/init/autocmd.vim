@@ -180,6 +180,14 @@ function! HelpProperLocation()
 endfunc
 "}}}
 
+" After &updatetime milliseconds of idle time in insert mode,
+" create an undo checkpoint:
+" From https://ww.reddit.com/r/vim/comments/13gk0nl/is_there_a_way_to_make_undo_sensible/jk0bsba/
+augroup break_undo_when_im_thinking
+  autocmd!
+  autocmd CursorHoldI * call feedkeys("\<c-g>u", 'n')
+augroup END
+
 " Work around bug in xterm where setting `xterm.buffered: true` in
 " ~/.Xresources causes the terminal background color to become the
 " background color of the vim colorscheme when vim exits:
