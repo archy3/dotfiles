@@ -28,5 +28,13 @@ nnoremap <buffer> gz /\\begin{document}<cr>zt
 nnoremap <buffer> <LocalLeader><C-s> :silent! if bufname('%') ==# '' <bar> exec ':saveas ' . tempname() . '.tex' <bar> endif <bar> redraw<cr>
   " We use `:saveas` instead of `:w` because of https://github.com/lervag/vimtex/issues/3042
 
+" Create undo checkpoints when writing prose:
+inoremap <buffer> . .<c-g>u
+inoremap <buffer> , ,<c-g>u
+inoremap <buffer> ; ;<c-g>u
+inoremap <buffer> : :<c-g>u
+inoremap <buffer> ! !<c-g>u
+inoremap <buffer> ? ?<c-g>u
+
 " From https://unix.stackexchange.com/a/406415
 command! -range -buffer Pshuf :exec '<line1>,<line2>! awk -v seed="$RANDOM" ' . "\'" . 'BEGIN{srand(seed); n=rand()} {print n, NR, $0} NF==0 {n=rand()} END {if (NF) print n, NR+1, ""}' . "\'" . ' | sort -nk1 -k2 | cut -d" " -f3- | sed ' . "\'" . '$d' . "\'"
