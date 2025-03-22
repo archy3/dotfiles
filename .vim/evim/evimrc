@@ -32,6 +32,7 @@ set noshowmode
 
 set guioptions-=T
 "set colorcolumn=80
+set mousefocus
 
 set nobackup
 set noswapfile
