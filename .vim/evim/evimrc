@@ -171,6 +171,9 @@ snoremap <C-ScrollWheelUp> <C-g>:<C-u>call ZoomInOut(1) <bar> norm! gv<cr><C-g>
 xnoremap <C-ScrollWheelDown> :<C-u>call ZoomInOut(-1) <bar> norm! gv<cr>
 xnoremap <C-ScrollWheelUp> :<C-u>call ZoomInOut(1) <bar> norm! gv<cr>
 
+" Create an undo checkpoint for every &updatetime milliseconds of idle time:
+autocmd CursorHoldI * call feedkeys("\<c-g>u", 'n')
+
 " Prevent scrolling past EOF:
 function! PageOrScrollDown(count, type)
   let l:save_pos = getpos('.')
