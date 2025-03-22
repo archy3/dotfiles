@@ -115,39 +115,39 @@ endsnippet
 
 context "code()"
 snippet jj "quoted $" wA
-"\$${0}"
+"\$${1}"$0
 endsnippet
 
 context "code()"
 snippet kk "quoted ${}" wA
-"\${${0}}"
+"\${${1}}"$0
 endsnippet
 
 context "code()"
 snippet ll "quoted $()" wA
-"\$(${0})"
+"\$(${1})"$0
 endsnippet
 
 priority 2
 context "code() or double_quote()"
 snippet KK "unqoted ${}" wA
-\${${0}}
+\${${1}}$0
 endsnippet
 
 priority 2
 context "code() or double_quote()"
 snippet LL "unqoted $()" wA
-\$(${0})
+\$(${1})$0
 endsnippet
 
 priority 1
 snippet KK "unqoted ${}" i
-\${${0}}
+\${${1}}$0
 endsnippet
 
 priority 1
 snippet LL "unqoted $()" i
-\$(${0})
+\$(${1})$0
 endsnippet
 
 context "code()"
