@@ -134,8 +134,8 @@ nnoremap <C-S-s> :<C-u>browse confirm saveas<cr>
 vnoremap <C-S-s> :<C-u>browse confirm saveas<cr>
 
 " Select all (without the newline of the last line):
-inoremap <C-a> <C-o>vgg0oGg_
-nnoremap <C-a> vgg0oGg_
+inoremap <C-a> <C-o>vgg0oGg_<C-g>
+nnoremap <C-a> vgg0oGg_<C-g>
 vnoremap <C-a> gg0oGg_
 
 " Prevent CTRL+x from emptying the paste-buffer when there is no selection:
