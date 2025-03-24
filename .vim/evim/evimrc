@@ -159,7 +159,6 @@ inoremap <C-delete> <C-o>dw
 inoremap <F1> <C-o>:
 inoremap <silent> <F2> <C-o>:<C-u>set number!<cr>
 inoremap <silent> <F3> <C-o>:<C-u>call <SID>ToggleWrapAndLinebreak()<cr>
-inoremap <silent> <esc> <C-o>:<C-u>nohlsearch<cr>
 
 function! s:ToggleWrapAndLinebreak()
   if !(&wrap)
@@ -174,6 +173,9 @@ function! s:ToggleWrapAndLinebreak()
     set guioptions+=b
   endif
 endfunction
+
+" Remove highlighting from find/replace matches:
+inoremap <silent> <esc> <C-o>:<C-u>nohlsearch<cr>
 
 " Make middle mouse count as a new action for undo purposes:
 inoremap <MiddleMouse> <C-g>u<MiddleMouse>
