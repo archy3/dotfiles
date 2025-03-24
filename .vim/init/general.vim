@@ -43,11 +43,6 @@ set mousemodel=extend
 set colorcolumn=80,100,120
 set wildmenu
 
-" Outside of gvim, always show status line
-" (not needed in gvim because this is shown in the window title):
-"if !has("gui_running")
-"  set laststatus=2
-"endif
 " Make gf work for assignments like "profile=/etc/profile"
 set isfname-==
 
@@ -66,8 +61,17 @@ set display+=lastline
 " make J remove leading <comment string> from comments below current line.
 set formatoptions+=rj
 
+" Insert 1 space after a period instead of 2 with 'J':
+set nojoinspaces
+
 " See this for more options: https://www.reddit.com/r/vim/comments/4hoa6e/what_do_you_use_for_your_listchars/
 set listchars=space:·,tab:——>,eol:¶,nbsp:⍽
+
+" Outside of gvim, always show status line
+" (not needed in gvim because this is shown in the window title):
+"if !has("gui_running")
+"  set laststatus=2
+"endif
 
 " To try out (see also 'rulerformat'):
 " Status line that includes if DOS newlines are used:
@@ -84,9 +88,6 @@ set titlestring+=%{&modifiable?\"\":\"-\"}%)
 set titlestring+=%(\ \(%{&filetype==#\"help\"?\"help\":expand(\"%:~:h\")}\)%)
 set titlestring+=%{%&filetype==#\"help\"?\"\":\"\ -\ [%{&fileformat}\ %{&filetype}]\"%}
 set titlestring+=%a\ -\ %{v:servername==#\"\"?\"VIM\":v:servername}
-
-" Insert 1 space after a period instead of 2 with 'J':
-set nojoinspaces
 
 " tabstop:     How many apparent spaces a literal tab takes up
 " shiftwidth:  How many apparent spaces `>>` indents
@@ -112,6 +113,10 @@ if $TERM =~# '^\(tmux\|screen\)\(-.*\)\?$'
   set ttymouse=sgr
 endif
 
+" Set path in order to use gf and :find effectively:
+set path+=~
+set path+=~/scripts
+set path+=~/scripts/autostart
 
 if &t_Co > 2 || has("gui_running")
   packadd! gruvbox
@@ -145,9 +150,3 @@ if &t_Co > 2 || has("gui_running")
   "autocmd vimenter * hi Normal guifg=#FFD7AF
   set background=dark
 endif
-
-
-" Set path in order to use gf and :find effectively:
-set path+=~
-set path+=~/scripts
-set path+=~/scripts/autostart
