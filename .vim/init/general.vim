@@ -69,6 +69,10 @@ set formatoptions+=rj
 " See this for more options: https://www.reddit.com/r/vim/comments/4hoa6e/what_do_you_use_for_your_listchars/
 set listchars=space:·,tab:——>,eol:¶,nbsp:⍽
 
+" To try out (see also 'rulerformat'):
+" Status line that includes if DOS newlines are used:
+" set statusline=%<%f\ %h%r%=%{&ff==#'dos'?'[dos]\ ':''}%-14.(%l,%c%V%)\ %P
+
 "set rulerformat=%24(%=%l/%L\ %-5.(%c%V%)\ [%{&fileformat}]%)
 set rulerformat=%17(%=%l/%L\ %-5.(%c%V%)%)
 
@@ -103,6 +107,10 @@ set printoptions+=left:5pc,right:5pc,top:5pc,bottom:5pc
 set printoptions+=syntax:n
 set printoptions+=number:y
 
+" Make vim use the correct mouse when in a tmux session:
+if $TERM =~# '^\(tmux\|screen\)\(-.*\)\?$'
+  set ttymouse=sgr
+endif
 
 
 if &t_Co > 2 || has("gui_running")

@@ -67,15 +67,6 @@ if has('eval') " vim-tiny does not have `eval`
   " tex: UltiSnips/tex/exam.snippets
   " tex: UltiSnips/tex/castel.snippets
 
-  " Make vim use the correct mouse when in a tmux session:
-  if $TERM =~# '^\(tmux\|screen\)\(-.*\)\?$'
-    set ttymouse=sgr
-  endif
-
-  " To try out (see also 'rulerformat'):
-  " Status line that includes if DOS newlines are used:
-  " set statusline=%<%f\ %h%r%=%{&ff==#'dos'?'[dos]\ ':''}%-14.(%l,%c%V%)\ %P
-
   helptags ALL
 endif
 
