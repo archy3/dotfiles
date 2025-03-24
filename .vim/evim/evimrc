@@ -63,6 +63,21 @@ set listchars=space:·,tab:——>,eol:¶,nbsp:⍽
 
 colorscheme torte
 
+" Change color of listchars:
+highlight clear NonText
+highlight link NonText MoreMsg
+highlight clear SpecialKey
+highlight link SpecialKey MoreMsg
+
+" Change color of colorcolumn:
+highlight ColorColumn guibg=#1b5233 guifg=fg
+
+" For spellcheck, just use undercurl without coloring the text:
+highlight SpellBad guifg=fg guisp=#ee0000
+highlight SpellCap guifg=fg guisp=#00bb00
+highlight SpellRare guifg=fg
+highlight SpellLocal guifg=fg
+
 " Prevent tildes from showing after EOF:
 highlight EndOfBuffer guifg=bg
 
