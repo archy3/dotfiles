@@ -114,7 +114,8 @@ inoremap <silent> <C-n> <C-o>:<C-u>silent exec '! gtk-launch evim.desktop &'<cr>
 inoremap <silent> <C-p> <C-o>:<C-u>hardcopy<cr>
 
 " Open file:
-inoremap <silent> <C-o> <C-o>:<C-u>browse confirm e<cr>
+inoremap <silent> <C-o> <C-o>:<C-u>exec 'browse confirm ' . (@% ==# '' && !&modified ? 'e' : 'tabe')<cr>
+nnoremap <silent> <C-o> :<C-u>exec 'browse confirm ' . (@% ==# '' && !&modified ? 'e' : 'tabe')<cr>
 
 " Save:
 inoremap <expr> <C-S> "\<C-o>:\<C-u>".(@% ==# "" ? 'browse confirm saveas' : 'update')."\<CR>"
