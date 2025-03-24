@@ -164,15 +164,16 @@ inoremap <silent> <F8> <C-o>:<C-u>set spell! spell?<cr>
 
 function! s:ToggleWrapAndLinebreak()
   if !(&wrap)
-    set wrap
     set guioptions-=b
+    set nolinebreak
+    set wrap wrap?
   elseif !(&linebreak)
-    set linebreak
     set guioptions-=b
+    set linebreak linebreak?
   else
     set nowrap
-    set nolinebreak
     set guioptions+=b
+    echo '  nowrap'
   endif
 endfunction
 
