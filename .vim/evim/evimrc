@@ -31,7 +31,6 @@ set number
 set noshowmode
 
 set guioptions-=T
-"set colorcolumn=80
 set mousefocus
 set wildmenu
 
@@ -159,6 +158,9 @@ inoremap <C-delete> <C-o>dw
 inoremap <F1> <C-o>:
 inoremap <silent> <F2> <C-o>:<C-u>set number!<cr>
 inoremap <silent> <F3> <C-o>:<C-u>call <SID>ToggleWrapAndLinebreak()<cr>
+inoremap <silent> <F4> <C-o>:<C-u>set list! list?<cr>
+inoremap <silent> <F7> <C-o>:<C-u>let &colorcolumn = (&colorcolumn ==# '' ? '80,100,120' : '')<cr>
+inoremap <silent> <F8> <C-o>:<C-u>set spell! spell?<cr>
 
 function! s:ToggleWrapAndLinebreak()
   if !(&wrap)
