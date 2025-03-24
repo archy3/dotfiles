@@ -218,7 +218,7 @@ inoremap <buffer> ; ;<c-g>u
 inoremap <buffer> : :<c-g>u
 inoremap <buffer> ! !<c-g>u
 inoremap <buffer> ? ?<c-g>u
-inoremap <buffer> <cr> <cr><c-g>u
+inoremap <buffer> <cr> <c-g>u<cr>
 
 " Prevent scrolling past EOF:
 function! s:PageOrScrollDown(count, type)

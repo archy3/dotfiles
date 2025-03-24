@@ -15,5 +15,5 @@ inoremap <buffer> ; ;<c-g>u
 inoremap <buffer> : :<c-g>u
 inoremap <buffer> ! !<c-g>u
 inoremap <buffer> ? ?<c-g>u
-inoremap <buffer> <cr> <cr><c-g>u
-inoremap <buffer> <space> <space><c-g>u
+inoremap <buffer> <cr> <c-g>u<cr>
+inoremap <buffer> <space> <c-g>u<space>

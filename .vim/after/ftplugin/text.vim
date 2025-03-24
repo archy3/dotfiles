@@ -42,7 +42,7 @@ inoremap <buffer> ; ;<c-g>u
 inoremap <buffer> : :<c-g>u
 inoremap <buffer> ! !<c-g>u
 inoremap <buffer> ? ?<c-g>u
-inoremap <buffer> <cr> <cr><c-g>u
+inoremap <buffer> <cr> <c-g>u<cr>
 
 if exists('b:undo_ftplugin')
   let b:undo_ftplugin .= '|setlocal spell<'
