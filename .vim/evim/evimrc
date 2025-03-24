@@ -141,6 +141,9 @@ vnoremap <C-a> gg0oGg_
 " Prevent CTRL+x from emptying the paste-buffer when there is no selection:
 inoremap <C-x> <nop>
 
+" Have CTRL+z work while there is a selection:
+vnoremap <C-z> :<C-u>norm! u<cr>
+
 " Insert timestamp:
 inoremap <F5> <C-r>=strftime("%Y-%m-%d %H:%M")<cr>
 
