@@ -177,6 +177,10 @@ function! s:ToggleWrapAndLinebreak()
   endif
 endfunction
 
+" Do not accidentally go to help:
+nnoremap <F1> <nop>
+vnoremap <F1> <nop>
+
 " Remove highlighting from find/replace matches:
 inoremap <silent> <esc> <C-o>:<C-u>nohlsearch<cr>
 
