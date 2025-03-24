@@ -57,6 +57,7 @@ if has('eval') " vim-tiny does not have `eval`
   " sxhkdrc: after/ftplugin/sxhkdrc.vim
   " snippets : after/ftplugin/snippets.vim
   " gitcommit: after/ftplugin/gitcommit.vim
+  " gitrebase: after/ftplugin/gitrebase.vim
 
   " gvimrc: gvimrc
   " evimrc: evim/evimrc
