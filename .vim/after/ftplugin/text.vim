@@ -40,4 +40,5 @@ if exists('b:undo_ftplugin')
   let b:undo_ftplugin .= '|setlocal spelllang<'
   let b:undo_ftplugin .= '|setlocal wrap<'
   let b:undo_ftplugin .= '|setlocal linebreak<'
+  let b:undo_ftplugin .= '|mapclear <buffer> | mapclear! <buffer>'
 endif

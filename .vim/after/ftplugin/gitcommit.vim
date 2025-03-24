@@ -5,6 +5,7 @@ setlocal spellcapcheck=
 if exists('b:undo_ftplugin')
   let b:undo_ftplugin .= '|setlocal spell<'
   let b:undo_ftplugin .= '|setlocal spellcapcheck<'
+  let b:undo_ftplugin .= '|mapclear <buffer> | mapclear! <buffer>'
 endif
 
 " Create undo checkpoints when writing prose:

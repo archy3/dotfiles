@@ -39,4 +39,5 @@ if exists('b:undo_ftplugin')
   let b:undo_ftplugin .= '|setlocal foldmethod<'
   let b:undo_ftplugin .= '|setlocal formatoptions<'
   let b:undo_ftplugin .= '|setlocal path<'
+  let b:undo_ftplugin .= '|mapclear <buffer> | mapclear! <buffer>'
 endif

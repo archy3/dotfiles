@@ -15,6 +15,7 @@ if exists('b:undo_ftplugin')
   let b:undo_ftplugin .= '|setlocal spell<'
   let b:undo_ftplugin .= '|setlocal wrap<'
   let b:undo_ftplugin .= '|setlocal iskeyword<'
+  let b:undo_ftplugin .= '|mapclear <buffer> | mapclear! <buffer>'
 
   " If `b:undo_ftplugin` was defined as '' before this if-block,
   " then there's an erroneous leading '|'.

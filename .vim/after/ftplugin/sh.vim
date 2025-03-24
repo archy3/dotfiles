@@ -20,6 +20,9 @@ endfunction
 call FoldBracesAndParenthesesSh()
 call SetTabBehavior(2,8)
 
+if exists('b:undo_ftplugin')
+  let b:undo_ftplugin .= '|mapclear <buffer> | mapclear! <buffer>'
+endif
 
 " Remaps:
 "nnoremap <buffer> <Leader>R :!shellcheck --color=never -- %:p:S<cr>
