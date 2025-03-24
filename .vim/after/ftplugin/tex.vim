@@ -24,7 +24,7 @@ if exists('b:undo_ftplugin')
 endif
 
 nnoremap <buffer> <Leader>r :call UltiSnips#RefreshSnippets()<cr>
-vnoremap <buffer> <Leader>c <plug>(vimtex-cmd-create)
+xnoremap <buffer> <Leader>c <plug>(vimtex-cmd-create)
 inoremap <buffer> <C-f><C-f> <plug>(vimtex-delim-close)
 nnoremap <buffer> gz /\\begin{document}<cr>zt
 nnoremap <buffer> <LocalLeader><C-s> :silent! if bufname('%') ==# '' <bar> exec ':saveas ' . tempname() . '.tex' <bar> endif <bar> redraw<cr>
