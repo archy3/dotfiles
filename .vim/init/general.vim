@@ -104,9 +104,6 @@ set printoptions+=syntax:n
 set printoptions+=number:y
 
 
-" Disable cursor blink when not editing:
-"let &guicursor = substitute(&guicursor, 'n-v-c:', '&blinkon0-', '')
-
 
 if &t_Co > 2 || has("gui_running")
   packadd! gruvbox
@@ -129,6 +126,14 @@ if &t_Co > 2 || has("gui_running")
     set termguicolors
   endif
 
+  " For gvim, when hlsearch is on, set distinctive cursor color
+  " (#AD7CBF is a bit more subtle) and disable (normal mode) blinking.
+  augroup hlsearch_cursor_toggle
+    autocmd!
+    autocmd OptionSet hlsearch exec &hlsearch ?
+      \ 'hi Cursor guifg=#00FFFF guibg=#000000 | set guicursor+=n:blinkon0' :
+      \ 'hi Cursor guifg=NONE    guibg=NONE    | set guicursor-=n:blinkon0'
+  augroup END
   "autocmd vimenter * hi Normal guifg=#FFD7AF
   set background=dark
 endif
