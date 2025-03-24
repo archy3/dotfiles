@@ -48,6 +48,13 @@ set splitbelow
 set splitright
 set hidden
 
+" Open help in a new tab, and disable insert mode:
+augroup help_new_tab_and_disable_insert_mode
+  autocmd!
+  autocmd FileType help silent wincmd T
+  autocmd InsertEnter *.txt if &buftype ==# 'help' | call feedkeys("\<C-o>", 'n') | endif
+augroup END
+
 " Make vertical motions like CTRL-F, CTRL-B, gg, etc preserve horizontal
 " cursor position:
 set nostartofline
