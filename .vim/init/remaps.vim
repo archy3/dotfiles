@@ -3,7 +3,7 @@ nnoremap <RightMouse> "+<MiddleMouse>
 inoremap <RightMouse> <C-g>u<C-o>"+<MiddleMouse>
 vnoremap <RightMouse> "+y
 
-" Also make middle click count as a separate insert action for undo purposes:
+" Also make middle click use <C-g>u to create an undo checkpoint:
 inoremap <MiddleMouse> <C-g>u<MiddleMouse>
 
 " Use mouse back button to open a new line below the mouse cursor:
