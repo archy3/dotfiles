@@ -22,6 +22,7 @@ call SetTabBehavior(2,8)
 
 if exists('b:undo_ftplugin')
   let b:undo_ftplugin .= '|mapclear <buffer> | mapclear! <buffer>'
+  let b:undo_ftplugin .= '|delcommand -buffer FoldBracesAndParentheses'
 endif
 
 " Remaps:
