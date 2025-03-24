@@ -20,20 +20,6 @@ endfunction
 call FoldBracesAndParenthesesSh()
 call SetTabBehavior(2,8)
 
-"setlocal smartindent
-" Try these instead (from https://vim.fandom.com/wiki/Restoring_indent_after_typing_hash)
-
-"setlocal cindent
-"setlocal cinkeys-=0#
-"setlocal indentkeys-=0#
-
-
-"if exists('b:undo_ftplugin')
-  "let b:undo_ftplugin .= '|setlocal smartindent<'
-  "let b:undo_ftplugin .= '|setlocal cindent<'
-  "let b:undo_ftplugin .= '|setlocal cinkeys<'
-  "let b:undo_ftplugin .= '|setlocal indentkeys<'
-"endif
 
 " Remaps:
 "nnoremap <buffer> <Leader>R :!shellcheck --color=never -- %:p:S<cr>
