@@ -48,6 +48,8 @@ set wildmenu
 "if !has("gui_running")
 "  set laststatus=2
 "endif
+" Make gf work for assignments like "profile=/etc/profile"
+set isfname-==
 
 " Make vertical motions like CTRL-F, CTRL-B, gg, etc preserve horizontal
 " cursor position:
