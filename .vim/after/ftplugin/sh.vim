@@ -3,7 +3,7 @@
 "set foldmethod=marker
 "set foldmarker={,}
 "set foldlevelstart=99
-function! FoldBracesAndParenthesesSh()
+function! s:FoldBracesAndParentheses()
   if !(&diff) " skip when using vimdiff
     let l:current_winview=winsaveview()
     "silent %g /^ *}$/ normal! zf%
@@ -17,7 +17,7 @@ function! FoldBracesAndParenthesesSh()
   endif
 endfunction
 
-call FoldBracesAndParenthesesSh()
+call s:FoldBracesAndParentheses()
 call SetTabBehavior(2,8)
 
 if exists('b:undo_ftplugin')
@@ -28,3 +28,5 @@ endif
 "nnoremap <buffer> <Leader>R :!shellcheck --color=never -- %:p:S<cr>
 nnoremap <buffer> <Leader>R :w !shellcheck --color=never -- -<cr>
 nnoremap <buffer> <Leader>r :call UltiSnips#RefreshSnippets()<cr>
+
+command! -buffer FoldBracesAndParentheses call <SID>FoldBracesAndParentheses()

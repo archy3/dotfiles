@@ -112,10 +112,10 @@ nnoremap <silent> <Leader><Leader>l :setlocal list! list?<cr>
 nnoremap <silent> <Leader><Leader>h :setlocal hlsearch! hlsearch?<cr>
 nnoremap <silent> <Leader><Leader>w :set wrap! wrap?<cr>
 nnoremap <silent> <Leader><Leader>; :setlocal linebreak! linebreak?<cr>
-nnoremap <silent> <Leader><Leader>y :call ToggleSystemClipboard()<cr>
+nnoremap <silent> <Leader><Leader>y :call <SID>ToggleSystemClipboard()<cr>
 
 " Toggle using internal registers or system clipboard:
-function! ToggleSystemClipboard()
+function! s:ToggleSystemClipboard()
   if &clipboard =~# 'unnamedplus'
     set clipboard-=unnamedplus clipboard?
   else
@@ -143,15 +143,15 @@ nnoremap <Leader>z 1z=
 nnoremap <silent> <Leader>yy :<C-u>exec 'norm! ^' . v:count1 . 'y$'<cr>
 
 " copy entire file into clipboard
-nnoremap <silent> <Leader>y<Leader> :call CopyBufferToClipboard()<cr>
-"function! CopyBufferToClipboard()
+nnoremap <silent> <Leader>y<Leader> :call <SID>CopyBufferToClipboard()<cr>
+"function! s:CopyBufferToClipboard()
 "  let l:current_winview=winsaveview()
 "  normal! vgg0oG$"+y
 "  call winrestview(l:current_winview)
 "endfunction
 " (Just doing something like 'nnoremap <Leader>y :%y+<cr>' is much simpler,
 "  but that would also copy the EOF newline which usually isn't wanted.)
-function! CopyBufferToClipboard()
+function! s:CopyBufferToClipboard()
   %y+
   " Remove EOF newline which usually isn't wanted:
   let l:regContents = getreg('+')
@@ -168,7 +168,7 @@ nnoremap <Leader>P "+P
 "{{{
   " From https://www.reddit.com/r/vim/comments/a9nyqc/how_to_paste_without_losing_the_text_in_the/ecmt0li/?utm_source=reddit&utm_medium=web2x&context=3
   " but just the pasting and command part.
-  function! CustomPasteAction(replaceRegEx, prePasteCmd)
+  function! s:CustomPasteAction(replaceRegEx, prePasteCmd)
     let saveReg = @@
     let reg = v:register
     let regContents = getreg(reg)
@@ -183,30 +183,30 @@ nnoremap <Leader>P "+P
   endfunction
 
   " Append yanked test to end of line or after cursor, separated by a space:
-  function! PasteAtEndOfLine(...)
+  function! s:PasteAtEndOfLine(...)
     " Check if line already ends in whitespace or not
     let l:prePasteCmd = (getline('.') =~# '\s\+$' ? 'A' : "A\<space>")
     " Remove leading and trailing white space (including newlines)
-    call CustomPasteAction('\_s*$\|^\_s*', l:prePasteCmd)
+    call s:CustomPasteAction('\_s*$\|^\_s*', l:prePasteCmd)
   endfunction
-  function! PasteAtEndOfCursor(...)
+  function! s:PasteAtEndOfCursor(...)
     " Check if character under cursor is already whitespace or not
     let l:prePasteCmd = (getline('.')[col('.') - 1] =~# '\s' ? 'a' : "a\<space>")
     " Remove leading and trailing white space (including newlines)
-    call CustomPasteAction('\_s*$\|^\_s*', l:prePasteCmd)
+    call s:CustomPasteAction('\_s*$\|^\_s*', l:prePasteCmd)
   endfunction
-  nnoremap <Leader>A :set opfunc=PasteAtEndOfLine<cr>g@<space>
-  nnoremap <Leader>a :set opfunc=PasteAtEndOfCursor<cr>g@<space>
+  nnoremap <Leader>A :set opfunc=<SID>PasteAtEndOfLine<cr>g@<space>
+  nnoremap <Leader>a :set opfunc=<SID>PasteAtEndOfCursor<cr>g@<space>
 
-  function! PasteOverInnerLine(...)
+  function! s:PasteOverInnerLine(...)
     " Remove leading spaces and any trailing newline from register:
-    call CustomPasteAction('\s*\n\?$\|^\s*', "^\"_cg_")
+    call s:CustomPasteAction('\s*\n\?$\|^\s*', "^\"_cg_")
   endfunction
-  nnoremap <silent> <Leader>cil :set opfunc=PasteOverInnerLine<cr>g@<space>
+  nnoremap <silent> <Leader>cil :set opfunc=<SID>PasteOverInnerLine<cr>g@<space>
 
   " change with yanked text
   " From https://www.reddit.com/r/vim/comments/a9nyqc/how_to_paste_without_losing_the_text_in_the/ecmt0li/?utm_source=reddit&utm_medium=web2x&context=3
-  function! PasteOver(type, ...)
+  function! s:PasteOver(type, ...)
     let saveSel = &selection
     let &selection = "inclusive"
 
@@ -221,22 +221,22 @@ nnoremap <Leader>P "+P
     endif
 
     " Remove final trailing newline from yanks like "yy"
-    call CustomPasteAction('\n$', "\"_c")
+    call s:CustomPasteAction('\n$', "\"_c")
 
     let &selection = saveSel
   endfunction
-  nnoremap <silent> <Leader>c :set opfunc=PasteOver<cr>g@
-  nnoremap <silent> <Leader>cc 0:set opfunc=PasteOver<cr>g@$
-  nnoremap <silent> <Leader>C :set opfunc=PasteOver<cr>g@$
+  nnoremap <silent> <Leader>c :set opfunc=<SID>PasteOver<cr>g@
+  nnoremap <silent> <Leader>cc 0:set opfunc=<SID>PasteOver<cr>g@$
+  nnoremap <silent> <Leader>C :set opfunc=<SID>PasteOver<cr>g@$
 "}}}
 
 " Buffer remaps:
 "{{{
   nnoremap <Leader>b :bn <cr>
   nnoremap <Leader>B :bp <cr>
-  nnoremap <Leader>q :call DeleteBuffer(0)<cr>
-  nnoremap <Leader>Q :call DeleteBuffer(1)<cr>
-  function! DeleteBuffer(force)
+  nnoremap <Leader>q :call <SID>DeleteBuffer(0)<cr>
+  nnoremap <Leader>Q :call <SID>DeleteBuffer(1)<cr>
+  function! s:DeleteBuffer(force)
     let l:del_cmd = (a:force ? "bdelete!" : "bdelete")
 
     " If there is an alternative buffer (AKA buffer 0), go to it and delete this
@@ -294,7 +294,7 @@ nnoremap <leader>ft :setfiletype<space>
 "nnoremap <silent> <esc> <esc>:setlocal nohlsearch<cr>
 "nnoremap <silent> <esc> <esc>:nohlsearch<cr>
 
-function! CenterMatch()
+function! s:CenterMatch()
   nnoremap <buffer> n nzz
   nnoremap <buffer> N Nzz
   nnoremap <buffer> * *zz
@@ -309,11 +309,11 @@ endfunction
   " from: https://vim.fandom.com/wiki/Commenting_with_opfunc
 
   " Comment or uncomment lines from mark a to mark b.
-  function! CommentMark(docomment, a, b)
+  function! s:CommentMark(docomment, a, b)
     if !exists('b:comment')
       "let b:comment = CommentStr() . ' '
       " (Would nice to use the above but skip blank lines)
-      let b:comment = CommentStr()
+      let b:comment = s:CommentStr()
     endif
     if a:docomment
       exe "normal! '" . a:a . "_\<C-V>'" . a:b . 'I' . b:comment
@@ -323,17 +323,17 @@ endfunction
   endfunction
 
   " Comment lines in marks set by g@ operator.
-  function! DoCommentOp(type)
-    call CommentMark(1, '[', ']')
+  function! s:DoCommentOp(type)
+    call s:CommentMark(1, '[', ']')
   endfunction
 
   " Uncomment lines in marks set by g@ operator.
-  function! UnCommentOp(type)
-    call CommentMark(0, '[', ']')
+  function! s:UnCommentOp(type)
+    call s:CommentMark(0, '[', ']')
   endfunction
 
   " Return string used to comment line for current filetype.
-  function! CommentStr()
+  function! s:CommentStr()
     if index(['c', 'cpp', 'java', 'javascript'], &ft) != -1
       return '//'
     elseif index(['vim'], &ft) != -1
@@ -352,10 +352,10 @@ endfunction
     return ''
   endfunction
 
-  nnoremap gc <Esc>:set opfunc=DoCommentOp<CR>g@
-  nnoremap gC <Esc>:set opfunc=UnCommentOp<CR>g@
-  vnoremap gc <Esc>:call CommentMark(1,'<','>')<CR>
-  vnoremap gC <Esc>:call CommentMark(0,'<','>')<CR>
+  nnoremap gc <Esc>:set opfunc=<SID>DoCommentOp<CR>g@
+  nnoremap gC <Esc>:set opfunc=<SID>UnCommentOp<CR>g@
+  xnoremap gc <Esc>:call <SID>CommentMark(1,'<','>')<CR>
+  xnoremap gC <Esc>:call <SID>CommentMark(0,'<','>')<CR>
 "}}}
 
 

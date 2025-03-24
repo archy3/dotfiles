@@ -125,10 +125,10 @@ inoremap <C-delete> <C-o>dw
 " Toggle options and access command mode:
 inoremap <F1> <C-o>:
 inoremap <silent> <F2> <C-o>:<C-u>set number!<cr>
-inoremap <silent> <F3> <C-o>:<C-u>call ToggleWrapAndLinebreak()<cr>
+inoremap <silent> <F3> <C-o>:<C-u>call <SID>ToggleWrapAndLinebreak()<cr>
 inoremap <silent> <esc> <C-o>:<C-u>nohlsearch<cr>
 
-function! ToggleWrapAndLinebreak()
+function! s:ToggleWrapAndLinebreak()
   if !(&wrap)
     set wrap
     set guioptions-=b
@@ -169,7 +169,7 @@ inoremap <X2Mouse> <C-o>u
 vnoremap <X2Mouse> d
 
 " Zoom in/out:
-function! ZoomInOut(delta)
+function! s:ZoomInOut(delta)
   let l:font = substitute(&guifont, '\d\+', '\=submatch(0) + ' . a:delta, 'g')
 
   " Set the new font size, but if it is now zero, make it 1:
@@ -180,7 +180,7 @@ function! ZoomInOut(delta)
   echo matchstr(&guifont, '\d\+')
 endfunction
 
-function! SetFontSize(size)
+function! s:SetFontSize(size)
   let &guifont = substitute(&guifont, '\d\+', a:size, 'g')
   " Show current font size (for first font):
   redraw
@@ -188,22 +188,22 @@ function! SetFontSize(size)
 endfunction
 
 " <C-_> is really <C-->:
-inoremap <C-_> <C-o>:<C-u>call ZoomInOut(-1)<cr>
-inoremap <C-=> <C-o>:<C-u>call ZoomInOut(1)<cr>
-inoremap <C-0> <C-o>:<C-u>call SetFontSize(11)<cr>
-inoremap <C-ScrollWheelDown> <C-o>:<C-u>call ZoomInOut(-1)<cr>
-inoremap <C-ScrollWheelUp> <C-o>:<C-u>call ZoomInOut(1)<cr>
+inoremap <C-_> <C-o>:<C-u>call <SID>ZoomInOut(-1)<cr>
+inoremap <C-=> <C-o>:<C-u>call <SID>ZoomInOut(1)<cr>
+inoremap <C-0> <C-o>:<C-u>call <SID>SetFontSize(11)<cr>
+inoremap <C-ScrollWheelDown> <C-o>:<C-u>call <SID>ZoomInOut(-1)<cr>
+inoremap <C-ScrollWheelUp> <C-o>:<C-u>call <SID>ZoomInOut(1)<cr>
 
-snoremap <C-_> <C-g>:<C-u>call ZoomInOut(-1) <bar> norm! gv<cr><C-g>
-snoremap <C-=> <C-g>:<C-u>call ZoomInOut(1) <bar> norm! gv<cr><C-g>
-xnoremap <C-_> :<C-u>call ZoomInOut(-1) <bar> norm! gv<cr>
-xnoremap <C-=> :<C-u>call ZoomInOut(1) <bar> norm! gv<cr>
-snoremap <C-0> <C-g>:<C-u>call SetFontSize(11) <bar> norm! gv<cr><C-g>
-xnoremap <C-0> :<C-u>call SetFontSize(11) <bar> norm! gv<cr>
-snoremap <C-ScrollWheelDown> <C-g>:<C-u>call ZoomInOut(-1) <bar> norm! gv<cr><C-g>
-snoremap <C-ScrollWheelUp> <C-g>:<C-u>call ZoomInOut(1) <bar> norm! gv<cr><C-g>
-xnoremap <C-ScrollWheelDown> :<C-u>call ZoomInOut(-1) <bar> norm! gv<cr>
-xnoremap <C-ScrollWheelUp> :<C-u>call ZoomInOut(1) <bar> norm! gv<cr>
+snoremap <C-_> <C-g>:<C-u>call <SID>ZoomInOut(-1) <bar> norm! gv<cr><C-g>
+snoremap <C-=> <C-g>:<C-u>call <SID>ZoomInOut(1) <bar> norm! gv<cr><C-g>
+xnoremap <C-_> :<C-u>call <SID>ZoomInOut(-1) <bar> norm! gv<cr>
+xnoremap <C-=> :<C-u>call <SID>ZoomInOut(1) <bar> norm! gv<cr>
+snoremap <C-0> <C-g>:<C-u>call <SID>SetFontSize(11) <bar> norm! gv<cr><C-g>
+xnoremap <C-0> :<C-u>call <SID>SetFontSize(11) <bar> norm! gv<cr>
+snoremap <C-ScrollWheelDown> <C-g>:<C-u>call <SID>ZoomInOut(-1) <bar> norm! gv<cr><C-g>
+snoremap <C-ScrollWheelUp> <C-g>:<C-u>call <SID>ZoomInOut(1) <bar> norm! gv<cr><C-g>
+xnoremap <C-ScrollWheelDown> :<C-u>call <SID>ZoomInOut(-1) <bar> norm! gv<cr>
+xnoremap <C-ScrollWheelUp> :<C-u>call <SID>ZoomInOut(1) <bar> norm! gv<cr>
 
 " Create an undo checkpoint for every &updatetime milliseconds of idle time:
 autocmd CursorHoldI * call feedkeys("\<c-g>u", 'n')
@@ -218,7 +218,7 @@ inoremap <buffer> ? ?<c-g>u
 inoremap <buffer> <cr> <cr><c-g>u
 
 " Prevent scrolling past EOF:
-function! PageOrScrollDown(count, type)
+function! s:PageOrScrollDown(count, type)
   let l:save_pos = getpos('.')
   exec "norm! L"
 
@@ -246,6 +246,6 @@ function! PageOrScrollDown(count, type)
 
   call setpos('.', l:save_pos)
 endfunction
-inoremap <silent> <PageDown> <C-o>:<C-u>call PageOrScrollDown(v:count1, 'page')<cr>
-inoremap <silent> <ScrollWheelDown> <C-o>:<C-u>call PageOrScrollDown(3, 'scroll')<cr>
+inoremap <silent> <PageDown> <C-o>:<C-u>call <SID>PageOrScrollDown(v:count1, 'page')<cr>
+inoremap <silent> <ScrollWheelDown> <C-o>:<C-u>call <SID>PageOrScrollDown(3, 'scroll')<cr>
 " (TODO: Make this work in select mode)

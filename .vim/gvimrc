@@ -2,7 +2,7 @@ set guifont=Monospace\ 11
 set guifont+=DejaVu_Sans_Mono:h12:cANSI:qDRAFT
 set guifont+=Consolas:h14:cANSI:qDRAFT
 
-function! ZoomInOut(delta)
+function! s:ZoomInOut(delta)
   let l:font = substitute(&guifont, '\d\+', '\=submatch(0) + ' . a:delta, 'g')
 
   " Set the new font size, but if it is now zero, make it 1:
@@ -13,10 +13,10 @@ function! ZoomInOut(delta)
   echo matchstr(&guifont, '\d\+')
 endfunction
 
-nnoremap <expr> <M-j> ZoomInOut(-1)
-nnoremap <expr> <M-k> ZoomInOut(1)
-nnoremap <expr> <C-ScrollWheelDown> ZoomInOut(-1)
-nnoremap <expr> <C-ScrollWheelUp> ZoomInOut(1)
+nnoremap <expr> <M-j> <SID>ZoomInOut(-1)
+nnoremap <expr> <M-k> <SID>ZoomInOut(1)
+nnoremap <expr> <C-ScrollWheelDown> <SID>ZoomInOut(-1)
+nnoremap <expr> <C-ScrollWheelUp> <SID>ZoomInOut(1)
 
 
 filetype detect " from https://stackoverflow.com/a/65367744

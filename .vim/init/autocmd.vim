@@ -4,7 +4,7 @@ autocmd VimResized * wincmd =
 " Make buffers remember their view settings:
 "{{{
     " Save current view settings on a per-window, per-buffer basis.
-    function! AutoSaveWinView()
+    function! s:AutoSaveWinView()
         if !exists("w:SavedBufView")
             let w:SavedBufView = {}
         endif
@@ -12,7 +12,7 @@ autocmd VimResized * wincmd =
     endfunction
 
     " Restore current view settings.
-    function! AutoRestoreWinView()
+    function! s:AutoRestoreWinView()
         let buf = bufnr("%")
         if exists("w:SavedBufView") && has_key(w:SavedBufView, buf)
             let v = winsaveview()
@@ -26,70 +26,74 @@ autocmd VimResized * wincmd =
 
     " When switching buffers, preserve window view.
     if v:version >= 700
-        autocmd BufLeave * call AutoSaveWinView()
-        autocmd BufEnter * call AutoRestoreWinView()
+      augroup preserve_buffer_views
+        autocmd!
+        autocmd BufLeave * call s:AutoSaveWinView()
+        autocmd BufEnter * call s:AutoRestoreWinView()
+      augroup END
     endif
 "}}}
 
 " Highlight trailing whitespace: (Such as this:)	 
 "{{{
-    " The vimenter command prevent errors that occur
-    " from things loading too late or too early.
-    function! HighlightExtraWhitespace()
-       highlight ExtraWhitespace ctermbg=red guibg=red
-       match ExtraWhitespace /\s\+$/
+  function! s:HighlightExtraWhitespace()
+    highlight ExtraWhitespace ctermbg=red guibg=red
+    match ExtraWhitespace /\s\+$/
+  endfunction
 
-       " Apply to entered buffers:
-       autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+  function! s:Activate_HighlightExtraWhitespace()
+    call s:HighlightExtraWhitespace()
+    augroup highlight_trailing_whitespace
+      autocmd!
 
-       " Apply to new windows:
-       autocmd WinNew * match ExtraWhitespace /\s\+$/
+      " Apply to entered buffers and new windows:
+      autocmd BufWinEnter,WinNew * match ExtraWhitespace /\s\+$/
 
-       " Disable on Insert Mode:
-       autocmd InsertEnter * match ExtraWhitespace //
-       autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+      " Disable on insert mode:
+      autocmd InsertEnter * match ExtraWhitespace //
+      autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 
-       " Disable on buffers that aren't being viewed:
-       autocmd BufWinLeave * call clearmatches()
-    endfunction
-    autocmd colorscheme * call HighlightExtraWhitespace()
-    " This was originally 'autocmd vimenter * call HighlightExtraWhitespace()'
-    " but that only worked when called after
-    " 'autocmd vimenter * colorscheme gruvbox'.
-    " Now that 'autocmd vimenter * nested colorscheme gruvbox' is being used,
-    " 'autocmd colorscheme * call HighlightExtraWhitespace()' works both when
-    " it is run before and when it is run after
-    " 'autocmd vimenter * nested colorscheme gruvbox'.
+      " Disable on buffers that aren't being viewed:
+      autocmd BufWinLeave * call clearmatches()
 
-   " set list listchars=tab:\ \ ,trail:@
-   " autocmd InsertEnter * set nolist
-   " autocmd InsertLeave * set list
+      " Apply after applying colorscheme so colorscheme does not overwrite:
+      autocmd colorscheme * call s:HighlightExtraWhitespace()
+    augroup END
+  endfunction
+
+  call s:Activate_HighlightExtraWhitespace()
 "}}}
 
 " Highlight multiple consecutive whitespace (such as  stuff  like  this  )
 " except for whitespace at the beginning of a line:
 "{{{
-    function! HighlightMultipleWhitespace()
-       highlight MultipleWhitespace ctermbg=red guibg=red
-       match MultipleWhitespace /[^[:blank:]]\zs\s\s\+/
+  function! s:HighlightMultipleWhitespace()
+    highlight MultipleWhitespace ctermbg=red guibg=red
+    match MultipleWhitespace /[^[:blank:]]\zs\s\s\+/
+  endfunction
 
-       " Apply to entered buffers:
-       autocmd BufWinEnter * match MultipleWhitespace /[^[:blank:]]\zs\s\s\+/
+  function! s:Activate_HighlightMultipleWhitespace()
+    call s:HighlightMultipleWhitespace()
+    augroup highlight_trailing_whitespace
+      autocmd!
 
-       " Apply to new windows:
-       autocmd WinNew * match MultipleWhitespace /[^[:blank:]]\zs\s\s\+/
+      " Apply to entered buffers and new windows:
+      autocmd BufWinEnter,WinNew * match MultipleWhitespace /[^[:blank:]]\zs\s\s\+/
 
-       " Disable on Insert Mode:
-       autocmd InsertEnter * match MultipleWhitespace //
-       autocmd InsertLeave * match MultipleWhitespace /[^[:blank:]]\zs\s\s\+/
+      " Disable on Insert Mode:
+      autocmd InsertEnter * match MultipleWhitespace //
+      autocmd InsertLeave * match MultipleWhitespace /[^[:blank:]]\zs\s\s\+/
 
-       " Disable on buffers that aren't being viewed:
-       autocmd BufWinLeave * call clearmatches()
-    endfunction
-    "autocmd colorscheme * call HighlightMultipleWhitespace()
+      " Disable on buffers that aren't being viewed:
+      autocmd BufWinLeave * call clearmatches()
+
+      " Apply after applying colorscheme so colorscheme does not overwrite:
+      autocmd colorscheme * call s:HighlightMultipleWhitespace()
+    augroup END
+  endfunction
+
+  "call s:Activate_HighlightMultipleWhitespace()
 "}}}
-
-
 
 " After &updatetime milliseconds of idle time in insert mode,
 " create an undo checkpoint:
