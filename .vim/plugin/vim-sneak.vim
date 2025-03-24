@@ -9,5 +9,8 @@ nmap <cr> <Plug>Sneak_s
 nmap <bs> <Plug>Sneak_S
 
 " Enter needs to work as enter for these buffers:
-autocmd CmdwinEnter * nnoremap <buffer> <cr> <cr>
-autocmd FileType qf nnoremap <buffer> <cr> <cr>
+augroup vim_sneak_relinquish_maps_in_certain_buffers
+  autocmd!
+  autocmd CmdwinEnter * nnoremap <buffer> <cr> <cr>
+  autocmd FileType qf nnoremap <buffer> <cr> <cr>
+augroup END

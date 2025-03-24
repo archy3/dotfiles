@@ -19,10 +19,19 @@ if line('$') ==# 1 && col('$') ==# 1
   " activate the `b:undo_ftplugin'.
   if (@% ==# "")
     let w:text_ftplugin_may_need_to_be_undone = 1
-    autocmd BufNewFile,BufRead * if exists('w:text_ftplugin_may_need_to_be_undone') | let s:filetype_save = &filetype | set filetype=text | exec 'set filetype=' . s:filetype_save | unlet w:text_ftplugin_may_need_to_be_undone | endif
-      " Without the guard `if exists('w:text_ftplugin_may_need_to_be_undone')`,
-      " performance problems can occur in plugins that create
-      " many buffers (such as quick-fix windows).
+    augroup text_ft_fix_b_undo_ftplugin_not_activating_bug
+      autocmd!
+      autocmd BufNewFile,BufRead *
+        \ if exists('w:text_ftplugin_may_need_to_be_undone') |
+          \ let s:filetype_save = &filetype |
+          \ set filetype=text |
+          \ exec 'set filetype=' . s:filetype_save |
+          \ unlet w:text_ftplugin_may_need_to_be_undone |
+        \ endif
+        " Without the guard `if exists('w:text_ftplugin_may_need_to_be_undone')`,
+        " performance problems can occur in plugins that create
+        " many buffers (such as quick-fix windows).
+    augroup END
   endif
 endif
 

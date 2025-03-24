@@ -1,5 +1,8 @@
 " Resize windows (panes) to equal when GUI window or terminal is resized:
-autocmd VimResized * wincmd =
+augroup resize_windows_on_terminal_resize
+  autocmd!
+  autocmd VimResized * wincmd =
+augroup END
 
 " Make buffers remember their view settings:
 "{{{
@@ -107,5 +110,8 @@ augroup END
 " ~/.Xresources causes the terminal background color to become the
 " background color of the vim colorscheme when vim exits:
 if ($TERM ==# 'xterm-256color') && !has("gui_running")
-  autocmd! VimLeave * syntax off | highlight clear | redraw
+  augroup fix_xterm_buffered_bug
+    autocmd!
+    autocmd VimLeave * syntax off | highlight clear | redraw
+  augroup END
 endif

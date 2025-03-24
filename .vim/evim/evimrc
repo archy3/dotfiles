@@ -206,7 +206,10 @@ xnoremap <C-ScrollWheelDown> :<C-u>call <SID>ZoomInOut(-1) <bar> norm! gv<cr>
 xnoremap <C-ScrollWheelUp> :<C-u>call <SID>ZoomInOut(1) <bar> norm! gv<cr>
 
 " Create an undo checkpoint for every &updatetime milliseconds of idle time:
-autocmd CursorHoldI * call feedkeys("\<c-g>u", 'n')
+augroup create_undo_checkpoint_when_idling_in_insert_mode
+  autocmd!
+  autocmd CursorHoldI * call feedkeys("\<c-g>u", 'n')
+augroup END
 
 " Create undo checkpoints when writing prose:
 inoremap <buffer> . .<c-g>u

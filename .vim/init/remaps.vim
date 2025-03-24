@@ -267,8 +267,12 @@ nnoremap <Leader>P "+P
   endfunction
 
   " The above function does not work in the command history window
-  autocmd CmdwinEnter * nnoremap <buffer> <Leader>q <C-c>
-  autocmd CmdwinEnter * nnoremap <buffer> <Leader>Q :quit<cr>
+  augroup command_history_buffer_delete_remaps
+    autocmd!
+    autocmd CmdwinEnter * nnoremap <buffer> <Leader>q <C-c>
+    autocmd CmdwinEnter * nnoremap <buffer> <Leader>Q :quit<cr>
+  augroup END
+
 "}}}
 
 " Jump to next window:

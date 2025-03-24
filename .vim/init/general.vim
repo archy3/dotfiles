@@ -110,19 +110,21 @@ if &t_Co > 2 || has("gui_running")
   packadd! gruvbox
   syntax on
 
+  augroup gruvbox_autocmd
+    autocmd!
+    autocmd vimenter * ++nested colorscheme gruvbox
+  augroup END
+
   " Make gruvbox colors, italics, and spell underlining work in
   " xterm (or terminals that report as xterm) and tmux:
   if $TERM =~# '^\(xterm\|tmux\)-.*color.*$' && !has("gui_running")
     let g:gruvbox_italic=1
-    autocmd vimenter * ++nested colorscheme gruvbox
-    autocmd vimenter * hi SpellBad cterm=underline
-    autocmd vimenter * hi SpellRare cterm=underline
-    autocmd vimenter * hi SpellCap cterm=underline
-    autocmd vimenter * hi SpellLocal cterm=underline
+    autocmd gruvbox_autocmd vimenter * hi SpellBad cterm=underline
+    autocmd gruvbox_autocmd vimenter * hi SpellRare cterm=underline
+    autocmd gruvbox_autocmd vimenter * hi SpellCap cterm=underline
+    autocmd gruvbox_autocmd vimenter * hi SpellLocal cterm=underline
       " See also this: https://gist.github.com/romainl/379904f91fa40533175dfaec4c833f2f
     set termguicolors
-  else
-    autocmd vimenter * ++nested colorscheme gruvbox
   endif
 
   "autocmd vimenter * hi Normal guifg=#FFD7AF
