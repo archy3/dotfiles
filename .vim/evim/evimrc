@@ -106,12 +106,18 @@ inoremap <silent> <C-t> <C-o>:<C-u>tabe<cr>
 inoremap <C-w> <C-o>:<C-u>confirm bd<cr>
 inoremap <C-Tab> <C-o>gt
 inoremap <C-S-Tab> <C-o>gT
+nnoremap <silent> <C-t> :<C-u>tabe<cr>
+nnoremap <C-w> :<C-u>confirm bd<cr>
+nnoremap <C-Tab> gt
+nnoremap <C-S-Tab> gT
 
 " Open new evim window:
 inoremap <silent> <C-n> <C-o>:<C-u>silent exec '! gtk-launch evim.desktop &'<cr>
+nnoremap <silent> <C-n> :<C-u>silent exec '! gtk-launch evim.desktop &'<cr>
 
 " Print:
 inoremap <silent> <C-p> <C-o>:<C-u>hardcopy<cr>
+nnoremap <silent> <C-p> :<C-u>hardcopy<cr>
 
 " Open file:
 inoremap <silent> <C-o> <C-o>:<C-u>exec 'browse confirm ' . (@% ==# '' && !&modified ? 'e' : 'tabe')<cr>
@@ -218,6 +224,12 @@ inoremap <C-0> <C-o>:<C-u>call <SID>SetFontSize(11)<cr>
 inoremap <C-ScrollWheelDown> <C-o>:<C-u>call <SID>ZoomInOut(-1)<cr>
 inoremap <C-ScrollWheelUp> <C-o>:<C-u>call <SID>ZoomInOut(1)<cr>
 
+nnoremap <C-_> :<C-u>call <SID>ZoomInOut(-1)<cr>
+nnoremap <C-=> :<C-u>call <SID>ZoomInOut(1)<cr>
+nnoremap <C-0> :<C-u>call <SID>SetFontSize(11)<cr>
+nnoremap <C-ScrollWheelDown> :<C-u>call <SID>ZoomInOut(-1)<cr>
+nnoremap <C-ScrollWheelUp> :<C-u>call <SID>ZoomInOut(1)<cr>
+
 snoremap <C-_> <C-g>:<C-u>call <SID>ZoomInOut(-1) <bar> norm! gv<cr><C-g>
 snoremap <C-=> <C-g>:<C-u>call <SID>ZoomInOut(1) <bar> norm! gv<cr><C-g>
 xnoremap <C-_> :<C-u>call <SID>ZoomInOut(-1) <bar> norm! gv<cr>
@@ -275,4 +287,6 @@ function! s:PageOrScrollDown(count, type)
 endfunction
 inoremap <silent> <PageDown> <C-o>:<C-u>call <SID>PageOrScrollDown(v:count1, 'page')<cr>
 inoremap <silent> <ScrollWheelDown> <C-o>:<C-u>call <SID>PageOrScrollDown(3, 'scroll')<cr>
+nnoremap <silent> <PageDown> :<C-u>call <SID>PageOrScrollDown(v:count1, 'page')<cr>
+nnoremap <silent> <ScrollWheelDown> :<C-u>call <SID>PageOrScrollDown(3, 'scroll')<cr>
 " (TODO: Make this work in select mode)
