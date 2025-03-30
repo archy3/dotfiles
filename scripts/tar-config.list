@@ -57,4 +57,5 @@ scripts/tar-config.exclude
 scripts/tar-config.list
 scripts/tar-config.sh
 scripts/tmux-auto-attach.sh
+scripts/transpose.awk
 scripts/xdg-user-dirs-convert-to-lowercase.sh
