@@ -15,7 +15,9 @@ alias gcm='git commit -m'
 alias gca='git commit --amend'
 alias gd='git diff'
 alias gds='git diff --staged'
+alias gl='git log'
 alias glp='git log -p'
+alias glo='git log --oneline'
 alias ht='htop -u'
 ec() { printf %s\\n "$*"; }
 int() { [ -z "${TMUX:-}" ] && echo "Not in tmux." || echo "In tmux."; }
