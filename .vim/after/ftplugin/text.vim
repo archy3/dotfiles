@@ -23,10 +23,10 @@ if line('$') ==# 1 && col('$') ==# 1
       autocmd!
       autocmd BufNewFile,BufRead *
         \ if exists('w:text_ftplugin_may_need_to_be_undone') |
-          \ let s:filetype_save = &filetype |
-          \ set filetype=text |
-          \ exec 'set filetype=' . s:filetype_save |
-          \ unlet w:text_ftplugin_may_need_to_be_undone |
+        \   let s:filetype_save = &filetype |
+        \   set filetype=text |
+        \   exec 'set filetype=' . s:filetype_save |
+        \   unlet w:text_ftplugin_may_need_to_be_undone |
         \ endif
         " Without the guard `if exists('w:text_ftplugin_may_need_to_be_undone')`,
         " performance problems can occur in plugins that create
