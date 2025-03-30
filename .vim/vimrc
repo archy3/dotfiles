@@ -49,6 +49,7 @@ if has('eval') " vim-tiny does not have `eval`
   runtime! init/remaps.vim
   runtime! init/remaps.bookmarks.vim
   runtime! init/functions.vim
+  runtime! init/commands.vim
 
   " help: after/ftplugin/help.vim
   " c   : after/ftplugin/c.vim
