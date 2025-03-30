@@ -237,42 +237,45 @@ nnoremap <Leader>P "+P
   nnoremap <Leader>q :call <SID>DeleteBuffer(0)<cr>
   nnoremap <Leader>Q :call <SID>DeleteBuffer(1)<cr>
   function! s:DeleteBuffer(force)
-    let l:del_cmd = (a:force ? "bdelete!" : "bdelete")
+    let l:buf_to_delete = bufnr('%')
+    let l:del_cmd = 'bdelete' . (a:force ? '! ' : ' ') . l:buf_to_delete
+    let l:func_name = substitute(expand('<sfile>'), '.*\(\.\.\|\s\)', '', '')
+      " Substitution pattern is from https://vi.stackexchange.com/a/5503
 
-    " If there is an alternative buffer (AKA buffer 0), go to it and delete this
-    " buffer from it. Otherwise, go to the previous buffer and do the same.
-    if buflisted(0)
-      let l:command = ":buffer # | " . l:del_cmd . " #"
-    else
-      let l:command = ":bprevious | " . l:del_cmd . " #"
-    endif
+    " If there is an alternative buffer (AKA buffer 0), go to it.
+    " Otherwise, go to the previous buffer.
+    " (The intention after going to this alternate or previous buffer
+    " is to then delete l:buf_to_delete from it.)
+    let l:goto_alt_or_prev_buffer_cmd = buflisted(0) ? 'buffer #' : 'bprevious'
 
-    " If the buffer isn't listed (e.g. help), just simply delete it:
-    if ! buflisted(expand("%"))
-        exec l:del_cmd
+    " Quit out of a command history window
+    " (force will also close the command line):
+    if getcmdwintype() !=# ''
+      exec (a:force ? "quit" : "norm! \<C-c>")
+
+    " If the buffer isn't listed (e.g. help/netrw),
+    " just go back to the previous/alternate buffer (if there is one)
+    " (doing this will automatically discard the unlisted buffer):
+    elseif !buflisted(l:buf_to_delete) && len(getbufinfo({'buflisted':1})) >= 1
+      exec l:goto_alt_or_prev_buffer_cmd
+
     " Only delete the current listed buffer if it is not the only listed buffer:
     elseif len(getbufinfo({'buflisted':1})) >= 2
       try
-        exec l:command
-      catch
+        exec l:goto_alt_or_prev_buffer_cmd . ' | ' . l:del_cmd
+      catch /^Vim\%((\a\+)\)\=:E89:/
         " Go back to buffer that failed to delete:
-        exec "buffer #"
-        " Run this so the error message will display (there's probably a better
-        " way to do this than having to run the bdelete command again):
-        exec l:del_cmd
+        exec 'buffer ' . l:buf_to_delete
+        echo l:func_name . '(): Buffer ' . l:buf_to_delete . ' has unsaved changes.'
+      catch
+        " Go back to buffer that failed to delete, & display the error message:
+        exec 'buffer ' . l:buf_to_delete
+        echoerr v:exception
       endtry
     else
-      echo "DeleteBuffer(): This is the only buffer."
+      echo l:func_name . '(): This is the only buffer.'
     endif
   endfunction
-
-  " The above function does not work in the command history window
-  augroup command_history_buffer_delete_remaps
-    autocmd!
-    autocmd CmdwinEnter * nnoremap <buffer> <Leader>q <C-c>
-    autocmd CmdwinEnter * nnoremap <buffer> <Leader>Q :quit<cr>
-  augroup END
-
 "}}}
 
 " Jump to next window:
