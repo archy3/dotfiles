@@ -1,5 +1,8 @@
 " List of normal-mode commands that go into insert-mode and thus are useless
 " for help: acdiorux
+
+setlocal colorcolumn=80
+
 nnoremap <buffer> u <C-]>
 nnoremap <buffer> r <C-t>
 
@@ -58,5 +61,6 @@ augroup reposition_help_window_view_on_terminal_resize
 augroup END
 
 if exists('b:undo_ftplugin')
+  let b:undo_ftplugin .= '|setlocal colorcolumn<'
   let b:undo_ftplugin .= '|mapclear <buffer> | mapclear! <buffer>'
 endif
