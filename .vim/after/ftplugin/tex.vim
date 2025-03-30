@@ -41,21 +41,25 @@ inoremap <buffer> ? ?<c-g>u
 " From https://unix.stackexchange.com/a/406415
 " (the backslash before the '!' is to prevent error "E34" [see `:h E34`])
 command! -range -buffer Pshuf :exec '<line1>,<line2>! ' .
-  \ 'awk -v seed=' . rand(srand()) . ' ' .
-  \   "\'" .
-  \     'BEGIN{' .
-  \       'srand(seed); ' .
-  \       'n = rand();' .
-  \     '} ' .
-  \     '{' .
-  \       'print n, NR, $0;' .
-  \     '} ' .
-  \     'NF == 0 {' .
-  \       'n = rand();' .
-  \     '} ' .
-  \     'END {' .
-  \       'if (NF \!= 0) {' .
-  \         'print n, NR + 1, "";' .
-  \       '}' .
-  \     '}' .
-  \   "\'" . ' | sort -nk1 -k2 | cut -d" " -f3- | sed ' . "\'" . '$d' . "\'"
+  \ 'awk -v seed=' . rand(srand()) . " '" .
+  \ '
+  \   BEGIN {
+  \     srand(seed);
+  \     n = rand();
+  \   }
+  \
+  \   {
+  \     print n, NR, $0;
+  \   }
+  \
+  \   NF == 0 {
+  \     n = rand();
+  \   }
+  \
+  \   END {
+  \     if (NF \!= 0) {
+  \       print n, NR + 1, "";
+  \     }
+  \   }
+  \ ' .
+  \ "' | sort -nk1 -k2 | cut -d' ' -f3- | sed '$d'"
