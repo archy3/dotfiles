@@ -120,7 +120,11 @@ set path+=~/scripts
 set path+=~/scripts/autostart
 
 if &t_Co > 2 || has("gui_running")
-  packadd! gruvbox
+  try
+    packadd! gruvbox
+  catch /^Vim\%((\a\+)\)\=:E919:/
+    finish
+  endtry
   syntax on
 
   augroup gruvbox_autocmd

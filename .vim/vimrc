@@ -34,7 +34,11 @@ if has('eval') " vim-tiny does not have `eval`
   let g:plugins_i_want_to_load['vim-sxhkdrc'] = 1
   for [s:key, s:value] in items(g:plugins_i_want_to_load)
     if s:value
-      exec "packadd! " . s:key
+      try
+        exec "packadd! " . s:key
+      catch /^Vim\%((\a\+)\)\=:E919:/
+        let g:plugins_i_want_to_load[s:key] = 0
+      endtry
     endif
   endfor
   filetype plugin indent on " This must come after loading plugins
