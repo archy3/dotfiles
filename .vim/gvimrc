@@ -13,8 +13,8 @@ function! s:ZoomInOut(delta)
   echo matchstr(&guifont, '\d\+')
 endfunction
 
-nnoremap <expr> <M-j> <SID>ZoomInOut(-1)
-nnoremap <expr> <M-k> <SID>ZoomInOut(1)
+nnoremap <expr> <C-S-j> <SID>ZoomInOut(-1)
+nnoremap <expr> <C-S-k> <SID>ZoomInOut(1)
 nnoremap <expr> <C-ScrollWheelDown> <SID>ZoomInOut(-1)
 nnoremap <expr> <C-ScrollWheelUp> <SID>ZoomInOut(1)
 
