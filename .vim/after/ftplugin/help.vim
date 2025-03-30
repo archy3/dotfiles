@@ -6,6 +6,26 @@ setlocal colorcolumn=80
 nnoremap <buffer> u <C-]>
 nnoremap <buffer> r <C-t>
 
+let s:less = 1
+
+function! s:ToggleLessBehavior()
+  let s:less = !s:less
+endfunction
+
+function! s:GetLessBehavior()
+  return s:less
+endfunction
+
+nnoremap <buffer> i :call <SID>ToggleLessBehavior()<cr>
+nnoremap <buffer> <expr> j <SID>GetLessBehavior() ? "\<C-e>"    : 'j'
+nnoremap <buffer> <expr> k <SID>GetLessBehavior() ? "\<C-y>"    : 'k'
+nnoremap <buffer> <expr> h <SID>GetLessBehavior() ? 'zh'        : 'h'
+nnoremap <buffer> <expr> l <SID>GetLessBehavior() ? 'zl'        : 'l'
+nnoremap <buffer> <expr> f <SID>GetLessBehavior() ? "\<C-f>Lzb" : 'f'
+nnoremap <buffer> <expr> b <SID>GetLessBehavior() ? "\<C-b>"    : 'b'
+nnoremap <buffer> <expr> { <SID>GetLessBehavior() ? 'H{'        : '{'
+nnoremap <buffer> <expr> } <SID>GetLessBehavior() ? 'L}'        : '}'
+
 " Make help open in v-split if only one window, else in bottom-right.
 "{{{
 augroup make_help_open_in_a_nice_location
