@@ -52,6 +52,11 @@ function! s:HelpProperLocation()
 endfunc
 "}}}
 
+augroup reposition_help_window_view_on_terminal_resize
+  autocmd!
+  autocmd VimResized *.txt if &buftype ==# 'help' | call feedkeys("\<esc>ze", 'n') | endif
+augroup END
+
 if exists('b:undo_ftplugin')
   let b:undo_ftplugin .= '|mapclear <buffer> | mapclear! <buffer>'
 endif
