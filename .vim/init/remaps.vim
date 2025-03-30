@@ -368,7 +368,7 @@ endfunction
   " Scroll down but don't view anything lower than 'max_overscroll' lines
   " below the last line (unless that is already the current viewing position
   " in which case just don't scroll anymore).
-  function! ScrollDown(scroll_amount, max_overscroll)
+  function! s:ScrollDown(scroll_amount, max_overscroll)
     let l:scroll_amount = a:scroll_amount
 
     " "(line('.') - winline() + 1)" is an expression for the line nubmer of the
@@ -387,10 +387,10 @@ endfunction
   " See https://stackoverflow.com/questions/21859186/vim-mapping-normal-visual-mode-movements/21859475#21859475
   " for a possible pointer in the right direction.
 
-  nnoremap <silent> <ScrollWheelDown> :<C-u>call ScrollDown(3, winheight(0)/2)<cr>
-  inoremap <silent> <ScrollWheelDown> <C-o>:<C-u>call ScrollDown(3, winheight(0)/2)<cr>
-  nnoremap <silent> <C-f> :<C-u>call ScrollDown(v:count1*(winheight(0) - 2), 5)<cr>
-  nnoremap <silent> <PageDown> :<C-u>call ScrollDown(v:count1*(winheight(0) - 2), 5)<cr>
-  inoremap <silent> <PageDown> <C-o>:<C-u>call ScrollDown(v:count1*(winheight(0) - 2), 5)<cr>
+  nnoremap <silent> <ScrollWheelDown> :<C-u>call <SID>ScrollDown(3, winheight(0)/2)<cr>
+  inoremap <silent> <ScrollWheelDown> <C-o>:<C-u>call <SID>ScrollDown(3, winheight(0)/2)<cr>
+  nnoremap <silent> <C-f> :<C-u>call <SID>ScrollDown(v:count1*(winheight(0) - 2), 5)<cr>
+  nnoremap <silent> <PageDown> :<C-u>call <SID>ScrollDown(v:count1*(winheight(0) - 2), 5)<cr>
+  inoremap <silent> <PageDown> <C-o>:<C-u>call <SID>ScrollDown(v:count1*(winheight(0) - 2), 5)<cr>
   " ('winheight(0) - 2' is the number of lines CTRL-F scrolls)
 "}}}
