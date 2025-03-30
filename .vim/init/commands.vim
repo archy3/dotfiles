@@ -33,3 +33,50 @@ function! s:DiffOrig(bang_on_means_start_diff_even_if_not_modified)
 endfunction
 
 command! -bang DiffOrig call s:DiffOrig(<bang>0)
+
+
+" Note that we have to escape '%' to prevent '%' from
+" expanding to the current file.
+let s:transpose_awk_script='
+  \ BEGIN {
+  \   longest_line_length = 0;
+  \ }
+  \
+  \ {
+  \   lines[NR] = $0;
+  \   line_length = length($0);
+  \
+  \   if (line_length > longest_line_length) {
+  \     longest_line_length = line_length;
+  \   }
+  \ }
+  \
+  \ END {
+  \   for (i = 1; i <= NR; i++) {
+  \     lines[i] = sprintf("\%-" longest_line_length "s", lines[i]);
+  \   }
+  \
+  \   for (i = 1; i <= NR; i++) {
+  \     for (j = 1; j <= longest_line_length; j++) {
+  \       matrix[i "," j] = substr(lines[i], j, 1);
+  \     }
+  \   }
+  \
+  \   for (j = 1; j <= longest_line_length; j++) {
+  \     row_of_transpose = "";
+  \     for (i = 1; i <= NR; i++) {
+  \       row_of_transpose = row_of_transpose matrix[i "," j];
+  \     }
+  \
+  \     if (trim) {
+  \       sub("[ \t]+$", "", row_of_transpose);
+  \     }
+  \
+  \     printf "\%s\n", row_of_transpose;
+  \   }
+  \ }
+  \'
+
+" Bang will right-pad the result with spaces
+command! -range -bang Transpose :exec '<line1>,<line2>! ' .
+  \ 'awk -v trim=' . <bang>1 . " '" . s:transpose_awk_script . "'"
