@@ -27,9 +27,16 @@ endfunction
 function! s:make_text_default_filetype_via_feedkeys()
   " The redraw prevents 'Press ENTER or type command to continue' from
   " appearing (unless the window is very small, say under 30 columns,
-  " but even `vim --clean` will do that when a filename argument is provided):
+  " but even `vim --clean` will do that when a filename argument is provided).
+  " The double escape is because when there is just a single escape,
+  " a terminal running bash within vim will interpret the next keypress
+  " (by the user, not feedkeys) as being part of an escape sequence
+  " (the second escape completes the escape sequence already).
+  " "\<C-w>:" is like ":" but works in vim terminal buffers as well.
   call feedkeys(
-    \   "\<esc>:\<C-u>call " . expand('<SID>') .
-    \   "make_text_default_filetype()\<cr>:redraw\<cr>:\<bs>", 'n'
+    \   "\<esc>\<esc>" .
+    \   "\<C-w>:\<C-u>call " . expand('<SID>') ."make_text_default_filetype()\<cr>" .
+    \   "\<C-w>:\<C-u>redraw\<cr>" .
+    \   "\<C-w>:\<C-u>\<bs>", 'n'
     \ )
 endfunction
