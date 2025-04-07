@@ -1,3 +1,9 @@
+" If we source the vimrc after vim has started, we
+" don't want buffer local settings to be overwritten:
+if v:vim_did_enter
+  finish
+endif
+
 " These setting are defaults on some systems but not on
 " others so they are included here for safety.
 set backspace=indent,eol,start
