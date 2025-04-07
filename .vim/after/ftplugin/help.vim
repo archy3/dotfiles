@@ -49,9 +49,9 @@ function! s:Move_to_bottom_of_rightmost_column() abort
   let l:curwin = winnr()
   wincmd b
 
-  " `if winnr() != l:curwin` prevents this from running multiple times
+  " `if winnr() !=# l:curwin` prevents this from running multiple times
   " (which would happen due to the buffer reentering after it was hidden).
-  if winnr() != l:curwin
+  if winnr() !=# l:curwin
     exec l:curwin . 'wincmd w'
     let l:curbuf = bufnr('%')
     hide

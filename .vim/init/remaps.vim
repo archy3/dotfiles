@@ -348,19 +348,19 @@ nnoremap <leader>ft :setfiletype<space>
 
   " Return string used to comment line for current filetype.
   function! s:CommentStr() abort
-    if index(['c', 'cpp', 'java', 'javascript'], &ft) != -1
+    if index(['c', 'cpp', 'java', 'javascript'], &filetype) !=# -1
       return '//'
-    elseif index(['vim'], &ft) != -1
+    elseif index(['vim'], &filetype) !=# -1
       return '"'
-    elseif index(['conf', 'make', 'perl', 'ps1', 'python', 'r', 'readline', 'sh', 'snippets', 'tmux'], &ft) != -1
+    elseif index(['awk', 'conf', 'make', 'perl', 'ps1', 'python', 'r', 'readline', 'sh', 'snippets', 'tmux'], &filetype) !=# -1
       return '#'
-    elseif index(['dosini', 'lisp'], &ft) != -1
+    elseif index(['dosini', 'lisp'], &filetype) !=# -1
       return ';'
-    elseif index(['xdefaults'], &ft) != -1
+    elseif index(['xdefaults'], &filetype) !=# -1
       return '!'
-    elseif index(['matlab', 'tex'], &ft) != -1
+    elseif index(['matlab', 'tex'], &filetype) !=# -1
       return '%'
-    elseif index(['dosbatch'], &ft) != -1
+    elseif index(['dosbatch'], &filetype) !=# -1
       return 'rem '
     endif
     return ''
