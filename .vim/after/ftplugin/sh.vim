@@ -26,8 +26,17 @@ if exists('b:undo_ftplugin')
 endif
 
 " Remaps:
-"nnoremap <buffer> <Leader>R :!shellcheck --color=never -- %:p:S<cr>
-nnoremap <buffer> <Leader>R :w !shellcheck --color=never -- -<cr>
 nnoremap <buffer> <Leader>r :call UltiSnips#RefreshSnippets()<cr>
+
+" The vim `!` command needs any subsequent '!' characters to
+" be escaped (see `:h E34`).
+nnoremap <buffer> <Leader>R
+  \ <cmd>
+  \   call RunCmdIfExecutablesExist(
+  \     'w !shellcheck --color=never -- - && printf Check\ passed\!',
+  \     ['shellcheck'],
+  \     0
+  \   )
+  \ <cr>
 
 command! -buffer FoldBracesAndParentheses call <SID>FoldBracesAndParentheses()

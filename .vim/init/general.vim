@@ -122,8 +122,10 @@ set softtabstop=-1 " set softtabstop to shiftwidth
 set expandtab
 
 " Let Zathura (with ps support) handle printing:
-set printexpr=system('<\ '\ .\ v:fname_in\ .\ '\ zathura\ -\ &')\ .\
-  \ delete(v:fname_in)\ +\ v:shell_error
+if executable('zathura')
+  set printexpr=system('<\ '\ .\ v:fname_in\ .\ '\ zathura\ -\ &')\ .\
+    \ delete(v:fname_in)\ +\ v:shell_error
+endif
 
 " Set printer margins:
 set printoptions+=left:5pc,right:5pc,top:5pc,bottom:5pc

@@ -36,9 +36,7 @@ endfunction
 command! -bang DiffOrig call s:DiffOrig(<bang>0)
 
 
-" Note that we have to escape '%' to prevent '%' from
-" expanding to the current file.
-let s:transpose_awk_script='
+let s:transpose_awk_script = '
   \ BEGIN {
   \   longest_line_length = 0;
   \ }
@@ -54,7 +52,7 @@ let s:transpose_awk_script='
   \
   \ END {
   \   for (i = 1; i <= NR; i++) {
-  \     lines[i] = sprintf("\%-" longest_line_length "s", lines[i]);
+  \     lines[i] = sprintf("%-" longest_line_length "s", lines[i]);
   \   }
   \
   \   for (i = 1; i <= NR; i++) {
@@ -73,11 +71,19 @@ let s:transpose_awk_script='
   \       sub("[ \t]+$", "", row_of_transpose);
   \     }
   \
-  \     printf "\%s\n", row_of_transpose;
+  \     printf "%s\n", row_of_transpose;
   \   }
   \ }
   \'
 
+" The extra argument on shellescape() escapes characters
+" (such as '!', '%', '#') that `:!` interprets with special meaning.
+let s:transpose_awk_script = shellescape(s:transpose_awk_script, 1)
+
 " Bang will right-pad the result with spaces
-command! -range -bang Transpose :exec '<line1>,<line2>! ' .
-  \ 'awk -v trim=' . <bang>1 . " '" . s:transpose_awk_script . "'"
+command! -range -bang Transpose
+  \ :call RunCmdIfExecutablesExist(
+  \   '<line1>,<line2>!awk -v trim=' . <bang>1 . ' ' . s:transpose_awk_script,
+  \   ['awk'],
+  \   1
+  \ )

@@ -36,3 +36,19 @@ function! FoldBraces() abort
     call winrestview(l:current_winview)
   endif
 endfunction
+
+
+function! RunCmdIfExecutablesExist(cmd, array_of_executables, redraw_bool) abort
+  for l:executable in a:array_of_executables
+    if !executable(l:executable)
+      echo l:executable . ' not found in path'
+      return
+    endif
+  endfor
+
+  exec a:cmd
+
+  if a:redraw_bool
+    redraw!
+  endif
+endfunction

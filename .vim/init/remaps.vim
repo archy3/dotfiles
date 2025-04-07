@@ -118,13 +118,15 @@ nnoremap <Leader><C-s> :browse<space>confirm<space>saveas<cr>
 nnoremap <Leader><C-p> :hardcopy<cr>
 
 " GUI open folder of current file:
-nnoremap <silent> <Leader><C-e> :silent !pcmanfm --new-win -- %:p:h:S<cr>:redraw!<cr>
+nnoremap <Leader><C-e> <cmd>
+  \ call RunCmdIfExecutablesExist('!pcmanfm --new-win -- %:p:h:S', ['pcmanfm'], 1)<cr>
 
 " Delete current file (GUI prompt):
 nnoremap <silent> <Leader><Leader>D :if confirm("Delete ". expand('%:p') . "?", "No\nYes", 1) ==# 2 <bar> call delete(expand('%:p')) <bar> endif<cr>
 
 " Make file executable:
-nnoremap <Leader><C-x> :!chmod u+x -- %:p:S<cr>
+nnoremap <Leader><C-x> <cmd>
+  \ call RunCmdIfExecutablesExist('!chmod u+x -- %:p:S', ['chmod'], 1)<cr>
 
 " Toggles:
 nnoremap <silent> <Leader>s :setlocal spell! spell?<cr>
