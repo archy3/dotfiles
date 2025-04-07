@@ -27,12 +27,12 @@ function! SetTabBehavior(indent_length, literal_tab_length)
 endfunction
 
 
-function! FoldBraces()
+function! FoldBraces() abort
   if !(&diff) " skip when using vimdiff
     let l:current_winview=winsaveview()
-    normal! zE
-    silent %g /^}$/ normal! zf%
-    normal! zR
+    keepjumps normal! zE
+    silent %g /^}$/ keepjumps normal! zf%
+    keepjumps normal! zR
     call winrestview(l:current_winview)
   endif
 endfunction

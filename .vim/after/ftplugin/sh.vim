@@ -3,16 +3,16 @@
 "set foldmethod=marker
 "set foldmarker={,}
 "set foldlevelstart=99
-function! s:FoldBracesAndParentheses()
+function! s:FoldBracesAndParentheses() abort
   if !(&diff) " skip when using vimdiff
     let l:current_winview=winsaveview()
-    "silent %g /^ *}$/ normal! zf%
-    "silent %g /^ *)$/ normal! zf%
-    "silent %g /^)$/ exec 'normal!' "zf?^(?0\<CR>"
-    normal! zE
-    silent %g /^)$/ exec 'normal!' 'zf?^\([^ \t].*($\|^($\)?0' . "\<CR>"
-    silent %g /^}$/ normal! zf%
-    normal! zR
+    "silent %g /^ *}$/ keepjumps normal! zf%
+    "silent %g /^ *)$/ keepjumps normal! zf%
+    "silent %g /^)$/ exec 'keepjumps normal!' "zf?^(?0\<CR>"
+    keepjumps normal! zE
+    silent %g /^)$/ exec 'keepjumps normal!' 'zf?^\([^ \t].*($\|^($\)?0' . "\<CR>"
+    silent %g /^}$/ keepjumps normal! zf%
+    keepjumps normal! zR
     call winrestview(l:current_winview)
   endif
 endfunction
