@@ -3,8 +3,6 @@
 # shorthand:
 alias c='clear'
 alias r='less'
-ee() { nohup mousepad "$@" </dev/null >/dev/null 2>&1 & }
-complete -F _longopt ee
 alias e='vim'
 alias ge='gvim'
 alias p='cat'
