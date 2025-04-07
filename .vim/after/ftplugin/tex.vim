@@ -30,6 +30,41 @@ nnoremap <buffer> gz /\\begin{document}<cr>zt
 nnoremap <buffer> <LocalLeader><C-s> :silent! if bufname('%') ==# '' <bar> exec ':saveas ' . tempname() . '.tex' <bar> endif <bar> redraw<cr>
   " We use `:saveas` instead of `:w` because of https://github.com/lervag/vimtex/issues/3042
 
+xnoremap <buffer> <Leader>i <cmd>call <SID>Surround_with_cmd_by_math_context('textit', 'mathit')<cr>
+xnoremap <buffer> <Leader>b <cmd>call <SID>Surround_with_cmd_by_math_context('textbf', 'mathbf')<cr>
+xnoremap <buffer> <Leader>t <cmd>call <SID>Surround_with_cmd_by_math_context('texttt', 'mathtt')<cr>
+xnoremap <buffer> <Leader>s <cmd>call <SID>Surround_with_cmd_by_math_context('textsf', 'mathsf')<cr>
+xnoremap <buffer> <Leader>S <cmd>call <SID>Surround_with_cmd_by_math_context('textsc', 'mathscr')<cr>
+xnoremap <buffer> <Leader>e <cmd>call <SID>Surround_with_cmd_by_math_context('emph', '')<cr>
+xnoremap <buffer> <Leader>u <cmd>call <SID>Surround_with_cmd_by_math_context('underline', '')<cr>
+xnoremap <buffer> <Leader>f <cmd>call <SID>Surround_with_cmd_by_math_context('', 'mathfrak')<cr>
+xnoremap <buffer> <Leader>B <cmd>call <SID>Surround_with_cmd_by_math_context('', 'mathbb')<cr>
+xnoremap <buffer> <Leader>C <cmd>call <SID>Surround_with_cmd_by_math_context('', 'mathcal')<cr>
+xnoremap <buffer> <Leader>r <cmd>call <SID>Surround_with_cmd_by_math_context('', 'mathrm')<cr>
+xnoremap <buffer> <Leader>n <cmd>call <SID>Surround_with_cmd_by_math_context('', 'mathnormal')<cr>
+xnoremap <buffer> <Leader>T <cmd>call <SID>Surround_with_cmd_by_math_context('', 'text')<cr>
+
+function! s:Surround_with_cmd_by_math_context(normal_cmd, math_cmd) abort
+  if vimtex#syntax#in_mathzone() && a:math_cmd !=# ''
+    call s:Surround_with_cmd(a:math_cmd)
+  elseif !vimtex#syntax#in_mathzone() && a:normal_cmd !=# ''
+    call s:Surround_with_cmd(a:normal_cmd)
+  endif
+endfunction
+
+function! s:Surround_with_cmd(cmd) abort
+  call s:Prepend_and_append_selected_text('\' . a:cmd . '{', '}')
+endfunction
+
+function! s:Prepend_and_append_selected_text(prefix, suffix) abort
+  " Register saving is from https://vi.stackexchange.com/a/28356
+  let l:savereg_unnamed = getreginfo('"')
+  let l:savereg_yank = getreginfo('0')
+  exec 'norm! "0c' . a:prefix . "\<C-r>0" . a:suffix
+  call setreg('"', l:savereg_unnamed)
+  call setreg('0', l:savereg_yank)
+endfunction
+
 " Create undo checkpoints when writing prose:
 inoremap <buffer> . .<c-g>u
 inoremap <buffer> , ,<c-g>u
