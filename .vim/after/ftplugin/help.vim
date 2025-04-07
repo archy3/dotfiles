@@ -3,17 +3,22 @@
 
 setlocal colorcolumn=80
 
-nnoremap <buffer> u <C-]>
-nnoremap <buffer> r <C-t>
+nnoremap <buffer> u <cmd>call <SID>SetLessBehavior(1)<cr><C-]>
+nnoremap <buffer> r <cmd>call <SID>SetLessBehavior(1)<cr><C-t>
 
 let s:less = 1
 
-function! s:ToggleLessBehavior()
-  let s:less = !s:less
+function! s:GetLessBehavior() abort
+  return s:less
 endfunction
 
-function! s:GetLessBehavior()
-  return s:less
+function! s:SetLessBehavior(bool) abort
+  let s:less = a:bool
+endfunction
+
+function! s:ToggleLessBehavior() abort
+  let s:less = !s:less
+  echo 'less mode turned ' . (s:less ? 'on' : 'off')
 endfunction
 
 nnoremap <buffer> i :call <SID>ToggleLessBehavior()<cr>
