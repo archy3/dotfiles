@@ -88,13 +88,29 @@ set listchars=space:·,tab:——>,eol:¶,nbsp:⍽
 set rulerformat=%17(%=%l/%L\ %-5.(%c%V%)%)
 
 set titlelen=0
-set titlestring=%t
-set titlestring+=%(\ %{&readonly&&&modifiable?\"=\":\"\"}
-set titlestring+=%{&modified?\"+\":\"\"}
-set titlestring+=%{&modifiable?\"\":\"-\"}%)
-set titlestring+=%(\ \(%{&filetype==#\"help\"?\"help\":expand(\"%:~:h\")}\)%)
-set titlestring+=%{%&filetype==#\"help\"?\"\":\"\ -\ [%{&fileformat}\ %{&filetype}]\"%}
-set titlestring+=%a\ -\ %{v:servername==#\"\"?\"VIM\":v:servername}
+"{{{
+  " Filename basename (or terminal stuff)
+  set titlestring=%{%&buftype==#\"terminal\"?\"%f\":\"%t\"%}
+
+  " '=', '+' indicators for readonly/modified
+  set titlestring+=%(\ %{&readonly&&&modifiable?\"=\":\"\"}
+  set titlestring+=%{&modified&&&buftype!=#\"terminal\"?\"+\":\"\"}%)
+
+  " Display '- (help)' for help files
+  set titlestring+=%{%&buftype==#\"help\"?\"\ -%(\ (help)%)\":\"\"%}
+
+  " Display file path (w/o basename) in parentheses
+  set titlestring+=%(\ \(%{&buftype==#\"\"?expand(\"%:~:h\"):\"\"}\)%)
+
+  " Display [<&fileformat> <&filetype>]
+  set titlestring+=%{%&buftype==#\"\"?\"\ -\ [%{&fileformat}\ %{&filetype}]\":\"\"%}
+
+  " Show vim server name (e.g. 'gvim2')
+  set titlestring+=%a\ -\ %{v:servername==#\"\"?\"VIM\":v:servername}
+
+  " Show buffer number
+  set titlestring+=%{%&buftype==#\"\"?\"\ -\ %n\":\"\"%}
+"}}}
 
 " tabstop:     How many apparent spaces a literal tab takes up
 " shiftwidth:  How many apparent spaces `>>` indents
