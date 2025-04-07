@@ -23,8 +23,9 @@ function! s:DiffOrig(bang_on_means_start_diff_even_if_not_modified)
   let l:filetype = &filetype
   let l:file = expand('%:p')
   vert topleft new
-  set bt=nofile
-  let &filetype = l:filetype
+  let &l:filetype = l:filetype
+  setlocal buftype=nofile
+  setlocal nobuflisted
   exec 'read ++edit ' . fnameescape(l:file)
   0d_
   diffthis
