@@ -48,6 +48,7 @@ set mouse=a
 set mousemodel=extend
 set colorcolumn=80,100,120
 set wildmenu
+set wildoptions=pum
 
 " Make gf work for assignments like "profile=/etc/profile"
 set isfname-==
