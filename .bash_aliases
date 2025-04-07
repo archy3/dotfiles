@@ -16,6 +16,7 @@ alias gds='git diff --staged'
 alias gl='git log'
 alias glp='git log -p'
 alias glo='git log --oneline'
+alias gs='git status'
 alias ht='htop -u'
 ec() { printf %s\\n "$*"; }
 int() { [ -z "${TMUX:-}" ] && echo "Not in tmux." || echo "In tmux."; }
