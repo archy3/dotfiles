@@ -18,6 +18,7 @@ alias glp='git log -p'
 alias glo='git log --oneline'
 alias gs='git status'
 alias ht='htop -u'
+alias envs='env | sort'
 ec() { printf %s\\n "$*"; }
 int() { [ -z "${TMUX:-}" ] && echo "Not in tmux." || echo "In tmux."; }
 
