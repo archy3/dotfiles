@@ -31,6 +31,12 @@ nnoremap <buffer> <expr> b <SID>GetLessBehavior() ? "\<C-b>"    : 'b'
 nnoremap <buffer> <expr> { <SID>GetLessBehavior() ? 'H{'        : '{'
 nnoremap <buffer> <expr> } <SID>GetLessBehavior() ? 'L}'        : '}'
 
+" Left-handed scroll bindings:
+nnoremap <buffer> <expr> e <SID>GetLessBehavior() ? 'H{'        : 'e'
+nnoremap <buffer> <nowait> d L}
+nnoremap <buffer> <expr> w <SID>GetLessBehavior() ? '<C-y>'     : 'w'
+nnoremap <buffer> s <C-e>
+
 " Make help open in v-split if only one window, else in bottom-right.
 "{{{
 augroup make_help_open_in_a_nice_location
