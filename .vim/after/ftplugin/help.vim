@@ -81,7 +81,7 @@ function! s:HelpProperLocation()
     call s:Move_to_bottom_of_rightmost_column()
   endif
 
-  wincmd =
+  vertical wincmd =
   if mode() ==# 'n'
     call feedkeys("\<esc>ze", 'n')
   endif
