@@ -323,16 +323,14 @@ nnoremap <leader>ft :setfiletype<space>
 
   " Comment or uncomment lines from mark a to mark b.
   function! s:CommentMark(docomment, a, b) abort
-    if !exists('b:comment')
-      "let b:comment = CommentStr() . ' '
-      " (Would nice to use the above but skip blank lines)
-      let b:comment = s:CommentStr()
-    endif
+    "let l:comment = CommentStr() . ' '
+    " (Would nice to use the above but skip blank lines)
+    let l:comment = s:CommentStr()
 
     if a:docomment
-      exe "normal! '" . a:a . "_\<C-V>'" . a:b . 'I' . b:comment
+      exe "normal! '" . a:a . "_\<C-V>'" . a:b . 'I' . l:comment
     else
-      exe "'".a:a.",'".a:b . 's/^\(\s*\)' . escape(b:comment,'/') . '/\1/e'
+      exe "'" . a:a . ",'" . a:b . 's/^\(\s*\)' . escape(l:comment,'/') . '/\1/e'
     endif
   endfunction
 
