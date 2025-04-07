@@ -89,6 +89,12 @@ nnoremap dal 0D
 
 let mapleader = " "
 let maplocalleader = ","
+" Open terminal in the directory of the current buffer:
+" (from https://vi.stackexchange.com/a/14533)
+nnoremap <F1> <cmd>let $VIM_WORKING_DIR=expand('%:p:h')<cr><cmd>vert term<cr>
+  \ cd -- "$VIM_WORKING_DIR" && clear<cr>
+nnoremap <F7> <cmd>let $VIM_WORKING_DIR=expand('%:p:h')<cr><cmd>term<cr>
+  \ cd -- "$VIM_WORKING_DIR" && clear<cr>
 
 " GUI save as:
 nnoremap <Leader><C-s> :browse<space>confirm<space>saveas<cr>
