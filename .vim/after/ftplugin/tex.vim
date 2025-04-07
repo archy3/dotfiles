@@ -23,12 +23,25 @@ if exists('b:undo_ftplugin')
   let b:undo_ftplugin = substitute(b:undo_ftplugin, '^|*', '', '')
 endif
 
-nnoremap <buffer> <Leader>r :call UltiSnips#RefreshSnippets()<cr>
 xnoremap <buffer> <Leader>c <plug>(vimtex-cmd-create)
 inoremap <buffer> <C-f><C-f> <plug>(vimtex-delim-close)
 nnoremap <buffer> gz /\\begin{document}<cr>zt
-nnoremap <buffer> <LocalLeader><C-s> :silent! if bufname('%') ==# '' <bar> exec ':saveas ' . tempname() . '.tex' <bar> endif <bar> redraw<cr>
-  " We use `:saveas` instead of `:w` because of https://github.com/lervag/vimtex/issues/3042
+
+nnoremap <buffer> <Leader>r
+  \ <cmd>
+  \   call UltiSnips#RefreshSnippets() <bar>
+  \   echo 'UltiSnips Refreshed!'
+  \ <cr>
+
+nnoremap <buffer> <LocalLeader><C-s>
+  \ <cmd>
+  \   if bufname('%') ==# '' <bar>
+  \     exec ':saveas ' . tempname() . '.tex' <bar>
+  \   endif <bar>
+  \   redraw
+  \ <cr>
+  " We use `:saveas` instead of `:w` because of
+  " https://github.com/lervag/vimtex/issues/3042
 
 xnoremap <buffer> <Leader>i <cmd>call <SID>Surround_with_cmd_by_math_context('textit', 'mathit')<cr>
 xnoremap <buffer> <Leader>b <cmd>call <SID>Surround_with_cmd_by_math_context('textbf', 'mathbf')<cr>

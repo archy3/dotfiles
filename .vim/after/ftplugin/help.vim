@@ -21,7 +21,7 @@ function! s:ToggleLessBehavior() abort
   echo 'less mode turned ' . (s:less ? 'on' : 'off')
 endfunction
 
-nnoremap <buffer> i :call <SID>ToggleLessBehavior()<cr>
+nnoremap <buffer> i <cmd>call <SID>ToggleLessBehavior()<cr>
 nnoremap <buffer> <expr> j <SID>GetLessBehavior() ? "\<C-e>"    : 'j'
 nnoremap <buffer> <expr> k <SID>GetLessBehavior() ? "\<C-y>"    : 'k'
 nnoremap <buffer> <expr> h <SID>GetLessBehavior() ? 'zh'        : 'h'

@@ -101,36 +101,46 @@ let &printexpr="system('< ' . v:fname_in . ' zathura - &') . delete(v:fname_in) 
 inoremap <C-g> <C-o>
 
 " Tab support:
-inoremap <silent> <C-t> <C-o>:<C-u>tabe<cr>
-inoremap <C-w> <C-o>:<C-u>confirm bd<cr>
+inoremap <silent> <C-t> <cmd>tabe<cr>
+inoremap <C-w> <cmd>confirm bd<cr>
 inoremap <C-Tab> <C-o>gt
 inoremap <C-S-Tab> <C-o>gT
-nnoremap <silent> <C-t> :<C-u>tabe<cr>
-nnoremap <C-w> :<C-u>confirm bd<cr>
+nnoremap <silent> <C-t> <cmd>tabe<cr>
+nnoremap <C-w> <cmd>confirm bd<cr>
 nnoremap <C-Tab> gt
 nnoremap <C-S-Tab> gT
+vnoremap <silent> <C-t> <cmd>tabe<cr>
+vnoremap <C-w> <cmd>confirm bd<cr>
+vnoremap <C-Tab> gt
+vnoremap <C-S-Tab> gT
 
 " Open new evim window:
-inoremap <silent> <C-n> <C-o>:<C-u>silent exec '! gtk-launch evim.desktop &'<cr>
-nnoremap <silent> <C-n> :<C-u>silent exec '! gtk-launch evim.desktop &'<cr>
+inoremap <silent> <C-n> <cmd>silent exec '! gtk-launch evim.desktop &'<cr>
+nnoremap <silent> <C-n> <cmd>silent exec '! gtk-launch evim.desktop &'<cr>
+vnoremap <silent> <C-n> <cmd>silent exec '! gtk-launch evim.desktop &'<cr>
 
 " Print:
-inoremap <silent> <C-p> <C-o>:<C-u>hardcopy<cr>
-nnoremap <silent> <C-p> :<C-u>hardcopy<cr>
+inoremap <silent> <C-p> <cmd>hardcopy<cr>
+nnoremap <silent> <C-p> <cmd>hardcopy<cr>
+vnoremap <silent> <C-p> <cmd>hardcopy<cr>
 
 " Open file:
-inoremap <silent> <C-o> <C-o>:<C-u>exec 'browse confirm ' . (@% ==# '' && !&modified ? 'e' : 'tabe')<cr>
-nnoremap <silent> <C-o> :<C-u>exec 'browse confirm ' . (@% ==# '' && !&modified ? 'e' : 'tabe')<cr>
+inoremap <silent> <C-o> <cmd>exec 'browse confirm ' . (@% ==# '' && !&modified ? 'e' : 'tabe')<cr>
+nnoremap <silent> <C-o> <cmd>exec 'browse confirm ' . (@% ==# '' && !&modified ? 'e' : 'tabe')<cr>
+vnoremap <silent> <C-o> <cmd>exec 'browse confirm ' . (@% ==# '' && !&modified ? 'e' : 'tabe')<cr>
 
 " Save:
-inoremap <expr> <C-S> "\<C-o>:\<C-u>".(@% ==# "" ? 'browse confirm saveas' : 'update')."\<CR>"
-nnoremap <expr> <C-S> ":\<C-u>".(@% ==# "" ? 'browse confirm saveas' : 'update')."\<CR>"
-vnoremap <expr> <C-S> ":\<C-u>".(@% ==# "" ? 'browse confirm saveas' : 'update')."\<CR>"
+" (the `<C-g>u` just makes the cursor blink in the position it originally was
+" [without this, the cursor will blink on the vim command line, even though
+" in actuality the cursor is still at it's original position in the buffer])
+inoremap <expr> <C-S> "<cmd>" . (@% ==# '' ? 'browse confirm saveas' : 'update') . "<cr><C-g>u"
+nnoremap <expr> <C-S> "<cmd>" . (@% ==# '' ? 'browse confirm saveas' : 'update') . "<cr>"
+vnoremap <expr> <C-S> "<cmd>" . (@% ==# '' ? 'browse confirm saveas' : 'update') . "<cr>"
 
 " Save as:
-inoremap <C-S-s> <C-o>:<C-u>browse confirm saveas<cr>
-nnoremap <C-S-s> :<C-u>browse confirm saveas<cr>
-vnoremap <C-S-s> :<C-u>browse confirm saveas<cr>
+inoremap <C-S-s> <cmd>browse confirm saveas<cr><C-g>u
+nnoremap <C-S-s> <cmd>browse confirm saveas<cr>
+vnoremap <C-S-s> <cmd>browse confirm saveas<cr>
 
 " Select all (without the newline of the last line):
 inoremap <C-a> <C-o>vgg0oGg_<C-g>
@@ -156,11 +166,11 @@ inoremap <C-delete> <C-o>dw
 
 " Toggle options and access command mode:
 inoremap <F1> <C-o>:
-inoremap <silent> <F2> <C-o>:<C-u>set number!<cr>
-inoremap <silent> <F3> <C-o>:<C-u>call <SID>ToggleWrapAndLinebreak()<cr>
-inoremap <silent> <F4> <C-o>:<C-u>set list! list?<cr>
-inoremap <silent> <F7> <C-o>:<C-u>let &colorcolumn = (&colorcolumn ==# '' ? '80,100,120' : '')<cr>
-inoremap <silent> <F8> <C-o>:<C-u>set spell! spell?<cr>
+inoremap <silent> <F2> <cmd>set number!<cr>
+inoremap <silent> <F3> <cmd>call <SID>ToggleWrapAndLinebreak()<cr>
+inoremap <silent> <F4> <cmd>set list! list?<cr>
+inoremap <silent> <F7> <cmd>let &colorcolumn = (&colorcolumn ==# '' ? '80,100,120' : '')<cr>
+inoremap <silent> <F8> <cmd>set spell! spell?<cr>
 
 function! s:ToggleWrapAndLinebreak()
   if !(&wrap)
@@ -182,7 +192,7 @@ nnoremap <F1> <nop>
 vnoremap <F1> <nop>
 
 " Remove highlighting from find/replace matches:
-inoremap <silent> <esc> <C-o>:<C-u>nohlsearch<cr>
+inoremap <silent> <esc> <cmd>nohlsearch<cr><esc>
 
 " Make middle mouse count as a new action for undo purposes:
 inoremap <MiddleMouse> <C-g>u<MiddleMouse>
@@ -200,8 +210,8 @@ xnoremap <RightMouse> "+y
 
 " Use mouse back button to open a new line below the mouse cursor:
 " (The '0d$' make sure the line is blank [it sometimes isn't depending on the ftplugin])
-nnoremap <X1Mouse> <LeftMouse>o<esc>0d$
-inoremap <X1Mouse> <C-o><LeftMouse><C-o>:exec "norm! o<\esc>"<cr><C-o>0<C-o>d$
+nnoremap <X1Mouse> <esc><C-o><LeftMouse><cmd>norm! o<cr><C-o>0<C-o>d$
+inoremap <X1Mouse> <C-o><LeftMouse><cmd>norm! o<cr><C-o>0<C-o>d$
 
 " Mouse undo/redo:
 nnoremap <X2Mouse> u
@@ -240,28 +250,23 @@ function! s:SetFontSize(size)
 endfunction
 
 " <C-_> is really <C-->:
-inoremap <C-_> <C-o>:<C-u>call <SID>ZoomInOut(-1)<cr>
-inoremap <C-=> <C-o>:<C-u>call <SID>ZoomInOut(1)<cr>
-inoremap <C-0> <C-o>:<C-u>call <SID>SetFontSize(11)<cr>
-inoremap <C-ScrollWheelDown> <C-o>:<C-u>call <SID>ZoomInOut(-1)<cr>
-inoremap <C-ScrollWheelUp> <C-o>:<C-u>call <SID>ZoomInOut(1)<cr>
+inoremap <C-_> <cmd>call <SID>ZoomInOut(-1)<cr>
+inoremap <C-=> <cmd>call <SID>ZoomInOut(1)<cr>
+inoremap <C-0> <cmd>call <SID>SetFontSize(11)<cr>
+inoremap <C-ScrollWheelDown> <cmd>call <SID>ZoomInOut(-1)<cr>
+inoremap <C-ScrollWheelUp> <cmd>call <SID>ZoomInOut(1)<cr>
 
-nnoremap <C-_> :<C-u>call <SID>ZoomInOut(-1)<cr>
-nnoremap <C-=> :<C-u>call <SID>ZoomInOut(1)<cr>
-nnoremap <C-0> :<C-u>call <SID>SetFontSize(11)<cr>
-nnoremap <C-ScrollWheelDown> :<C-u>call <SID>ZoomInOut(-1)<cr>
-nnoremap <C-ScrollWheelUp> :<C-u>call <SID>ZoomInOut(1)<cr>
+nnoremap <C-_> <cmd>call <SID>ZoomInOut(-1)<cr>
+nnoremap <C-=> <cmd>call <SID>ZoomInOut(1)<cr>
+nnoremap <C-0> <cmd>call <SID>SetFontSize(11)<cr>
+nnoremap <C-ScrollWheelDown> <cmd>call <SID>ZoomInOut(-1)<cr>
+nnoremap <C-ScrollWheelUp> <cmd>call <SID>ZoomInOut(1)<cr>
 
-snoremap <C-_> <C-g>:<C-u>call <SID>ZoomInOut(-1) <bar> norm! gv<cr><C-g>
-snoremap <C-=> <C-g>:<C-u>call <SID>ZoomInOut(1) <bar> norm! gv<cr><C-g>
-xnoremap <C-_> :<C-u>call <SID>ZoomInOut(-1) <bar> norm! gv<cr>
-xnoremap <C-=> :<C-u>call <SID>ZoomInOut(1) <bar> norm! gv<cr>
-snoremap <C-0> <C-g>:<C-u>call <SID>SetFontSize(11) <bar> norm! gv<cr><C-g>
-xnoremap <C-0> :<C-u>call <SID>SetFontSize(11) <bar> norm! gv<cr>
-snoremap <C-ScrollWheelDown> <C-g>:<C-u>call <SID>ZoomInOut(-1) <bar> norm! gv<cr><C-g>
-snoremap <C-ScrollWheelUp> <C-g>:<C-u>call <SID>ZoomInOut(1) <bar> norm! gv<cr><C-g>
-xnoremap <C-ScrollWheelDown> :<C-u>call <SID>ZoomInOut(-1) <bar> norm! gv<cr>
-xnoremap <C-ScrollWheelUp> :<C-u>call <SID>ZoomInOut(1) <bar> norm! gv<cr>
+vnoremap <C-_> <cmd>call <SID>ZoomInOut(-1)<cr>
+vnoremap <C-=> <cmd>call <SID>ZoomInOut(1)<cr>
+vnoremap <C-0> <cmd>call <SID>SetFontSize(11)<cr>
+vnoremap <C-ScrollWheelDown> <cmd>call <SID>ZoomInOut(-1)<cr>
+vnoremap <C-ScrollWheelUp> <cmd>call <SID>ZoomInOut(1)<cr>
 
 " Create an undo checkpoint for every &updatetime milliseconds of idle time:
 augroup create_undo_checkpoint_when_idling_in_insert_mode
@@ -307,8 +312,8 @@ function! s:PageOrScrollDown(count, type)
 
   call setpos('.', l:save_pos)
 endfunction
-inoremap <silent> <PageDown> <C-o>:<C-u>call <SID>PageOrScrollDown(v:count1, 'page')<cr>
-inoremap <silent> <ScrollWheelDown> <C-o>:<C-u>call <SID>PageOrScrollDown(3, 'scroll')<cr>
-nnoremap <silent> <PageDown> :<C-u>call <SID>PageOrScrollDown(v:count1, 'page')<cr>
-nnoremap <silent> <ScrollWheelDown> :<C-u>call <SID>PageOrScrollDown(3, 'scroll')<cr>
+inoremap <silent> <PageDown> <cmd>call <SID>PageOrScrollDown(v:count1, 'page')<cr>
+inoremap <silent> <ScrollWheelDown> <cmd>call <SID>PageOrScrollDown(3, 'scroll')<cr>
+nnoremap <silent> <PageDown> <cmd>call <SID>PageOrScrollDown(v:count1, 'page')<cr>
+nnoremap <silent> <ScrollWheelDown> <cmd>call <SID>PageOrScrollDown(3, 'scroll')<cr>
 " (TODO: Make this work in select mode)

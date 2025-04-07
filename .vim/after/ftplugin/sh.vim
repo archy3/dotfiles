@@ -26,8 +26,6 @@ if exists('b:undo_ftplugin')
 endif
 
 " Remaps:
-nnoremap <buffer> <Leader>r :call UltiSnips#RefreshSnippets()<cr>
-
 " The vim `!` command needs any subsequent '!' characters to
 " be escaped (see `:h E34`).
 nnoremap <buffer> <Leader>R
@@ -37,6 +35,12 @@ nnoremap <buffer> <Leader>R
   \     ['shellcheck'],
   \     0
   \   )
+  \ <cr>
+
+nnoremap <buffer> <Leader>r
+  \ <cmd>
+  \   call UltiSnips#RefreshSnippets() <bar>
+  \   echo 'UltiSnips Refreshed!'
   \ <cr>
 
 command! -buffer FoldBracesAndParentheses call <SID>FoldBracesAndParentheses()

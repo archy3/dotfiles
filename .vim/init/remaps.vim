@@ -48,7 +48,7 @@ nnoremap <silent> dsb 0d][
 inoremap <C-z> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " List buffers:
-nnoremap gb :ls<cr>:<space><space><space><space><space><space><space><space>b
+nnoremap gb <cmd>ls<cr>:<space><space><space><space><space><space><space><space>b
 
 " Allow for easy putting of yanked and copied text:
 " Note: <C-r><C-o> is like <C-r> but prevents autoindent from altering the text.
@@ -71,8 +71,8 @@ cnoremap <C-f><C-f> <C-f>
 " Use modern shortcuts for system clipboard and saving:
 vnoremap <C-c> "+y
 inoremap <C-v> <C-g>u<C-r><C-o>+
-nnoremap <C-s> :update<cr>
-inoremap <C-s> <C-o>:update<cr>
+nnoremap <C-s> <cmd>update<cr>
+inoremap <C-s> <cmd>update<cr>
 " (':update' is like ':w' but doesn't write when the file hasn't been modified)
 
 " Have multi-character delete operations
@@ -81,24 +81,24 @@ inoremap <C-w> <C-g>u<C-w>
 inoremap <C-u> <C-g>u<C-u>
 
 " Window remaps
-nnoremap <silent> <C-h> :wincmd h<cr>
-nnoremap <silent> <C-j> :wincmd j<cr>
-nnoremap <silent> <C-k> :wincmd k<cr>
-nnoremap <silent> <C-l> :wincmd l<cr>
+nnoremap <C-h> <cmd>wincmd h<cr>
+nnoremap <C-j> <cmd>wincmd j<cr>
+nnoremap <C-k> <cmd>wincmd k<cr>
+nnoremap <C-l> <cmd>wincmd l<cr>
 
 " Change splits to horizontal/vertical (from https://stackoverflow.com/a/1269631):
-nnoremap <silent> <F5> :wincmd t <bar> wincmd K<cr><C-w><C-p>
-nnoremap <silent> <F2> :wincmd t <bar> wincmd H<cr><C-w><C-p>
+nnoremap <F5> <cmd>wincmd t <bar> wincmd K<cr><C-w><C-p>
+nnoremap <F2> <cmd>wincmd t <bar> wincmd H<cr><C-w><C-p>
 
 " Resize windows more easily:
-nnoremap <silent> <left> :vert resize -1<cr>
-nnoremap <silent> <right> :vert resize +1<cr>
-nnoremap <silent> <down> :resize -1<cr>
-nnoremap <silent> <up> :resize +1<cr>
+nnoremap <left> <cmd>vert resize -1<cr>
+nnoremap <right> <cmd>vert resize +1<cr>
+nnoremap <down> <cmd>resize -1<cr>
+nnoremap <up> <cmd>resize +1<cr>
 
 " Create inner line object (from https://vimrcfu.com/snippet/269):
-onoremap <silent> <expr> il v:count==#0 ? ":<c-u>normal! ^vg_<cr>" : ":<c-u>normal! ^v" . (v:count) . "jkg_<cr>"
-xnoremap <silent> <expr> il v:count==#0 ? ":<c-u>normal! ^vg_<cr>" : ":<c-u>normal! ^v" . (v:count) . "jkg_h<cr>"
+onoremap <silent> <expr> il "<cmd> normal! ^v" . (v:count >= 2 ? v:count-1 . 'j' : '') . "g_<cr>"
+xnoremap <silent> <expr> il ":<C-u>normal! ^v" . (v:count >= 2 ? v:count-1 . 'j' : '') . "g_<cr>"
 nnoremap dal 0D
 
 let mapleader = " "
@@ -111,30 +111,35 @@ nnoremap <F7> <cmd>let $VIM_WORKING_DIR=expand('%:p:h')<cr><cmd>term<cr>
   \ cd -- "$VIM_WORKING_DIR" && clear<cr>
 
 " GUI save as:
-nnoremap <Leader><C-s> :browse<space>confirm<space>saveas<cr>
+nnoremap <Leader><C-s> <cmd>browse<space>confirm<space>saveas<cr>
 
 " Print:
 "nnoremap <Leader><C-p> :%w !lp -o print-quality=3 -o sides=one-sided -o outputorder=reverse -o ColorModel=Gray<cr>
-nnoremap <Leader><C-p> :hardcopy<cr>
+nnoremap <Leader><C-p> <cmd>hardcopy<cr>
 
 " GUI open folder of current file:
 nnoremap <Leader><C-e> <cmd>
   \ call RunCmdIfExecutablesExist('!pcmanfm --new-win -- %:p:h:S', ['pcmanfm'], 1)<cr>
 
 " Delete current file (GUI prompt):
-nnoremap <silent> <Leader><Leader>D :if confirm("Delete ". expand('%:p') . "?", "No\nYes", 1) ==# 2 <bar> call delete(expand('%:p')) <bar> endif<cr>
+nnoremap <silent> <Leader><Leader>D
+  \ <cmd>
+  \   if confirm('Delete ' . expand('%:p') . '?', "No\nYes", 1) ==# 2 <bar>
+  \     call delete(expand('%:p')) <bar>
+  \   endif
+  \ <cr>
 
 " Make file executable:
 nnoremap <Leader><C-x> <cmd>
   \ call RunCmdIfExecutablesExist('!chmod u+x -- %:p:S', ['chmod'], 1)<cr>
 
 " Toggles:
-nnoremap <silent> <Leader>s :setlocal spell! spell?<cr>
-nnoremap <silent> <Leader><Leader>l :setlocal list! list?<cr>
-nnoremap <silent> <Leader><Leader>h :setlocal hlsearch! hlsearch?<cr>
-nnoremap <silent> <Leader><Leader>w :set wrap! wrap?<cr>
-nnoremap <silent> <Leader><Leader>; :setlocal linebreak! linebreak?<cr>
-nnoremap <silent> <Leader><Leader>y :call <SID>ToggleSystemClipboard()<cr>
+nnoremap <Leader>s <cmd>setlocal spell! spell?<cr>
+nnoremap <Leader><Leader>l <cmd>setlocal list! list?<cr>
+nnoremap <Leader><Leader>h <cmd>setlocal hlsearch! hlsearch?<cr>
+nnoremap <Leader><Leader>w <cmd>set wrap! wrap?<cr>
+nnoremap <Leader><Leader>; <cmd>setlocal linebreak! linebreak?<cr>
+nnoremap <Leader><Leader>y <cmd>call <SID>ToggleSystemClipboard()<cr>
 
 " Toggle using internal registers or system clipboard:
 function! s:ToggleSystemClipboard()
@@ -146,8 +151,8 @@ function! s:ToggleSystemClipboard()
 endfunction
 
 " Undo/redo to last save:
-nnoremap <Leader>u :earlier 1f<cr>
-nnoremap <Leader>U :later 1f<cr>
+nnoremap <Leader>u <cmd>earlier 1f<cr>
+nnoremap <Leader>U <cmd>later 1f<cr>
 
 " Find word:
 nnoremap <Leader>/ /\<\><left><left>
@@ -162,10 +167,10 @@ nnoremap <Leader>H :%s/\<<C-r><C-w>\>//gI<left><left><left>
 nnoremap <Leader>z 1z=
 
 " Like 'yy' but does not copy the final newline (or the leading whitespace):
-nnoremap <silent> <Leader>yy :<C-u>exec 'norm! ^' . v:count1 . 'y$'<cr>
+nnoremap <silent> <Leader>yy <cmd>exec 'norm! ^' . v:count1 . 'y$'<cr>
 
 " copy entire file into clipboard
-nnoremap <silent> <Leader>y<Leader> :call <SID>CopyBufferToClipboard()<cr>
+nnoremap <silent> <Leader>y<Leader> <cmd>call <SID>CopyBufferToClipboard()<cr>
 function! s:CopyBufferToClipboard()
   %y+
   " Remove EOF newline which usually isn't wanted:
@@ -210,14 +215,14 @@ nnoremap <Leader>P "+P
     " Remove leading and trailing white space (including newlines)
     call s:CustomPasteAction('\_s*$\|^\_s*', l:prePasteCmd)
   endfunction
-  nnoremap <Leader>A :set opfunc=<SID>PasteAtEndOfLine<cr>g@<space>
-  nnoremap <Leader>a :set opfunc=<SID>PasteAtEndOfCursor<cr>g@<space>
+  nnoremap <Leader>A <cmd>set opfunc=<SID>PasteAtEndOfLine<cr>g@<space>
+  nnoremap <Leader>a <cmd>set opfunc=<SID>PasteAtEndOfCursor<cr>g@<space>
 
   function! s:PasteOverInnerLine(...)
     " Remove leading spaces and any trailing newline from register:
     call s:CustomPasteAction('\s*\n\?$\|^\s*', "^\"_cg_")
   endfunction
-  nnoremap <silent> <Leader>cil :set opfunc=<SID>PasteOverInnerLine<cr>g@<space>
+  nnoremap <silent> <Leader>cil <cmd>set opfunc=<SID>PasteOverInnerLine<cr>g@<space>
 
   " change with yanked text
   " From https://www.reddit.com/r/vim/comments/a9nyqc/how_to_paste_without_losing_the_text_in_the/ecmt0li/?utm_source=reddit&utm_medium=web2x&context=3
@@ -240,17 +245,17 @@ nnoremap <Leader>P "+P
 
     let &selection = saveSel
   endfunction
-  nnoremap <silent> <Leader>c :set opfunc=<SID>PasteOver<cr>g@
-  nnoremap <silent> <Leader>cc 0:set opfunc=<SID>PasteOver<cr>g@$
-  nnoremap <silent> <Leader>C :set opfunc=<SID>PasteOver<cr>g@$
+  nnoremap <silent> <Leader>c <cmd>set opfunc=<SID>PasteOver<cr>g@
+  nnoremap <silent> <Leader>cc 0<cmd>set opfunc=<SID>PasteOver<cr>g@$
+  nnoremap <silent> <Leader>C <cmd>set opfunc=<SID>PasteOver<cr>g@$
 "}}}
 
 " Buffer remaps:
 "{{{
-  nnoremap <Leader>b :bn <cr>
-  nnoremap <Leader>B :bp <cr>
-  nnoremap <Leader>q :call <SID>DeleteBuffer(0)<cr>
-  nnoremap <Leader>Q :call <SID>DeleteBuffer(1)<cr>
+  nnoremap <Leader>b <cmd>bn <cr>
+  nnoremap <Leader>B <cmd>bp <cr>
+  nnoremap <Leader>q <cmd>call <SID>DeleteBuffer(0)<cr>
+  nnoremap <Leader>Q <cmd>call <SID>DeleteBuffer(1)<cr>
   function! s:DeleteBuffer(force)
     let l:buf_to_delete = bufnr('%')
     let l:del_cmd = 'bdelete' . (a:force ? '! ' : ' ') . l:buf_to_delete
@@ -294,18 +299,18 @@ nnoremap <Leader>P "+P
 "}}}
 
 " Jump to next window:
-nnoremap <silent> <Leader>w :wincmd w<cr>
-nnoremap <silent> <Leader>W :wincmd W<cr>
+nnoremap <Leader>w <cmd>wincmd w<cr>
+nnoremap <Leader>W <cmd>wincmd W<cr>
 
 " Close windows and tabs:
-nnoremap <silent> <Leader>x :close<cr>
-nnoremap <silent> <Leader>X :tabclose<cr>
+nnoremap <Leader>x <cmd>close<cr>
+nnoremap <Leader>X <cmd>tabclose<cr>
 
 " Move window to new tab:
-nnoremap <silent> <Leader>o :wincmd T<cr>ze
+nnoremap <Leader>o <cmd>wincmd T<cr>ze
 
 " Create new window in the most likely desired way:
-nnoremap <silent> <Leader>v :execute (winwidth(0) >= (2 * &colorcolumn) ? 'vsp' : 'sp')<cr>
+nnoremap <Leader>v <cmd>execute (winwidth(0) >= (2 * &colorcolumn) ? 'vsp' : 'sp')<cr>
 
 " Quickly set the filetype:
 nnoremap <leader>ft :setfiletype<space>
@@ -359,10 +364,10 @@ nnoremap <leader>ft :setfiletype<space>
     return ''
   endfunction
 
-  nnoremap gc <Esc>:set opfunc=<SID>DoCommentOp<CR>g@
-  nnoremap gC <Esc>:set opfunc=<SID>UnCommentOp<CR>g@
-  xnoremap gc <Esc>:call <SID>CommentMark(1,'<','>')<CR>
-  xnoremap gC <Esc>:call <SID>CommentMark(0,'<','>')<CR>
+  nnoremap gc <Esc><cmd>set opfunc=<SID>DoCommentOp<CR>g@
+  nnoremap gC <Esc><cmd>set opfunc=<SID>UnCommentOp<CR>g@
+  xnoremap gc <Esc><cmd>call <SID>CommentMark(1,'<','>')<CR>
+  xnoremap gC <Esc><cmd>call <SID>CommentMark(0,'<','>')<CR>
 "}}}
 
 
@@ -390,10 +395,10 @@ nnoremap <leader>ft :setfiletype<space>
   " See https://stackoverflow.com/questions/21859186/vim-mapping-normal-visual-mode-movements/21859475#21859475
   " for a possible pointer in the right direction.
 
-  nnoremap <silent> <ScrollWheelDown> :<C-u>call <SID>ScrollDown(3, winheight(0)/2)<cr>
-  inoremap <silent> <ScrollWheelDown> <C-o>:<C-u>call <SID>ScrollDown(3, winheight(0)/2)<cr>
-  nnoremap <silent> <C-f> :<C-u>call <SID>ScrollDown(v:count1*(winheight(0) - 2), 5)<cr>
-  nnoremap <silent> <PageDown> :<C-u>call <SID>ScrollDown(v:count1*(winheight(0) - 2), 5)<cr>
-  inoremap <silent> <PageDown> <C-o>:<C-u>call <SID>ScrollDown(v:count1*(winheight(0) - 2), 5)<cr>
+  nnoremap <ScrollWheelDown> <cmd>call <SID>ScrollDown(3, winheight(0)/2)<cr>
+  inoremap <ScrollWheelDown> <cmd>call <SID>ScrollDown(3, winheight(0)/2)<cr>
+  nnoremap <C-f> <cmd>call <SID>ScrollDown(v:count1*(winheight(0) - 2), 5)<cr>
+  nnoremap <PageDown> <cmd>call <SID>ScrollDown(v:count1*(winheight(0) - 2), 5)<cr>
+  inoremap <PageDown> <cmd>call <SID>ScrollDown(v:count1*(winheight(0) - 2), 5)<cr>
   " ('winheight(0) - 2' is the number of lines CTRL-F scrolls)
 "}}}
