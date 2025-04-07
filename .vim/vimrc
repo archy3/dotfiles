@@ -11,17 +11,18 @@ if has('eval') " vim-tiny does not have `eval`
   "  source /etc/vim/vimrc.local
   "endif
 
-  if has('win32')
-    set directory=~/vimfiles/.swap//
-    set backupdir=~/vimfiles/.backup//
-    set viminfo='0,<0,s0,h,/0,:0,@0,f1,n~/vimfiles/.viminfo
-  else
-    set directory=~/.vim/.swap//
-    set backupdir=~/.vim/.backup//
+  if has('unix') || has('win32')
+    let s:vimrc_dir = has('unix') ? '~/.vim' : '~/vimfiles'
+    exec 'set directory=' . s:vimrc_dir . '/.swap//'
+    exec 'set backupdir=' . s:vimrc_dir . '/.backup//'
     " Do not remember marks ('0) nor registers (<0,s0) nor search (/0) nor
-    " command-line (:0) nor input-line (@0) history, but do remember file marks (f1)
-    " and previous jumps (included automatically?):
-    set viminfo='0,<0,s0,h,/0,:0,@0,f1,n~/.vim/.viminfo
+    " command-line (:0) nor input-line (@0) history, but do remember file marks
+    " (f1) and previous jumps (included automatically?):
+    exec "set viminfo='0,<0,s0,h,/0,:0,@0,f1,n" . s:vimrc_dir . '/.viminfo'
+  else
+    set noswapfile
+    set nobackup
+    set viminfofile=NONE
   endif
 
   " This dictionary tells scripts in ~/.vim/plugin that these plugins are loaded:

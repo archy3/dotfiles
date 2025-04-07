@@ -6,21 +6,25 @@ call SetTabBehavior(2,8)
 setlocal foldmethod=marker
 normal! zR
 
-if has('win32')
-  setlocal path+=~/vimfiles/init/
-  setlocal path+=~/vimfiles/after/ftplugin
-  setlocal path+=~/vimfiles/plugin
-else
-  setlocal path+=~/.vim/init/
-  setlocal path+=~/.vim/after/ftplugin
-  setlocal path+=~/.vim/plugin
+if has('unix') || has('win32')
+  let s:vimrc_dir = has('unix') ? '~/.vim' : '~/vimfiles'
+  exec 'setlocal path+=' . s:vimrc_dir . '/init/'
+  exec 'setlocal path+=' . s:vimrc_dir . '/after/ftplugin'
+  exec 'setlocal path+=' . s:vimrc_dir . '/plugin'
+  exec 'setlocal path+=' . s:vimrc_dir
 endif
 
 " Remaps:
 nnoremap <buffer> gf $gf
 nnoremap <buffer> <Leader>gf gf
 
-nnoremap <buffer> <Leader>r :source $MYVIMRC<cr>
+if has('unix') || has('win32')
+  nnoremap <buffer> <Leader>r
+    \ <cmd>
+    \   exec 'source ' . (has('unix') ? '~/.vim' : '~/vimfiles') . '/vimrc' <bar>
+    \   echo 'vimrc sourced!'
+    \ <cr>
+endif
 
 " Execute contents of paste register:
 cnoremap <buffer> <C-f><C-r> @"<cr>
