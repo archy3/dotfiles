@@ -101,14 +101,15 @@ onoremap <silent> <expr> il "<cmd> normal! ^v" . (v:count >= 2 ? v:count-1 . 'j'
 xnoremap <silent> <expr> il ":<C-u>normal! ^v" . (v:count >= 2 ? v:count-1 . 'j' : '') . "g_<cr>"
 nnoremap dal 0D
 
-let mapleader = " "
-let maplocalleader = ","
 " Open terminal in the directory of the current buffer:
 " (from https://vi.stackexchange.com/a/14533)
 nnoremap <F1> <cmd>let $VIM_WORKING_DIR=expand('%:p:h')<cr><cmd>vert term<cr>
   \ cd -- "$VIM_WORKING_DIR" && clear<cr>
 nnoremap <F7> <cmd>let $VIM_WORKING_DIR=expand('%:p:h')<cr><cmd>term<cr>
   \ cd -- "$VIM_WORKING_DIR" && clear<cr>
+
+let g:mapleader = ' '
+let g:maplocalleader = ','
 
 " GUI save as:
 nnoremap <Leader><C-s> <cmd>browse<space>confirm<space>saveas<cr>
@@ -190,17 +191,17 @@ nnoremap <Leader>P "+P
   " From https://www.reddit.com/r/vim/comments/a9nyqc/how_to_paste_without_losing_the_text_in_the/ecmt0li/?utm_source=reddit&utm_medium=web2x&context=3
   " but just the pasting and command part.
   function! s:CustomPasteAction(replaceRegEx, prePasteCmd) abort
-    let saveReg = @@
-    let reg = v:register
-    let regContents = getreg(reg)
+    let l:saveReg = @@
+    let l:reg = v:register
+    let l:regContents = getreg(l:reg)
 
     " Remove substrings represented by a:replaceRegEx
-    call setreg(reg, substitute(regContents, a:replaceRegEx, '', 'g'))
+    call setreg(l:reg, substitute(l:regContents, a:replaceRegEx, '', 'g'))
 
-    execute "normal! " . a:prePasteCmd . "\<C-r>\<C-o>" . reg
+    execute 'normal! ' . a:prePasteCmd . "\<C-r>\<C-o>" . l:reg
 
-    let @@ = saveReg
-    call setreg(reg, regContents)
+    let @@ = l:saveReg
+    call setreg(l:reg, l:regContents)
   endfunction
 
   " Append yanked test to end of line or after cursor, separated by a space:
@@ -228,23 +229,23 @@ nnoremap <Leader>P "+P
   " change with yanked text
   " From https://www.reddit.com/r/vim/comments/a9nyqc/how_to_paste_without_losing_the_text_in_the/ecmt0li/?utm_source=reddit&utm_medium=web2x&context=3
   function! s:PasteOver(type, ...) abort
-    let saveSel = &selection
-    let &selection = "inclusive"
+    let l:saveSel = &selection
+    let &selection = 'inclusive'
 
     if a:0 " Invoked from Visual mode, use '< and '> marks.
-      silent exe "normal! `<" . a:type . "`>"
+      silent exe 'normal! `<' . a:type . '`>'
     elseif a:type ==# 'line'
       silent exe "normal! '[V']"
     elseif a:type ==# 'block'
       silent exe "normal! `[\<C-V>`]"
     else
-      silent exe "normal! `[v`]"
+      silent exe 'normal! `[v`]'
     endif
 
     " Remove final trailing newline from yanks like "yy"
     call s:CustomPasteAction('\n$', "\"_c")
 
-    let &selection = saveSel
+    let &selection = l:saveSel
   endfunction
   nnoremap <silent> <Leader>c <cmd>set opfunc=<SID>PasteOver<cr>g@
   nnoremap <silent> <Leader>cc 0<cmd>set opfunc=<SID>PasteOver<cr>g@$
@@ -272,7 +273,7 @@ nnoremap <Leader>P "+P
     " Quit out of a command history window
     " (force will also close the command line):
     if getcmdwintype() !=# ''
-      exec (a:force ? "quit" : "norm! \<C-c>")
+      exec (a:force ? 'quit' : "norm! \<C-c>")
 
     " If the buffer isn't listed (e.g. help/netrw),
     " just go back to the previous/alternate buffer (if there is one)

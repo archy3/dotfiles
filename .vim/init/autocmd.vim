@@ -8,22 +8,22 @@ augroup END
 "{{{
     " Save current view settings on a per-window, per-buffer basis.
     function! s:AutoSaveWinView() abort
-        if !exists("w:SavedBufView")
+        if !exists('w:SavedBufView')
             let w:SavedBufView = {}
         endif
-        let w:SavedBufView[bufnr("%")] = winsaveview()
+        let w:SavedBufView[bufnr('%')] = winsaveview()
     endfunction
 
     " Restore current view settings.
     function! s:AutoRestoreWinView() abort
-        let buf = bufnr("%")
-        if exists("w:SavedBufView") && has_key(w:SavedBufView, buf)
-            let v = winsaveview()
-            let atStartOfFile = v.lnum ==# 1 && v.col ==# 0
-            if atStartOfFile && !&diff
-                call winrestview(w:SavedBufView[buf])
+        let l:buf = bufnr('%')
+        if exists('w:SavedBufView') && has_key(w:SavedBufView, l:buf)
+            let l:v = winsaveview()
+            let l:atStartOfFile = (l:v.lnum ==# 1 && l:v.col ==# 0)
+            if l:atStartOfFile && !&diff
+                call winrestview(w:SavedBufView[l:buf])
             endif
-            unlet w:SavedBufView[buf]
+            unlet w:SavedBufView[l:buf]
         endif
     endfunction
 
@@ -116,7 +116,7 @@ augroup END
 " Work around bug in xterm where setting `xterm.buffered: true` in
 " ~/.Xresources causes the terminal background color to become the
 " background color of the vim colorscheme when vim exits:
-if ($TERM ==# 'xterm-256color') && !has("gui_running")
+if ($TERM ==# 'xterm-256color') && !has('gui_running')
   augroup fix_xterm_buffered_bug
     autocmd!
     autocmd VimLeave * syntax off | highlight clear | redraw

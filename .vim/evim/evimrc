@@ -154,7 +154,7 @@ inoremap <C-x> <nop>
 vnoremap <C-z> :<C-u>norm! u<cr>
 
 " Insert timestamp:
-inoremap <F5> <C-r>=strftime("%Y-%m-%d %H:%M")<cr>
+inoremap <F5> <C-r>=strftime('%Y-%m-%d %H:%M')<cr>
 
 " Make <backspace>/<delete> trigger a new undo block:
 inoremap <backspace> <C-g>u<backspace>
@@ -286,7 +286,7 @@ inoremap <buffer> <cr> <c-g>u<cr>
 " Prevent scrolling past EOF:
 function! s:PageOrScrollDown(count, type) abort
   let l:save_pos = getpos('.')
-  exec "norm! L"
+  exec 'norm! L'
 
   " Check if already on last page:
   if line('.') ==# line('$')
@@ -302,7 +302,7 @@ function! s:PageOrScrollDown(count, type) abort
     exec 'norm! ' . a:count . "\<C-e>"
   endif
   let l:save_pos = getpos('.')
-  exec "norm! L"
+  exec 'norm! L'
 
   " If on last page, reposition view so that the bottom line
   " is the bottom of the winview:

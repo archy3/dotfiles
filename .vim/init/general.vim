@@ -144,8 +144,8 @@ set path+=~
 set path+=~/scripts
 set path+=~/scripts/autostart
 
-if &t_Co >= 8 || has("gui_running")
-  if !exists("g:syntax_on")
+if &t_Co >= 8 || has('gui_running')
+  if !exists('g:syntax_on')
     syntax enable
   endif
 

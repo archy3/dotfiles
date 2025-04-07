@@ -1,4 +1,4 @@
-if filereadable($HOME . "/.vim/spell/es.utf-8.spl")
+if filereadable($HOME . '/.vim/spell/es.utf-8.spl')
   setlocal spelllang=en,es
 endif
 setlocal wrap
@@ -23,7 +23,7 @@ if line('$') ==# 1 && col('$') ==# 1
   " from). Thus we make an autocmd to set the filetype back to `text`
   " and then reset it back to whatever it was before to activate the
   " `b:undo_ftplugin' of the text ftplugin.
-  if (@% ==# "")
+  if (@% ==# '')
     if !exists('g:text_ftplugin_may_need_to_be_undone')
       let g:text_ftplugin_may_need_to_be_undone = {}
     endif
