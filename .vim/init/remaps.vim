@@ -17,6 +17,14 @@ nnoremap <C-X2Mouse> <C-r>
 " Mouse visual delete:
 vnoremap <X2Mouse> d
 
+" Mouse left/right scroll using up/down scroll (doesn't work in terminal vim):
+nnoremap <S-ScrollWheelDown> <ScrollWheelRight>
+nnoremap <S-ScrollWheelUp> <ScrollWheelLeft>
+inoremap <S-ScrollWheelDown> <ScrollWheelRight>
+inoremap <S-ScrollWheelUp> <ScrollWheelLeft>
+vnoremap <S-ScrollWheelDown> <ScrollWheelRight>
+vnoremap <S-ScrollWheelUp> <ScrollWheelLeft>
+
 
 " Like remapping j/k to gj/gk but making relative line numbers work as expected:
 nnoremap <expr> j (v:count ==# 0 ? 'gj' : 'j')

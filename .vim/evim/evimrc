@@ -212,6 +212,14 @@ inoremap <C-X2Mouse> <C-o><C-r>
 " Mouse visual delete:
 vnoremap <X2Mouse> d
 
+" Mouse left/right scroll using up/down scroll:
+inoremap <S-ScrollWheelDown> <ScrollWheelRight>
+inoremap <S-ScrollWheelUp> <ScrollWheelLeft>
+nnoremap <S-ScrollWheelDown> <ScrollWheelRight>
+nnoremap <S-ScrollWheelUp> <ScrollWheelLeft>
+vnoremap <S-ScrollWheelDown> <ScrollWheelRight>
+vnoremap <S-ScrollWheelUp> <ScrollWheelLeft>
+
 " Zoom in/out:
 function! s:ZoomInOut(delta)
   let l:font = substitute(&guifont, '\d\+', '\=submatch(0) + ' . a:delta, 'g')
