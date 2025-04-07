@@ -172,7 +172,7 @@ inoremap <silent> <F4> <cmd>set list! list?<cr>
 inoremap <silent> <F7> <cmd>let &colorcolumn = (&colorcolumn ==# '' ? '80,100,120' : '')<cr>
 inoremap <silent> <F8> <cmd>set spell! spell?<cr>
 
-function! s:ToggleWrapAndLinebreak()
+function! s:ToggleWrapAndLinebreak() abort
   if !(&wrap)
     set guioptions-=b
     set nolinebreak
@@ -231,7 +231,7 @@ vnoremap <S-ScrollWheelDown> <ScrollWheelRight>
 vnoremap <S-ScrollWheelUp> <ScrollWheelLeft>
 
 " Zoom in/out:
-function! s:ZoomInOut(delta)
+function! s:ZoomInOut(delta) abort
   let l:font = substitute(&guifont, '\d\+', '\=submatch(0) + ' . a:delta, 'g')
 
   " Set the new font size, but if it is now zero, make it 1:
@@ -242,7 +242,7 @@ function! s:ZoomInOut(delta)
   echo matchstr(&guifont, '\d\+')
 endfunction
 
-function! s:SetFontSize(size)
+function! s:SetFontSize(size) abort
   let &guifont = substitute(&guifont, '\d\+', a:size, 'g')
   " Show current font size (for first font):
   redraw
@@ -284,7 +284,7 @@ inoremap <buffer> ? ?<c-g>u
 inoremap <buffer> <cr> <c-g>u<cr>
 
 " Prevent scrolling past EOF:
-function! s:PageOrScrollDown(count, type)
+function! s:PageOrScrollDown(count, type) abort
   let l:save_pos = getpos('.')
   exec "norm! L"
 

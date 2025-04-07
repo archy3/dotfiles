@@ -1,5 +1,5 @@
 " From $VIMRUNTIME/defaults.vim:
-function! s:DiffOrig(bang_on_means_start_diff_even_if_not_modified)
+function! s:DiffOrig(bang_on_means_start_diff_even_if_not_modified) abort
   let l:func_name = substitute(expand('<sfile>'), '.*\(\.\.\|\s\)', '', '')
     " Substitution pattern is from https://vi.stackexchange.com/a/5503
 

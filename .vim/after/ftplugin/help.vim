@@ -45,7 +45,7 @@ augroup make_help_open_in_a_nice_location
 augroup END
 
 " Move to bottom of rightmost column (if not already there):
-function! s:Move_to_bottom_of_rightmost_column()
+function! s:Move_to_bottom_of_rightmost_column() abort
   let l:curwin = winnr()
   wincmd b
 
@@ -61,7 +61,7 @@ function! s:Move_to_bottom_of_rightmost_column()
   endif
 endfunction
 
-function! s:HelpProperLocation()
+function! s:HelpProperLocation() abort
   " This count includes the new help window:
   if winnr('$') <= 2
     " Move to far right:

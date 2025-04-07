@@ -2,7 +2,7 @@ set guifont=Monospace\ 11
 set guifont+=DejaVu_Sans_Mono:h12:cANSI:qDRAFT
 set guifont+=Consolas:h14:cANSI:qDRAFT
 
-function! s:ZoomInOut(delta)
+function! s:ZoomInOut(delta) abort
   let l:font = substitute(&guifont, '\d\+', '\=submatch(0) + ' . a:delta, 'g')
 
   " Set the new font size, but if it is now zero, make it 1:

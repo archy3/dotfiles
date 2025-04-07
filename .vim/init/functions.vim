@@ -3,7 +3,7 @@
 " shiftwidth:  How many apparent spaces `>>` indents
 " softtabstop: How many apparent spaces pressing `tab` in insert mode inserts
 " expandtab:   If true, tab inserts literal spaces instead of a literal tab
-function! SetTabBehavior(indent_length, literal_tab_length)
+function! SetTabBehavior(indent_length, literal_tab_length) abort
   let &l:shiftwidth=a:indent_length
   let &l:tabstop=a:literal_tab_length
 

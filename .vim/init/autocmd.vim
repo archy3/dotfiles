@@ -7,7 +7,7 @@ augroup END
 " Make buffers remember their view settings:
 "{{{
     " Save current view settings on a per-window, per-buffer basis.
-    function! s:AutoSaveWinView()
+    function! s:AutoSaveWinView() abort
         if !exists("w:SavedBufView")
             let w:SavedBufView = {}
         endif
@@ -15,7 +15,7 @@ augroup END
     endfunction
 
     " Restore current view settings.
-    function! s:AutoRestoreWinView()
+    function! s:AutoRestoreWinView() abort
         let buf = bufnr("%")
         if exists("w:SavedBufView") && has_key(w:SavedBufView, buf)
             let v = winsaveview()
@@ -39,12 +39,12 @@ augroup END
 
 " Highlight trailing whitespace: (Such as this:)	 
 "{{{
-  function! s:HighlightExtraWhitespace()
+  function! s:HighlightExtraWhitespace() abort
     highlight ExtraWhitespace ctermbg=red guibg=red
     match ExtraWhitespace /\s\+$/
   endfunction
 
-  function! s:Activate_HighlightExtraWhitespace()
+  function! s:Activate_HighlightExtraWhitespace() abort
     call s:HighlightExtraWhitespace()
     augroup highlight_trailing_whitespace
       autocmd!
@@ -70,12 +70,12 @@ augroup END
 " Highlight multiple consecutive whitespace (such as  stuff  like  this  )
 " except for whitespace at the beginning of a line:
 "{{{
-  function! s:HighlightMultipleWhitespace()
+  function! s:HighlightMultipleWhitespace() abort
     highlight MultipleWhitespace ctermbg=red guibg=red
     match MultipleWhitespace /[^[:blank:]]\zs\s\s\+/
   endfunction
 
-  function! s:Activate_HighlightMultipleWhitespace()
+  function! s:Activate_HighlightMultipleWhitespace() abort
     call s:HighlightMultipleWhitespace()
     augroup highlight_trailing_whitespace
       autocmd!

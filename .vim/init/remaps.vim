@@ -142,7 +142,7 @@ nnoremap <Leader><Leader>; <cmd>setlocal linebreak! linebreak?<cr>
 nnoremap <Leader><Leader>y <cmd>call <SID>ToggleSystemClipboard()<cr>
 
 " Toggle using internal registers or system clipboard:
-function! s:ToggleSystemClipboard()
+function! s:ToggleSystemClipboard() abort
   if &clipboard =~# 'unnamedplus'
     set clipboard-=unnamedplus clipboard?
   else
@@ -171,7 +171,8 @@ nnoremap <silent> <Leader>yy <cmd>exec 'norm! ^' . v:count1 . 'y$'<cr>
 
 " copy entire file into clipboard
 nnoremap <silent> <Leader>y<Leader> <cmd>call <SID>CopyBufferToClipboard()<cr>
-function! s:CopyBufferToClipboard()
+
+function! s:CopyBufferToClipboard() abort
   %y+
   " Remove EOF newline which usually isn't wanted:
   let l:regContents = getreg('+')
@@ -188,7 +189,7 @@ nnoremap <Leader>P "+P
 "{{{
   " From https://www.reddit.com/r/vim/comments/a9nyqc/how_to_paste_without_losing_the_text_in_the/ecmt0li/?utm_source=reddit&utm_medium=web2x&context=3
   " but just the pasting and command part.
-  function! s:CustomPasteAction(replaceRegEx, prePasteCmd)
+  function! s:CustomPasteAction(replaceRegEx, prePasteCmd) abort
     let saveReg = @@
     let reg = v:register
     let regContents = getreg(reg)
@@ -203,13 +204,13 @@ nnoremap <Leader>P "+P
   endfunction
 
   " Append yanked test to end of line or after cursor, separated by a space:
-  function! s:PasteAtEndOfLine(...)
+  function! s:PasteAtEndOfLine(...) abort
     " Check if line already ends in whitespace or not
     let l:prePasteCmd = (getline('.') =~# '\s\+$' ? 'A' : "A\<space>")
     " Remove leading and trailing white space (including newlines)
     call s:CustomPasteAction('\_s*$\|^\_s*', l:prePasteCmd)
   endfunction
-  function! s:PasteAtEndOfCursor(...)
+  function! s:PasteAtEndOfCursor(...) abort
     " Check if character under cursor is already whitespace or not
     let l:prePasteCmd = (getline('.')[col('.') - 1] =~# '\s' ? 'a' : "a\<space>")
     " Remove leading and trailing white space (including newlines)
@@ -218,7 +219,7 @@ nnoremap <Leader>P "+P
   nnoremap <Leader>A <cmd>set opfunc=<SID>PasteAtEndOfLine<cr>g@<space>
   nnoremap <Leader>a <cmd>set opfunc=<SID>PasteAtEndOfCursor<cr>g@<space>
 
-  function! s:PasteOverInnerLine(...)
+  function! s:PasteOverInnerLine(...) abort
     " Remove leading spaces and any trailing newline from register:
     call s:CustomPasteAction('\s*\n\?$\|^\s*', "^\"_cg_")
   endfunction
@@ -226,7 +227,7 @@ nnoremap <Leader>P "+P
 
   " change with yanked text
   " From https://www.reddit.com/r/vim/comments/a9nyqc/how_to_paste_without_losing_the_text_in_the/ecmt0li/?utm_source=reddit&utm_medium=web2x&context=3
-  function! s:PasteOver(type, ...)
+  function! s:PasteOver(type, ...) abort
     let saveSel = &selection
     let &selection = "inclusive"
 
@@ -256,7 +257,7 @@ nnoremap <Leader>P "+P
   nnoremap <Leader>B <cmd>bp <cr>
   nnoremap <Leader>q <cmd>call <SID>DeleteBuffer(0)<cr>
   nnoremap <Leader>Q <cmd>call <SID>DeleteBuffer(1)<cr>
-  function! s:DeleteBuffer(force)
+  function! s:DeleteBuffer(force) abort
     let l:buf_to_delete = bufnr('%')
     let l:del_cmd = 'bdelete' . (a:force ? '! ' : ' ') . l:buf_to_delete
     let l:func_name = substitute(expand('<sfile>'), '.*\(\.\.\|\s\)', '', '')
@@ -321,12 +322,13 @@ nnoremap <leader>ft :setfiletype<space>
   " from: https://vim.fandom.com/wiki/Commenting_with_opfunc
 
   " Comment or uncomment lines from mark a to mark b.
-  function! s:CommentMark(docomment, a, b)
+  function! s:CommentMark(docomment, a, b) abort
     if !exists('b:comment')
       "let b:comment = CommentStr() . ' '
       " (Would nice to use the above but skip blank lines)
       let b:comment = s:CommentStr()
     endif
+
     if a:docomment
       exe "normal! '" . a:a . "_\<C-V>'" . a:b . 'I' . b:comment
     else
@@ -335,17 +337,17 @@ nnoremap <leader>ft :setfiletype<space>
   endfunction
 
   " Comment lines in marks set by g@ operator.
-  function! s:DoCommentOp(type)
+  function! s:DoCommentOp(type) abort
     call s:CommentMark(1, '[', ']')
   endfunction
 
   " Uncomment lines in marks set by g@ operator.
-  function! s:UnCommentOp(type)
+  function! s:UnCommentOp(type) abort
     call s:CommentMark(0, '[', ']')
   endfunction
 
   " Return string used to comment line for current filetype.
-  function! s:CommentStr()
+  function! s:CommentStr() abort
     if index(['c', 'cpp', 'java', 'javascript'], &ft) != -1
       return '//'
     elseif index(['vim'], &ft) != -1
@@ -376,7 +378,7 @@ nnoremap <leader>ft :setfiletype<space>
   " Scroll down but don't view anything lower than 'max_overscroll' lines
   " below the last line (unless that is already the current viewing position
   " in which case just don't scroll anymore).
-  function! s:ScrollDown(scroll_amount, max_overscroll)
+  function! s:ScrollDown(scroll_amount, max_overscroll) abort
     let l:scroll_amount = a:scroll_amount
 
     " "(line('.') - winline() + 1)" is an expression for the line nubmer of the
