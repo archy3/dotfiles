@@ -164,13 +164,6 @@ nnoremap <silent> <Leader>yy :<C-u>exec 'norm! ^' . v:count1 . 'y$'<cr>
 
 " copy entire file into clipboard
 nnoremap <silent> <Leader>y<Leader> :call <SID>CopyBufferToClipboard()<cr>
-"function! s:CopyBufferToClipboard()
-"  let l:current_winview=winsaveview()
-"  normal! vgg0oG$"+y
-"  call winrestview(l:current_winview)
-"endfunction
-" (Just doing something like 'nnoremap <Leader>y :%y+<cr>' is much simpler,
-"  but that would also copy the EOF newline which usually isn't wanted.)
 function! s:CopyBufferToClipboard()
   %y+
   " Remove EOF newline which usually isn't wanted:
@@ -314,21 +307,6 @@ nnoremap <silent> <Leader>v :execute (winwidth(0) >= (2 * &colorcolumn) ? 'vsp' 
 
 " Quickly set the filetype:
 nnoremap <leader>ft :setfiletype<space>
-
-" Highlighting:
-"nnoremap / :setlocal hlsearch<cr>/
-"nnoremap ? :setlocal hlsearch<cr>?
-"nnoremap <silent> <esc> <esc>:setlocal nohlsearch<cr>
-"nnoremap <silent> <esc> <esc>:nohlsearch<cr>
-
-function! s:CenterMatch()
-  nnoremap <buffer> n nzz
-  nnoremap <buffer> N Nzz
-  nnoremap <buffer> * *zz
-  nnoremap <buffer> # #zz
-  nnoremap <buffer> g* g*zz
-  nnoremap <buffer> g# g#zz
-endfunction
 
 
 " Comments:
