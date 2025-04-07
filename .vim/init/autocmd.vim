@@ -106,6 +106,13 @@ augroup create_undo_checkpoint_when_idling_in_insert_mode
   autocmd CursorHoldI * call feedkeys("\<c-g>u", 'n')
 augroup END
 
+augroup terminal_settings
+  autocmd!
+  autocmd TerminalOpen * setlocal colorcolumn=
+  autocmd TerminalOpen * setlocal nonumber
+  autocmd TerminalOpen * setlocal norelativenumber
+augroup END
+
 " Work around bug in xterm where setting `xterm.buffered: true` in
 " ~/.Xresources causes the terminal background color to become the
 " background color of the vim colorscheme when vim exits:
