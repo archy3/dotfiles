@@ -119,39 +119,15 @@ set path+=~
 set path+=~/scripts
 set path+=~/scripts/autostart
 
-if &t_Co > 2 || has("gui_running")
-  try
-    packadd! gruvbox
-  catch /^Vim\%((\a\+)\)\=:E919:/
-    finish
-  endtry
-  syntax on
-
-  augroup gruvbox_autocmd
-    autocmd!
-    autocmd vimenter * ++nested colorscheme gruvbox
-  augroup END
-
-  " Make gruvbox colors, italics, and spell underlining work in
-  " xterm (or terminals that report as xterm) and tmux:
-  if $TERM =~# '^\(xterm\|tmux\)-.*color.*$' && !has("gui_running")
-    let g:gruvbox_italic=1
-    autocmd gruvbox_autocmd vimenter * hi SpellBad cterm=underline
-    autocmd gruvbox_autocmd vimenter * hi SpellRare cterm=underline
-    autocmd gruvbox_autocmd vimenter * hi SpellCap cterm=underline
-    autocmd gruvbox_autocmd vimenter * hi SpellLocal cterm=underline
-      " See also this: https://gist.github.com/romainl/379904f91fa40533175dfaec4c833f2f
-    set termguicolors
+if &t_Co >= 8 || has("gui_running")
+  if !exists("g:syntax_on")
+    syntax enable
   endif
 
-  " For gvim, when hlsearch is on, set distinctive cursor color
-  " (#AD7CBF is a bit more subtle) and disable (normal mode) blinking.
-  augroup hlsearch_cursor_toggle
-    autocmd!
-    autocmd OptionSet hlsearch exec &hlsearch ?
-      \ 'hi Cursor guifg=#00FFFF guibg=#000000 | set guicursor+=n:blinkon0' :
-      \ 'hi Cursor guifg=NONE    guibg=NONE    | set guicursor-=n:blinkon0'
-  augroup END
-  "autocmd vimenter * hi Normal guifg=#FFD7AF
-  set background=dark
+  try
+    set background=dark
+    colorscheme gruvbox
+  catch /^Vim\%((\a\+)\)\=:E185:/
+    colorscheme torte
+  endtry
 endif
