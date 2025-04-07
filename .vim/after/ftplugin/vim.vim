@@ -15,8 +15,22 @@ if has('unix') || has('win32')
 endif
 
 " Remaps:
-nnoremap <buffer> gf $gf
-nnoremap <buffer> <Leader>gf gf
+" Redefining this function can lead to E127 if
+" we `gf` from a vim file to another vim file.
+if !exists('*' . expand('<SID>') . 'gf')
+  function! s:gf() abort
+    try
+      normal! gf
+    catch /^Vim\%((\a\+)\)\=:E44[67]:/
+      try
+        normal! $gf
+      catch /^Vim\%((\a\+)\)\=:E44[67]:/
+        echo v:exception
+      endtry
+    endtry
+  endfunction
+endif
+nnoremap <buffer> gf <cmd>call <SID>gf()<cr>
 
 if has('unix') || has('win32')
   nnoremap <buffer> <Leader>r
