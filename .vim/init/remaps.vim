@@ -75,6 +75,11 @@ nnoremap <C-s> :update<cr>
 inoremap <C-s> <C-o>:update<cr>
 " (':update' is like ':w' but doesn't write when the file hasn't been modified)
 
+" Have multi-character delete operations
+" in insert mode create undo checkpoints:
+inoremap <C-w> <C-g>u<C-w>
+inoremap <C-u> <C-g>u<C-u>
+
 " Window remaps
 nnoremap <silent> <C-h> :wincmd h<cr>
 nnoremap <silent> <C-j> :wincmd j<cr>
