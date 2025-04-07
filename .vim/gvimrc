@@ -13,10 +13,10 @@ function! s:ZoomInOut(delta)
   echo matchstr(&guifont, '\d\+')
 endfunction
 
-nnoremap <expr> <C-S-j> <SID>ZoomInOut(-1)
-nnoremap <expr> <C-S-k> <SID>ZoomInOut(1)
-nnoremap <expr> <C-ScrollWheelDown> <SID>ZoomInOut(-1)
-nnoremap <expr> <C-ScrollWheelUp> <SID>ZoomInOut(1)
+nnoremap <C-S-j> <cmd>call <SID>ZoomInOut(-1)<cr>
+nnoremap <C-S-k> <cmd>call <SID>ZoomInOut(1)<cr>
+nnoremap <C-ScrollWheelDown> <cmd>call <SID>ZoomInOut(-1)<cr>
+nnoremap <C-ScrollWheelUp> <cmd>call <SID>ZoomInOut(1)<cr>
 
 
 filetype detect " from https://stackoverflow.com/a/65367744
