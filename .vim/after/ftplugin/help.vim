@@ -82,7 +82,9 @@ function! s:HelpProperLocation()
   endif
 
   wincmd =
-  call feedkeys("\<esc>ze", 'n')
+  if mode() ==# 'n'
+    call feedkeys("\<esc>ze", 'n')
+  endif
 endfunc
 "}}}
 
