@@ -203,9 +203,11 @@ xnoremap <RightMouse> "+y
 nnoremap <X1Mouse> <LeftMouse>o<esc>0d$
 inoremap <X1Mouse> <C-o><LeftMouse><C-o>:exec "norm! o<\esc>"<cr><C-o>0<C-o>d$
 
-" Mouse undo:
+" Mouse undo/redo:
 nnoremap <X2Mouse> u
+nnoremap <C-X2Mouse> <C-r>
 inoremap <X2Mouse> <C-o>u
+inoremap <C-X2Mouse> <C-o><C-r>
 
 " Mouse visual delete:
 vnoremap <X2Mouse> d

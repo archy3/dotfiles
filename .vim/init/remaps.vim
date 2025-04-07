@@ -10,8 +10,9 @@ inoremap <MiddleMouse> <C-g>u<MiddleMouse>
 " (The '0d$' make sure the line is blank [it sometimes isn't depending on the ftplugin])
 nnoremap <X1Mouse> <LeftMouse>o<esc>0d$
 
-" Mouse undo:
+" Mouse undo/redo:
 nnoremap <X2Mouse> u
+nnoremap <C-X2Mouse> <C-r>
 
 " Mouse visual delete:
 vnoremap <X2Mouse> d
