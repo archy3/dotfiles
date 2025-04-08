@@ -5,5 +5,5 @@ endif
 let g:sneak#label = 1
 let g:sneak#s_next = 0
 let g:sneak#use_ic_scs = 1
-nnoremap <expr> <cr> (&buftype =~# '^$\\|^help$') ? "<Plug>Sneak_s" : "<cr>"
+nnoremap <expr> <cr> (&buftype =~# '^$\\|^help$') ? '<Plug>Sneak_s' : '<cr>'
 nnoremap <bs> <Plug>Sneak_S

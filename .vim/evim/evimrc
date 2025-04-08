@@ -133,9 +133,9 @@ vnoremap <silent> <C-o> <cmd>exec 'browse confirm ' . (@% ==# '' && !&modified ?
 " (the `<C-g>u` just makes the cursor blink in the position it originally was
 " [without this, the cursor will blink on the vim command line, even though
 " in actuality the cursor is still at it's original position in the buffer])
-inoremap <expr> <C-S> "<cmd>" . (@% ==# '' ? 'browse confirm saveas' : 'update') . "<cr><C-g>u"
-nnoremap <expr> <C-S> "<cmd>" . (@% ==# '' ? 'browse confirm saveas' : 'update') . "<cr>"
-vnoremap <expr> <C-S> "<cmd>" . (@% ==# '' ? 'browse confirm saveas' : 'update') . "<cr>"
+inoremap <expr> <C-S> '<cmd>' . (@% ==# '' ? 'browse confirm saveas' : 'update') . '<cr><C-g>u'
+nnoremap <expr> <C-S> '<cmd>' . (@% ==# '' ? 'browse confirm saveas' : 'update') . '<cr>'
+vnoremap <expr> <C-S> '<cmd>' . (@% ==# '' ? 'browse confirm saveas' : 'update') . '<cr>'
 
 " Save as:
 inoremap <C-S-s> <cmd>browse confirm saveas<cr><C-g>u

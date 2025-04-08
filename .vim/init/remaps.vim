@@ -97,8 +97,8 @@ nnoremap <down> <cmd>resize -1<cr>
 nnoremap <up> <cmd>resize +1<cr>
 
 " Create inner line object (from https://vimrcfu.com/snippet/269):
-onoremap <silent> <expr> il "<cmd> normal! ^v" . (v:count >= 2 ? v:count-1 . 'j' : '') . "g_<cr>"
-xnoremap <silent> <expr> il ":<C-u>normal! ^v" . (v:count >= 2 ? v:count-1 . 'j' : '') . "g_<cr>"
+onoremap <silent> <expr> il '<cmd> normal! ^v' . (v:count >= 2 ? v:count-1 . 'j' : '') . 'g_<cr>'
+xnoremap <silent> <expr> il ':<C-u>normal! ^v' . (v:count >= 2 ? v:count-1 . 'j' : '') . 'g_<cr>'
 nnoremap dal 0D
 
 " Open terminal in the directory of the current buffer:

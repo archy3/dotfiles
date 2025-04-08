@@ -22,19 +22,19 @@ function! s:ToggleLessBehavior() abort
 endfunction
 
 nnoremap <buffer> i <cmd>call <SID>ToggleLessBehavior()<cr>
-nnoremap <buffer> <expr> j <SID>GetLessBehavior() ? "\<C-e>"    : 'j'
-nnoremap <buffer> <expr> k <SID>GetLessBehavior() ? "\<C-y>"    : 'k'
-nnoremap <buffer> <expr> h <SID>GetLessBehavior() ? 'zh'        : 'h'
-nnoremap <buffer> <expr> l <SID>GetLessBehavior() ? 'zl'        : 'l'
-nnoremap <buffer> <expr> f <SID>GetLessBehavior() ? "\<C-f>Lzb" : 'f'
-nnoremap <buffer> <expr> b <SID>GetLessBehavior() ? "\<C-b>"    : 'b'
-nnoremap <buffer> <expr> { <SID>GetLessBehavior() ? 'H{'        : '{'
-nnoremap <buffer> <expr> } <SID>GetLessBehavior() ? 'L}'        : '}'
+nnoremap <buffer> <expr> j <SID>GetLessBehavior() ? '<C-e>'    : 'j'
+nnoremap <buffer> <expr> k <SID>GetLessBehavior() ? '<C-y>'    : 'k'
+nnoremap <buffer> <expr> h <SID>GetLessBehavior() ? 'zh'       : 'h'
+nnoremap <buffer> <expr> l <SID>GetLessBehavior() ? 'zl'       : 'l'
+nnoremap <buffer> <expr> f <SID>GetLessBehavior() ? '<C-f>Lzb' : 'f'
+nnoremap <buffer> <expr> b <SID>GetLessBehavior() ? '<C-b>'    : 'b'
+nnoremap <buffer> <expr> { <SID>GetLessBehavior() ? 'H{'       : '{'
+nnoremap <buffer> <expr> } <SID>GetLessBehavior() ? 'L}'       : '}'
 
 " Left-handed scroll bindings:
-nnoremap <buffer> <expr> e <SID>GetLessBehavior() ? 'H{'        : 'e'
+nnoremap <buffer> <expr> e <SID>GetLessBehavior() ? 'H{' : 'e'
 nnoremap <buffer> <nowait> d L}
-nnoremap <buffer> <expr> w <SID>GetLessBehavior() ? '<C-y>'     : 'w'
+nnoremap <buffer> <expr> w <SID>GetLessBehavior() ? '<C-y>' : 'w'
 nnoremap <buffer> s <C-e>
 
 " Make help open in v-split if only one window, else in bottom-right.
