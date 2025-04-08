@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 function! s:Show_bookmarks_menu() abort
   " Some other highly visible emojis: 🐷🐽🦜🐬🐠🦠🌼🌹🌺🌻🌷🍤🍰🧉🌚🌝🌞🌀💧
   let l:config = [

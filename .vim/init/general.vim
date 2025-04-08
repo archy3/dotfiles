@@ -72,6 +72,7 @@ set formatoptions+=rj
 set nojoinspaces
 
 " See this for more options: https://www.reddit.com/r/vim/comments/4hoa6e/what_do_you_use_for_your_listchars/
+scriptencoding utf-8
 set listchars=space:·,tab:——>,eol:¶,nbsp:⍽
 
 " Outside of gvim, always show status line
