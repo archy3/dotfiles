@@ -8,7 +8,8 @@ endif
 " others so they are included here for safety.
 set backspace=indent,eol,start
 set noerrorbells
-set visualbell t_vb=
+set visualbell
+set t_vb=
 set encoding=utf-8
 set ruler
 set showcmd
