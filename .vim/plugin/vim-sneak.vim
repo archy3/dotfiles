@@ -7,3 +7,5 @@ let g:sneak#s_next = 0
 let g:sneak#use_ic_scs = 1
 nnoremap <expr> <cr> (&buftype =~# '^$\\|^help$') ? '<Plug>Sneak_s' : '<cr>'
 nnoremap <bs> <Plug>Sneak_S
+xnoremap <cr> <Plug>Sneak_s
+xnoremap <bs> <Plug>Sneak_S

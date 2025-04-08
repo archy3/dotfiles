@@ -28,12 +28,14 @@ if has('eval') " vim-tiny does not have `eval`
   " This dictionary tells scripts in ~/.vim/plugin that these plugins are loaded:
   let g:plugins_i_want_to_load = {}
   let g:plugins_i_want_to_load['matchit'] = 1
+  let g:plugins_i_want_to_load['gruvbox'] = 1
+  let g:plugins_i_want_to_load['vim-surround'] = 1
+  let g:plugins_i_want_to_load['vim-repeat'] = 1
   let g:plugins_i_want_to_load['vimtex'] = 1 " Must load here (do not lazy-load in a ftplugin!)
   let g:plugins_i_want_to_load['ultisnips'] = has('python3')
-  "let g:plugins_i_want_to_load['vim-hardtime'] = 1
   let g:plugins_i_want_to_load['vim-sneak'] = 1
   let g:plugins_i_want_to_load['vim-sxhkdrc'] = 1
-  let g:plugins_i_want_to_load['gruvbox'] = 1
+  "let g:plugins_i_want_to_load['vim-hardtime'] = 1
 
   if exists('g:plugins_i_want_to_load')
     for [s:key, s:value] in items(g:plugins_i_want_to_load)
@@ -79,6 +81,7 @@ if has('eval') " vim-tiny does not have `eval`
   " ultisnips   : plugin/ultisnips.vim
   " vim-hardtime: plugin/vim-hardtime.vim
   " vim-sneak   : plugin/vim-sneak.vim
+  " vim-surround: plugin/vim-surround.vim
   " vimtex      : plugin/vimtex.vim
 
   " Snippets:
