@@ -2,6 +2,23 @@ set guifont=Monospace\ 11
 set guifont+=DejaVu_Sans_Mono:h12:cANSI:qDRAFT
 set guifont+=Consolas:h14:cANSI:qDRAFT
 
+filetype detect " from https://stackoverflow.com/a/65367744
+let &columns = get({'tex': 95, 'ps1': 120}, &filetype, 85)
+set lines=24
+
+" Disable beeping. It seems not all systems need this
+" setting but some do so it's included here for safety.
+set visualbell
+set t_vb=
+
+" Make focus follow mouse:
+set mousefocus
+"set scrollfocus
+
+" Disable toolbar since it is so big in GTK3:
+set guioptions-=T
+
+
 function! s:ZoomInOut(delta) abort
   let l:font = substitute(&guifont, '\d\+', '\=submatch(0) + ' . a:delta, 'g')
 
@@ -19,17 +36,17 @@ nnoremap <C-ScrollWheelDown> <cmd>call <SID>ZoomInOut(-1)<cr>
 nnoremap <C-ScrollWheelUp> <cmd>call <SID>ZoomInOut(1)<cr>
 
 
-filetype detect " from https://stackoverflow.com/a/65367744
-let &columns = get({'tex': 95, 'ps1': 120}, &filetype, 85)
-set lines=24
+" Sometimes the gvim screen becomes corrupted and/or the vim
+" cursor (not the mouse pointer) disappears. This often
+" happens after a `:wincmd T`. The following seems to make
+" the screen/cursor go back to normal.
+function! s:SetGuioptionsToMakeCursorReapear() abort
+  let l:restore_cursor_position_cmd = 'normal! ' . line('.') . 'G' . col('.') . '|'
+  let l:guioptions_old = &guioptions
+  set guioptions=
+  set guioptions&vim
+  let &guioptions = l:guioptions_old
+  exec l:restore_cursor_position_cmd
+endfunction
 
-" Disable beeping. It seems not all systems need this
-" setting but some do so it's included here for safety.
-set visualbell t_vb=
-
-" Make focus follow mouse:
-set mousefocus
-"set scrollfocus
-
-" Disable toolbar since it is so big in GTK3:
-set guioptions-=T
+nnoremap <C-S-r> <cmd>call <SID>SetGuioptionsToMakeCursorReapear()<cr>
