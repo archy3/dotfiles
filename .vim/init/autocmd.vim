@@ -122,3 +122,37 @@ if ($TERM ==# 'xterm-256color') && !has('gui_running')
     autocmd VimLeave * syntax off | highlight clear | redraw
   augroup END
 endif
+
+
+" For some reason, `b:undo_ftplugin` is not activated when entering a
+" new file (e.g. `:edit /etc/fstab`) when `bufname('%')` is empty
+" while `&modified` is false (such as when `vim` is opened without
+" arguments and no edits are made to the initial empty and unnamed
+" buffer), which leaves window-local settings like `spell` still
+" active when the new filetype is entered (it seems buffer-local
+" settings are not carried over into the new file regardless if
+" `b:undo_ftplugin` is executed or not, despite the buffer of the new
+" file having the same `bufnr('%')` as the empty buffer it was entered
+" from). Thus we make an autocmd to set the filetype back to what it
+" previousely was before the current filetype and then we reset it
+" back to the current filetype to activate the `b:undo_ftplugin' of
+" the previouse ftplugin.
+let s:ftplugin_may_need_to_be_undone_in_buf = {}
+
+augroup fix_undo_ftplugin_not_activating_bug
+  autocmd!
+  autocmd FileType *
+    \ if @% ==# '' |
+    \   let s:ftplugin_may_need_to_be_undone_in_buf[bufnr('%')] = &filetype |
+    \ endif
+  autocmd BufNewFile,BufRead * call s:Activate_undo_ftplugin_if_needed()
+augroup END
+
+function! s:Activate_undo_ftplugin_if_needed() abort
+  if has_key(s:ftplugin_may_need_to_be_undone_in_buf, bufnr('%'))
+    let l:filetype_save = &filetype
+    let &filetype = s:ftplugin_may_need_to_be_undone_in_buf[bufnr('%')]
+    let &filetype = l:filetype_save
+    call remove(s:ftplugin_may_need_to_be_undone_in_buf, bufnr('%'))
+  endif
+endfunction
