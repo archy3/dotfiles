@@ -3,6 +3,8 @@
 ; forw-search \^\\s*
 \n forw-search \^\\s*-
 " forw-search \^\\s*--
+h left-scroll
+l right-scroll
 
 #line-edit
 \e\e abort
@@ -28,6 +30,7 @@
 #       Perhaps this is why the manpage status bar is not used if it defines
 #       it in the LESS variable instead of as arguments to less.
 # FLAGS: -i: smart case search; -R: process colors; -F: quit if fits on screen;
-#        -M: show line numbers in status bar; -S: wrap lines.
-LESS = -i -R -F -M -S
+#        -M: show line numbers in status bar; -S: wrap lines;
+#        --shift 3: horizontally scroll 3 columns at a time.
+LESS = -i -R -F -M -S --shift 3
 LESSHISTFILE = /dev/null
