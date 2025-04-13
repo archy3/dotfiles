@@ -4,6 +4,9 @@
 \n forw-search \^\\s*-
 " forw-search \^\\s*--
 
+#line-edit
+\e\e abort
+
 #env
 # BUG: If the LESS definition is instead placed at the bottom of this file
 #      it will for some reason have no effect.
