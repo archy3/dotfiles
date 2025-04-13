@@ -29,7 +29,10 @@ set revert-all-at-newline on
 
 # Perform history expansion on current line and insert a space
 # (see https://www.gnu.org/software/bash/manual/html_node/Miscellaneous-Commands.html)
-Space: magic-space
+# (magic-space is bash-specific. It is undefined in other readline programs like gdb.)
+$if Bash
+  Space: magic-space
+$endif
 
 # More readline settings can be found here:
 # https://tiswww.case.edu/php/chet/readline/readline.html#SEC10
