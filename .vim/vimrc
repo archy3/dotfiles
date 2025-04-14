@@ -86,6 +86,7 @@ if has('eval') " vim-tiny does not have `eval`
 
   " Snippets:
   " sh : UltiSnips/sh.snippets
+  " vim: UltiSnips/vim.snippets
   " tex: UltiSnips/tex/my.snippets
   " tex: UltiSnips/tex/exam.snippets
   " tex: UltiSnips/tex/castel.snippets
