@@ -113,6 +113,37 @@ augroup terminal_settings
   autocmd TerminalOpen * setlocal norelativenumber
 augroup END
 
+
+" If no filetype detected, set it to text:
+augroup set_default_filetype
+  autocmd BufEnter *
+    \ if &filetype ==# '' |
+    \   call timer_start(50, expand('<SID>') . 'set_filetype_to_text_if_not_set') |
+    \ endif
+augroup END
+
+" This should be called with some delay after entering the buffer,
+" because early on in a buffer's life, it may have no filetype set,
+" but after further processing of autocmds and ftplugins,
+" the filetype may then no longer be unset.
+" (For example, calling this w/o the delay makes netrw misbehave when
+" the text ftplugin has the `b:undo_ftplugin` variable contain the string
+" '|mapclear <buffer> | mapclear! <buffer>' (which will clear the netrw
+" mappings too!)
+function! s:set_filetype_to_text_if_not_set(timer) abort
+  if &modifiable && &filetype ==# '' && &buflisted && &buftype ==# '' && &bufhidden ==# ''
+    setfiletype text
+
+    " In terminal vim, the title still used the previous
+    " blank filetype until the user presses a key.
+    " This is an attempt to get vim to update the title.
+    " (This may be a terminal issues with nothing to do with vim)
+    let &title = &title
+    redraw
+  endif
+endfunction
+
+
 " Work around bug in xterm where setting `xterm.buffered: true` in
 " ~/.Xresources causes the terminal background color to become the
 " background color of the vim colorscheme when vim exits:
