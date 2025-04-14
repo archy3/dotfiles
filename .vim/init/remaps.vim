@@ -131,8 +131,30 @@ nnoremap <silent> <Leader><Leader>D
   \ <cr>
 
 " Make file executable:
-nnoremap <Leader><C-x> <cmd>
-  \ call RunCmdIfExecutablesExist('!chmod u+x -- %:p:S', ['chmod'], 1)<cr>
+nnoremap <Leader><C-x> <cmd>call <SID>MakeExecutable(expand('%:p'))<cr>
+
+function! s:MakeExecutable(file) abort
+  let l:perms = getfperm(a:file)
+
+  if !filereadable(a:file)
+    echo 'File either does not exist, is a directory, or is not readable'
+    return
+  elseif l:perms =~# '^[r-][w-]-[r-][w-][x-][r-][w-][x-]$'
+    call setfperm(a:file, l:perms[:1] . 'x' . l:perms[3:])
+  elseif l:perms =~# '^[r-][w-]x[r-][w-][x-][r-][w-][x-]$'
+    echo 'File is already executable'
+    return
+  else
+    echo 'Unable to retrieve permission information (permissions not set)'
+    return
+  endif
+
+  if getfperm(a:file) =~# '^[r-][w-]x[r-][w-][x-][r-][w-][x-]$'
+    echo 'Executable permission set'
+  else
+    echo 'Failed to set executable permission'
+  endif
+endfunction
 
 " Toggles:
 nnoremap <Leader>s <cmd>setlocal spell! spell?<cr>
