@@ -94,9 +94,10 @@ set titlelen=0
   " Filename basename (or terminal stuff)
   set titlestring=%{%&buftype==#\"terminal\"?\"%f\":\"%t\"%}
 
-  " '=', '+' indicators for readonly/modified
+  " '=', '+', '*' indicators for readonly/modified/executable
   set titlestring+=%(\ %{&readonly&&&modifiable?\"=\":\"\"}
-  set titlestring+=%{&modified&&&buftype!=#\"terminal\"?\"+\":\"\"}%)
+  set titlestring+=%{&modified&&&buftype!=#\"terminal\"?\"+\":\"\"}
+  set titlestring+=%{getfperm(expand(\"%:p\"))=~#\"^[r-][w-]x[r-][w-][x-][r-][w-][x-]$\"&&filereadable(expand(\"%:p\"))?\"*\":\"\"}%)
 
   " Display '- (help)' for help files
   set titlestring+=%{%&buftype==#\"help\"?\"\ -%(\ (help)%)\":\"\"%}
