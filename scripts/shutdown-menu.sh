@@ -6,11 +6,23 @@ dmenu()
   command -- dmenu -fn 'Monospace-13' "$@" #-sf '#000000' -sb '#dd0000'
 }
 
+print_options()
+{
+  set -- cancel poweroff reboot suspend logout
+
+  # Check if booted in UEFI mode:
+  if [ -d /sys/firmware/efi ]; then
+    set -- "$@" firmware
+  fi
+
+  printf '%s\n' "$@"
+}
+
 main()
 {
   set -euf
 
-  selection="$(printf '%s\n' cancel poweroff reboot suspend logout firmware | dmenu)"
+  selection="$(print_options | dmenu)"
   case "$selection" in
     firmware) proceed_if_no_other_users_logged_in reboot --firmware-setup -i;;
     poweroff|reboot) proceed_if_no_other_users_logged_in "$selection" -i;;
