@@ -60,7 +60,7 @@ super + shift + n
 super + shift + r
 	pkill -USR1 -U "$(id -un)" -x "redshift" &
 
-super + {s,S} ; {_, super +} {f, s, S, F, c, C,}
+super + {s,S} ; {_, super +} {f, s, S, F, c, C}
 	{_,_}{_,_}~/scripts/screenshot.sh {f, s, S, F, c, C} &
 
 ~button{8,9}
