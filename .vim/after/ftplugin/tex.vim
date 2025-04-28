@@ -42,12 +42,13 @@ nnoremap <buffer> <Leader>r
 nnoremap <buffer> <LocalLeader><C-s>
   \ <cmd>
   \   if bufname('%') ==# '' <bar>
-  \     exec ':saveas ' . tempname() . '.tex' <bar>
+  \     exec ':write ' . tempname() . '.tex' <bar>
+  \     edit <bar>
   \   endif <bar>
   \   redraw
   \ <cr>
-  " We use `:saveas` instead of `:w` because of
-  " https://github.com/lervag/vimtex/issues/3042
+  " Without `edit`, compiling yields the error
+  " <Latexmk: No file name specified, and I couldn't find any>
 
 xnoremap <buffer> <Leader>i <cmd>call <SID>Surround_with_cmd_by_math_context('textit', 'mathit')<cr>
 xnoremap <buffer> <Leader>b <cmd>call <SID>Surround_with_cmd_by_math_context('textbf', 'mathbf')<cr>
