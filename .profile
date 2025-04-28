@@ -49,9 +49,6 @@ if command -v less > /dev/null; then
   export MANPAGER="${PAGER} --file-size --color=dy --color=uc"
 fi
 
-# Use compose key in GTK apps
-#export GTK_IM_MODULE=xim
-
 # Prevent gtk scrollbar from autohiding
 export GTK_OVERLAY_SCROLLING=0
 
