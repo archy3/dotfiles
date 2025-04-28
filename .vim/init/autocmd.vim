@@ -168,6 +168,7 @@ endif
 " previousely was before the current filetype and then we reset it
 " back to the current filetype to activate the `b:undo_ftplugin' of
 " the previouse ftplugin.
+" NOTE: As of vim 9.1.1323, this bug appears to be fixed (but not in nvim).
 let s:ftplugin_may_need_to_be_undone_in_buf = {}
 
 augroup fix_undo_ftplugin_not_activating_bug
