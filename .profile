@@ -47,6 +47,9 @@ export EDITOR="$VISUAL"
 if command -v less > /dev/null; then
   export PAGER="$(command -v less)"
   export MANPAGER="${PAGER} --file-size --color=dy --color=uc"
+
+  # Make less understand bold/underline in manpages:
+  export MANROFFOPT=-c
 fi
 
 # Prevent gtk scrollbar from autohiding
