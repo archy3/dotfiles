@@ -7,6 +7,10 @@ main()
 
   set_keyboard_layout
 
+  if [ "$1" = '--set-layout-now-and-exit' ]; then
+    return 0
+  fi
+
   # udevadm command from https://unix.stackexchange.com/questions/458961/execute-script-on-external-keyboard-connection#comment883131_458961
   # (we want the line to be word-split, so no `IFS= ` before `read`)
   udevadm monitor -k -s hidraw | while read -r _ _event_type __ ___; do
