@@ -32,7 +32,7 @@ super + ctrl + {c, n, t, i, v}
 
 
 super + shift + {e, v, t, q}
-	{GTK_THEME=oomox-Geeko-Dark-Alt-3.5 thunderbird &, \
+	{thunderbird &, \
 	~/scripts/lof-virt-manager.sh &, \
 	#deluge-gtk &, \
 	~/scripts/shutdown-menu.sh &}

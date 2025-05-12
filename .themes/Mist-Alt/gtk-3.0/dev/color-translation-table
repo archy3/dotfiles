@@ -1,0 +1,123 @@
+#020202
+#030c17
+#070707
+#092444
+#0f3b71
+#103e75
+#111111
+#141414
+#143f73
+#155099
+## Selected text background:
+#15539e #4b6983
+#16447c
+#1655a2
+#185cb0
+#194d8d
+#1961b9
+#1a0000
+#1b1b1b
+## Foreground of scrollbar when dragging (interferes with too many things):
+##1b6acb #3c3c3c
+## Active button:
+#1e1e1e #4a4a4a
+#1e74dd
+#1f76e1
+#202020
+#222222
+#232323
+#252525
+## CSD title bar color (part of gradient):
+#262626 #444444
+#26ab62
+#282828
+#2a2a2a
+## CSD title bar color (part of gradient):
+#2b2b2b #444444
+#2b62a6
+## Text background:
+#2d2d2d #333333
+#2e2e2e
+## Context menu background:
+#2f2f2f #282828
+#303030
+## Background of scrollbar:
+##313131 #1e1e1e
+#3181e3
+## Button color (part of gradient):
+#323232 #282828
+## Widget base background. Also button color (part of gradient):
+#353535 #282828
+## Hyperlink text foreground:
+#3584e4 #acee00
+#373737
+#3a3a3a
+#3c3c3c
+#3e3b37
+#3f3f3f
+#404040
+## Part of checkbox gradiant (along with the original #353535):
+#424242 #383838
+#432100
+#44403b
+#444444
+#4c4c4c
+#4e4e4e
+#4e9a06
+#4f7aaf
+#545453
+#570b0e
+#5a5a59
+#5b5b5b
+#606060
+#629fea
+#636362
+#6885aa
+#6a8bb5
+#6c6c6c
+#737373
+#7398c5
+#747473
+#7e7e7d
+#84151a
+#851015
+#878786
+#8a1116
+#8a8a89
+#8aa9ce
+#8c161c
+#8ca6c6
+#8e8e8d
+#919190
+#9cafc5
+#a1b2c7
+## Foreground of scrollbar (when not hovering over):
+##a4a4a3 #313131
+#a4a4a3 #616161
+#a4c4ea
+#a7a7a7
+#ae151c
+#b2161d
+#b5686b
+#b7161d
+#b9cbe2
+#bebebd
+#c7c7c6
+## Foreground of scrollbar (when hover overing but not dragging):
+##c9c9c7 #3c3c3c
+#c9c9c7 #818181
+#cc0000
+#cea1a3
+#d0dae5
+#d0ddec
+#d6d6d6
+#d7e6fa
+#dbdbd9
+#e8d0d2
+## Text foreground:
+#eeeeec #cccccc
+#eff5fd
+#f0d0d2
+#f57900
+## Selected text foreground:
+#ffffff #ffffff
