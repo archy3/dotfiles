@@ -350,12 +350,12 @@
     </keybind>
     <keybind key="H-u">
       <action name="MoveResizeTo">
-          <x>0</x>
+        <x>0</x>
       </action>
     </keybind>
     <keybind key="H-i">
       <action name="MoveResizeTo">
-          <x>-0</x>
+        <x>-0</x>
       </action>
     </keybind>
     <keybind key="W-d">
@@ -857,24 +857,23 @@
     <application name="Thunderbird" class="thunderbird-default" role="Dialog">
       <desktop>4</desktop>
       <position>
-         <x>center</x>
-         <y>center</y>
-         <monitor>1</monitor>
-       </position>
+        <x>center</x>
+        <y>center</y>
+        <monitor>1</monitor>
+      </position>
     </application>
     <application name="thunderbird-default" class="thunderbird-default" role="">
       <desktop>4</desktop>
       <position>
-         <x>center</x>
-         <y>center</y>
-         <monitor>1</monitor>
-       </position>
+        <x>center</x>
+        <y>center</y>
+        <monitor>1</monitor>
+      </position>
     </application>
     <application name="Mail" class="thunderbird-default" role="3pane">
       <desktop>4</desktop>
       <maximized>yes</maximized>
     </application>
-
     <application name="Navigator" class="firefox-esr" role="browser" type="normal">
       <size>
         <width>1280</width>
@@ -882,7 +881,6 @@
       </size>
       <maximized>no</maximized>
     </application>
-
     <application name="pcmanfm" class="Pcmanfm" type="normal">
       <size>
         <width>677</width>
@@ -890,7 +888,6 @@
       </size>
       <maximized>no</maximized>
     </application>
-
     <application name="gnome-disks" class="Gnome-disks" type="dialog" title="SMART Data &amp; Self-Tests">
       <size>
         <width>975</width>
@@ -898,7 +895,6 @@
       </size>
       <maximized>no</maximized>
     </application>
-
     <application name="engrampa" class="Engrampa" type="normal">
       <size>
         <width>655</width>
@@ -906,7 +902,6 @@
       </size>
       <maximized>no</maximized>
     </application>
-
     <application name="soffice" class="Soffice" type="normal" title="LibreOffice*">
       <size>
         <width>1126</width>
@@ -914,7 +909,6 @@
       </size>
       <maximized>no</maximized>
     </application>
-
     <application name="gpick" class="Gpick" type="normal">
       <size>
         <width>728</width>
@@ -922,6 +916,5 @@
       </size>
       <maximized>no</maximized>
     </application>
-
   </applications>
 </openbox_config>
