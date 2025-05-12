@@ -2,10 +2,10 @@ global !p
 
 # Returns true when not in a comment or string.
 def code():
-	return int(vim.eval("GetHighLightType() =~ 'shComment\|shSingleQuote\|shDoubleQuote\|shTestDoubleQuote\|shHereDoc\|shHereString'")) == 0
+	return int(vim.eval("GetHighLightType() =~ 'shComment\\|shSingleQuote\\|shDoubleQuote\\|shTestDoubleQuote\\|shHereDoc\\|shHereString'")) == 0
 
 def double_quote():
-	return int(vim.eval("GetHighLightType() =~ 'shDoubleQuote\|shTestDoubleQuote\|shHereDoc\|shHereString'")) == 1
+	return int(vim.eval("GetHighLightType() =~ 'shDoubleQuote\\|shTestDoubleQuote\\|shHereDoc\\|shHereString'")) == 1
 
 # This doesn't work for some reason
 def case_esac():
