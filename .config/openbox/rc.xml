@@ -894,7 +894,7 @@
     <application name="gnome-disks" class="Gnome-disks" type="dialog" title="SMART Data &amp; Self-Tests">
       <size>
         <width>975</width>
-        <height>745</height>
+        <height>748</height>
       </size>
       <maximized>no</maximized>
     </application>
