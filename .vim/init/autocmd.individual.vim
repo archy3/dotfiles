@@ -1,7 +1,6 @@
 augroup individual_autocmds
   autocmd!
   autocmd BufRead ~/.xinitrc setfiletype sh
-  autocmd BufRead ~/.config/dunst/dunstrc setfiletype dosini
   autocmd BufRead ~/.config/polybar/config setfiletype dosini
   autocmd BufRead ~/.config/zathura/zathurarc setfiletype vim
 
