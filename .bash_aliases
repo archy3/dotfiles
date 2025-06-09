@@ -17,6 +17,8 @@ alias gl='git log'
 alias glp='git log -p'
 alias glo='git log --oneline'
 alias gs='git status'
+alias gccwall='gcc -Wall -Wextra -Wpedantic -g'
+alias gppwall='g++ -Wall -Wextra -Wpedantic -g'
 alias ht='htop -u'
 alias envs='env | sort'
 ec() { printf %s\\n "$*"; }
