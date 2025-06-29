@@ -31,6 +31,7 @@ snippet new "boilerplate" b
 \usepackage{tikz,pgfplots}
 \usepackage{lastpage}
 \usepackage{multicol}
+\usepackage{etoolbox}
 \usepackage{venndiagram}
 \usepackage{pgffor,xifthen} % For foreach loops & if statements
 %\usepackage{booktabs}
@@ -53,6 +54,9 @@ snippet new "boilerplate" b
 \renewcommand{\d}{\ensuremath{\, d}}
 \let\temp\kappa \let\kappa\varkappa \let\varkappa\temp
 \let\temp\epsilon \let\epsilon\varepsilon \let\varepsilon\temp
+\apptocmd{\lim}{\limits}{}{}
+\apptocmd{\sum}{\limits}{}{}
+\apptocmd{\prod}{\limits}{}{}
 
 \begin{document}
 	$0
