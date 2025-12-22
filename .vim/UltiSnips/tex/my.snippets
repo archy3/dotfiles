@@ -131,13 +131,22 @@ snippet item "Itemize" bA
 \end{itemize}
 endsnippet
 
+context "not math()"
 snippet ali "Align" bA
 \begin{align*}
 	${1:${VISUAL}}
 \end{align*}
 endsnippet
 
+context "math()"
+snippet ali "Aligned" bA
+\begin{aligned}
+	${1:${VISUAL}}
+\end{aligned}
+endsnippet
+
 # next equation in align
+context "math() and (env('align*') or env('aligned'))"
 snippet == "equals" iA
 &= $1 \\\\
 endsnippet
