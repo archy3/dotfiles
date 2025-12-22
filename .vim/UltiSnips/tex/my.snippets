@@ -145,6 +145,20 @@ snippet ali "Aligned" bA
 \end{aligned}
 endsnippet
 
+context "not math()"
+snippet gat "Gather" b
+\begin{gather*}
+	${1:${VISUAL}}
+\end{gather*}
+endsnippet
+
+context "math()"
+snippet gat "Gathered" b
+\begin{gathered}
+	${1:${VISUAL}}
+\end{gathered}
+endsnippet
+
 # next equation in align
 context "math() and (env('align*') or env('aligned'))"
 snippet == "equals" iA
