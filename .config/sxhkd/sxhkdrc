@@ -31,11 +31,12 @@ super + ctrl + {c, n, t, i, v}
 	~/scripts/paste-by-typing.sh &}
 
 
-super + shift + {e, v, t, q}
+super + shift + {e, v, t, q, w}
 	{thunderbird &, \
 	~/scripts/lof-virt-manager.sh &, \
 	#deluge-gtk &, \
-	~/scripts/shutdown-menu.sh &}
+	~/scripts/shutdown-menu.sh &, \
+	gtk-launch libreoffice-calc &}
 
 ctrl + super + alt + {x}
 	{xkill &}
