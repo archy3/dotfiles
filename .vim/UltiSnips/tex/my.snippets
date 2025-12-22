@@ -165,6 +165,19 @@ snippet == "equals" iA
 &= $1 \\\\
 endsnippet
 
+# next implication in align
+context "math() and (env('align*') or env('aligned'))"
+snippet ;; "implies" iA
+&\implies $1 \\\\
+endsnippet
+
+# next vertical implication in gather
+context "math() and (env('gather*') or env('gathered'))"
+snippet ;; "implies (vertical)" iA
+\\\\\Downarrow\\\\
+$1
+endsnippet
+
 context "math()"
 snippet case "cases" wA
 \begin{cases}
