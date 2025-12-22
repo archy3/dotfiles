@@ -131,6 +131,12 @@ snippet item "Itemize" bA
 \end{itemize}
 endsnippet
 
+# next item in a list
+context "env('enumerate') or env('itemize')"
+snippet == "new-item" iA
+\item $0
+endsnippet
+
 context "not math()"
 snippet ali "Align" bA
 \begin{align*}
