@@ -11,6 +11,11 @@ def env(name):
 
 endglobal
 
+context "math()"
+snippet box "boxed" w
+\boxed{${1:${VISUAL}}}$0
+endsnippet
+
 # ENVIRONMENTS:
 context "not math()"
 snippet quest "Questions" b
