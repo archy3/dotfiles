@@ -47,7 +47,7 @@ super + alt + v
 	virt-viewer -v -f -H toggle-fullscreen=alt+enter --reconnect --attach --connect qemu:///session &
 
 super + shift + i
-	cd ~/.programs/tor-browser_en-US && exec ./start-tor-browser.desktop &
+	~/scripts/lof.sh firefox-esr -P default-state-3rd-profile &
 
 super + shift + j
 	env WINEPREFIX="${HOME}/.wine/prefix/dbpoweramp" wine-stable 'C:\windows\command\start.exe' /Unix "${HOME}/.wine/prefix/dbpoweramp/dosdevices/c:/ProgramData/Microsoft/Windows/Start Menu/Programs/dBpoweramp/CD Ripper.lnk" &
