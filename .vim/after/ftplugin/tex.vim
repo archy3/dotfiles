@@ -63,6 +63,7 @@ xnoremap <buffer> <Leader>C <cmd>call <SID>Surround_with_cmd_by_math_context('',
 xnoremap <buffer> <Leader>r <cmd>call <SID>Surround_with_cmd_by_math_context('', 'mathrm')<cr>
 xnoremap <buffer> <Leader>n <cmd>call <SID>Surround_with_cmd_by_math_context('', 'mathnormal')<cr>
 xnoremap <buffer> <Leader>T <cmd>call <SID>Surround_with_cmd_by_math_context('', 'text')<cr>
+xnoremap <buffer> <Leader>a <cmd>call <SID>Surround_with_cmd_by_math_context('', 'boxed')<cr>
 
 function! s:Surround_with_cmd_by_math_context(normal_cmd, math_cmd) abort
   if vimtex#syntax#in_mathzone() && a:math_cmd !=# ''
