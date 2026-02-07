@@ -34,6 +34,10 @@ set ignorecase
 set smartcase
 " use "/search_term\C" for case sensitive search
 
+" Treat numbers with leading zeros as decimal (not octal) numbers for
+" Ctrl-X and Ctrl-A:
+set nrformats-=octal
+
 " No time limit for key mappings, but time limit in ms for escape sequences:
 set notimeout
 set ttimeout
