@@ -81,7 +81,7 @@ let s:transpose_awk_script = '
 let s:transpose_awk_script = shellescape(s:transpose_awk_script, 1)
 
 " Bang will right-pad the result with spaces
-command! -range -bang Transpose
+command! -range=% -bang Transpose
   \ :call RunCmdIfExecutablesExist(
   \   '<line1>,<line2>!awk -v trim=' . <bang>1 . ' ' . s:transpose_awk_script,
   \   ['awk'],
