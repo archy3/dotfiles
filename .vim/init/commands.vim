@@ -87,3 +87,12 @@ command! -range=% -bang Transpose
   \   ['awk'],
   \   1
   \ )
+
+
+" Change lines like "https://username@www.vim.fandom.com:443/wiki/Vim_scripts"
+" into "vim.fandom.com". The banged version preserves the leading "www.".
+command! -range -bang GetDomainName
+  \ silent <line1>,<line2>s%^[^:/]*://%%Ie|
+  \ silent <line1>,<line2>s%^[^@]*@%%Ie|
+  \ silent <line1>,<line2>s%^[wW][wW][wW][.]%\= <bang>0 ? submatch(0) : '' %Ie|
+  \ silent <line1>,<line2>s%[:/].*$%%Ie
