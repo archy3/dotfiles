@@ -67,6 +67,9 @@ super + shift + r
 super + {s,S} ; {_, super +} {f, s, S, F, c, C}
 	{_,_}{_,_}~/scripts/screenshot.sh {f, s, S, F, c, C} &
 
+super + {s,S} ; {e, E, super + e, super + E} ; {e, E, f, s, S, F, c, C}
+	{_,_}{_,_,_,_}~/scripts/screenshot.sh -clipboardonly {s, S, f, s, S, F, c, C} &
+
 ~button{8,9}
 	~/scripts/pcmanfm-forward-back.sh {XF86Back,XF86Forward} &
 
