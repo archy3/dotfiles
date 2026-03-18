@@ -74,6 +74,22 @@ snippet rnc "renewcommand" b
 \\renewcommand{\\$1}{$2}$0
 endsnippet
 
+snippet ndc "NewDocumentCommand" b
+\\NewDocumentCommand{\\$1}{$2}{$3}$0
+endsnippet
+
+snippet rdc "RenewDocumentCommand" b
+\\RenewDocumentCommand{\\$1}{$2}{$3}$0
+endsnippet
+
+snippet ddc "DeclareDocumentCommand" b
+\\DeclareDocumentCommand{\\$1}{$2}{$3}$0
+endsnippet
+
+snippet ncc "NewCommandCopy" b
+\\NewCommandCopy{\\${1:new}}{\\${2:old}}$0
+endsnippet
+
 
 # TEXT SNIPPETS:
 context "not math()"
