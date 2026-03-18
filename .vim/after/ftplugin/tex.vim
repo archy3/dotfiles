@@ -5,6 +5,9 @@ setlocal spell
 setlocal nowrap
 setlocal iskeyword-=_
 
+" Make CTRL+n not lag so much:
+setlocal complete-=i
+
 " Configure m & M (for $$ & \[\]) for surround.vim:
 let b:surround_109 = "$\r$"
 let b:surround_77 = "\\[\r\\]"
@@ -19,6 +22,7 @@ if exists('b:undo_ftplugin')
   let b:undo_ftplugin .= '|setlocal spell<'
   let b:undo_ftplugin .= '|setlocal wrap<'
   let b:undo_ftplugin .= '|setlocal iskeyword<'
+  let b:undo_ftplugin .= '|setlocal complete<'
   let b:undo_ftplugin .= '|unlet b:surround_77'
   let b:undo_ftplugin .= '|unlet b:surround_109'
   let b:undo_ftplugin .= '|mapclear <buffer> | mapclear! <buffer>'
