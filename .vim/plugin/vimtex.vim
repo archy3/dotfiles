@@ -14,9 +14,9 @@ let g:vimtex_delim_toggle_mod_list = [
   \ ['\Biggl', '\Biggr'],
   \]
 
-" Put files generated at compile time in ./out/
+" Put files generated at compile time in a temporary directory
 let g:vimtex_compiler_latexmk = {
-    \ 'out_dir' : 'out',
+    \ 'out_dir' : tempname(),
     \}
 
 " Disable conceal (because conceal messes with plugins like vim-sneak)
@@ -43,3 +43,30 @@ xmap im <Plug>(vimtex-i$)
 nmap dsm <plug>(vimtex-env-delete-math)
 nmap csm <plug>(vimtex-env-change-math)
 nmap tsm <plug>(vimtex-env-toggle-math)
+
+augroup vimtex_copy_pdf
+  autocmd!
+  autocmd User VimtexEventCompileSuccess call s:CopyPdfToRootOfProjectDir()
+augroup END
+
+" Similar to `s:compiler.__init_temp_files()` and
+" `s:compiler.__copy_temp_files()` from
+" pack/plugins/opt/vimtex/autoload/vimtex/compiler/latexmk.vim
+function! s:CopyPdfToRootOfProjectDir() abort
+  if empty(b:vimtex.compiler.out_dir)
+    return
+  endif
+
+  let l:pdf_basename = b:vimtex.compiler.file_info.jobname . '.pdf'
+
+  let l:pdf_source = b:vimtex.compiler.out_dir . '/' . l:pdf_basename
+  let l:pdf_dest = b:vimtex.compiler.file_info.root . '/' . l:pdf_basename
+
+  if !vimtex#paths#is_abs(l:pdf_source)
+    let l:pdf_source = b:vimtex.compiler.file_info.root . '/' . l:pdf_source
+  endif
+
+  if filereadable(l:pdf_source) && getftime(l:pdf_source) > getftime(l:pdf_dest)
+    call writefile(readfile(l:pdf_source, 'b'), l:pdf_dest, 'b')
+  endif
+endfunction
