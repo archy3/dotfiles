@@ -12,6 +12,7 @@ def env(name):
 endglobal
 
 snippet new "boilerplate" b
+%! TeX program = luatex
 \RequirePackage[l2tabu, orthodox]{nag} % linter (must be before \documentclass)
 %\documentclass[addpoints]{exam}
 \documentclass{article}
@@ -24,7 +25,7 @@ snippet new "boilerplate" b
 \usepackage{parskip}
 \usepackage[colorlinks=true, linkcolor=black, urlcolor=blue]{hyperref} % For TOC
 \usepackage{changepage} % For indenting text blocks with \begin{adjustwidth}{1.5em}{1.5em}
-\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,factor=1100,stretch=10,shrink=10]{microtype}
+\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=false,factor=1100,stretch=10,shrink=10]{microtype}
 \usepackage[all]{onlyamsmath} % linter
 \usepackage{marginnote}
 \usepackage{xcolor}
