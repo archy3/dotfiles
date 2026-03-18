@@ -850,14 +850,19 @@ snippet nse "Not a subset and !=" Ai
 endsnippet
 
 priority 100
+snippet ** "cdot" iA
+\cdot 
+endsnippet
+
+priority 100
 context "math()"
 snippet xx "cross" iA
 \times 
 endsnippet
 
-priority 100
-snippet ** "cdot" iA
-\cdot 
+context "math()"
+snippet xo "composed" iA
+\circ 
 endsnippet
 
 context "math()"
@@ -886,11 +891,6 @@ endsnippet
 context "math()"
 snippet xto "xlongrightarrow" iA
 \xlongrightarrow{$1} $0
-endsnippet
-
-context "math()"
-snippet xo "composed" iA
-\circ 
 endsnippet
 
 context "math()"
