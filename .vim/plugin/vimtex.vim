@@ -5,6 +5,7 @@ endif
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
+let g:vimtex_indent_ignored_envs = ['verbatim', 'lstlisting']
 let g:vimtex_delim_toggle_mod_list = [
   \ ['\left', '\right'],
   \ ['\bigl', '\bigr'],
