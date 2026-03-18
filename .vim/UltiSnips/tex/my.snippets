@@ -29,8 +29,8 @@ snippet new "boilerplate" b
 \usepackage[all]{onlyamsmath} % linter
 \usepackage{marginnote}
 \usepackage{xcolor}
-\usepackage{tikz,pgfplots}
 \usepackage{ninecolors}\NineColors{saturation=high} % For accessible colors
+\usepackage{tikz,pgfplots}\pgfplotsset{compat=1.18}
 \usepackage{lastpage}
 \usepackage{multicol}
 \usepackage{etoolbox}
@@ -39,8 +39,6 @@ snippet new "boilerplate" b
 \usepackage{tabularray}
 \usepackage{newunicodechar}
 %\usepackage{embedall}
-
-\pgfplotsset{compat=1.18}
 
 \newcommand{\mymarginr}[1]{\normalmarginpar\marginnote{\footnotesize {#1}}}
 \newcommand{\mymarginl}[1]{\reversemarginpar\marginnote{\footnotesize {#1}}}
