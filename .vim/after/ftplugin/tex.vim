@@ -69,6 +69,12 @@ xnoremap <buffer> <Leader>n <cmd>call <SID>Surround_with_cmd_by_math_context('',
 xnoremap <buffer> <Leader>T <cmd>call <SID>Surround_with_cmd_by_math_context('', 'text')<cr>
 xnoremap <buffer> <Leader>a <cmd>call <SID>Surround_with_cmd_by_math_context('', 'boxed')<cr>
 
+" Changes something like "1, 2, 3, 4, 5" into "1,\, 2,\, 3,\, 4,\, 5"
+xnoremap <buffer> <Leader>, <cmd>:s/[ ]*,[ ]*\(\\,\)*[ ]*/,\\, /g<cr><esc>
+
+" Changes something like "1,\, 2,\, 3,\, 4,\, 5" into "1, 2, 3, 4, 5"
+xnoremap <buffer> <Leader><lt> <cmd>:s/[ ]*,[ ]*\(\\,\)*[ ]*/, /g<cr><esc>
+
 function! s:Surround_with_cmd_by_math_context(normal_cmd, math_cmd) abort
   if vimtex#syntax#in_mathzone() && a:math_cmd !=# ''
     call s:Surround_with_cmd(a:math_cmd)
