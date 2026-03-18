@@ -31,6 +31,7 @@ if has('eval') " vim-tiny does not have `eval`
   let g:plugins_i_want_to_load['gruvbox'] = 1
   let g:plugins_i_want_to_load['vim-surround'] = 1
   let g:plugins_i_want_to_load['vim-repeat'] = 1
+  let g:plugins_i_want_to_load['vim-speeddating'] = 1
   let g:plugins_i_want_to_load['vimtex'] = 1 " Must load here (do not lazy-load in a ftplugin!)
   let g:plugins_i_want_to_load['ultisnips'] = has('python3')
   let g:plugins_i_want_to_load['vim-sneak'] = 1
