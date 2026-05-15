@@ -6,7 +6,7 @@ if !exists("g:loaded_speeddating") || !g:loaded_speeddating
 endif
 
 " In Vim, -4 % 3 == -1.  Let's return 2 instead.
-function! s:mod(a,b)
+function! s:mod(a,b) abort
     if (a:a < 0 && a:b > 0 || a:a > 0 && a:b < 0) && a:a % a:b != 0
         return (a:a % a:b) + a:b
     else
@@ -45,7 +45,7 @@ let s:cycles += [
             \ ['Spring', 'Summer', 'Fall']
             \ ]
 
-function! KeywordIncrement(word, offset, increment)
+function! KeywordIncrement(word, offset, increment) abort
     for set in s:cycles
         let index = index(set, a:word)
         if index >= 0
