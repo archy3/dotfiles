@@ -42,8 +42,8 @@ snippet new "boilerplate" b
 \usepackage{varwidth}
 %\usepackage{embedall}
 
-\newcommand{\mymarginr}[1]{\normalmarginpar\marginnote{\footnotesize {#1}}}
-\newcommand{\mymarginl}[1]{\reversemarginpar\marginnote{\footnotesize {#1}}}
+\newcommand{\mymarginr}[2][0ex]{{\normalmarginpar\marginnote{\footnotesize#2}[#1]}}
+\newcommand{\mymarginl}[2][0ex]{{\reversemarginpar\marginnote{\footnotesize#2}[#1]}}
 
 \DeclareMathOperator{\arcsec}{arcsec}
 \DeclareMathOperator{\arccsc}{arccsc}
