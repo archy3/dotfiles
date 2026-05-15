@@ -45,7 +45,7 @@ let s:cycles += [
             \ ['Spring', 'Summer', 'Fall']
             \ ]
 
-function! KeywordIncrement(word, offset, increment) abort
+function! s:KeywordIncrement(word, offset, increment) abort
     for set in s:cycles
         let index = index(set, a:word)
         if index >= 0
@@ -55,5 +55,5 @@ function! KeywordIncrement(word, offset, increment) abort
     endfor
 endfunction
 
-let s:handler = {'regexp': '\<\%('.join(map(copy(s:cycles),'join(v:val,"\\|")'),'\|').'\)\>', 'increment': function("KeywordIncrement")}
+let s:handler = {'regexp': '\<\%('.join(map(copy(s:cycles),'join(v:val,"\\|")'),'\|').'\)\>', 'increment': function(expand('<SID>') . 'KeywordIncrement')}
 let g:speeddating_handlers += [s:handler]
