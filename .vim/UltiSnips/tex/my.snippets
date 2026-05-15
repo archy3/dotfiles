@@ -193,6 +193,13 @@ snippet gat "Gathered" b
 \end{gathered}
 endsnippet
 
+context "not math()"
+snippet dispa "Display With Arrows" bA
+\begin{DispWithArrows*}[format=r]
+	${1:${VISUAL}}
+\end{DispWithArrows*}
+endsnippet
+
 # next equation in align
 context "math() and (env('align*') or env('aligned'))"
 snippet == "equals" iA
@@ -210,6 +217,13 @@ context "math() and (env('gather*') or env('gathered'))"
 snippet ;; "implies (vertical)" iA
 \\\\\Downarrow\\\\
 $1
+endsnippet
+
+# next arrow in Display With Arrows
+context "math() and env('DispWithArrows*')"
+snippet == "next arrow" iA
+\\Arrow{$1}\\\\
+$0
 endsnippet
 
 context "math()"
