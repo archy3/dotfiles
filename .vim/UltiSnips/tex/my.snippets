@@ -136,6 +136,17 @@ snippet beg "begin{} / end{}" bA
 \\end{$1}
 endsnippet
 
+snippet tblr "tabularray tblr table" bA
+\begin{tblr}{
+		hlines,
+		vlines,
+		cells = {c, m},
+		row{1} = {black!10, font=\bfseries},
+	}
+	$0
+\end{tblr}
+endsnippet
+
 snippet enum "Enumerate" bA
 \begin{enumerate}[start=1, label=\arabic*)]
 	\item $0
