@@ -36,6 +36,18 @@ let s:cycles = [
             \ ['East', 'West']
             \ ]
 
+" IT terms:
+let s:cycles += [
+            \ ['bios', 'uefi'],
+            \ ['BIOS', 'UEFI'],
+            \ ['Bios', 'Uefi'],
+            \ ['mbr', 'gpt'],
+            \ ['MBR', 'GPT'],
+            \ ['Mbr', 'Gpt'],
+            \ ['bookworm', 'trixie', 'forky', 'duke'],
+            \ ['Bookworm', 'Trixie', 'Forky', 'Duke']
+            \ ]
+
 " LaTeX additions:
 let s:cycles += [
             \ ['begin', 'end'],
