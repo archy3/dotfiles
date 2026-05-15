@@ -23,12 +23,23 @@ let s:cycles = [
             \ ['On', 'Off'],
             \ ['yes', 'no'],
             \ ['YES', 'NO'],
-            \ ['Yes', 'No']
+            \ ['Yes', 'No'],
+            \ ['positive', 'negative'],
+            \ ['Positive', 'Negative'],
+            \ ['up', 'down'],
+            \ ['Up', 'Down'],
+            \ ['left', 'right'],
+            \ ['Left', 'Right'],
+            \ ['north', 'south'],
+            \ ['North', 'South'],
+            \ ['east', 'west'],
+            \ ['East', 'West']
             \ ]
 
 " LaTeX additions:
 let s:cycles += [
             \ ['begin', 'end'],
+            \ ['begingroup', 'endgroup'],
             \ ['newcommand', 'renewcommand'],
             \ ['NewDocumentCommand', 'RenewDocumentCommand', 'DeclareDocumentCommand', 'ProvideDocumentCommand'],
             \ ['NewDocumentEnvironment', 'RenewDocumentEnvironment', 'DeclareDocumentEnvironment', 'ProvideDocumentEnvironment'],
@@ -40,6 +51,8 @@ let s:cycles += [
 " LaTeX Exam additions:
 let s:cycles += [
             \ ['choice', 'CorrectChoice'],
+            \ ['question', 'bonusquestion'],
+            \ ['part', 'bonuspart'],
             \ ['parts', 'twocolumnparts'],
             \ ['quiz', 'exam', 'notes'],
             \ ['Spring', 'Summer', 'Fall']
