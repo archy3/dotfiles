@@ -93,6 +93,9 @@ add_additions()
   cat << 'EOF'
 /* Use a more readable color for days not in the selected month: */
 calendar:indeterminate {color: mix(@theme_base_color, @theme_fg_color, 0.47);}
+
+/* Make separator bars more apparent against the background: */
+separator {background-color: shade(@theme_fg_color, 0.43);}
 EOF
   printf '\n\n'
   add_additions_lxpanel
