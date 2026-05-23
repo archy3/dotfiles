@@ -21,6 +21,7 @@ main()
   translation_table="${2:-"${dir_of_this_theme}/dev/color-translation-table"}"
   output="${3:-"${dir_of_this_theme}/gtk.css"}"
   named_white_replacement="${4:-"#cccccc"}"
+  visited_link_color="${5:-"#ffc100"}"
 
   for file in "$translation_table" "$input" "$output"; do
     if ! [ -f "$file" ]; then
@@ -70,7 +71,7 @@ main()
   export LC_ALL=C
   awk -- "$awk_script" "$translation_table" | awk -f - -- "$input" |
     replace_named_white "$named_white_replacement" | remove_assets |
-    add_additions > "$output"
+    add_additions "$visited_link_color" > "$output"
 }
 
 replace_named_white()
@@ -86,10 +87,11 @@ remove_assets()
   grep -v assets
 }
 
-add_additions()
+add_additions() # visited_link_color
 {
   cat
   printf '\n\n'
+  printf '/* Set visited link color: */\nlink:visited {color: %s;}\n\n' "$1"
   cat << 'EOF'
 /* Use a more readable color for days not in the selected month: */
 calendar:indeterminate {color: mix(@theme_base_color, @theme_fg_color, 0.47);}

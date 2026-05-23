@@ -22,9 +22,11 @@ main()
   done > "$tempfile"
 
   named_white_replacement=$(print_random_color)
+  visited_link_color=$(print_random_color)
 
   ~/.themes/Mist-Alt/gtk-3.0/dev/translate-gtk-contained-colors.sh \
-    "$input" "$tempfile" "$output" "$named_white_replacement"
+    "$input" "$tempfile" "$output" \
+    "$named_white_replacement" "$visited_link_color"
 
   rm -f -- "$tempfile"
 }
