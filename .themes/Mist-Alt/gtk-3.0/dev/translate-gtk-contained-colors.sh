@@ -89,8 +89,20 @@ remove_assets()
 add_additions()
 {
   cat
-  printf \\n
+  printf '\n\n'
   cat << 'EOF'
+/* Use a more readable color for days not in the selected month: */
+calendar:indeterminate {color: mix(@theme_base_color, @theme_fg_color, 0.47);}
+EOF
+  printf '\n\n'
+  add_additions_lxpanel
+}
+
+add_additions_lxpanel()
+{
+  cat << 'EOF'
+/* BEGIN LXPANEL SETTINGS: */
+
 /* Colorscheme for lxpanel taskbar buttons: */
 window#PanelToplevel box box#taskbar widget button.toggle {
     color: shade(@theme_fg_color, 1.10);

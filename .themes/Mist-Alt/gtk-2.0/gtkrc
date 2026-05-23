@@ -190,6 +190,16 @@ style "scale-style" {
 
 class "*Scale*" style "scale-style"
 
+# Theme for calendars:
+style "calendar-style"
+{
+  # Use a more readable color for days not in the selected month:
+  bg[NORMAL] = mix (0.47, @text_color, @base_color)
+}
+
+class "GtkCalendar" style "calendar-style"
+
+# Theme for separator bars:
 style "separator-style" {
     bg[ACTIVE]              = shade (0.6, @fg_color)
     bg[PRELIGHT]            = shade (0.6, @fg_color)
