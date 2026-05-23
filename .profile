@@ -36,6 +36,7 @@ startx_tty1_auto()
         :
       done
       startx 2> ~/.xsession-errors
+      printf '\n'
     fi
   fi
 }
