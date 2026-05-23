@@ -129,17 +129,17 @@ window#PanelToplevel box box#taskbar widget button.toggle:hover {
        (and a ligher shade of it is used for the color of the
        active window).
 */
-window#PanelToplevel box widget#pager widget wnck-pager.wnck-pager {
+window#PanelToplevel box widget#pager widget * wnck-pager.wnck-pager {
     color: @theme_bg_color;
     background-color: shade(@theme_base_color, 3.0);
 }
 
-window#PanelToplevel box widget#pager widget wnck-pager.wnck-pager:selected {
+window#PanelToplevel box widget#pager widget * wnck-pager.wnck-pager:selected {
     color: @theme_fg_color;
     background-color: @theme_selected_bg_color;
 }
 
-window#PanelToplevel box widget#pager widget wnck-pager.wnck-pager:hover {
+window#PanelToplevel box widget#pager widget * wnck-pager.wnck-pager:hover {
     color: @theme_fg_color;
     background-color: @theme_selected_bg_color;
 }
