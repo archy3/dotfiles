@@ -234,7 +234,7 @@ style "taskbar-style" {
 
     # Task button when hovered over by mouse:
     fg[PRELIGHT]            = @selected_fg_color
-    bg[PRELIGHT]            = @base_color
+    bg[PRELIGHT]            = shade (2.15, @bg_color)
 
     # These don't appear to do anything:
     #fg[INSENSITIVE]         = mix (0.4, @fg_color, shade (0.85, @bg_color)) #shaded to bg[INSENSITIVE]

@@ -119,7 +119,7 @@ window#PanelToplevel box box#taskbar widget button.toggle:checked {
 window#PanelToplevel box box#taskbar widget button.toggle:hover {
     color: @theme_selected_fg_color;
     background-image: none;
-    background-color: @theme_base_color;
+    background-color: shade(@theme_bg_color, 2.15);
 }
 
 /* Colorscheme for the lxpanel pager:
