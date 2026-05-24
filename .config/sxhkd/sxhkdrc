@@ -8,7 +8,7 @@ super + {e, t, n, m, c, i, w, y, j, x, g, r, v, l}
 	gtk-launch libreoffice-writer &, \
 	gtk-launch lyx &, \
 	~/scripts/lof.sh gnome-disks &, \
-	~/scripts/lof.sh keepassx &, \
+	~/scripts/lof.sh keepassxc &, \
 	~/.dosbox/bin/dosbox-svn &, \
 	dmenu_run -l 15 -fn 'Monospace-13' &, \
 	~/scripts/lof.sh pulseeffects &, \
