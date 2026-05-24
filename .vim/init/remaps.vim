@@ -379,6 +379,8 @@ nnoremap <leader>ft :setfiletype<space>
       return ';'
     elseif index(['xdefaults'], &filetype) !=# -1
       return '!'
+    elseif index(['lua'], &filetype) !=# -1
+      return '--'
     elseif index(['matlab', 'tex'], &filetype) !=# -1
       return '%'
     elseif index(['dosbatch'], &filetype) !=# -1
