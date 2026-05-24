@@ -7,7 +7,7 @@ main()
 
   set_keyboard_layout
 
-  if [ "$1" = '--set-layout-now-and-exit' ]; then
+  if [ "${1:-}" = '--set-layout-now-and-exit' ]; then
     return 0
   fi
 
