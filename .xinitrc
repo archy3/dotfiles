@@ -16,7 +16,7 @@ if [ polybar = p ]; then
   sleep 0.2 && # Wait for openbox to create the workspaces
   polybar -r mybar &
 else
-  GTK_IM_MODULE=xim pcmanfm --desktop &
+  pcmanfm --desktop &
   lxpanel &
 fi
 
