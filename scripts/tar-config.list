@@ -49,7 +49,6 @@ scripts/encrypt-to-tar-gz-gpg-aes256.sh
 scripts/lof.sh
 scripts/lof-virt-manager.sh
 scripts/paste-by-typing.sh
-scripts/pcmanfm-forward-back.sh
 scripts/rifle_nsxiv_cd_to_file.sh
 scripts/screenshot.sh
 scripts/shutdown-menu.sh
