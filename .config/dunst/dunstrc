@@ -9,9 +9,9 @@
 
     ### Geometry ###
     width = 387
-    height = 300
+    height = (0,300)
     origin = top-right
-    offset = 6x30
+    offset = (6,30)
     scale = 0
     notification_limit = 0
 
