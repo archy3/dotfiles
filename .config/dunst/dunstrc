@@ -54,7 +54,7 @@
 
     ### Icons ###
     enable_recursive_icon_lookup = true
-    icon_theme = "gnome, Adwaita"
+    icon_theme = "gnome, Adwaita, menta, mate, Papirus, Numix"
     icon_position = left
     min_icon_size = 48
     max_icon_size = 48
