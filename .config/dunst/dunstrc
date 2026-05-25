@@ -21,6 +21,10 @@
     progress_bar_frame_width = 1
     progress_bar_min_width = 150
     progress_bar_max_width = 300
+    progress_bar_corner_radius = 0
+    progress_bar_corners = all
+    icon_corner_radius = 0
+    icon_corners = all
     indicate_hidden = yes
     transparency = 0
     separator_height = 2
@@ -67,6 +71,7 @@
     title = Dunst
     class = Dunst
     corner_radius = 0
+    corners = all
     ignore_dbusclose = false
 
     ### Wayland ###
@@ -87,17 +92,19 @@
     background = "#222222"
     foreground = "#cccccc"
     timeout = 10
-    icon = dialog-information
+    default_icon = dialog-information
 
 [urgency_normal]
     background = "#285577"
     foreground = "#ffffff"
     timeout = 10
-    icon = dialog-information
+    override_pause_level = 30
+    default_icon = dialog-information
 
 [urgency_critical]
     background = "#900000"
     foreground = "#ffffff"
     frame_color = "#ff0000"
     timeout = 10
-    icon = dialog-warning
+    override_pause_level = 60
+    default_icon = dialog-warning
