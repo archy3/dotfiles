@@ -28,16 +28,26 @@ fi
 ## Customizations start:
 
 # startx if on tty1
-startx_tty1_auto()
+startx_tty1_auto() # <card> <max-attempts> <time-between-attempts>
 {
   if [ "$(tty)" = "/dev/tty1" ] && command -v startx > /dev/null; then
-    if [ -c /dev/dri/card0 ]; then
-      until [ "$(stat -c %G /dev/dri/card0)" = video ]; do
-        :
-      done
-      startx 2> ~/.xsession-errors
-      printf '\n'
-    fi
+    while [ "$2" -gt 0 ]; do
+      set -- "$1" "$(($2-1))" "$3"
+      # Make sure the video card has been initalized:
+      if [ -c "$1" ]; then
+        until [ "$(stat -c %G "$1")" = video ]; do
+          :
+        done
+        startx 2> ~/.xsession-errors
+        printf '\n'
+        break
+      elif [ "$2" -gt 0 ]; then
+        printf '%s\n' "${1} not found. Trying again in ${3} second(s)." >&2;
+        sleep "$3"
+      else
+        printf '%s\n' "${1} was not found. No more attempts are left." >&2;
+      fi
+    done
   fi
 }
 
@@ -66,4 +76,4 @@ export QT_STYLE_OVERRIDE=Adwaita-Dark
 export SDL_SOUNDFONTS="${HOME}/.sounds/sf2/gm.sf2"
 export SDL_FORCE_SOUNDFONTS=1
 
-startx_tty1_auto
+startx_tty1_auto /dev/dri/card0 10 1
