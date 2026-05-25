@@ -89,9 +89,12 @@ remove_assets()
 
 add_additions() # visited_link_color
 {
+  # Pipe previous input through:
   cat
+
   printf '\n\n'
   printf '/* Set visited link color: */\nlink:visited {color: %s;}\n\n' "$1"
+
   cat << 'EOF'
 /* Use a more readable color for days not in the selected month: */
 calendar:indeterminate {color: mix(@theme_base_color, @theme_fg_color, 0.47);}
@@ -99,8 +102,12 @@ calendar:indeterminate {color: mix(@theme_base_color, @theme_fg_color, 0.47);}
 /* Make separator bars more apparent against the background: */
 separator {background-color: shade(@theme_fg_color, 0.43);}
 EOF
+
   printf '\n\n'
   add_additions_lxpanel
+
+  printf '\n\n'
+  add_additions_xfce4_panel
 }
 
 add_additions_lxpanel()
@@ -147,6 +154,93 @@ window#PanelToplevel box widget#pager widget * wnck-pager.wnck-pager:selected {
 window#PanelToplevel box widget#pager widget * wnck-pager.wnck-pager:hover {
     color: @theme_fg_color;
     background-color: @theme_selected_bg_color;
+}
+EOF
+}
+
+add_additions_xfce4_panel()
+{
+  cat << 'EOF'
+/* BEGIN XFCE4-PANEL SETTINGS: */
+
+/* Colorscheme for the xfce4-panal taskbar buttons: */
+window#XfcePanelWindow.xfce4-panel > widget  > widget > box.horizontal > widget.tasklist > button.toggle > box.horizontal {
+    color: shade(@theme_fg_color, 1.10);
+    background-image: none;
+    background-color: shade(@theme_base_color, 1.02);
+}
+
+window#XfcePanelWindow.xfce4-panel > widget  > widget > box.horizontal > widget.tasklist > button.toggle:checked > box.horizontal {
+    color: shade(@theme_selected_fg_color, 0.90);
+    background-image: none;
+    background-color: shade(@theme_bg_color, 1.85);
+}
+
+window#XfcePanelWindow.xfce4-panel > widget  > widget > box.horizontal > widget.tasklist > button.toggle:hover > box.horizontal {
+    color: @theme_selected_fg_color;
+    background-image: none;
+    background-color: shade(@theme_bg_color, 2.15);
+}
+
+/* Colorscheme for the xfce4-panal pager: */
+window#XfcePanelWindow.xfce4-panel > widget > widget * wnck-pager {
+    color: @theme_bg_color;
+    background-color: shade(@theme_base_color, 3.0);
+}
+
+window#XfcePanelWindow.xfce4-panel > widget > widget * wnck-pager:selected {
+    color: @theme_fg_color;
+    background-color: @theme_selected_bg_color;
+}
+
+window#XfcePanelWindow.xfce4-panel > widget > widget * wnck-pager:hover {
+    color: @theme_fg_color;
+    background-color: @theme_selected_bg_color;
+}
+
+/* Colorscheme for the xfce4-panal clock: */
+window#XfcePanelWindow.xfce4-panel > widget > widget > button#clock-button {
+    color: shade(@theme_selected_fg_color, 0.90);
+    background-image: none;
+    background-color: transparent;
+    border-style: none;
+}
+
+window#XfcePanelWindow.xfce4-panel > widget > widget > button#clock-button:checked {
+    color: @theme_fg_color;
+}
+
+window#XfcePanelWindow.xfce4-panel > widget > widget > button#clock-button:hover {
+    color: @theme_selected_fg_color;
+}
+
+/* Colorscheme for the xfce4-panal application menu button: */
+window#XfcePanelWindow.xfce4-panel > widget > widget > button.flat.toggle#applicationmenu-button {
+    background-image: none;
+    background-color: transparent;
+    border-style: none;
+}
+
+/* Set xfce4-panel taskbar button size: */
+window#XfcePanelWindow.xfce4-panel > widget  > widget > box.horizontal > widget.tasklist {
+    -XfceTasklist-min-button-length: 150;
+    -XfceTasklist-max-button-length: 150;
+}
+
+/* On the xfce4-panel, make the xfce4-systemload-plugin use the same
+   width and background color as the xfce4-cpugraph-plugin:
+*/
+.xfce4-panel progressbar.vertical trough {
+    min-width: 40px;
+    border-style: none;
+    border-radius: 0px;
+    background-color: black;
+}
+
+.xfce4-panel progressbar.vertical progress {
+    min-width: 40px;
+    border-style: none;
+    border-radius: 0px;
 }
 EOF
 }

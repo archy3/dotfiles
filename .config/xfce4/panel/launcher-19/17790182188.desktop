@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Htop
+GenericName=Process Viewer
+Comment=Show System Processes
+Icon=utilities-system-monitor
+Exec=xterm -class HTop -sl 0 -e htop -u
+Terminal=false
+Categories=System;Monitor;ConsoleOnly;
+Keywords=system;process;task
+X-XFCE-Source=file:///usr/share/applications/htop.desktop
+Path=
+StartupNotify=false
