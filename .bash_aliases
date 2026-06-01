@@ -23,7 +23,7 @@ alias ht='htop -u'
 alias envs='env | sort'
 alias xevk='xev -event keyboard | command -- grep "(keysym.*)"'
 ec() { printf %s\\n "$*"; }
-int() { [ -z "${TMUX:-}" ] && echo "Not in tmux." || echo "In tmux."; }
+int() { [ -z "${TMUX:-}" ] && printf 'Not in tmux.\n' || printf 'In tmux.\n'; }
 
 # colors:
 alias ls="ls --color=auto -v --group-directories-first --time-style='+%Y %m-%d %H:%M'"
