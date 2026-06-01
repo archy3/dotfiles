@@ -21,6 +21,7 @@ alias gccwall='gcc -Wall -Wextra -Wpedantic -Wconversion -g3'
 alias gppwall='g++ -Wall -Wextra -Wpedantic -Wconversion -g3'
 alias ht='htop -u'
 alias envs='env | sort'
+alias xevk='xev -event keyboard | command -- grep "(keysym.*)"'
 ec() { printf %s\\n "$*"; }
 int() { [ -z "${TMUX:-}" ] && echo "Not in tmux." || echo "In tmux."; }
 
