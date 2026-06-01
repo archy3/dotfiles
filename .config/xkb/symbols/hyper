@@ -1,0 +1,19 @@
+// Documentaiton is here:
+//     https://xkbcommon.org/doc/current/keymap-text-format-v1-v2.html#the-xkb_symbols-section
+// Examples are here: /usr/share/X11/xkb/symbols
+
+partial modifier_keys
+xkb_symbols "rwin" {
+    // Make the physical <RWIN> key produce the Hyper_R keysym:
+    replace key <RWIN> { [ Hyper_R ] };
+    // We can still produce the Super_R keysym if we have a <SUPR> physical key:
+    replace key <SUPR> { [ NoSymbol, Super_R ] };
+
+    // This will produce the following error (not warning):
+    //     Key <HYPR> added to map for multiple modifiers
+    //     Using Mod3, ignoring Mod4.
+    // I'm not sure of a way to first remove the Mod4 map,
+    // but since the end result is that Mod3 still gets used,
+    // everything is okay.
+    modifier_map Mod3 { <RWIN>, <HYPR> };
+};

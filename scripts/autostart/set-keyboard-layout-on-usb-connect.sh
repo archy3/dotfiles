@@ -5,7 +5,7 @@ main()
   set -euf
   trap '[ "$?" != 0 ] && printf \\n%s\\n "${0}: An error occurred." >&2' EXIT
 
-  set_keyboard_layout "${1:-}"
+  set_keyboard_layout
 
   if [ "${1:-}" = '--set-layout-now-and-exit' ]; then
     return 0
@@ -15,9 +15,6 @@ main()
   # (we want the line to be word-split, so no `IFS= ` before `read`)
   udevadm monitor -k -s hidraw | while read -r _ _event_type __ ___; do
     case "${_event_type:-}" in
-      # We don't pass `"${1:-}"` to `set_keyboard_layout`
-      # because the "press hyper" trick seems to be only
-      # necessary once.
       add|remove) set_keyboard_layout;;
     esac
   done
@@ -26,42 +23,23 @@ main()
   return 1
 }
 
-set_keyboard_layout() # [--send-hyper]
+set_keyboard_layout()
 {
   # Make right alt the compose key.
   setxkbmap -layout us -option '' -option compose:ralt
 
-  # Replace right super with right hyper,
-  # and make right alt the compose key
-  # (we have xmodmap also set right alt
-  # as the compose key because in some configurations,
-  # xmodmap will undo the settings set by setxkbmap).
-  # (from https://wiki.archlinux.org/title/Xmodmap#Turn_Super_R_into_Hyper_R):
-  xmodmap \
-    -e 'remove  mod4 = Super_R' \
-    -e 'keycode  134 = Hyper_R' \
-    -e 'add     mod3 = Hyper_R' \
-    -e 'remove  mod4 = Hyper_L' \
-    -e 'add     mod3 = Hyper_L' \
-    -e 'keycode  206 = NoSymbol  Super_R   NoSymbol  Super_R' \
-    -e 'keycode  108 = Multi_key Multi_key Multi_key Multi_key'
-
-  # For some reason the changes don't always take effect if
-  # the Hyper_R keys has not been subsequently depressed:
-  if [  "${1:-}" = "--send-hyper" ]; then
-    xdotool key --clearmodifiers -- Hyper_R
-  fi
-
-  # When the above xmodmap command is called repeatedly with
-  # no time between calls, sometimes the keymap reverts to the default.
-  # This short sleep is an inelegant way to combat that.
-  sleep 1
-
-  # Sometimes sending the `Hyper_R` doesn't work
-  # when it's issued too close to issuing `xmodmap`,
-  # so we'll send it again:
-  if [  "${1:-}" = "--send-hyper" ]; then
-    xdotool key --clearmodifiers -- Hyper_R
+  # Replace right super with right hyper by using an XKB symbols file.
+  xkb_symbols_file=~/.config/xkb/symbols/hyper
+  if [ -f "$xkb_symbols_file" ]; then
+    # sed command from: https://askubuntu.com/a/794087
+    apply_to_these_lines='^[[:space:]]*xkb_symbols[[:space:]]*{'
+    find='"[[:space:]]*};$'
+    replace='+hyper(rwin)&'
+    setxkbmap -print |
+      sed "/${apply_to_these_lines}/s/${find}/${replace}/" |
+      xkbcomp -I"${xkb_symbols_file%/*/*}" - "${DISPLAY}"
+  else
+    printf '%s not found\n' "$xkb_symbols_file" >&2
   fi
 }
 

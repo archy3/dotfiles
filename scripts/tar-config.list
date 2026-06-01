@@ -23,6 +23,7 @@
 .config/nsxiv
 .config/tmux
 .config/user-dirs.dirs
+.config/xkb
 .config/xfce4/panel
 .config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
 .config/zathura
