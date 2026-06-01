@@ -1,21 +1,23 @@
 #!/bin/sh
 
-main()
+main() # [--notify] [--set-layout-now-and-exit]
 {
   set -euf
   trap '[ "$?" != 0 ] && printf \\n%s\\n "${0}: An error occurred." >&2' EXIT
 
-  set_keyboard_layout
+  set_keyboard_layout "$@"
 
-  if [ "${1:-}" = '--set-layout-now-and-exit' ]; then
-    return 0
-  fi
+  for arg in "$@"; do
+    if [ "$arg" = '--set-layout-now-and-exit' ]; then
+      return 0
+    fi
+  done
 
   # udevadm command from https://unix.stackexchange.com/questions/458961/execute-script-on-external-keyboard-connection#comment883131_458961
   # (we want the line to be word-split, so no `IFS= ` before `read`)
   udevadm monitor -k -s hidraw | while read -r _ _event_type __ ___; do
     case "${_event_type:-}" in
-      add) set_keyboard_layout;;
+      add) set_keyboard_layout "$@";;
     esac
   done
 
@@ -23,7 +25,7 @@ main()
   return 1
 }
 
-set_keyboard_layout()
+set_keyboard_layout() # [--notify]
 {
   # Make right alt the compose key.
   setxkbmap -layout us -option '' -option compose:ralt
@@ -41,6 +43,15 @@ set_keyboard_layout()
   else
     printf '%s not found\n' "$xkb_symbols_file" >&2
   fi
+
+  for arg in "$@"; do
+    if [ "$arg" = '--notify' ]; then
+      if command -v notify-send > /dev/null; then
+        notify-send --icon=input-keyboard -- 'Keyboard layout set'
+      fi
+      printf 'Keyboard layout set\n'
+    fi
+  done
 }
 
 main "$@"

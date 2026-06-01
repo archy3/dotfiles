@@ -62,7 +62,7 @@ super + shift + r
 	pkill -USR1 -U "$(id -un)" -x "redshift" &
 
 {Super_R, Alt_R}
-	~/scripts/autostart/set-keyboard-layout-on-usb-connect.sh --set-layout-now-and-exit &
+	~/scripts/autostart/set-keyboard-layout-on-usb-connect.sh --set-layout-now-and-exit --notify &
 
 super + {s,S} ; {_, super +} {f, s, S, F, c, C}
 	{_,_}{_,_}~/scripts/screenshot.sh {f, s, S, F, c, C} &
