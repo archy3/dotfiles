@@ -15,7 +15,7 @@ main()
   # (we want the line to be word-split, so no `IFS= ` before `read`)
   udevadm monitor -k -s hidraw | while read -r _ _event_type __ ___; do
     case "${_event_type:-}" in
-      add|remove) set_keyboard_layout;;
+      add) set_keyboard_layout;;
     esac
   done
 
