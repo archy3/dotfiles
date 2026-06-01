@@ -3,8 +3,14 @@ set guifont+=DejaVu_Sans_Mono:h12:cANSI:qDRAFT
 set guifont+=Consolas:h14:cANSI:qDRAFT
 
 filetype detect " from https://stackoverflow.com/a/65367744
-let &columns = get({'tex': 95, 'ps1': 120}, &filetype, 85)
-set lines=24
+function! s:SetWindowDimensions() abort
+  let &columns = get({'tex': 95, 'ps1': 120}, &filetype, 85)
+  set lines=24
+endfunction
+call <SID>SetWindowDimensions()
+
+" Reset dimensions if they get messed up:
+nnoremap <C-S-n> <cmd>call <SID>SetWindowDimensions()<cr>
 
 " Disable beeping. It seems not all systems need this
 " setting but some do so it's included here for safety.
