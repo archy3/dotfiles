@@ -2011,6 +2011,10 @@ calendar:indeterminate {color: mix(@theme_base_color, @theme_fg_color, 0.47);}
 /* Make separator bars more apparent against the background: */
 separator {background-color: shade(@theme_fg_color, 0.43);}
 
+/* Reduce padding and removed rounded corners on tooltips: */
+tooltip * {padding: 1px;}
+tooltip {border-radius: 0px;}
+
 
 /* BEGIN LXPANEL SETTINGS: */
 
