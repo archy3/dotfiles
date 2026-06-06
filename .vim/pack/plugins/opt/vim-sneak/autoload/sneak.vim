@@ -82,7 +82,11 @@ func! sneak#to(op, input, inputlen, count, register, repeatmotion, reverse, incl
     if a:op ==# 'c'  " user <esc> during change-operation should return to previous mode.
       call feedkeys((col('.') > 1 && col('.') < col('$') ? "\<RIGHT>" : '') . "\<C-\>\<C-G>", 'n')
     endif
-    redraw | echo '' | return
+    redraw
+    if g:sneak_opt.prompt !=# ''
+      echo ''
+    endif
+    return
   endif
 
   let is_v  = sneak#util#isvisualop(a:op)
@@ -151,22 +155,36 @@ func! sneak#to(op, input, inputlen, count, register, repeatmotion, reverse, incl
     endif
   endfor
 
+  " This decides sneak#is_sneaking(). It is needed even if no match,
+  " so clever-s can still find a match in reverse direction.
+  call s:attach_autocmds()
+
   if 0 == max(matchpos)
     if nudge
       call sneak#util#nudge(a:reverse) "undo nudge for t
     endif
 
     let km = empty(&keymap) ? '' : ' ('.&keymap.' keymap)'
-    call sneak#util#echo('not found'.(max(bounds) ? printf(km.' (in columns %d-%d): %s', bounds[0], bounds[1], a:input) : km.': '.a:input))
+
+    " Clear SneakCurrent on the next non-sneak movement
+    doautocmd CursorMoved sneak
+
+    " Empty prompt option additionally makes it so Sneak never echoes any messages.
+    if g:sneak_opt.prompt !=# ''
+      call sneak#util#echo('not found'.(max(bounds) ? printf(km.' (in columns %d-%d): %s', bounds[0], bounds[1], a:input) : km.': '.a:input))
+    endif
+
     return
   endif
   "search succeeded
 
   call sneak#util#removehl()
+  let matchlen = sneak#util#strlen(a:input)
 
   if (!is_op || a:op ==# 'y') "position _after_ search
     let curlin = string(line('.'))
-    let curcol = string(virtcol('.') + (a:reverse ? -1 : 1))
+    let offset = matchlen - 1
+    let curcol = string(max([0, virtcol('.') + (a:reverse ? -offset : offset)]))
   endif
 
   "Might as well scope to window height (+/- 99).
@@ -179,15 +197,19 @@ func! sneak#to(op, input, inputlen, count, register, repeatmotion, reverse, incl
 
   "highlight the vertical 'tunnel' that the search is scoped-to
   if max(bounds) "perform the scoped highlight...
-    let w:sneak_sc_hl = matchadd('SneakScope', l:scope_pattern)
+    let w:sneak_scope_hl = matchadd('SneakScope', l:scope_pattern)
   endif
-
-  call s:attach_autocmds()
 
   "highlight actual matches at or beyond the cursor position
   "  - store in w: because matchadd() highlight is per-window.
   let w:sneak_hl_id = matchadd('Sneak',
         \ (s.prefix).(s.match_pattern).(s.search).'\|'.curln_pattern.(s.search))
+
+  " Highlight match under cursor
+  "   - not appropriate for exclusive motions: the cursor is next to the match
+  if a:inclusive != 0 && matchlen > 1
+    let w:sneak_cur_hl = matchadd('SneakCurrent', '\%#.\{'.matchlen.'}')
+  endif
 
   " Clear with <esc>. Use a funny mapping to avoid false positives. #287
   if (has('nvim') || has('gui_running')) && maparg('<esc>', 'n') ==# ""
@@ -205,8 +227,20 @@ func! sneak#to(op, input, inputlen, count, register, repeatmotion, reverse, incl
   endif
 
   if is_op && 2 != a:inclusive && !a:reverse
-    " f/t operations do not apply to the current character; nudge the cursor.
-    call sneak#util#nudge(1)
+    " o_v flips forward f/t to exclusive
+    if mode(1) ==# 'nov'
+      call sneak#util#nudge(0)
+    else
+      " f edge case targeting EOL/EOB
+      let vim_compat = has('lambda') && exists('*execute') " required for timer_start
+      if 1 == a:inclusive && virtcol('.') == virtcol('$') - 1 && &virtualedit !~# 'onemore' && vim_compat
+        let s:save_virtualedit = &virtualedit
+        let &virtualedit = 'onemore'
+        call timer_start(0, {-> execute('let &virtualedit=s:save_virtualedit')})
+      endif
+      " nudge right but do not wrap on EOL: go beyond EOL on virtual column if necessary
+      exec 'norm! l'
+    endif
   endif
 
   if is_op || '' != target
@@ -215,7 +249,7 @@ func! sneak#to(op, input, inputlen, count, register, repeatmotion, reverse, incl
 
   if is_op && a:op !=# 'y'
     let change = a:op !=? "c" ? "" : "\<c-r>.\<esc>"
-    let args = sneak#util#strlen(a:input) . a:reverse . a:inclusive . (2*!empty(target))
+    let args = matchlen . a:reverse . a:inclusive . (2*!empty(target))
     if a:op !=# 'g@'
       let args .= a:input . target . change
     endif
@@ -275,7 +309,10 @@ endf
 
 func! s:getnchars(n, mode) abort
   let s = ''
-  echo g:sneak_opt.prompt | redraw
+  if g:sneak_opt.prompt !=# ''
+    echo g:sneak_opt.prompt
+  endif
+  redraw
   for i in range(1, a:n)
     if sneak#util#isvisualop(a:mode) | exe 'norm! gv' | endif "preserve selection
     let c = sneak#util#getchar()
@@ -299,7 +336,10 @@ func! s:getnchars(n, mode) abort
         break
       endif
     endif
-    redraw | echo g:sneak_opt.prompt . s
+    redraw
+    if g:sneak_opt.prompt !=# ''
+      echo g:sneak_opt.prompt . s
+    endif
   endfor
   return s
 endf

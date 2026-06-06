@@ -500,6 +500,56 @@ Execute (unset clever-s):
   call SneakReset()
 
 ###########################################################
+# No match found, but reverse direction has matches
+
+Given:
+  abcabc abcabc abcabc
+  defdef defdef defdef
+  ghighi ghighi ghighi
+
+Do (forward no match but reverse with ,):
+  Gsab,r_
+Expect:
+  abcabc abcabc abc_bc
+  defdef defdef defdef
+  ghighi ghighi ghighi
+
+Do (backwards no match but reverse with ,):
+  WSef,r_
+Expect:
+  abcabc abcabc abcabc
+  d_fdef defdef defdef
+  ghighi ghighi ghighi
+
+Execute (init clever-s):
+  let g:sneak#s_next = 1
+  call SneakReset()
+
+Do (dummy step to work around Vim (or Vader) macro bug):
+  sab\<esc>u
+
+Do (forward no match but reverse with S):
+  GsabSr_
+Expect:
+  abcabc abcabc abc_bc
+  defdef defdef defdef
+  ghighi ghighi ghighi
+
+Do (dummy step to work around Vim (or Vader) macro bug):
+  sab\<esc>u
+
+Do (backwards no match but reverse with S):
+  WSefSr_
+Expect:
+  abcabc abcabc abcabc
+  d_fdef defdef defdef
+  ghighi ghighi ghighi
+
+Execute (unset clever-s):
+  let g:sneak#s_next = 0
+  call SneakReset()
+
+###########################################################
 # g:sneak#absolute_dir
 
 Given:
@@ -733,6 +783,9 @@ Execute (cleanup):
   silent! xunmap t
   silent! xunmap T
 
+############################################################
+# Label-mode <Tab>/<BS> when running out of labels
+
 Given:
   A11111111111111111111111111111111111111111111111111111K
   B22222222222222222222222222222222222222222222222222222L
@@ -745,7 +798,21 @@ Given:
   I11111111111111111111111111111111111111111111111111111S
   J22222222222222222222222222222222222222222222222222222T
 
-Do (label/change-direction/delete):
+Do (next labels):
+  4j9ls22\<Tab>\<Tab>fr-
+Expect:
+  A11111111111111111111111111111111111111111111111111111K
+  B22222222222222222222222222222222222222222222222222222L
+  C11111111111111111111111111111111111111111111111111111M
+  D22222222222222222222222222222222222222222222222222222N
+  E11111111111111111111111111111111111111111111111111111O
+  F22222222222222222222222222222222222222222222222222222P
+  G11111111111111111111111111111111111111111111111111111Q
+  H2222222222222222222222222222222222222222222222-222222R
+  I11111111111111111111111111111111111111111111111111111S
+  J22222222222222222222222222222222222222222222222222222T
+
+Do (next labels, change direction):
   4j9ls22\<Tab>\<Tab>\<BS>\<BS>\<BS>\<BS>Rr-
 Expect:
   A11111111111111111111111111111111111111111111111111111K
@@ -759,7 +826,7 @@ Expect:
   I11111111111111111111111111111111111111111111111111111S
   J22222222222222222222222222222222222222222222222222222T
 
-Do (label/change-direction/delete/repeat):
+Do (next labels, change direction, repeat):
   4j9ldz22\<Tab>\<BS>\<BS>N
   :\<C-U>doautocmd CursorMoved\<CR>
   .
@@ -772,8 +839,8 @@ Expect:
   I11111111111111111111111111111111111111111111111111111S
   J22222222222222222222222222222222222222222222222222222T
 
-Do (label/backwards/<BS>):
-  4j9lS22\<BS>\<BS>fr-
+Do (next labels backwards):
+  4j9lS22\<Tab>\<Tab>fr-
 Expect:
   A11111111111111111111111111111111111111111111111111111K
   B2222-222222222222222222222222222222222222222222222222L
@@ -786,7 +853,121 @@ Expect:
   I11111111111111111111111111111111111111111111111111111S
   J22222222222222222222222222222222222222222222222222222T
 
+Do (next labels backwards, change direction):
+  4j9lS22\<Tab>\<Tab>\<BS>\<BS>\<BS>\<BS>Rr-
+Expect:
+  A11111111111111111111111111111111111111111111111111111K
+  B22222222222222222222222222222222222222222222222222222L
+  C11111111111111111111111111111111111111111111111111111M
+  D22222222222222222222222222222222222222222222222222222N
+  E11111111111111111111111111111111111111111111111111111O
+  F22222222222222222222222222222222222222222222222222222P
+  G11111111111111111111111111111111111111111111111111111Q
+  H22222222222222222222222222-22222222222222222222222222R
+  I11111111111111111111111111111111111111111111111111111S
+  J22222222222222222222222222222222222222222222222222222T
+
+Do (next labels backwards, change direction, repeat):
+  4j9ldZ22\<Tab>\<BS>\<BS>N
+  :\<C-U>doautocmd CursorMoved\<CR>
+  .
+Expect:
+  A11111111111111111111111111111111111111111111111111111K
+  B22222222222222222222222222222222222222222222222222222L
+  C11111111111111111111111111111111111111111111111111111M
+  D22222222222222222222222222222222222222222222222222222N
+  E11111111222222222222222222222222222222222222222222222R
+  I11111111111111111111111111111111111111111111111111111S
+  J22222222222222222222222222222222222222222222222222222T
+
+Execute (turn on g:sneak#absolute_dir):
+  let g:sneak#absolute_dir = 1
+  call SneakReset()
+
+Do (next labels absolute_dir):
+  4j9ls22\<Tab>\<Tab>fr-
+Expect:
+  A11111111111111111111111111111111111111111111111111111K
+  B22222222222222222222222222222222222222222222222222222L
+  C11111111111111111111111111111111111111111111111111111M
+  D22222222222222222222222222222222222222222222222222222N
+  E11111111111111111111111111111111111111111111111111111O
+  F22222222222222222222222222222222222222222222222222222P
+  G11111111111111111111111111111111111111111111111111111Q
+  H2222222222222222222222222222222222222222222222-222222R
+  I11111111111111111111111111111111111111111111111111111S
+  J22222222222222222222222222222222222222222222222222222T
+
+Do (next labels absolute_dir, change direction):
+  4j9ls22\<Tab>\<Tab>\<BS>\<BS>\<BS>\<BS>Rr-
+Expect:
+  A11111111111111111111111111111111111111111111111111111K
+  B222222222222222222222222-2222222222222222222222222222L
+  C11111111111111111111111111111111111111111111111111111M
+  D22222222222222222222222222222222222222222222222222222N
+  E11111111111111111111111111111111111111111111111111111O
+  F22222222222222222222222222222222222222222222222222222P
+  G11111111111111111111111111111111111111111111111111111Q
+  H22222222222222222222222222222222222222222222222222222R
+  I11111111111111111111111111111111111111111111111111111S
+  J22222222222222222222222222222222222222222222222222222T
+
+Do (next labels absolute_dir, change direction, repeat):
+  4j9ldz22\<Tab>\<BS>\<BS>N
+  :\<C-U>doautocmd CursorMoved\<CR>
+  .
+Expect:
+  A11111111111111111111111111111111111111111111111111111K
+  B2222222222222222222222222222222222222222111111111111111111111111111111111111111111111O
+  F22222222222222222222222222222222222222222222222222222P
+  G11111111111111111111111111111111111111111111111111111Q
+  H22222222222222222222222222222222222222222222222222222R
+  I11111111111111111111111111111111111111111111111111111S
+  J22222222222222222222222222222222222222222222222222222T
+
+Do (next labels absolute_dir backwards):
+  4j9lS22\<Tab>\<Tab>fr-
+Expect:
+  A11111111111111111111111111111111111111111111111111111K
+  B22222222222222222222222222222222222222222222222222222L
+  C11111111111111111111111111111111111111111111111111111M
+  D22222222222222222222222222222222222222222222222222222N
+  E11111111111111111111111111111111111111111111111111111O
+  F22222222222222222222222222222222222222222222222222-22P
+  G11111111111111111111111111111111111111111111111111111Q
+  H22222222222222222222222222222222222222222222222222222R
+  I11111111111111111111111111111111111111111111111111111S
+  J22222222222222222222222222222222222222222222222222222T
+
+Do (next labels absolute_dir backwards, change direction):
+  4j9lS22\<Tab>\<Tab>\<BS>\<BS>\<BS>Rr-
+Expect:
+  A11111111111111111111111111111111111111111111111111111K
+  B2222222222222222222222-222222222222222222222222222222L
+  C11111111111111111111111111111111111111111111111111111M
+  D22222222222222222222222222222222222222222222222222222N
+  E11111111111111111111111111111111111111111111111111111O
+  F22222222222222222222222222222222222222222222222222222P
+  G11111111111111111111111111111111111111111111111111111Q
+  H22222222222222222222222222222222222222222222222222222R
+  I11111111111111111111111111111111111111111111111111111S
+  J22222222222222222222222222222222222222222222222222222T
+
+Do (next labels absolute_dir backwards, change direction, repeat):
+  4j9ldZ22\<Tab>\<BS>N
+  :\<C-U>doautocmd CursorMoved\<CR>
+  .
+Expect:
+  A11111111111111111111111111111111111111111111111111111K
+  B222222222222222222222222222222222222111111111111111111111111111111111111111111111O
+  F22222222222222222222222222222222222222222222222222222P
+  G11111111111111111111111111111111111111111111111111111Q
+  H22222222222222222222222222222222222222222222222222222R
+  I11111111111111111111111111111111111111111111111111111S
+  J22222222222222222222222222222222222222222222222222222T
+
 Execute (cleanup):
+  let g:sneak#absolute_dir = 0
   let g:sneak#label = 0
   call SneakReset()
 
@@ -1045,7 +1226,7 @@ Expect ([count]f should NOT invoke vertical-scope):
   ab7cdef ab8cdef ab9cdef ab0cdef ab1cdef ab2cdef
   ab1cdef ab2cdef ab3cdef ab4cdef ab5cdef ab6cdef
 
-Do ([count]f):
+Do ([count]F):
   jj3Feix
 Expect ([count]F should NOT invoke vertical-scope):
   ab1cdef ab2cdef ab3cdef ab4cdef ab5cdef ab6cdef
@@ -1073,6 +1254,27 @@ Expect (should not delete current char. #177):
   ab7cdef ab8cdef ab9cdef ab0cdef ab1cdef ab2cdef
   ab1cdef ab2cdef ab3cdef ab4cdef ab5cdef ab6cdef
 
+Do (f-delete canceled with <Esc>):
+  df\<Esc>
+Expect (should not delete current char. #177):
+  ab1cdef ab2cdef ab3cdef ab4cdef ab5cdef ab6cdef
+  ab7cdef ab8cdef ab9cdef ab0cdef ab1cdef ab2cdef
+  ab1cdef ab2cdef ab3cdef ab4cdef ab5cdef ab6cdef
+
+Do (FIXME f-delete invalid target with o_v):
+  dvfZ
+Expect (should not delete current char. #177):
+  ab1cdef ab2cdef ab3cdef ab4cdef ab5cdef ab6cdef
+  ab7cdef ab8cdef ab9cdef ab0cdef ab1cdef ab2cdef
+  ab1cdef ab2cdef ab3cdef ab4cdef ab5cdef ab6cdef
+
+Do (FIXME f-delete canceled with <Esc> with o_v):
+  dvf\<Esc>
+Expect (should not delete current char. #177):
+  ab1cdef ab2cdef ab3cdef ab4cdef ab5cdef ab6cdef
+  ab7cdef ab8cdef ab9cdef ab0cdef ab1cdef ab2cdef
+  ab1cdef ab2cdef ab3cdef ab4cdef ab5cdef ab6cdef
+
 Do (t-delete forward):
   dte
 Expect:
@@ -1094,17 +1296,36 @@ Expect:
   ab7cdef ab8cdef ab9cdef ab0cdef ab1cdef ab2cdef
   ab1cdef ab2cdef ab3cdef ab4cdef ab5cdef ab6cdef
 
-Do:
+Do (exclusive f-delete forward):
   dvfe
-Expect (FIXME inclusive f-delete forward):
+Expect:
   ef ab2cdef ab3cdef ab4cdef ab5cdef ab6cdef
   ab7cdef ab8cdef ab9cdef ab0cdef ab1cdef ab2cdef
   ab1cdef ab2cdef ab3cdef ab4cdef ab5cdef ab6cdef
 
-Do:
+Do (exclusive t-delete forward):
   dvte
-Expect (FIXME inclusive t-delete forward):
+Expect:
   def ab2cdef ab3cdef ab4cdef ab5cdef ab6cdef
+  ab7cdef ab8cdef ab9cdef ab0cdef ab1cdef ab2cdef
+  ab1cdef ab2cdef ab3cdef ab4cdef ab5cdef ab6cdef
+
+# Note: o_v doesn't work in dot repeats in general
+Do (exclusive f-delete forward, dot repeat):
+  dvfe
+  :\<C-U>doautocmd CursorMoved\<CR>
+  .
+Expect (FIXME dot repeat retains v flip to exclusive):
+  ef ab3cdef ab4cdef ab5cdef ab6cdef
+  ab7cdef ab8cdef ab9cdef ab0cdef ab1cdef ab2cdef
+  ab1cdef ab2cdef ab3cdef ab4cdef ab5cdef ab6cdef
+
+Do (exclusive t-delete forward, dot repeat):
+  dvte
+  :\<C-U>doautocmd CursorMoved\<CR>
+  l.
+Expect (FIXME dot repeat retains v flip to exclusive):
+  ddef ab3cdef ab4cdef ab5cdef ab6cdef
   ab7cdef ab8cdef ab9cdef ab0cdef ab1cdef ab2cdef
   ab1cdef ab2cdef ab3cdef ab4cdef ab5cdef ab6cdef
 
@@ -1135,6 +1356,101 @@ Expect:
   ab1cdef a ab3cdef ab4cdef ab5cdef ab6cdef
   ab7cdef ab8cdef ab9cdef ab0cdef ab1cdef ab2cdef
   ab1cdef ab2cdef ab3cdef ab4cdef ab5cdef ab6cdef
+
+Given:
+  1abc 1def
+  1ghi 1jkl
+  1mno 1pqr
+  2abc 2def
+  2ghi 2jkl
+  2mno 2pqr
+
+Do (df til last character in the line. #291 #228):
+  dff
+Expect:
+  
+  1ghi 1jkl
+  1mno 1pqr
+  2abc 2def
+  2ghi 2jkl
+  2mno 2pqr
+
+Do (df til last character in the last buffer line. #291 #228):
+  Gdfr
+Expect:
+  1abc 1def
+  1ghi 1jkl
+  1mno 1pqr
+  2abc 2def
+  2ghi 2jkl
+  
+
+# Here it deletes as linewise because of :h d-special
+# https://github.com/vim/vim/commit/22105fd1fe0dcfe993b5c04c6ebe017a626116e3
+Do (df til last character in another line. #291 #228):
+  jdff
+Expect:
+  1abc 1def
+  2ghi 2jkl
+  2mno 2pqr
+
+Do (df til EOB from another line. #291 #228):
+  3jldfr
+Expect:
+  1abc 1def
+  1ghi 1jkl
+  1mno 1pqr
+  2
+
+Do (df til last character in the line, ;-repeat. #291 #228):
+  Wdff
+  :sleep 1m\<cr>
+  d;
+Expect:
+  1abc
+  2ghi 2jkl
+  2mno 2pqr
+
+Do (df til last character in the line, Enter-repeat. #291 #228):
+  Wdff
+  :sleep 1m\<cr>
+  df\<Enter>
+Expect:
+  1abc
+  2ghi 2jkl
+  2mno 2pqr
+
+Do (df til last character in the line, dot repeat. #291 #228):
+  Wdff
+  :\<C-U>doautocmd CursorMoved\<CR>
+  :sleep 1m\<cr>
+  .
+Expect:
+  1abc
+  2ghi 2jkl
+  2mno 2pqr
+
+Do (df ;-repeat reaching EOB. #291 #228):
+  Wdfr
+  :sleep 1m\<cr>
+  d;
+Expect:
+  1abc
+
+Do (df Enter-repeat reaching EOB. #291 #228):
+  Wdfr
+  :sleep 1m\<cr>
+  df\<Enter>
+Expect:
+  1abc
+
+Do (df dot repeat reaching EOB. #291 #228):
+  Wdfr
+  :\<C-U>doautocmd CursorMoved\<CR>
+  :sleep 1m\<cr>
+  .
+Expect:
+  1abc
 
 ###########################################################
 # test sneak mapped to 'f' (instead of default 's')
