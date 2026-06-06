@@ -63,6 +63,7 @@ lad() # [dir]
 alias lsda=lad
 alias grep='grep --color=auto'
 alias g='grep --color=auto'
+alias tree='tree -C'
 
 # safety:
 alias saferm='rm -i'
