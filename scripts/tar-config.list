@@ -15,6 +15,7 @@
 .config/libfm
 .config/lxpanel
 .config/mimeapps.list
+.config/ncdu
 .config/openbox
 .config/pcmanfm
 .config/polybar
