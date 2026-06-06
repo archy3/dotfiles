@@ -1,7 +1,6 @@
-# encoding: utf-8
-from test.vim_test_case import VimTestCase as _VimTest
-from test.constant import *
+from test.constant import EX
 from test.util import running_on_windows
+from test.vim_test_case import VimTestCase as _VimTest
 
 
 class SnippetOptions_OnlyExpandWhenWSInFront_Expand(_VimTest):
@@ -219,7 +218,7 @@ class SnippetOptions_Regex_Multiple(_VimTest):
 
 
 class _Regex_Self(_VimTest):
-    snippets = ("((?<=\W)|^)(\.)", "self.", "", "r")
+    snippets = ("((?<=\\W)|^)(\\.)", "self.", "", "r")
 
 
 class SnippetOptions_Regex_Self_Start(_Regex_Self):

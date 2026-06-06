@@ -1,6 +1,5 @@
-# encoding: utf-8
+from test.constant import ESC, EX, JF
 from test.vim_test_case import VimTestCase as _VimTest
-from test.constant import *
 
 
 class Autocommands(_VimTest):
@@ -16,9 +15,9 @@ class Autocommands(_VimTest):
         + JF
         + " done "
         + ESC
-        + ':execute "normal aM" . g:mapper_call_count . "\<Esc>"'
+        + ':execute "normal aM" . g:mapper_call_count . "\\<Esc>"'
         + "\n"
-        + ':execute "normal aU" . g:unmapper_call_count . "\<Esc>"'
+        + ':execute "normal aU" . g:unmapper_call_count . "\\<Esc>"'
         + "\n"
     )
     wanted = "[ [ bar ] ] done M1U1"

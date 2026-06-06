@@ -1,5 +1,5 @@
+from test.constant import EX
 from test.vim_test_case import VimTestCase as _VimTest
-from test.constant import *
 
 
 class ParseSnippets_SimpleSnippet(_VimTest):
@@ -23,7 +23,7 @@ class ParseSnippets_MissingEndSnippet(_VimTest):
     }
     keys = "testsnip" + EX
     wanted = "testsnip" + EX
-    expected_error = r"Missing 'endsnippet' for 'testsnip' in \S+:4"
+    expected_error = r"Missing 'endsnippet' for 'testsnip' in .+:4"
 
 
 class ParseSnippets_UnknownDirective(_VimTest):
@@ -34,7 +34,18 @@ class ParseSnippets_UnknownDirective(_VimTest):
     }
     keys = "testsnip" + EX
     wanted = "testsnip" + EX
-    expected_error = r"Invalid line 'unknown directive' in \S+:2"
+    expected_error = r"Invalid line 'unknown directive' in .+:2"
+
+
+class ParseSnippets_InvalidPartialSnippet(_VimTest):
+    files = {
+        "us/all.snippets": r"""
+        snip invalid
+        """
+    }
+    keys = "testsnip" + EX
+    wanted = "testsnip" + EX
+    expected_error = r"Invalid line 'snip invalid' in .+:2"
 
 
 class ParseSnippets_InvalidPriorityLine(_VimTest):
@@ -45,7 +56,7 @@ class ParseSnippets_InvalidPriorityLine(_VimTest):
     }
     keys = "testsnip" + EX
     wanted = "testsnip" + EX
-    expected_error = r"Invalid priority '- 50' in \S+:2"
+    expected_error = r"Invalid priority '- 50' in .+:2"
 
 
 class ParseSnippets_InvalidPriorityLine1(_VimTest):
@@ -56,7 +67,7 @@ class ParseSnippets_InvalidPriorityLine1(_VimTest):
     }
     keys = "testsnip" + EX
     wanted = "testsnip" + EX
-    expected_error = r"Invalid priority '' in \S+:2"
+    expected_error = r"Invalid priority '' in .+:2"
 
 
 class ParseSnippets_ExtendsWithoutFiletype(_VimTest):
@@ -67,7 +78,7 @@ class ParseSnippets_ExtendsWithoutFiletype(_VimTest):
     }
     keys = "testsnip" + EX
     wanted = "testsnip" + EX
-    expected_error = r"'extends' without file types in \S+:2"
+    expected_error = r"'extends' without file types in .+:2"
 
 
 class ParseSnippets_ClearAll(_VimTest):
@@ -220,7 +231,7 @@ class ParseSnippets_MultiWord_NoContainer(_VimTest):
     }
     keys = "test snip" + EX
     wanted = keys
-    expected_error = "Invalid multiword trigger: 'test snip' in \S+:2"
+    expected_error = "Invalid multiword trigger: 'test snip' in .+:2"
 
 
 class ParseSnippets_MultiWord_UnmatchedContainer(_VimTest):
@@ -233,7 +244,7 @@ class ParseSnippets_MultiWord_UnmatchedContainer(_VimTest):
     }
     keys = "inv snip" + EX
     wanted = keys
-    expected_error = "Invalid multiword trigger: '!inv snip/' in \S+:2"
+    expected_error = "Invalid multiword trigger: '!inv snip/' in .+:2"
 
 
 class ParseSnippets_Global_Python_After(_VimTest):
@@ -324,7 +335,7 @@ class ParseSnippets_PrintPythonStacktraceMultiline(_VimTest):
     }
     keys = "test" + EX
     wanted = keys
-    expected_error = " > \s+qwe"
+    expected_error = " > \\s+qwe"
 
 
 class ParseSnippets_PrintErroneousSnippet(_VimTest):

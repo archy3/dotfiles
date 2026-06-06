@@ -7,9 +7,8 @@ No new feature will be accepted without good test coverage, passing CI and prope
 
 ## Before you add a feature
 
-UltiSnips is so rich on features that it borders on feature creep.
-It is also an understaffed and undermaintained project.
-Since every feature needs to be maintained forever, we are very careful about new ones.
+UltiSnips has a deep feature set, and every feature needs to be maintained
+forever, so we like to align on a design before code is written.
 Please create alignment before putting too much work into a novel idea.
 There are several ways of doing this:
 
@@ -17,16 +16,7 @@ There are several ways of doing this:
 2. Open a PR with a hackish or minimal implementation, i.e. no tests and no docs.
 3. Write a short (<= 1 page) design doc in a Gist or on Google Docs.
 
-Should there be agreement that your feature idea adds enough value to offset the maintenance burden, you can go ahead and implement it, including tests and documentation.
-
-## Debugging
-
-UltiSnips embeds some remote debugging facilities in the `UltiSnips.remote_pdb` module.
-When enabled (by setting `let g:UltiSnipsDebugServerEnable=1`), whenever an exception is raised, vim will pause
-and you will be able to connect to the debug server with netcat or telnet.
-By default, the server listens on 'localhost:8080' (it can be changed).
-
-See `:help UltiSnips-Advanced-Debugging` for more informations
+Once there is agreement on the shape of the feature, you can go ahead and implement it, including tests and documentation.
 
 ## Testing
 
@@ -53,6 +43,12 @@ The basic process of running the suite is simple:
    vim: `tmux new -s vim`. Do not type anything into the tmux session.
 2. In a second terminal, run `./test_all.py`.
 
+To run tests with Neovim instead of Vim:
+
+    $ ./test_all.py --vim nvim
+
+The test runner auto-detects whether the executable is Vim or Neovim.
+
 To filter the tests that are executed, specify a pattern to be used to match the beginning of the test name.
 For instance, the following will execute all tests that start with `SimpleExpand`:
 
@@ -69,7 +65,7 @@ To avoid this problem, we strongly suggest running the tests inside of [Docker](
 It is useful to think of Docker as a lightweight virtual machine, i.e. a way of running exactly the same OS and userland configuration on any machine.
 
 UltiSnips comes with a [Makefile](https://github.com/SirVer/ultisnips/blob/master/Makefile) that makes the use of Docker easy.
-First, build the image of the test environment (Vim 8.0, using Python 3):
+First, build the image of the test environment:
 
     $ make image_repro
 
@@ -89,12 +85,19 @@ In this shell we can then trigger the test execution:
     ... now inside container
     # ./test_all.py
 
-### Enable the remote debug server
+## Linting and Formatting
 
-The test suite provides `--remote-pdb*` options equivalent to the config variables to enable the debug server during the test suite.
-Note that some tests may fail because the post-mortem will catch an expected exceptions and that these options are mainly useful for single test case debugging. 
+UltiSnips uses [ruff](https://docs.astral.sh/ruff/) for linting and formatting.
+CI enforces both — PRs that fail lint or format checks will not pass.
 
-Check `./test_all.py --help` for more informations.
+    $ make lint      # check for lint errors
+    $ make format    # auto-format code
+
+To catch issues before committing, install the git pre-commit hook:
+
+    $ ./scripts/install-hooks
+
+This runs `ruff check` and `ruff format --check` on every `git commit`.
 
 ## Documenting
 
