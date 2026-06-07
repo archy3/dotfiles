@@ -168,7 +168,8 @@ function! s:init_default_mappings() abort " {{{1
   call s:map(0, 'n', 'cs$', '<plug>(vimtex-env-change-math)')
   call s:map(0, 'n', 'dse', '<plug>(vimtex-env-delete)')
   call s:map(0, 'n', 'cse', '<plug>(vimtex-env-change)')
-  call s:map(0, 'n', 'tse', '<plug>(vimtex-env-toggle-star)')
+  call s:map(0, 'n', 'tse', '<plug>(vimtex-env-toggle)')
+  call s:map(0, 'n', 'tss', '<plug>(vimtex-env-toggle-star)')
   call s:map(0, 'n', 'ts$', '<plug>(vimtex-env-toggle-math)')
   call s:map(0, 'n', '<F6>', '<plug>(vimtex-env-surround-line)')
   call s:map(0, 'x', '<F6>', '<plug>(vimtex-env-surround-visual)')
@@ -194,6 +195,7 @@ function! s:init_default_mappings() abort " {{{1
 
   if g:vimtex_compiler_enabled
     call s:map_prefixed(0, 'n', 'l', '<plug>(vimtex-compile)')
+    call s:map_prefixed(0, 'n', 'S', '<plug>(vimtex-compile-ss)')
     call s:map_prefixed(0, 'n', 'o', '<plug>(vimtex-compile-output)')
     call s:map_prefixed(1, 'n', 'L', '<plug>(vimtex-compile-selected)')
     call s:map_prefixed(1, 'x', 'L', '<plug>(vimtex-compile-selected)')
