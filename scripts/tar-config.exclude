@@ -17,6 +17,9 @@
 .vim/pack/plugins/opt/ultisnips/doc/tags
 .vim/pack/plugins/opt/ultisnips/watcher.lua
 .vim/pack/plugins/opt/vim-sneak/doc/tags
+.vim/pack/plugins/opt/vim-sneak/tests/vim-vader
+.vim/pack/plugins/opt/vim-sneak/tests/vim-repeat
+.vim/pack/plugins/opt/vim-sneak/tests/vim-surround
 .vim/pack/plugins/opt/vim-speeddating/doc/tags
 .vim/pack/plugins/opt/vim-surround/doc/tags
 .vim/pack/plugins/opt/vimtex/doc/tags
@@ -31,3 +34,5 @@
 .vim/pack/plugins/opt/vimtex/.claude
 .vim/pack/plugins/opt/vimtex/CLAUDE.md
 .vim/pack/plugins/opt/vimtex/*.log
+.vim/pack/plugins/opt/vimtex/test/perf-syntax/doc1.tex
+.vim/pack/plugins/opt/vimtex/test/perf-syntax/doc2.tex
