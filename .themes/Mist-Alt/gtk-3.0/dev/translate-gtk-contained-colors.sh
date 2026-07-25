@@ -103,7 +103,7 @@ calendar:indeterminate {color: mix(@theme_base_color, @theme_fg_color, 0.47);}
 separator {background-color: shade(@theme_fg_color, 0.43);}
 
 /* Reduce padding and removed rounded corners on tooltips: */
-tooltip * {padding: 1px;}
+tooltip * {padding: 0px;}
 tooltip {border-radius: 0px;}
 EOF
 
