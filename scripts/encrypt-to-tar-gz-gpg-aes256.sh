@@ -63,7 +63,8 @@ decrypt() # <input> <output>
   [ -d "$2" ] || return 1
 
   # `--pinentry-mode loopback` asks for the password on the terminal.
-  gpg --pinentry-mode loopback -d "$1" | tar -xvzf - -C "$2"
+  # `--keep-old-files` is to avoid accidentally overwriting existing files.
+  gpg --pinentry-mode loopback -d "$1" | tar --keep-old-files -xvzf - -C "$2"
 }
 
 check_files() # <input> <output>
