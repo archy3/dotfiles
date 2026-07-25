@@ -68,6 +68,7 @@ export GTK_OVERLAY_SCROLLING=0
 
 # Tell gtk apps there is no screenreader (so at-spi2-core can be removed)
 export NO_AT_BRIDGE=1
+export GTK_A11Y=none
 
 # Make qt5/qt6 apps use dark Adwaita theme (requires adwaita-qt/adwaita-qt6)
 export QT_STYLE_OVERRIDE=Adwaita-Dark
