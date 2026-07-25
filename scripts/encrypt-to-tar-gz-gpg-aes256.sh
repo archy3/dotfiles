@@ -1,18 +1,19 @@
 #!/bin/sh
 
-usage()
+# The description is printed if no error message is supplied.
+usage() # [error message]
 {
-  [ "${1:-}" = "error" ] && cat << EOF
-An error occured.
-EOF
-
-  [ "${1:-}" != "error" ] && cat << EOF
+  if [ "$#" != 0 ]; then
+    printf 'ERROR: %s\n' "$1" >&2
+  else
+    cat << 'EOF'
 Archives a file or directory into a gpg AES256 encrypted tar.gz file.
 Can also decrypt and extract such encrypted tar.gz archives.
 This script currently only accepts a single file (or directory) as input.
 EOF
+  fi
 
-  printf %s\\n ''
+  printf \\n
 
   cat << EOF
 Usage:
@@ -29,10 +30,21 @@ main()
 {
   set -euf
 
-  if [ "$#" != 2 ] && [ "$#" != 3 ]; then
+  if [ "$#" = 0 ] || [ "${1:-}" = '-h' ] || [ "${1:-}" = '--help' ]; then
     usage
+    return 0
+  elif [ "$1" != '-e' ] && [ "$1" != '-d' ]; then
+    usage "Bad option: ${1}"
+    return 1
+  elif [ "$#" = 1 ]; then
+    usage 'Missing input operand.'
+    return 1
+  elif [ "$#" -gt 3 ]; then
+    usage 'Too many arguments.'
     return 1
   fi
+
+  trap '[ "$?" != 0 ] && printf \\n%s\\n "${0}: An error occurred." >&2' EXIT
 
   mode="$1"
   input="${2%/}"
@@ -41,14 +53,23 @@ main()
   case "$mode" in
     '-e') encrypt "$input" "${output:-"${input}.tar.gz.gpg"}";;
     '-d') decrypt "$input" "${output:-"."}";;
-    *) usage "error"; return 1;;
+    *) usage "Bad option: ${mode}"; return 1;;
   esac
 }
 
 encrypt() # <input> <output>
 {
-  { [ -f "$1" ] || [ -d "$1" ]; } || return 1
-  [ -e "$2" ] && return 1
+  if ! { [ -f "$1" ] || [ -d "$1" ]; }; then
+    printf '%s %s\n' \
+      "ERROR: The input file ${1} does not exist" \
+      'or is not a regular file or directory.' >&2
+    return 1
+  fi
+
+  if [ -e "$2" ]; then
+    printf %s\\n "ERROR: The output file ${2} already exist." >&2
+    return 1
+  fi
 
   # `--pinentry-mode loopback` asks for the password on the terminal.
   tar -cvzf - "$1" |
@@ -58,9 +79,21 @@ encrypt() # <input> <output>
 
 decrypt() # <input> <output>
 {
-  [ -e "$1" ] || return 1
-  [ -e "$2" ] || mkdir -p -- "$2"
-  [ -d "$2" ] || return 1
+  if ! [ -e "$1" ]; then
+    printf %s\\n "ERROR: The input file ${1} does not exist." >&2
+    return 1
+  fi
+
+  if ! [ -e "$2" ]; then
+     mkdir -p -- "$2"
+  fi
+
+  if ! [ -d "$2" ]; then
+    printf '%s %s\n' \
+      "ERROR: The output destination ${2} already exists" \
+      'but is not a directory.' >&2
+    return 1
+  fi
 
   # `--pinentry-mode loopback` asks for the password on the terminal.
   # `--keep-old-files` is to avoid accidentally overwriting existing files.
