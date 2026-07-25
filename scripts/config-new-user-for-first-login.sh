@@ -78,6 +78,7 @@ gtk_theme() # <--force=false|--force=true>
 (
   test_first_run "$1" ~/.gtkrc-2.0
   test_first_run "$1" ~/.config/gtk-3.0/settings.ini
+  test_first_run "$1" ~/.config/gtk-4.0/settings.ini
 
   gtk2_settings=$(printf %s\\n \
     '# DO NOT EDIT! This file will be overwritten by LXAppearance.' \
@@ -105,9 +106,19 @@ gtk_theme() # <--force=false|--force=true>
     printf %s\\n "$gtk2_settings" | awk 'NR>4{print $0}' | tr -d '"'
   )
 
-  mkdir -p -- ~/.config/gtk-3.0/
+  gtk4_settings=$(
+    printf %s\\n "$gtk3_settings" |
+      sed \
+        -e '/^gtk-toolbar-style=/d' \
+        -e '/^gtk-toolbar-icon-size=/d' \
+        -e '/^gtk-button-images=/d' \
+        -e '/^gtk-menu-images=/d'
+  )
+
+  mkdir -p -- ~/.config/gtk-3.0/ ~/.config/gtk-4.0/
   printf %s\\n "$gtk2_settings" > ~/.gtkrc-2.0
   printf %s\\n "$gtk3_settings" > ~/.config/gtk-3.0/settings.ini
+  printf %s\\n "$gtk4_settings" > ~/.config/gtk-4.0/settings.ini
 )
 
 gtk_bookmarks() # <--force=false|--force=true>
