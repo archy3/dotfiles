@@ -33,7 +33,11 @@ let s:cycles = [
             \ ['north', 'south'],
             \ ['North', 'South'],
             \ ['east', 'west'],
-            \ ['East', 'West']
+            \ ['East', 'West'],
+            \ ['top', 'bottom'],
+            \ ['Top', 'Bottom'],
+            \ ['horizontal', 'vertical'],
+            \ ['Horizontal', 'Vertical']
             \ ]
 
 " IT terms:
