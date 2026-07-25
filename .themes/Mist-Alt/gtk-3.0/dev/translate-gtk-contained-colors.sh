@@ -6,7 +6,7 @@ main()
   trap '[ "$?" != 0 ] && printf \\n%s\\n "${0}: An error occurred." >&2' EXIT
 
   # The input file can be retrieved from
-  # https://gitlab.gnome.org/GNOME/gtk/-/blob/3.24.48/gtk/theme/Adwaita/gtk-contained-dark.css?ref_type=tags
+  # https://gitlab.gnome.org/GNOME/gtk/-/blob/3.24.48/gtk/theme/Adwaita/gtk-contained-dark.css
   #
   # The translation table consists of two (space-separated) columns,
   # the first of which can be be generated with
