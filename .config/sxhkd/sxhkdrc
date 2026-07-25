@@ -70,6 +70,7 @@ super + {s,S} ; {_, super +} {f, s, S, F, c, C}
 super + {s,S} ; {e, E, super + e, super + E} ; {e, E, f, s, S, F, c, C}
 	{_,_}{_,_,_,_}~/scripts/screenshot.sh -clipboardonly {s, S, f, s, S, F, c, C} &
 
+## Laptop commands:
 #{XF86AudioRaiseVolume, XF86AudioLowerVolume}
 #	~/scripts/change-and-display-volume.sh 5%{+,-}
 
@@ -78,3 +79,6 @@ super + {s,S} ; {e, E, super + e, super + E} ; {e, E, f, s, S, F, c, C}
 
 #{XF86MonBrightnessUp, XF86MonBrightnessDown}
 #	~/scripts/change-and-display-brightness.sh 5%{+,-}
+
+#super + F12
+#	nmcli radio wifi "$(nmcli radio wifi | awk '\{print $0 == "enabled" ? "off" : "on"\}')" &
