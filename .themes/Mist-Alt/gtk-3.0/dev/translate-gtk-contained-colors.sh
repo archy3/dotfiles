@@ -27,7 +27,7 @@ main()
     if ! [ -f "$file" ]; then
       printf '%s %s\n' \
         "File $file either does not exist" \
-        "or is not a regular (non-directory) file" >&2
+        'or is not a regular (non-directory) file' >&2
       return 1
     fi
   done
