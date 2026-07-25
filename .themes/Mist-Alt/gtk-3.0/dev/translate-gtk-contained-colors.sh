@@ -221,6 +221,53 @@ check:indeterminate:active, radio:indeterminate:active {
     box-shadow: none;
     background-image: image(shade(@theme_selected_bg_color, 1.5));
 }
+
+/* Scrollbar settings: */
+scrollbar {
+    -GtkScrollbar-has-backward-stepper: true;
+    -GtkScrollbar-has-forward-stepper: true;
+}
+
+scrollbar.top {border-bottom: 2px solid @theme_bg_color;}
+scrollbar.bottom {border-top: 2px solid @theme_bg_color;}
+scrollbar.left {border-right: 2px solid @theme_bg_color;}
+scrollbar.right {border-left: 2px solid @theme_bg_color;}
+
+scrollbar.horizontal trough {
+    background-color: shade(@theme_bg_color, 0.77);
+    border-top: 1px solid shade(@theme_bg_color, 0.53);
+    border-bottom: 1px solid shade(@theme_bg_color, 0.53);
+}
+
+scrollbar.vertical trough {
+    background-color: shade(@theme_bg_color, 0.77);
+    border-left: 1px solid shade(@theme_bg_color, 0.53);
+    border-right: 1px solid shade(@theme_bg_color, 0.53);
+}
+
+scrollbar.horizontal slider {min-height: 13px;}
+scrollbar.vertical slider {min-width: 13px;}
+
+scrollbar.horizontal slider, scrollbar.vertical slider {
+    background-color: shade(@theme_bg_color, 1.55);
+    transition: none;
+    border: 1px solid shade(@theme_bg_color, 0.85);
+    border-radius: 0px;
+}
+scrollbar.horizontal slider:hover, scrollbar.vertical slider:hover {background-color: shade(@theme_bg_color, 1.80);}
+scrollbar.horizontal slider:hover:active, scrollbar.vertical slider:hover:active {background-color: shade(@theme_bg_color, 1.95);}
+
+scrollbar button {
+    background-color: shade(@theme_bg_color, 1.55);
+    color: @theme_fg_color;
+    border: 1px solid shade(@theme_bg_color, 0.85);
+}
+scrollbar button:hover {background-color: shade(@theme_bg_color, 1.95);}
+scrollbar button:active, scrollbar button:checked {background-color: shade(@theme_bg_color, 0.77);}
+scrollbar button:disabled {
+    color: shade(@theme_fg_color, 0.5);
+    background-color: shade(@theme_bg_color, 0.95);
+}
 EOF
 
   printf '\n\n'
@@ -228,6 +275,9 @@ EOF
 
   printf '\n\n'
   add_additions_xfce4_panel
+
+  printf '\n\n'
+  add_additions_firefox
 }
 
 add_additions_lxpanel()
@@ -361,6 +411,31 @@ window#XfcePanelWindow.xfce4-panel > widget  > widget > box.horizontal > widget.
     min-width: 40px;
     border-style: none;
     border-radius: 0px;
+}
+EOF
+}
+
+add_additions_firefox()
+{
+  cat << 'EOF'
+/* BEGIN FIREFOX SETTINGS: */
+
+/* Make scrollbar more apparent: */
+window.background > widget > scrollbar.horizontal > contents > trough,
+window.background > widget > scrollbar.vertical > contents > trough {
+    background-color: shade(@theme_base_color, 0.975);
+}
+window.background > widget > scrollbar.horizontal > contents > trough > slider,
+window.background > widget > scrollbar.vertical > contents > trough > slider {
+    background-color: shade(@theme_base_color, 2.7);
+}
+window.background > widget > scrollbar.horizontal > contents > trough > slider:hover,
+window.background > widget > scrollbar.vertical > contents > trough > slider:hover {
+    background-color: shade(@theme_base_color, 3.075);
+}
+window.background > widget > scrollbar.horizontal > contents > trough > slider:hover:active,
+window.background > widget > scrollbar.vertical > contents > trough > slider:hover:active {
+    background-color: shade(@theme_base_color, 2.7);
 }
 EOF
 }
