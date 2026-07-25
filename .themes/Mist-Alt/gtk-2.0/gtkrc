@@ -72,13 +72,13 @@ style "default"
         # Make hyperlinks readable:
         # (From: https://ubuntuforums.org/showthread.php?p=9852107)
         GtkWidget::link-color = "#acee00"
-        GtkWidget::visited-link-color = "#ffc100"
+        GtkWidget::visited-link-color = "#ff8000"
         GtkHTML::alink_color = "#acee00"
         GtkHTML::link_color = "#acee00"
-        GtkHTML::vlink_color = "#ffc100"
+        GtkHTML::vlink_color = "#ff8000"
         GnomeHref::link_color = "#acee00"
         GtkIMHtml::hyperlink-color = "#acee00"
-        GtkIMHtml::hyperlink-prelight-color = "#ffc100"
+        GtkIMHtml::hyperlink-prelight-color = "#ff8000"
 
 	engine "mist"
  	{

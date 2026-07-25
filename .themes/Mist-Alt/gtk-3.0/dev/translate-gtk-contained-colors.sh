@@ -21,7 +21,7 @@ main()
   translation_table="${2:-"${dir_of_this_theme}/dev/color-translation-table"}"
   output="${3:-"${dir_of_this_theme}/gtk.css"}"
   named_white_replacement="${4:-"#cccccc"}"
-  visited_link_color="${5:-"#ffc100"}"
+  visited_link_color="${5:-"#ff8000"}"
 
   for file in "$translation_table" "$input" "$output"; do
     if ! [ -f "$file" ]; then
