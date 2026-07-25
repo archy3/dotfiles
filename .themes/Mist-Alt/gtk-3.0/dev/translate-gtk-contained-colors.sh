@@ -286,7 +286,7 @@ add_additions_lxpanel()
 /* BEGIN LXPANEL SETTINGS: */
 
 /* Colorscheme for lxpanel taskbar buttons: */
-window#PanelToplevel box box#taskbar widget button.toggle {
+window#PanelToplevel.background > box.horizontal > box#taskbar.horizontal > widget > button.toggle {
     color: shade(@theme_fg_color, 1.10);
     background-image: none;
     background-color: shade(@theme_base_color, 1.02);
@@ -294,13 +294,13 @@ window#PanelToplevel box box#taskbar widget button.toggle {
     border-radius: 0px;
 }
 
-window#PanelToplevel box box#taskbar widget button.toggle:checked {
+window#PanelToplevel.background > box.horizontal > box#taskbar.horizontal > widget > button.toggle:checked {
     color: shade(@theme_selected_fg_color, 0.90);
     background-image: none;
     background-color: shade(@theme_bg_color, 1.85);
 }
 
-window#PanelToplevel box box#taskbar widget button.toggle:hover {
+window#PanelToplevel.background > box.horizontal > box#taskbar.horizontal > widget > button.toggle:hover {
     color: @theme_selected_fg_color;
     background-image: none;
     background-color: shade(@theme_bg_color, 2.15);
@@ -313,17 +313,17 @@ window#PanelToplevel box box#taskbar widget button.toggle:hover {
        (and a ligher shade of it is used for the color of the
        active window).
 */
-window#PanelToplevel box widget#pager widget * wnck-pager.wnck-pager {
+window#PanelToplevel.background > box.horizontal > widget#pager > widget > wnck-pager > wnck-pager.wnck-pager {
     color: @theme_bg_color;
     background-color: shade(@theme_base_color, 3.0);
 }
 
-window#PanelToplevel box widget#pager widget * wnck-pager.wnck-pager:selected {
+window#PanelToplevel.background > box.horizontal > widget#pager > widget > wnck-pager > wnck-pager.wnck-pager:selected {
     color: @theme_fg_color;
     background-color: @theme_selected_bg_color;
 }
 
-window#PanelToplevel box widget#pager widget * wnck-pager.wnck-pager:hover {
+window#PanelToplevel.background > box.horizontal > widget#pager > widget > wnck-pager > wnck-pager.wnck-pager:hover {
     color: @theme_fg_color;
     background-color: @theme_selected_bg_color;
 }
@@ -355,17 +355,17 @@ window#XfcePanelWindow.xfce4-panel > widget  > widget > box.horizontal > widget.
 }
 
 /* Colorscheme for the xfce4-panal pager: */
-window#XfcePanelWindow.xfce4-panel > widget > widget * wnck-pager {
+window#XfcePanelWindow.xfce4-panel > widget > widget > wnck-pager > wnck-pager {
     color: @theme_bg_color;
     background-color: shade(@theme_base_color, 3.0);
 }
 
-window#XfcePanelWindow.xfce4-panel > widget > widget * wnck-pager:selected {
+window#XfcePanelWindow.xfce4-panel > widget > widget > wnck-pager > wnck-pager:selected {
     color: @theme_fg_color;
     background-color: @theme_selected_bg_color;
 }
 
-window#XfcePanelWindow.xfce4-panel > widget > widget * wnck-pager:hover {
+window#XfcePanelWindow.xfce4-panel > widget > widget > wnck-pager > wnck-pager:hover {
     color: @theme_fg_color;
     background-color: @theme_selected_bg_color;
 }
