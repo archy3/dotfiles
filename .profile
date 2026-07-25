@@ -70,6 +70,9 @@ export GTK_OVERLAY_SCROLLING=0
 export NO_AT_BRIDGE=1
 export GTK_A11Y=none
 
+# Make libadwaita apps pick up gsettings without portals:
+export ADW_DISABLE_PORTAL=1
+
 # Make qt5/qt6 apps use dark Adwaita theme (requires adwaita-qt/adwaita-qt6)
 export QT_STYLE_OVERRIDE=Adwaita-Dark
 
