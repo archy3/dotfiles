@@ -199,4 +199,4 @@ rands() # <chars> <length> [count] [sep]
   fi
 }
 
-#alias up='su - root -c "apt-get update && apt upgrade && apt dist-upgrade && apt-get autoremove && apt-get clean"'
+#alias up='su - root -c "apt-get update && apt upgrade && apt dist-upgrade && apt autopurge && apt-get clean"'
