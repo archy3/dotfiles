@@ -22,9 +22,9 @@ fi
 
 dunst &
 ~/scripts/autostart/unclean-shutdown-check.sh &
+~/scripts/autostart/turn-numlock-on.sh
 ~/scripts/autostart/set-keyboard-layout-on-usb-connect.sh \
   --additional-initial-runs=4 &
-~/scripts/autostart/turn-numlock-on.sh &
 
 if command -v spice-vdagent > /dev/null; then
   ~/scripts/autostart/vm-resize.sh &
