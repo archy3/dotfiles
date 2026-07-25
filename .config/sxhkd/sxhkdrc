@@ -72,7 +72,7 @@ super + {s,S} ; {e, E, super + e, super + E} ; {e, E, f, s, S, F, c, C}
 
 ## Laptop commands:
 #{XF86AudioRaiseVolume, XF86AudioLowerVolume}
-#	~/scripts/change-and-display-volume.sh 5%{+,-}
+#	~/scripts/change-and-display-volume.sh 1%{+,-}
 
 #XF86AudioMute
 #	amixer -q -D pulse set Master 1+ toggle
