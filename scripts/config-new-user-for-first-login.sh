@@ -22,8 +22,8 @@ main()
 
   if [ "$#" = "0" ]; then
     printf %s\\n \
-      "This script requires arguments." \
-      "See main() function inside script for details." \
+      'This script requires arguments.' \
+      'See main() function inside script for details.' \
       >&2
     return 1
   fi
@@ -45,31 +45,31 @@ main()
 
   test_first_run --force="$force" ~/.bash_history
 
-  if [ "$gtk_theme" = "true" ]; then
+  if [ "$gtk_theme" = true ]; then
     gtk_theme --force="$force"
   fi
 
-  if [ "$gtk_bookmarks" = "true" ]; then
+  if [ "$gtk_bookmarks" = true ]; then
     gtk_bookmarks --force="$force"
   fi
 
-  if [ "$make_xdg_user_dirs" = "true" ]; then
+  if [ "$make_xdg_user_dirs" = true ]; then
     make_xdg_user_dirs
   fi
 
-  if [ "$make_screenshots_dir" = "true" ]; then
+  if [ "$make_screenshots_dir" = true ]; then
     make_screenshots_dir
   fi
 
-  if [ "$firefox_esr_modify_shortcut" = "true" ]; then
+  if [ "$firefox_esr_modify_shortcut" = true ]; then
     firefox_esr_modify_shortcut
   fi
 
-  if [ "$firefox_esr_config" = "true" ]; then
+  if [ "$firefox_esr_config" = true ]; then
     firefox_esr_config --force="$force"
   fi
 
-  if [ "$modify_shutdown_prompt_color" = "true" ]; then
+  if [ "$modify_shutdown_prompt_color" = true ]; then
     modify_shutdown_prompt_color
   fi
 }
@@ -157,11 +157,11 @@ make_screenshots_dir()
 firefox_esr_modify_shortcut()
 {
   if [ -f ~/.config/sxhkd/sxhkdrc ]; then
-    sed -e "s/firefox-esr -P [^ ]* /firefox-esr /g" -i -- ~/.config/sxhkd/sxhkdrc
+    sed -e 's/firefox-esr -P [^ ]* /firefox-esr /g' -i -- ~/.config/sxhkd/sxhkdrc
   else
     printf %s\\n \
       "Error: File ${HOME}/.config/sxhkd/sxhkdrc does not exist or is not a regular file." \
-      "Will not modify firefox-esr shortcuts." \
+      'Will not modify firefox-esr shortcuts.' \
       >&2
     return 1
   fi
@@ -345,7 +345,7 @@ modify_shutdown_prompt_color()
   else
     printf %s\\n \
       "Error: File ${HOME}/scripts/shutdown-menu.sh does not exist or is not a regular file." \
-      "Will not modify shutdown prompt colors." \
+      'Will not modify shutdown prompt colors.' \
       >&2
     return 1
   fi
@@ -390,11 +390,11 @@ get_xdg_dir() # <xdg_dir>
 
 test_first_run() # <--force=false|--force=true> <file>
 {
-  if [ "$1" != "--force=true" ] && [ -e "$2" ]; then
+  if [ "$1" != '--force=true' ] && [ -e "$2" ]; then
     printf %s\\n \
       "File ${2} already exists!" \
-      "This does not appear to be the first login of this user!" \
-      "Exiting script." \
+      'This does not appear to be the first login of this user!' \
+      'Exiting script.' \
       >&2
     return 1
   fi
