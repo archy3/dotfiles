@@ -31,7 +31,12 @@ text/x-java=gvim.desktop
 text/x-makefile=gvim.desktop
 text/x-matlab=gvim.desktop
 text/x-tex=gvim.desktop
+text/html=firefox-esr.desktop
 video/webm=vlc.desktop
+x-scheme-handler/http=firefox-esr.desktop
+x-scheme-handler/https=firefox-esr.desktop
+x-scheme-handler/about=firefox-esr.desktop
+x-scheme-handler/unknown=firefox-esr.desktop
 
 [Added Associations]
 application/json=gvim.desktop;
