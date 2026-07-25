@@ -184,6 +184,43 @@ scale:not(.marks-before):not(.marks-after) slider:hover:active {background-color
 treeview.view.trough {background-color: shade(@theme_base_color, 1.37);}
 treeview.view.trough:selected:focus, treeview.view.trough:selected {background-color: shade(@theme_base_color, 1.7);}
 treeview.view.progressbar:selected:focus, treeview.view.progressbar:selected {background-image: image(shade(@theme_selected_bg_color, 1.25));}
+
+/* Switch, check button, and radio button settings: */
+switch:checked:not(:disabled) {background-color: shade(@theme_selected_bg_color, 1.05);}
+switch slider {background-image: image(shade(@theme_base_color, 1.37));}
+switch:hover slider {background-image: image(shade(@theme_base_color, 1.6));}
+switch:disabled slider {background-image: image(@theme_bg_color);}
+
+check, radio {transition: none;}
+
+check:checked, radio:checked {
+    background-image: image(shade(@theme_selected_bg_color, 1.05));
+    border-color: shade(@theme_selected_bg_color, 1.05);
+}
+check:checked:backdrop, radio:checked:backdrop {background-image: image(shade(@theme_selected_bg_color, 1.05));}
+check:indeterminate, radio:indeterminate {
+    background-image: image(shade(@theme_selected_bg_color, 1.05));
+    border-color: shade(@theme_selected_bg_color, 1.05);
+}
+check:indeterminate:backdrop, radio:indeterminate:backdrop {background-image: image(shade(@theme_selected_bg_color, 1.05));}
+
+check:checked:hover, radio:checked:hover {background-image: image(shade(@theme_selected_bg_color, 1.25));}
+check:indeterminate:hover, radio:indeterminate:hover {background-image: image(shade(@theme_selected_bg_color, 1.25));}
+
+check:active, radio:active {
+    box-shadow: none;
+    background-image: image(shade(@theme_selected_bg_color, 1.02));
+}
+
+check:checked:active, radio:checked:active {
+    box-shadow: none;
+    background-image: image(shade(@theme_selected_bg_color, 1.5));
+}
+
+check:indeterminate:active, radio:indeterminate:active {
+    box-shadow: none;
+    background-image: image(shade(@theme_selected_bg_color, 1.5));
+}
 EOF
 
   printf '\n\n'
