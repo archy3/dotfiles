@@ -29,11 +29,6 @@ main()
 {
   set -euf
 
-  # See https://github.com/keybase/keybase-issues/issues/2798 for why this
-  # is needed:
-  GPG_TTY="$(tty)"
-  export GPG_TTY
-
   if [ "$#" != 2 ] && [ "$#" != 3 ]; then
     usage
     return 1
@@ -55,7 +50,10 @@ encrypt() # <input> <output>
   { [ -f "$1" ] || [ -d "$1" ]; } || return 1
   [ -e "$2" ] && return 1
 
-  tar -cvzf - "$1" | gpg -c --cipher-algo AES256 --no-symkey-cache > "$2"
+  # `--pinentry-mode loopback` asks for the password on the terminal.
+  tar -cvzf - "$1" |
+    gpg -c --cipher-algo AES256 --no-symkey-cache --pinentry-mode loopback \
+    > "$2"
 }
 
 decrypt() # <input> <output>
@@ -64,7 +62,8 @@ decrypt() # <input> <output>
   [ -e "$2" ] || mkdir -p -- "$2"
   [ -d "$2" ] || return 1
 
-  gpg -d "$1" | tar -xvzf - -C "$2"
+  # `--pinentry-mode loopback` asks for the password on the terminal.
+  gpg --pinentry-mode loopback -d "$1" | tar -xvzf - -C "$2"
 }
 
 check_files() # <input> <output>
