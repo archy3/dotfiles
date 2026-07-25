@@ -290,6 +290,8 @@ window#PanelToplevel box box#taskbar widget button.toggle {
     color: shade(@theme_fg_color, 1.10);
     background-image: none;
     background-color: shade(@theme_base_color, 1.02);
+    border: 1px solid shade(@theme_bg_color, 0.9);
+    border-radius: 0px;
 }
 
 window#PanelToplevel box box#taskbar widget button.toggle:checked {
