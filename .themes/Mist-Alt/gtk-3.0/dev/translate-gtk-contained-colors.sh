@@ -101,6 +101,11 @@ calendar:indeterminate {color: mix(@theme_base_color, @theme_fg_color, 0.47);}
 
 /* Make separator bars more apparent against the background: */
 separator {background-color: shade(@theme_fg_color, 0.43);}
+separator.sidebar {background-color: shade(@theme_fg_color, 0.43);}
+treeview.view.separator {color: shade(@theme_fg_color, 0.43);}
+paned > separator {background-image: image(shade(@theme_fg_color, 0.43));}
+paned > separator.wide {background-image: image(shade(@theme_fg_color, 0.43)), image(shade(@theme_fg_color, 0.43));}
+frame > border, .frame {border: 1px solid shade(@theme_fg_color, 0.43);}
 
 /* Reduce padding and removed rounded corners on tooltips: */
 tooltip * {padding: 0px;}
