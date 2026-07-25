@@ -67,18 +67,4 @@ decrypt() # <input> <output>
   gpg --pinentry-mode loopback -d "$1" | tar --keep-old-files -xvzf - -C "$2"
 }
 
-check_files() # <input> <output>
-{
-  if ! { [ -f "$1" ] || [ -d "$1" ]; }; then
-    printf %s\\n \
-      "The input file does not exist or is not a regular file or directory"
-    return 1
-  fi
-
-  if [ -e "$2" ]; then
-    printf %s\\n "The output file already exist"
-    return 1
-  fi
-}
-
 main "$@"
