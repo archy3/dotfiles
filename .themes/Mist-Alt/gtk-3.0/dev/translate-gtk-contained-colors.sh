@@ -276,6 +276,144 @@ scrollbar button:disabled {
     color: shade(@theme_fg_color, 0.5);
     background-color: shade(@theme_bg_color, 0.95);
 }
+
+/* Tab settings: */
+notebook > header tab {min-height: 24px; min-width: 24px; padding: 1px 10px;}
+notebook > header.top tabs, notebook > header.bottom tabs {padding: 0px;}
+notebook > header.left tabs, notebook > header.right tabs {padding: 0px;}
+notebook > header.top tab {padding-bottom: 1px;}
+notebook > header.bottom tab {padding-top: 1px;}
+
+notebook > header.top tabs tab,
+notebook > header.bottom tabs tab,
+notebook > header.left tabs tab,
+notebook > header.right tabs tab {
+    margin: 0px;
+}
+notebook > header.top tabs tab {margin-bottom: 1px;}
+notebook > header.bottom tabs tab {margin-top: 1px;}
+notebook > header.left tabs tab {margin-right: 1px;}
+notebook > header.right tabs tab  {margin-left: 1px;}
+
+notebook > header {border-color: shade(@theme_base_color, 1.03); background-color: @theme_bg_color;}
+
+notebook.frame > header {border: 0px solid shade(@theme_fg_color, 0.43);}
+notebook.frame > header.top {border-bottom-width: 1px;}
+notebook.frame > header.bottom {border-top-width: 1px;}
+notebook.frame > header.left {border-right-width: 1px;}
+notebook.frame > header.right {border-left-width: 1px;}
+
+notebook > header.top > tabs > tab:hover,
+notebook > header.top > tabs > tab:checked,
+notebook > header.bottom > tabs > tab:hover,
+notebook > header.bottom > tabs > tab:checked,
+notebook > header.left > tabs > tab:hover,
+notebook > header.left > tabs > tab:checked,
+notebook > header.right > tabs > tab:hover,
+notebook > header.right > tabs > tab:checked {
+    box-shadow: none;
+}
+
+notebook > header.top tabs tab,
+notebook > header.bottom tabs tab,
+notebook > header.left tabs tab,
+notebook > header.right tabs tab {
+    background-color: shade(@theme_bg_color, 0.7);
+}
+
+notebook > header.top tabs tab.reorderable-page,
+notebook > header.bottom tabs tab.reorderable-page,
+notebook > header.left tabs tab.reorderable-page,
+notebook > header.right tabs tab.reorderable-page {
+    border: 1px solid shade(@theme_bg_color, 0.48);
+}
+
+notebook > header.top tabs tab.reorderable-page:hover,
+notebook > header.bottom tabs tab.reorderable-page:hover,
+notebook > header.left tabs tab.reorderable-page:hover,
+notebook > header.right tabs tab.reorderable-page:hover {
+    background-color: shade(@theme_bg_color, 0.95);
+}
+
+notebook.frame > header.top tabs tab.reorderable-page:hover:not(:checked),
+notebook.frame > header.bottom tabs tab.reorderable-page:hover:not(:checked),
+notebook.frame > header.left tabs tab.reorderable-page:hover:not(:checked),
+notebook.frame > header.right tabs tab.reorderable-page:hover:not(:checked) {
+    background-color: shade(@theme_bg_color, 0.85);
+}
+
+notebook > header.top tabs tab.reorderable-page:checked,
+notebook > header.bottom tabs tab.reorderable-page:checked,
+notebook > header.left tabs tab.reorderable-page:checked,
+notebook > header.right tabs tab.reorderable-page:checked {
+    background-color: @theme_bg_color;
+    border: 1px solid shade(@theme_base_color, 1.03);
+}
+
+notebook > header.top tabs tab.reorderable-page:not(:last-child),
+notebook > header.top tabs tab.reorderable-page:checked:not(:last-child),
+notebook > header.bottom tabs tab.reorderable-page:not(:last-child),
+notebook > header.bottom tabs tab.reorderable-page:checked:not(:last-child) {
+    margin-right: -1px;
+}
+
+notebook > header.left tabs tab.reorderable-page:not(:last-child),
+notebook > header.left tabs tab.reorderable-page:checked:not(:last-child),
+notebook > header.right tabs tab.reorderable-page:not(:last-child),
+notebook > header.right tabs tab.reorderable-page:checked:not(:last-child) {
+    margin-bottom: -1px;
+}
+
+notebook.frame > header.top tabs tab.reorderable-page,
+notebook.frame > header.bottom tabs tab.reorderable-page {
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+}
+notebook.frame > header.left tabs tab.reorderable-page,
+notebook.frame > header.right tabs tab.reorderable-page {
+    border-left-width: 0px;
+    border-right-width: 0px;
+}
+
+notebook > header tabs tab:not(.reorderable-page) {
+    border: 1px solid shade(@theme_fg_color, 0.43);
+    margin: 0px;
+}
+
+notebook > header.top > tabs > tab:not(.reorderable-page),
+notebook > header.bottom > tabs > tab:not(.reorderable-page) {
+    margin-left: -1px;
+}
+notebook > header.top > tabs > tab:not(.reorderable-page):last-child,
+notebook > header.bottom > tabs > tab:not(.reorderable-page):last-child {
+    margin-right: -1px;
+}
+notebook > header.left > tabs > tab:not(.reorderable-page),
+notebook > header.right > tabs > tab:not(.reorderable-page) {
+    margin-top: -1px;
+}
+notebook > header.left > tabs > tab:not(.reorderable-page):last-child,
+notebook > header.right > tabs > tab:not(.reorderable-page):last-child {
+    margin-bottom: -1px;
+}
+
+notebook.frame > header.top tabs tab:not(.reorderable-page) {border-top-width: 0px;}
+notebook.frame > header.bottom tabs tab:not(.reorderable-page) {border-bottom-width: 0px;}
+notebook.frame > header.left tabs tab:not(.reorderable-page) {border-left-width: 0px;}
+notebook.frame > header.right tabs tab:not(.reorderable-page) {border-right-width: 0px;}
+
+notebook > header.top tabs tab:not(.reorderable-page):checked {border-bottom-width: 0px;}
+notebook > header.bottom tabs tab:not(.reorderable-page):checked {border-top-width: 0px;}
+notebook > header.left tabs tab:not(.reorderable-page):checked {border-right-width: 0px;}
+notebook > header.right tabs tab:not(.reorderable-page):checked {border-left-width: 0px;}
+
+notebook > header tabs tab:not(.reorderable-page):hover:not(:checked) {
+    background-color: mix(@theme_bg_color, @theme_base_color, 0.125);
+}
+
+notebook > header tabs tab:not(.reorderable-page):checked {
+    background-color: @theme_base_color;
+}
 EOF
 
   printf '\n\n'
