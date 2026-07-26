@@ -114,6 +114,11 @@ tooltip {border-radius: 0px;}
 /* Reduce the amount of vertical space that statusbars take: */
 statusbar.horizontal {margin-top: -3px; margin-bottom: -3px;}
 
+/* Make column headers more distinguishable: */
+treeview.view header button {color: @theme_fg_color; background-color: @theme_bg_color; font-weight: normal;}
+treeview.view header button:hover {color: @theme_fg_color; background-color: shade(@theme_base_color, 0.97);}
+treeview.view header button:active {color: @theme_fg_color; background-color: shade(@theme_bg_color, 0.7);}
+
 /* Make sliders (like volume control) and progress bars more apparent: */
 scale trough {
     background-color: shade(@theme_bg_color, 0.7);
@@ -427,6 +432,13 @@ add_additions_pcmanfm()
 {
   cat << 'EOF'
 /* BEGIN PCMANFM SETTINGS: */
+
+/* Make the "Places/Directory Tree" combo box be the right color: */
+window.background:only-child > decoration:first-child + box.vertical >
+    menubar#menubar:first-child + toolbar#toolbar.horizontal + notebook >
+    header.top:first-child + stack:last-child > paned.horizontal >
+    box.vertical:first-child > box.horizontal:first-child >
+    button.flat:only-child {background-color: @theme_bg_color;}
 
 /* Remove border on free-space indicator: */
 window.background:only-child > decoration:first-child + box.vertical >
