@@ -78,6 +78,9 @@ add_additions()
   cat << 'EOF'
 /* BEGIN GTK4-SPECIFIC SETTINGS: */
 
+/* Make frame borders more apparent against the background: */
+frame {border: 1px solid shade(@theme_fg_color, 0.43);}
+
 /* GTK4 scrollbar settings: */
 scrollbar.horizontal slider {min-height: 8px;}
 scrollbar.vertical slider {min-width: 8px;}
