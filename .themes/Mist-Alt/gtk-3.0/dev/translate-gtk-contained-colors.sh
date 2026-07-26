@@ -71,7 +71,7 @@ main()
   export LC_ALL=C
   awk -- "$awk_script" "$translation_table" | awk -f - -- "$input" |
     replace_named_white "$named_white_replacement" | remove_assets |
-    add_additions "$visited_link_color" > "$output"
+    compactify --true | add_additions "$visited_link_color" > "$output"
 }
 
 replace_named_white()
@@ -442,18 +442,22 @@ window.background > widget > scrollbar.vertical > contents > trough > slider:hov
 EOF
 }
 
-compactify()
+compactify() # <--true|--false>
 {
-  # From https://gitlab.gnome.org/GNOME/gtk/blob/gtk-3-24/gtk/theme/Adwaita/_common.scss#L14
-  sed \
-    -e 's/: 46px;/: 40px;/g' \
-    -e 's/: 32px;/: 28px;/g' \
-    -e 's/: 10px;/: 7px;/g' \
-    -e 's/: 6px;/: 5px;/g' \
-    -e 's/: 5px;/: 2px;/g' \
-    -e 's/: 4px;/: 2px;/g' \
-    -e 's/: 6px 10px;/: 4px 10px;/g' \
-    -e 's/: 4px 9px;/: 2px 6px;/g'
+  if [ "${1:-}" = '--false' ]; then
+    cat
+  else
+    # From https://gitlab.gnome.org/GNOME/gtk/blob/gtk-3-24/gtk/theme/Adwaita/_common.scss#L14
+    sed \
+      -e 's/: 46px;/: 40px;/g' \
+      -e 's/: 32px;/: 28px;/g' \
+      -e 's/: 10px;/: 7px;/g' \
+      -e 's/: 6px;/: 5px;/g' \
+      -e 's/: 5px;/: 2px;/g' \
+      -e 's/: 4px;/: 2px;/g' \
+      -e 's/: 6px 10px;/: 4px 10px;/g' \
+      -e 's/: 4px 9px;/: 2px 6px;/g'
+  fi
 }
 
 main "$@"

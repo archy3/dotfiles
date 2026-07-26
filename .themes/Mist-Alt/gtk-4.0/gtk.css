@@ -112,11 +112,11 @@ spinner:checked:disabled { opacity: 0.5; }
 .caption { font-weight: 400; font-size: 9pt; }
 
 /**************** Text Entries * */
-spinbutton:not(.vertical), entry { min-height: 32px; padding-left: 8px; padding-right: 8px; border: 1px solid; border-radius: 5px; transition: all 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94); color: #cccccc; border-color: #1b1b1b; background-color: #333333; box-shadow: inset 0 0 0 1px rgba(21, 83, 158, 0); }
+spinbutton:not(.vertical), entry { min-height: 28px; padding-left: 8px; padding-right: 8px; border: 1px solid; border-radius: 2px; transition: all 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94); color: #cccccc; border-color: #1b1b1b; background-color: #333333; box-shadow: inset 0 0 0 1px rgba(21, 83, 158, 0); }
 
-spinbutton:not(.vertical) image.left, entry image.left { margin-right: 6px; }
+spinbutton:not(.vertical) image.left, entry image.left { margin-right: 2px; }
 
-spinbutton:not(.vertical) image.right, entry image.right { margin-left: 6px; }
+spinbutton:not(.vertical) image.right, entry image.right { margin-left: 2px; }
 
 spinbutton.flat:not(.vertical), entry.flat:focus, entry.flat:backdrop, entry.flat:disabled, entry.flat { min-height: 0; padding: 2px; background-color: transparent; border-color: transparent; border-radius: 0; }
 
@@ -194,7 +194,7 @@ treeview entry.flat, treeview entry { border-radius: 0; background-image: none; 
 
 treeview entry.flat:focus, treeview entry:focus { border-color: #4b6983; }
 
-.entry-tag { padding: 5px; margin-top: 2px; margin-bottom: 2px; border-style: none; color: #333333; background-color: #8e8e8d; }
+.entry-tag { padding: 2px; margin-top: 2px; margin-bottom: 2px; border-style: none; color: #333333; background-color: #8e8e8d; }
 
 :dir(ltr) .entry-tag { margin-left: 8px; margin-right: -5px; }
 
@@ -214,7 +214,7 @@ treeview entry.flat:focus, treeview entry:focus { border-color: #4b6983; }
 @keyframes needs_attention { from { }
 to { } }
 
-button.titlebutton, notebook > header > tabs > arrow, button { min-height: 24px; min-width: 16px; padding: 4px 9px; border: 1px solid; border-radius: 5px; transition: all 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94); color: #cccccc; outline-color: rgba(238, 238, 236, 0.3); border-color: #1b1b1b; border-bottom-color: #070707; background-image: linear-gradient(to top, #282828 2px, #282828); text-shadow: 0 -1px rgba(0, 0, 0, 0.834353); box-shadow: inset 0 1px rgba(255, 255, 255, 0.02), 0 1px 2px rgba(0, 0, 0, 0.07); }
+button.titlebutton, notebook > header > tabs > arrow, button { min-height: 24px; min-width: 16px; padding: 2px 6px; border: 1px solid; border-radius: 2px; transition: all 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94); color: #cccccc; outline-color: rgba(238, 238, 236, 0.3); border-color: #1b1b1b; border-bottom-color: #070707; background-image: linear-gradient(to top, #282828 2px, #282828); text-shadow: 0 -1px rgba(0, 0, 0, 0.834353); box-shadow: inset 0 1px rgba(255, 255, 255, 0.02), 0 1px 2px rgba(0, 0, 0, 0.07); }
 
 button.titlebutton, button.sidebar-button, notebook > header > tabs > arrow, notebook > header > tabs > arrow.flat, button.flat { border-color: transparent; background-color: transparent; background-image: none; box-shadow: inset 0 1px rgba(255, 255, 255, 0); text-shadow: none; transition: none; }
 
@@ -240,7 +240,7 @@ notebook > header > tabs > arrow:disabled, button:disabled { color: #919190; bor
 
 notebook > header > tabs > arrow:disabled:active, notebook > header > tabs > arrow:disabled:checked, button:disabled:active, button:disabled:checked { color: #919190; border-color: #1b1b1b; background-image: image(#252525); box-shadow: inset 0 1px rgba(255, 255, 255, 0); }
 
-notebook > header > tabs > arrow.image-button, button.image-button { min-width: 24px; padding-left: 5px; padding-right: 5px; }
+notebook > header > tabs > arrow.image-button, button.image-button { min-width: 24px; padding-left: 2px; padding-right: 2px; }
 
 notebook > header > tabs > arrow.text-button, button.text-button { padding-left: 16px; padding-right: 16px; }
 
@@ -254,7 +254,7 @@ row:selected button.sidebar-button:not(:active):not(:checked):not(:hover):not(di
 
 row:selected button.sidebar-button:not(:active):not(:checked):not(:hover):not(disabled):backdrop, row:selected button.flat:not(:active):not(:checked):not(:hover):not(disabled):backdrop { color: #919190; }
 
-button.osd { min-width: 26px; min-height: 32px; color: #cccccc; border-radius: 5px; color: #cccccc; border-color: rgba(0, 0, 0, 0.7); background-color: transparent; background-image: image(rgba(38, 38, 38, 0.9)); background-clip: padding-box; box-shadow: inset 0 1px rgba(255, 255, 255, 0.1); text-shadow: 0 1px black; outline-color: rgba(238, 238, 236, 0.3); border: none; box-shadow: none; }
+button.osd { min-width: 26px; min-height: 28px; color: #cccccc; border-radius: 2px; color: #cccccc; border-color: rgba(0, 0, 0, 0.7); background-color: transparent; background-image: image(rgba(38, 38, 38, 0.9)); background-clip: padding-box; box-shadow: inset 0 1px rgba(255, 255, 255, 0.1); text-shadow: 0 1px black; outline-color: rgba(238, 238, 236, 0.3); border: none; box-shadow: none; }
 
 button.osd.image-button { min-width: 34px; }
 
@@ -352,11 +352,11 @@ button.destructive-action:disabled:active, button.destructive-action:disabled:ch
 
 .stack-switcher > button { outline-offset: -3px; }
 
-.stack-switcher > button > label { padding-left: 6px; padding-right: 6px; }
+.stack-switcher > button > label { padding-left: 2px; padding-right: 2px; }
 
-.stack-switcher > button > image { padding-left: 6px; padding-right: 6px; padding-top: 3px; padding-bottom: 3px; }
+.stack-switcher > button > image { padding-left: 2px; padding-right: 2px; padding-top: 3px; padding-bottom: 3px; }
 
-.stack-switcher > button.text-button { padding-left: 10px; padding-right: 10px; }
+.stack-switcher > button.text-button { padding-left: 7px; padding-right: 7px; }
 
 .stack-switcher > button.image-button { padding-left: 2px; padding-right: 2px; }
 
@@ -368,7 +368,7 @@ button.font > box > box > label { font-weight: bold; }
 
 .primary-toolbar button { }
 
-button.circular { border-radius: 9999px; padding: 4px; /* circles instead of ellipses */ background-origin: padding-box, border-box; background-clip: padding-box, border-box; }
+button.circular { border-radius: 9999px; padding: 2px; /* circles instead of ellipses */ background-origin: padding-box, border-box; background-clip: padding-box, border-box; }
 
 button.circular label { padding: 0; }
 
@@ -402,24 +402,24 @@ stacksidebar row.needs-attention > label:dir(rtl), .stack-switcher > button.need
 
 .linked:not(.vertical) > combobox > box > button.combo, filechooser .path-bar.linked > button, .linked:not(.vertical) > spinbutton:not(.vertical), .linked:not(.vertical) > entry, .inline-toolbar button, .linked > button, toolbar.inline-toolbar toolbutton > button.flat { border-right-style: none; border-radius: 0; }
 
-.linked:not(.vertical) > combobox:first-child > box > button.combo, combobox.linked button:nth-child(2):dir(rtl), filechooser .path-bar.linked > button:dir(rtl):last-child, filechooser .path-bar.linked > button:dir(ltr):first-child, .linked:not(.vertical) > spinbutton:first-child:not(.vertical), .linked:not(.vertical) > entry:first-child, .inline-toolbar button:first-child, .linked > button:first-child, toolbar.inline-toolbar toolbutton:first-child > button.flat { border-top-left-radius: 5px; border-bottom-left-radius: 5px; }
+.linked:not(.vertical) > combobox:first-child > box > button.combo, combobox.linked button:nth-child(2):dir(rtl), filechooser .path-bar.linked > button:dir(rtl):last-child, filechooser .path-bar.linked > button:dir(ltr):first-child, .linked:not(.vertical) > spinbutton:first-child:not(.vertical), .linked:not(.vertical) > entry:first-child, .inline-toolbar button:first-child, .linked > button:first-child, toolbar.inline-toolbar toolbutton:first-child > button.flat { border-top-left-radius: 2px; border-bottom-left-radius: 2px; }
 
-.linked:not(.vertical) > combobox:last-child > box > button.combo, combobox.linked button:nth-child(2):dir(ltr), filechooser .path-bar.linked > button:dir(rtl):first-child, filechooser .path-bar.linked > button:dir(ltr):last-child, .linked:not(.vertical) > spinbutton:last-child:not(.vertical), .linked:not(.vertical) > entry:last-child, .inline-toolbar button:last-child, .linked > button:last-child, toolbar.inline-toolbar toolbutton:last-child > button.flat { border-right-style: solid; border-top-right-radius: 5px; border-bottom-right-radius: 5px; }
+.linked:not(.vertical) > combobox:last-child > box > button.combo, combobox.linked button:nth-child(2):dir(ltr), filechooser .path-bar.linked > button:dir(rtl):first-child, filechooser .path-bar.linked > button:dir(ltr):last-child, .linked:not(.vertical) > spinbutton:last-child:not(.vertical), .linked:not(.vertical) > entry:last-child, .inline-toolbar button:last-child, .linked > button:last-child, toolbar.inline-toolbar toolbutton:last-child > button.flat { border-right-style: solid; border-top-right-radius: 2px; border-bottom-right-radius: 2px; }
 
-.linked:not(.vertical) > combobox:only-child > box > button.combo, filechooser .path-bar.linked > button:only-child, .linked:not(.vertical) > spinbutton:only-child:not(.vertical), .linked:not(.vertical) > entry:only-child, .inline-toolbar button:only-child, .linked > button:only-child, toolbar.inline-toolbar toolbutton:only-child > button.flat { border-style: solid; border-radius: 5px; }
+.linked:not(.vertical) > combobox:only-child > box > button.combo, filechooser .path-bar.linked > button:only-child, .linked:not(.vertical) > spinbutton:only-child:not(.vertical), .linked:not(.vertical) > entry:only-child, .inline-toolbar button:only-child, .linked > button:only-child, toolbar.inline-toolbar toolbutton:only-child > button.flat { border-style: solid; border-radius: 2px; }
 
 .linked.vertical > combobox > box > button.combo, .linked.vertical > spinbutton:not(.vertical), .linked.vertical > entry, .linked.vertical > button { border-style: solid solid none solid; border-radius: 0; }
 
-.linked.vertical > combobox:first-child > box > button.combo, .linked.vertical > spinbutton:first-child:not(.vertical), .linked.vertical > entry:first-child, .linked.vertical > button:first-child { border-top-left-radius: 5px; border-top-right-radius: 5px; }
+.linked.vertical > combobox:first-child > box > button.combo, .linked.vertical > spinbutton:first-child:not(.vertical), .linked.vertical > entry:first-child, .linked.vertical > button:first-child { border-top-left-radius: 2px; border-top-right-radius: 2px; }
 
-.linked.vertical > combobox:last-child > box > button.combo, .linked.vertical > spinbutton:last-child:not(.vertical), .linked.vertical > entry:last-child, .linked.vertical > button:last-child { border-bottom-style: solid; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; }
+.linked.vertical > combobox:last-child > box > button.combo, .linked.vertical > spinbutton:last-child:not(.vertical), .linked.vertical > entry:last-child, .linked.vertical > button:last-child { border-bottom-style: solid; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; }
 
-.linked.vertical > combobox:only-child > box > button.combo, .linked.vertical > spinbutton:only-child:not(.vertical), .linked.vertical > entry:only-child, .linked.vertical > button:only-child { border-style: solid; border-radius: 5px; }
+.linked.vertical > combobox:only-child > box > button.combo, .linked.vertical > spinbutton:only-child:not(.vertical), .linked.vertical > entry:only-child, .linked.vertical > button:only-child { border-style: solid; border-radius: 2px; }
 
 .scale-popup button:backdrop:hover, .scale-popup button:backdrop:disabled, .scale-popup button:backdrop, .scale-popup button:hover, calendar.button, button:link:hover, button:link:active, button:link:checked, button:visited:hover, button:visited:active, button:visited:checked, button:link, button:visited, list row button.image-button:not(.flat), modelbutton.flat:backdrop, modelbutton.flat:backdrop:hover, modelbutton.flat, .menuitem.button.flat { background-color: transparent; background-image: none; border-color: transparent; box-shadow: inset 0 1px rgba(255, 255, 255, 0), 0 1px rgba(255, 255, 255, 0); text-shadow: none; }
 
 /* menu buttons */
-modelbutton.flat, .menuitem.button.flat { min-height: 26px; padding-left: 5px; padding-right: 5px; border-radius: 5px; outline-offset: -2px; }
+modelbutton.flat, .menuitem.button.flat { min-height: 26px; padding-left: 2px; padding-right: 2px; border-radius: 2px; outline-offset: -2px; }
 
 modelbutton.flat:hover, .menuitem.button.flat:hover { background-color: #383838; }
 
@@ -431,7 +431,7 @@ modelbutton.flat arrow.left { }
 
 modelbutton.flat arrow.right { }
 
-button.color { padding: 4px; }
+button.color { padding: 2px; }
 
 button.color colorswatch:only-child, button.color colorswatch:only-child overlay { border-radius: 0; }
 
@@ -519,9 +519,9 @@ spinbutton.vertical:backdrop:disabled { color: #5b5b5b; }
 
 spinbutton.vertical:drop(active) { border-color: transparent; box-shadow: none; }
 
-spinbutton.vertical entry { min-height: 32px; min-width: 32px; padding: 0; border-radius: 0; }
+spinbutton.vertical entry { min-height: 28px; min-width: 28px; padding: 0; border-radius: 0; }
 
-spinbutton.vertical button { min-height: 32px; min-width: 32px; padding: 0; }
+spinbutton.vertical button { min-height: 28px; min-width: 28px; padding: 0; }
 
 spinbutton.vertical button.up { border-radius: 5px 5px 0 0; border-style: solid solid none solid; }
 
@@ -547,13 +547,13 @@ combobox arrow { min-height: 16px; min-width: 16px; }
 combobox:drop(active) { box-shadow: none; }
 
 /************ Toolbars * */
-searchbar > revealer > box, .location-bar, .inline-toolbar, toolbar { padding: 4px; background-color: #282828; }
+searchbar > revealer > box, .location-bar, .inline-toolbar, toolbar { padding: 2px; background-color: #282828; }
 
 toolbar { padding: 4px 3px 3px 4px; }
 
 .osd toolbar { background-color: transparent; }
 
-toolbar.osd { padding: 13px; border: none; border-radius: 5px; background-color: rgba(38, 38, 38, 0.9); }
+toolbar.osd { padding: 13px; border: none; border-radius: 2px; background-color: rgba(38, 38, 38, 0.9); }
 
 toolbar.osd.left, toolbar.osd.right, toolbar.osd.top, toolbar.osd.bottom { border-radius: 0; }
 
@@ -567,14 +567,14 @@ toolbar:not(.inline-toolbar):not(.osd) > *:not(.toggle):not(.popup) > * { margin
 
 searchbar > revealer > box, .location-bar { border-width: 0 0 1px; padding: 3px; }
 
-searchbar > revealer > box { margin: -6px; padding: 6px; }
+searchbar > revealer > box { margin: -6px; padding: 2px; }
 
 .inline-toolbar, searchbar > revealer > box, .location-bar { border-style: solid; border-color: #1b1b1b; background-color: #333333; }
 
 .inline-toolbar:backdrop, searchbar > revealer > box:backdrop, .location-bar:backdrop { border-color: #202020; background-color: #2e2e2e; box-shadow: none; transition: 200ms ease-out; }
 
 /*************** Header bars * */
-.titlebar:not(headerbar), headerbar { padding: 0 6px; min-height: 46px; border-width: 0 0 1px; border-style: solid; border-color: #070707; border-radius: 0; background: #1b1b1b linear-gradient(to top, #444444, #444444); box-shadow: inset 0 1px rgba(238, 238, 236, 0.07); /* Darken switchbuttons for headerbars. issue #1588 */ /* hide the close button separator */ }
+.titlebar:not(headerbar), headerbar { padding: 0 6px; min-height: 40px; border-width: 0 0 1px; border-style: solid; border-color: #070707; border-radius: 0; background: #1b1b1b linear-gradient(to top, #444444, #444444); box-shadow: inset 0 1px rgba(238, 238, 236, 0.07); /* Darken switchbuttons for headerbars. issue #1588 */ /* hide the close button separator */ }
 
 .titlebar:backdrop:not(headerbar), headerbar:backdrop { border-color: #202020; background-color: #282828; background-image: none; box-shadow: inset 0 1px rgba(238, 238, 236, 0.07); transition: 200ms ease-out; }
 
@@ -626,7 +626,7 @@ searchbar > revealer > box { margin: -6px; padding: 6px; }
 
 .selection-mode .titlebar:not(headerbar) button.suggested-action:backdrop:disabled, .selection-mode.titlebar:not(headerbar) button.suggested-action:backdrop:disabled, .selection-mode headerbar button.suggested-action:backdrop:disabled, headerbar.selection-mode button.suggested-action:backdrop:disabled { color: #5b5b5b; border-color: #202020; background-image: image(#282828); text-shadow: none; box-shadow: inset 0 1px rgba(255, 255, 255, 0); border-color: #030c17; }
 
-.selection-mode .titlebar:not(headerbar) .selection-menu, .selection-mode.titlebar:not(headerbar) .selection-menu, .selection-mode headerbar .selection-menu:backdrop, .selection-mode headerbar .selection-menu, headerbar.selection-mode .selection-menu:backdrop, headerbar.selection-mode .selection-menu { border-color: rgba(21, 83, 158, 0); background-color: rgba(21, 83, 158, 0); background-image: none; box-shadow: none; min-height: 20px; padding: 6px 10px; }
+.selection-mode .titlebar:not(headerbar) .selection-menu, .selection-mode.titlebar:not(headerbar) .selection-menu, .selection-mode headerbar .selection-menu:backdrop, .selection-mode headerbar .selection-menu, headerbar.selection-mode .selection-menu:backdrop, headerbar.selection-mode .selection-menu { border-color: rgba(21, 83, 158, 0); background-color: rgba(21, 83, 158, 0); background-image: none; box-shadow: none; min-height: 20px; padding: 4px 10px; }
 
 .selection-mode .titlebar:not(headerbar) .selection-menu arrow, .selection-mode.titlebar:not(headerbar) .selection-menu arrow, .selection-mode headerbar .selection-menu:backdrop arrow, .selection-mode headerbar .selection-menu arrow, headerbar.selection-mode .selection-menu:backdrop arrow, headerbar.selection-mode .selection-menu arrow { }
 
@@ -634,7 +634,7 @@ searchbar > revealer > box { margin: -6px; padding: 6px; }
 
 .tiled .titlebar:not(headerbar), .tiled-top .titlebar:not(headerbar), .tiled-right .titlebar:not(headerbar), .tiled-bottom .titlebar:not(headerbar), .tiled-left .titlebar:not(headerbar), .maximized .titlebar:not(headerbar), .fullscreen .titlebar:not(headerbar), .tiled headerbar, .tiled-top headerbar, .tiled-right headerbar, .tiled-bottom headerbar, .tiled-left headerbar, .maximized headerbar, .fullscreen headerbar { border-radius: 0; }
 
-.default-decoration.titlebar:not(headerbar), headerbar.default-decoration { min-height: 28px; padding: 4px; }
+.default-decoration.titlebar:not(headerbar), headerbar.default-decoration { min-height: 28px; padding: 2px; }
 
 .default-decoration.titlebar:not(headerbar) button.titlebutton, headerbar.default-decoration button.titlebutton { min-height: 26px; min-width: 26px; margin: 0; padding: 0; }
 
@@ -642,9 +642,9 @@ searchbar > revealer > box { margin: -6px; padding: 6px; }
 
 .solid-csd .titlebar:dir(rtl):not(headerbar), .solid-csd .titlebar:dir(ltr):not(headerbar), .solid-csd headerbar:backdrop:dir(rtl), .solid-csd headerbar:backdrop:dir(ltr), .solid-csd headerbar:dir(rtl), .solid-csd headerbar:dir(ltr) { margin-left: -1px; margin-right: -1px; margin-top: -1px; border-radius: 0; box-shadow: none; }
 
-headerbar entry, headerbar spinbutton, headerbar separator:not(.sidebar), headerbar button { margin-top: 6px; margin-bottom: 6px; }
+headerbar entry, headerbar spinbutton, headerbar separator:not(.sidebar), headerbar button { margin-top: 2px; margin-bottom: 2px; }
 
-headerbar switch { margin-top: 10px; margin-bottom: 10px; }
+headerbar switch { margin-top: 7px; margin-bottom: 7px; }
 
 headerbar.titlebar headerbar:not(.titlebar) { background: none; box-shadow: none; }
 
@@ -669,7 +669,7 @@ window.devel headerbar.titlebar:not(.selection-mode) { }
 window.devel headerbar.titlebar:not(.selection-mode):backdrop { /* background-color would flash */ }
 
 /************ Pathbars * */
-.path-bar button.text-button, .path-bar button.image-button, .path-bar button { padding-left: 4px; padding-right: 4px; }
+.path-bar button.text-button, .path-bar button.image-button, .path-bar button { padding-left: 2px; padding-right: 2px; }
 
 .path-bar button.text-button.image-button label { padding-left: 0; padding-right: 0; }
 
@@ -677,7 +677,7 @@ window.devel headerbar.titlebar:not(.selection-mode):backdrop { /* background-co
 
 .path-bar button.text-button.image-button label:first-child, .path-bar button label:first-child { padding-left: 8px; }
 
-.path-bar button image { padding-left: 4px; padding-right: 4px; }
+.path-bar button image { padding-left: 2px; padding-right: 2px; }
 
 .path-bar button.slider-button { padding-left: 0; padding-right: 0; }
 
@@ -775,9 +775,9 @@ menubar .csd.popup decoration, .menubar .csd.popup decoration { border-radius: 0
 
 .background.popup { background-color: transparent; }
 
-menu, .menu, .context-menu { margin: 4px; padding: 4px 0px; background-color: #282828; border: 1px solid #1b1b1b; }
+menu, .menu, .context-menu { margin: 2px; padding: 4px 0px; background-color: #282828; border: 1px solid #1b1b1b; }
 
-.csd menu, .csd .menu, .csd .context-menu { border: none; border-radius: 5px; }
+.csd menu, .csd .menu, .csd .context-menu { border: none; border-radius: 2px; }
 
 menu:backdrop, .menu:backdrop, .context-menu:backdrop { background-color: #313131; }
 
@@ -793,17 +793,17 @@ menu menuitem:backdrop, menu menuitem:backdrop:hover, .menu menuitem:backdrop, .
 
 menu menuitem arrow, .menu menuitem arrow, .context-menu menuitem arrow { min-height: 16px; min-width: 16px; }
 
-menu menuitem arrow:dir(ltr), .menu menuitem arrow:dir(ltr), .context-menu menuitem arrow:dir(ltr) { margin-left: 10px; }
+menu menuitem arrow:dir(ltr), .menu menuitem arrow:dir(ltr), .context-menu menuitem arrow:dir(ltr) { margin-left: 7px; }
 
-menu menuitem arrow:dir(rtl), .menu menuitem arrow:dir(rtl), .context-menu menuitem arrow:dir(rtl) { margin-right: 10px; }
+menu menuitem arrow:dir(rtl), .menu menuitem arrow:dir(rtl), .context-menu menuitem arrow:dir(rtl) { margin-right: 7px; }
 
 menu menuitem label:dir(rtl), menu menuitem label:dir(ltr), .menu menuitem label:dir(rtl), .menu menuitem label:dir(ltr), .context-menu menuitem label:dir(rtl), .context-menu menuitem label:dir(ltr) { color: inherit; }
 
-menu > arrow, .menu > arrow, .context-menu > arrow { border-color: transparent; background-color: transparent; background-image: none; box-shadow: inset 0 1px rgba(255, 255, 255, 0); text-shadow: none; min-height: 16px; min-width: 16px; padding: 4px; background-color: #282828; border-radius: 0; }
+menu > arrow, .menu > arrow, .context-menu > arrow { border-color: transparent; background-color: transparent; background-image: none; box-shadow: inset 0 1px rgba(255, 255, 255, 0); text-shadow: none; min-height: 16px; min-width: 16px; padding: 2px; background-color: #282828; border-radius: 0; }
 
-menu > arrow.top, .menu > arrow.top, .context-menu > arrow.top { margin-top: -4px; border-bottom: 1px solid #404040; border-top-right-radius: 5px; border-top-left-radius: 5px; }
+menu > arrow.top, .menu > arrow.top, .context-menu > arrow.top { margin-top: -4px; border-bottom: 1px solid #404040; border-top-right-radius: 2px; border-top-left-radius: 2px; }
 
-menu > arrow.bottom, .menu > arrow.bottom, .context-menu > arrow.bottom { margin-top: 8px; margin-bottom: -12px; border-top: 1px solid #404040; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; }
+menu > arrow.bottom, .menu > arrow.bottom, .context-menu > arrow.bottom { margin-top: 8px; margin-bottom: -12px; border-top: 1px solid #404040; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; }
 
 menu > arrow:hover, .menu > arrow:hover, .context-menu > arrow:hover { background-color: #404040; }
 
@@ -887,7 +887,7 @@ notebook > header.top > tabs > arrow { border-top-style: none; }
 
 notebook > header.bottom > tabs > arrow { border-bottom-style: none; }
 
-notebook > header.top > tabs > arrow, notebook > header.bottom > tabs > arrow { margin-left: -5px; margin-right: -5px; padding-left: 4px; padding-right: 4px; }
+notebook > header.top > tabs > arrow, notebook > header.bottom > tabs > arrow { margin-left: -5px; margin-right: -5px; padding-left: 2px; padding-right: 2px; }
 
 notebook > header.top > tabs > arrow.down, notebook > header.bottom > tabs > arrow.down { }
 
@@ -897,7 +897,7 @@ notebook > header.left > tabs > arrow { border-left-style: none; }
 
 notebook > header.right > tabs > arrow { border-right-style: none; }
 
-notebook > header.left > tabs > arrow, notebook > header.right > tabs > arrow { margin-top: -5px; margin-bottom: -5px; padding-top: 4px; padding-bottom: 4px; }
+notebook > header.left > tabs > arrow, notebook > header.right > tabs > arrow { margin-top: -5px; margin-bottom: -5px; padding-top: 2px; padding-bottom: 2px; }
 
 notebook > header.left > tabs > arrow.down, notebook > header.right > tabs > arrow.down { }
 
@@ -929,17 +929,17 @@ notebook > header tab:backdrop:checked { color: #919190; }
 
 notebook > header tab.reorderable-page:backdrop:checked { border-color: #202020; background-color: #282828; }
 
-notebook > header tab button.flat { padding: 0; margin-top: 4px; margin-bottom: 4px; min-width: 20px; min-height: 20px; }
+notebook > header tab button.flat { padding: 0; margin-top: 2px; margin-bottom: 2px; min-width: 20px; min-height: 20px; }
 
 notebook > header tab button.flat:hover { color: currentColor; }
 
 notebook > header tab button.flat, notebook > header tab button.flat:backdrop { color: alpha(currentColor,0.3); }
 
-notebook > header tab button.flat:last-child { margin-left: 4px; margin-right: -4px; }
+notebook > header tab button.flat:last-child { margin-left: 2px; margin-right: -4px; }
 
-notebook > header tab button.flat:first-child { margin-left: -4px; margin-right: 4px; }
+notebook > header tab button.flat:first-child { margin-left: -4px; margin-right: 2px; }
 
-notebook > header.top tabs, notebook > header.bottom tabs { padding-left: 4px; padding-right: 4px; }
+notebook > header.top tabs, notebook > header.bottom tabs { padding-left: 2px; padding-right: 2px; }
 
 notebook > header.top tabs:not(:only-child), notebook > header.bottom tabs:not(:only-child) { margin-left: 3px; margin-right: 3px; }
 
@@ -947,11 +947,11 @@ notebook > header.top tabs:not(:only-child):first-child, notebook > header.botto
 
 notebook > header.top tabs:not(:only-child):last-child, notebook > header.bottom tabs:not(:only-child):last-child { margin-right: -1px; }
 
-notebook > header.top tabs tab, notebook > header.bottom tabs tab { margin-left: 4px; margin-right: 4px; }
+notebook > header.top tabs tab, notebook > header.bottom tabs tab { margin-left: 2px; margin-right: 2px; }
 
 notebook > header.top tabs tab.reorderable-page, notebook > header.bottom tabs tab.reorderable-page { border-style: none solid; }
 
-notebook > header.left tabs, notebook > header.right tabs { padding-top: 4px; padding-bottom: 4px; }
+notebook > header.left tabs, notebook > header.right tabs { padding-top: 2px; padding-bottom: 2px; }
 
 notebook > header.left tabs:not(:only-child), notebook > header.right tabs:not(:only-child) { margin-top: 3px; margin-bottom: 3px; }
 
@@ -959,13 +959,13 @@ notebook > header.left tabs:not(:only-child):first-child, notebook > header.righ
 
 notebook > header.left tabs:not(:only-child):last-child, notebook > header.right tabs:not(:only-child):last-child { margin-bottom: -1px; }
 
-notebook > header.left tabs tab, notebook > header.right tabs tab { margin-top: 4px; margin-bottom: 4px; }
+notebook > header.left tabs tab, notebook > header.right tabs tab { margin-top: 2px; margin-bottom: 2px; }
 
 notebook > header.left tabs tab.reorderable-page, notebook > header.right tabs tab.reorderable-page { border-style: solid none; }
 
-notebook > header.top tab { padding-bottom: 4px; }
+notebook > header.top tab { padding-bottom: 2px; }
 
-notebook > header.bottom tab { padding-top: 4px; }
+notebook > header.bottom tab { padding-top: 2px; }
 
 notebook > stack:not(:only-child) { background-color: #333333; }
 
@@ -986,7 +986,7 @@ scrollbar.right { border-left: 1px solid #1b1b1b; }
 
 scrollbar:backdrop { background-color: #333333; border-color: #202020; transition: 200ms ease-out; }
 
-scrollbar slider { min-width: 8px; min-height: 8px; margin: -1px; border: 4px solid transparent; border-radius: 10px; background-clip: padding-box; background-color: #616161; transition: all 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+scrollbar slider { min-width: 8px; min-height: 8px; margin: -1px; border: 4px solid transparent; border-radius: 7px; background-clip: padding-box; background-color: #616161; transition: all 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94); }
 
 scrollbar slider:hover { background-color: #818181; }
 
@@ -996,7 +996,7 @@ scrollbar slider:backdrop { background-color: #5a5a59; }
 
 scrollbar slider:disabled { background-color: transparent; }
 
-scrollbar.fine-tune slider { transition: none; min-width: 6px; min-height: 6px; }
+scrollbar.fine-tune slider { transition: none; min-width: 2px; min-height: 2px; }
 
 scrollbar.fine-tune.horizontal slider { border-width: 5px 4px; }
 
@@ -1006,15 +1006,15 @@ scrollbar.overlay-indicator:not(.dragging):not(.hovering) { border-color: transp
 
 scrollbar.overlay-indicator:not(.dragging):not(.hovering) slider { margin: 0; min-width: 3px; min-height: 3px; background-color: #cccccc; border: 1px solid black; }
 
-scrollbar.overlay-indicator:not(.dragging):not(.hovering) button { min-width: 5px; min-height: 5px; background-color: #cccccc; background-clip: padding-box; border-radius: 100%; border: 1px solid black; }
+scrollbar.overlay-indicator:not(.dragging):not(.hovering) button { min-width: 2px; min-height: 2px; background-color: #cccccc; background-clip: padding-box; border-radius: 100%; border: 1px solid black; }
 
 scrollbar.overlay-indicator.horizontal:not(.dragging):not(.hovering) slider { margin: 0 2px; min-width: 40px; }
 
-scrollbar.overlay-indicator.horizontal:not(.dragging):not(.hovering) button { margin: 1px 2px; min-width: 5px; }
+scrollbar.overlay-indicator.horizontal:not(.dragging):not(.hovering) button { margin: 1px 2px; min-width: 2px; }
 
 scrollbar.overlay-indicator.vertical:not(.dragging):not(.hovering) slider { margin: 2px 0; min-height: 40px; }
 
-scrollbar.overlay-indicator.vertical:not(.dragging):not(.hovering) button { margin: 2px 1px; min-height: 5px; }
+scrollbar.overlay-indicator.vertical:not(.dragging):not(.hovering) button { margin: 2px 1px; min-height: 2px; }
 
 scrollbar.overlay-indicator.dragging, scrollbar.overlay-indicator.hovering { opacity: 0.8; }
 
@@ -1074,27 +1074,27 @@ switch:backdrop:checked > slider { border-color: #030c17; }
 switch:backdrop:disabled slider { color: #5b5b5b; border-color: #202020; background-image: image(#282828); text-shadow: none; box-shadow: inset 0 1px rgba(255, 255, 255, 0); }
 
 /************************* Check and Radio items * */
-.view.content-view.check:not(list), iconview.content-view.check:not(list), .content-view:not(list) check { margin: 4px; min-width: 32px; min-height: 32px; color: transparent; background-color: #1b6acb; border-radius: 5px; background-image: none; transition: 200ms; box-shadow: none; border-width: 0; }
+.view.content-view.check:not(list), iconview.content-view.check:not(list), .content-view:not(list) check { margin: 2px; min-width: 28px; min-height: 28px; color: transparent; background-color: #1b6acb; border-radius: 2px; background-image: none; transition: 200ms; box-shadow: none; border-width: 0; }
 
-.view.content-view.check:hover:not(list), iconview.content-view.check:hover:not(list), .content-view:not(list) check:hover { margin: 4px; min-width: 32px; min-height: 32px; color: transparent; background-color: #1b6acb; border-radius: 5px; background-image: none; transition: 200ms; box-shadow: none; border-width: 0; }
+.view.content-view.check:hover:not(list), iconview.content-view.check:hover:not(list), .content-view:not(list) check:hover { margin: 2px; min-width: 28px; min-height: 28px; color: transparent; background-color: #1b6acb; border-radius: 2px; background-image: none; transition: 200ms; box-shadow: none; border-width: 0; }
 
-.view.content-view.check:active:not(list), iconview.content-view.check:active:not(list), .content-view:not(list) check:active { margin: 4px; min-width: 32px; min-height: 32px; color: transparent; background-color: #1b6acb; border-radius: 5px; background-image: none; transition: 200ms; box-shadow: none; border-width: 0; }
+.view.content-view.check:active:not(list), iconview.content-view.check:active:not(list), .content-view:not(list) check:active { margin: 2px; min-width: 28px; min-height: 28px; color: transparent; background-color: #1b6acb; border-radius: 2px; background-image: none; transition: 200ms; box-shadow: none; border-width: 0; }
 
-.view.content-view.check:backdrop:not(list), iconview.content-view.check:backdrop:not(list), .content-view:not(list) check:backdrop { margin: 4px; min-width: 32px; min-height: 32px; color: transparent; background-color: #737373; border-radius: 5px; background-image: none; transition: 200ms; box-shadow: none; border-width: 0; }
+.view.content-view.check:backdrop:not(list), iconview.content-view.check:backdrop:not(list), .content-view:not(list) check:backdrop { margin: 2px; min-width: 28px; min-height: 28px; color: transparent; background-color: #737373; border-radius: 2px; background-image: none; transition: 200ms; box-shadow: none; border-width: 0; }
 
-.view.content-view.check:checked:not(list), iconview.content-view.check:checked:not(list), .content-view:not(list) check:checked { margin: 4px; min-width: 32px; min-height: 32px; color: #cccccc; background-color: #1b6acb; border-radius: 5px; background-image: none; transition: 200ms; box-shadow: none; border-width: 0; }
+.view.content-view.check:checked:not(list), iconview.content-view.check:checked:not(list), .content-view:not(list) check:checked { margin: 2px; min-width: 28px; min-height: 28px; color: #cccccc; background-color: #1b6acb; border-radius: 2px; background-image: none; transition: 200ms; box-shadow: none; border-width: 0; }
 
-.view.content-view.check:checked:hover:not(list), iconview.content-view.check:checked:hover:not(list), .content-view:not(list) check:checked:hover { margin: 4px; min-width: 32px; min-height: 32px; color: #cccccc; background-color: #1b6acb; border-radius: 5px; background-image: none; transition: 200ms; box-shadow: none; border-width: 0; }
+.view.content-view.check:checked:hover:not(list), iconview.content-view.check:checked:hover:not(list), .content-view:not(list) check:checked:hover { margin: 2px; min-width: 28px; min-height: 28px; color: #cccccc; background-color: #1b6acb; border-radius: 2px; background-image: none; transition: 200ms; box-shadow: none; border-width: 0; }
 
-.view.content-view.check:checked:active:not(list), iconview.content-view.check:checked:active:not(list), .content-view:not(list) check:checked:active { margin: 4px; min-width: 32px; min-height: 32px; color: #cccccc; background-color: #1b6acb; border-radius: 5px; background-image: none; transition: 200ms; box-shadow: none; border-width: 0; }
+.view.content-view.check:checked:active:not(list), iconview.content-view.check:checked:active:not(list), .content-view:not(list) check:checked:active { margin: 2px; min-width: 28px; min-height: 28px; color: #cccccc; background-color: #1b6acb; border-radius: 2px; background-image: none; transition: 200ms; box-shadow: none; border-width: 0; }
 
-.view.content-view.check:backdrop:checked:not(list), iconview.content-view.check:backdrop:checked:not(list), .content-view:not(list) check:backdrop:checked { margin: 4px; min-width: 32px; min-height: 32px; color: rgba(238, 238, 236, 0.8); background-color: #737373; border-radius: 5px; background-image: none; transition: 200ms; box-shadow: none; border-width: 0; }
+.view.content-view.check:backdrop:checked:not(list), iconview.content-view.check:backdrop:checked:not(list), .content-view:not(list) check:backdrop:checked { margin: 2px; min-width: 28px; min-height: 28px; color: rgba(238, 238, 236, 0.8); background-color: #737373; border-radius: 2px; background-image: none; transition: 200ms; box-shadow: none; border-width: 0; }
 
 checkbutton.text-button, radiobutton.text-button { padding: 2px 0; outline-offset: 0; }
 
-checkbutton.text-button label:not(:only-child):first-child, radiobutton.text-button label:not(:only-child):first-child { margin-left: 4px; }
+checkbutton.text-button label:not(:only-child):first-child, radiobutton.text-button label:not(:only-child):first-child { margin-left: 2px; }
 
-checkbutton.text-button label:not(:only-child):last-child, radiobutton.text-button label:not(:only-child):last-child { margin-right: 4px; }
+checkbutton.text-button label:not(:only-child):last-child, radiobutton.text-button label:not(:only-child):last-child { margin-right: 2px; }
 
 check, radio { margin: 0 4px; min-height: 14px; min-width: 14px; border: 1px solid; }
 
@@ -1205,7 +1205,7 @@ row:selected progressbar progress, progressbar row:selected progress, row:select
 
 .osd progressbar progress:disabled, progressbar .osd progress:disabled, .osd scale highlight:disabled, scale .osd highlight:disabled { border-color: transparent; }
 
-scale { min-height: 10px; min-width: 10px; padding: 12px; }
+scale { min-height: 7px; min-width: 7px; padding: 12px; }
 
 scale fill, scale highlight { margin: -1px; }
 
@@ -1217,7 +1217,7 @@ scale.fine-tune.vertical { padding-left: 9px; padding-right: 9px; min-width: 16p
 
 scale.fine-tune slider { margin: -6px; }
 
-scale.fine-tune fill, scale.fine-tune highlight, scale.fine-tune trough { border-radius: 5px; }
+scale.fine-tune fill, scale.fine-tune highlight, scale.fine-tune trough { border-radius: 2px; }
 
 scale trough { outline-offset: 2px; }
 
@@ -1257,27 +1257,27 @@ row:selected scale slider:disabled, row:selected scale slider { border-color: #0
 
 scale marks, scale value { color: alpha(currentColor,0.55); font-feature-settings: "tnum"; }
 
-scale.horizontal marks.top { margin-bottom: 6px; margin-top: -12px; }
+scale.horizontal marks.top { margin-bottom: 2px; margin-top: -12px; }
 
-scale.horizontal.fine-tune marks.top { margin-bottom: 6px; margin-top: -9px; }
+scale.horizontal.fine-tune marks.top { margin-bottom: 2px; margin-top: -9px; }
 
-scale.horizontal marks.bottom { margin-top: 6px; margin-bottom: -12px; }
+scale.horizontal marks.bottom { margin-top: 2px; margin-bottom: -12px; }
 
-scale.horizontal.fine-tune marks.bottom { margin-top: 6px; margin-bottom: -9px; }
+scale.horizontal.fine-tune marks.bottom { margin-top: 2px; margin-bottom: -9px; }
 
-scale.vertical marks.top { margin-right: 6px; margin-left: -12px; }
+scale.vertical marks.top { margin-right: 2px; margin-left: -12px; }
 
-scale.vertical.fine-tune marks.top { margin-right: 6px; margin-left: -9px; }
+scale.vertical.fine-tune marks.top { margin-right: 2px; margin-left: -9px; }
 
-scale.vertical marks.bottom { margin-left: 6px; margin-right: -12px; }
+scale.vertical marks.bottom { margin-left: 2px; margin-right: -12px; }
 
-scale.vertical.fine-tune marks.bottom { margin-left: 6px; margin-right: -9px; }
+scale.vertical.fine-tune marks.bottom { margin-left: 2px; margin-right: -9px; }
 
-scale.horizontal indicator { min-height: 6px; min-width: 1px; }
+scale.horizontal indicator { min-height: 2px; min-width: 1px; }
 
 scale.horizontal.fine-tune indicator { min-height: 3px; }
 
-scale.vertical indicator { min-height: 1px; min-width: 6px; }
+scale.vertical indicator { min-height: 1px; min-width: 2px; }
 
 scale.vertical.fine-tune indicator { min-width: 3px; }
 
@@ -1359,39 +1359,39 @@ scale.color trough { background-image: image(#1b1b1b); background-repeat: no-rep
 
 scale.color.horizontal { padding: 0 0 15px 0; }
 
-scale.color.horizontal trough { padding-bottom: 4px; background-position: 0 -3px; border-top-left-radius: 0; border-top-right-radius: 0; }
+scale.color.horizontal trough { padding-bottom: 2px; background-position: 0 -3px; border-top-left-radius: 0; border-top-right-radius: 0; }
 
-scale.color.horizontal slider:dir(ltr):hover, scale.color.horizontal slider:dir(ltr):backdrop, scale.color.horizontal slider:dir(ltr):disabled, scale.color.horizontal slider:dir(ltr):backdrop:disabled, scale.color.horizontal slider:dir(ltr), scale.color.horizontal slider:dir(rtl):hover, scale.color.horizontal slider:dir(rtl):backdrop, scale.color.horizontal slider:dir(rtl):disabled, scale.color.horizontal slider:dir(rtl):backdrop:disabled, scale.color.horizontal slider:dir(rtl) { margin-bottom: -15px; margin-top: 6px; }
+scale.color.horizontal slider:dir(ltr):hover, scale.color.horizontal slider:dir(ltr):backdrop, scale.color.horizontal slider:dir(ltr):disabled, scale.color.horizontal slider:dir(ltr):backdrop:disabled, scale.color.horizontal slider:dir(ltr), scale.color.horizontal slider:dir(rtl):hover, scale.color.horizontal slider:dir(rtl):backdrop, scale.color.horizontal slider:dir(rtl):disabled, scale.color.horizontal slider:dir(rtl):backdrop:disabled, scale.color.horizontal slider:dir(rtl) { margin-bottom: -15px; margin-top: 2px; }
 
 scale.color.vertical:dir(ltr) { padding: 0 0 0 15px; }
 
-scale.color.vertical:dir(ltr) trough { padding-left: 4px; background-position: 3px 0; border-bottom-right-radius: 0; border-top-right-radius: 0; }
+scale.color.vertical:dir(ltr) trough { padding-left: 2px; background-position: 3px 0; border-bottom-right-radius: 0; border-top-right-radius: 0; }
 
-scale.color.vertical:dir(ltr) slider:hover, scale.color.vertical:dir(ltr) slider:backdrop, scale.color.vertical:dir(ltr) slider:disabled, scale.color.vertical:dir(ltr) slider:backdrop:disabled, scale.color.vertical:dir(ltr) slider { margin-left: -15px; margin-right: 6px; }
+scale.color.vertical:dir(ltr) slider:hover, scale.color.vertical:dir(ltr) slider:backdrop, scale.color.vertical:dir(ltr) slider:disabled, scale.color.vertical:dir(ltr) slider:backdrop:disabled, scale.color.vertical:dir(ltr) slider { margin-left: -15px; margin-right: 2px; }
 
 scale.color.vertical:dir(rtl) { padding: 0 15px 0 0; }
 
-scale.color.vertical:dir(rtl) trough { padding-right: 4px; background-position: -3px 0; border-bottom-left-radius: 0; border-top-left-radius: 0; }
+scale.color.vertical:dir(rtl) trough { padding-right: 2px; background-position: -3px 0; border-bottom-left-radius: 0; border-top-left-radius: 0; }
 
-scale.color.vertical:dir(rtl) slider:hover, scale.color.vertical:dir(rtl) slider:backdrop, scale.color.vertical:dir(rtl) slider:disabled, scale.color.vertical:dir(rtl) slider:backdrop:disabled, scale.color.vertical:dir(rtl) slider { margin-right: -15px; margin-left: 6px; }
+scale.color.vertical:dir(rtl) slider:hover, scale.color.vertical:dir(rtl) slider:backdrop, scale.color.vertical:dir(rtl) slider:disabled, scale.color.vertical:dir(rtl) slider:backdrop:disabled, scale.color.vertical:dir(rtl) slider { margin-right: -15px; margin-left: 2px; }
 
 scale.color.fine-tune.horizontal:dir(ltr), scale.color.fine-tune.horizontal:dir(rtl) { padding: 0 0 12px 0; }
 
 scale.color.fine-tune.horizontal:dir(ltr) trough, scale.color.fine-tune.horizontal:dir(rtl) trough { padding-bottom: 7px; background-position: 0 -6px; }
 
-scale.color.fine-tune.horizontal:dir(ltr) slider, scale.color.fine-tune.horizontal:dir(rtl) slider { margin-bottom: -15px; margin-top: 6px; }
+scale.color.fine-tune.horizontal:dir(ltr) slider, scale.color.fine-tune.horizontal:dir(rtl) slider { margin-bottom: -15px; margin-top: 2px; }
 
 scale.color.fine-tune.vertical:dir(ltr) { padding: 0 0 0 12px; }
 
 scale.color.fine-tune.vertical:dir(ltr) trough { padding-left: 7px; background-position: 6px 0; }
 
-scale.color.fine-tune.vertical:dir(ltr) slider { margin-left: -15px; margin-right: 6px; }
+scale.color.fine-tune.vertical:dir(ltr) slider { margin-left: -15px; margin-right: 2px; }
 
 scale.color.fine-tune.vertical:dir(rtl) { padding: 0 12px 0 0; }
 
 scale.color.fine-tune.vertical:dir(rtl) trough { padding-right: 7px; background-position: -6px 0; }
 
-scale.color.fine-tune.vertical:dir(rtl) slider { margin-right: -15px; margin-left: 6px; }
+scale.color.fine-tune.vertical:dir(rtl) slider { margin-right: -15px; margin-left: 2px; }
 
 /***************** Progress bars * */
 progressbar { font-size: smaller; color: rgba(238, 238, 236, 0.4); font-feature-settings: "tnum"; }
@@ -1427,11 +1427,11 @@ progressbar trough.empty progress { all: unset; }
 /************* Level Bar * */
 levelbar.horizontal block { min-height: 1px; }
 
-levelbar.horizontal.discrete block { margin: 0 1px; min-width: 32px; }
+levelbar.horizontal.discrete block { margin: 0 1px; min-width: 28px; }
 
 levelbar.vertical block { min-width: 1px; }
 
-levelbar.vertical.discrete block { margin: 1px 0; min-height: 32px; }
+levelbar.vertical.discrete block { margin: 1px 0; min-height: 28px; }
 
 levelbar:backdrop { transition: 200ms ease-out; }
 
@@ -1471,7 +1471,7 @@ frame > border.flat, .frame.flat { border-style: none; }
 
 frame > border:backdrop, .frame:backdrop { border-color: #202020; }
 
-actionbar > revealer > box { padding: 6px; border-top: 1px solid #1b1b1b; }
+actionbar > revealer > box { padding: 2px; border-top: 1px solid #1b1b1b; }
 
 actionbar > revealer > box:backdrop { border-color: #202020; }
 
@@ -1527,7 +1527,7 @@ row.activatable.has-open-popup:selected, row.activatable:selected:hover { backgr
 row.activatable:selected:backdrop { background-color: #4b6983; }
 
 /********************* App Notifications * */
-.app-notification, .app-notification.frame { padding: 10px; border-radius: 0 0 5px 5px; background-color: rgba(38, 38, 38, 0.9); background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent 2px); background-clip: padding-box; }
+.app-notification, .app-notification.frame { padding: 7px; border-radius: 0 0 5px 5px; background-color: rgba(38, 38, 38, 0.9); background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent 2px); background-clip: padding-box; }
 
 .app-notification:backdrop, .app-notification.frame:backdrop { background-image: none; transition: 200ms ease-out; }
 
@@ -1605,7 +1605,7 @@ paned .sidebar.left, paned .sidebar.right, paned .sidebar.left:dir(rtl), paned .
 
 stacksidebar row { padding: 10px 4px; }
 
-stacksidebar row > label { padding-left: 6px; padding-right: 6px; }
+stacksidebar row > label { padding-left: 2px; padding-right: 2px; }
 
 stacksidebar row.needs-attention > label { background-size: 6px 6px, 0 0; }
 
@@ -1671,7 +1671,7 @@ paned > separator:selected { background-image: image(#4b6983); }
 
 paned > separator:backdrop { background-image: image(#202020); }
 
-paned > separator.wide { min-width: 5px; min-height: 5px; background-color: #282828; background-image: image(#1b1b1b), image(#1b1b1b); background-size: 1px 1px, 1px 1px; }
+paned > separator.wide { min-width: 2px; min-height: 2px; background-color: #282828; background-image: image(#1b1b1b), image(#1b1b1b); background-size: 1px 1px, 1px 1px; }
 
 paned > separator.wide:backdrop { background-color: #282828; background-image: image(#202020), image(#202020); }
 
@@ -1719,32 +1719,32 @@ infobar.info selection, infobar.question selection, infobar.warning selection, i
 infobar.info *:link, infobar.question *:link, infobar.warning *:link, infobar.error *:link { color: #acee00; }
 
 /************ Tooltips * */
-tooltip { padding: 4px; /* not working */ border-radius: 5px; box-shadow: none; text-shadow: 0 1px black; }
+tooltip { padding: 2px; /* not working */ border-radius: 2px; box-shadow: none; text-shadow: 0 1px black; }
 
 tooltip.background { background-color: rgba(0, 0, 0, 0.8); background-clip: padding-box; border: 1px solid rgba(255, 255, 255, 0.1); }
 
 tooltip decoration { background-color: transparent; }
 
-tooltip * { padding: 4px; background-color: transparent; color: #cccccc; }
+tooltip * { padding: 2px; background-color: transparent; color: #cccccc; }
 
 /***************** Color Chooser * */
 colorswatch:drop(active), colorswatch { border-style: none; }
 
 colorswatch.top { border-top-left-radius: 5.5px; border-top-right-radius: 5.5px; }
 
-colorswatch.top overlay { border-top-left-radius: 5px; border-top-right-radius: 5px; }
+colorswatch.top overlay { border-top-left-radius: 2px; border-top-right-radius: 2px; }
 
 colorswatch.bottom { border-bottom-left-radius: 5.5px; border-bottom-right-radius: 5.5px; }
 
-colorswatch.bottom overlay { border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; }
+colorswatch.bottom overlay { border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; }
 
 colorswatch.left, colorswatch:first-child:not(.top) { border-top-left-radius: 5.5px; border-bottom-left-radius: 5.5px; }
 
-colorswatch.left overlay, colorswatch:first-child:not(.top) overlay { border-top-left-radius: 5px; border-bottom-left-radius: 5px; }
+colorswatch.left overlay, colorswatch:first-child:not(.top) overlay { border-top-left-radius: 2px; border-bottom-left-radius: 2px; }
 
 colorswatch.right, colorswatch:last-child:not(.bottom) { border-top-right-radius: 5.5px; border-bottom-right-radius: 5.5px; }
 
-colorswatch.right overlay, colorswatch:last-child:not(.bottom) overlay { border-top-right-radius: 5px; border-bottom-right-radius: 5px; }
+colorswatch.right overlay, colorswatch:last-child:not(.bottom) overlay { border-top-right-radius: 2px; border-bottom-right-radius: 2px; }
 
 colorswatch.dark { outline-color: rgba(255, 255, 255, 0.6); }
 
@@ -1776,7 +1776,7 @@ colorswatch overlay:backdrop, colorswatch overlay:backdrop:hover { border-color:
 
 colorswatch#add-color-button { border-radius: 5px 5px 0 0; }
 
-colorswatch#add-color-button:only-child { border-radius: 5px; }
+colorswatch#add-color-button:only-child { border-radius: 2px; }
 
 colorswatch#add-color-button overlay { color: #cccccc; outline-color: rgba(238, 238, 236, 0.3); border-color: #1b1b1b; border-bottom-color: #070707; background-image: linear-gradient(to top, #282828 2px, #282828); text-shadow: 0 -1px rgba(0, 0, 0, 0.834353); box-shadow: inset 0 1px rgba(255, 255, 255, 0.02), 0 1px 2px rgba(0, 0, 0, 0.07); }
 
@@ -1790,11 +1790,11 @@ colorswatch:disabled overlay { border-color: rgba(0, 0, 0, 0.6); box-shadow: non
 
 row:selected colorswatch { box-shadow: 0 0 0 2px #ffffff; }
 
-colorswatch#editor-color-sample { border-radius: 4px; }
+colorswatch#editor-color-sample { border-radius: 2px; }
 
 colorswatch#editor-color-sample overlay { border-radius: 4.5px; }
 
-colorchooser .popover.osd { border-radius: 5px; }
+colorchooser .popover.osd { border-radius: 2px; }
 
 /******** Misc * */
 .content-view { background-color: #232323; }
@@ -1803,12 +1803,12 @@ colorchooser .popover.osd { border-radius: 5px; }
 
 .content-view:backdrop { background-color: #232323; }
 
-.osd .scale-popup button.flat { border-style: none; border-radius: 5px; }
+.osd .scale-popup button.flat { border-style: none; border-radius: 2px; }
 
-.scale-popup button:hover { background-color: rgba(238, 238, 236, 0.1); border-radius: 5px; }
+.scale-popup button:hover { background-color: rgba(238, 238, 236, 0.1); border-radius: 2px; }
 
 /********************** Window Decorations * */
-decoration { border-radius: 8px 8px 0 0; border-width: 0px; box-shadow: 0 3px 9px 1px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(0, 0, 0, 0.75); margin: 10px; }
+decoration { border-radius: 8px 8px 0 0; border-width: 0px; box-shadow: 0 3px 9px 1px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(0, 0, 0, 0.75); margin: 7px; }
 
 decoration:backdrop { box-shadow: 0 3px 9px 1px transparent, 0 2px 6px 2px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.75); transition: 200ms ease-out; }
 
@@ -1824,19 +1824,19 @@ decoration:backdrop { box-shadow: 0 3px 9px 1px transparent, 0 2px 6px 2px rgba(
 
 .ssd decoration:backdrop { box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.75); }
 
-.csd.popup decoration { border-radius: 5px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.65); }
+.csd.popup decoration { border-radius: 2px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.65); }
 
-tooltip.csd decoration { border-radius: 5px; box-shadow: none; }
+tooltip.csd decoration { border-radius: 2px; box-shadow: none; }
 
 messagedialog.csd decoration { border-radius: 8px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.65); }
 
-.solid-csd decoration { margin: 0; padding: 4px; background-color: #1b1b1b; border: solid 1px #1b1b1b; border-radius: 0; box-shadow: inset 0 0 0 3px #333333, inset 0 1px rgba(238, 238, 236, 0.07); }
+.solid-csd decoration { margin: 0; padding: 2px; background-color: #1b1b1b; border: solid 1px #1b1b1b; border-radius: 0; box-shadow: inset 0 0 0 3px #333333, inset 0 1px rgba(238, 238, 236, 0.07); }
 
 .solid-csd decoration:backdrop { box-shadow: inset 0 0 0 3px #282828, inset 0 1px rgba(238, 238, 236, 0.07); }
 
 button.titlebutton { text-shadow: 0 -1px rgba(0, 0, 0, 0.834353); }
 
-button.titlebutton:not(.appmenu) { border-radius: 9999px; padding: 6px; margin: 0 2px; min-width: 0; min-height: 0; }
+button.titlebutton:not(.appmenu) { border-radius: 9999px; padding: 2px; margin: 0 2px; min-width: 0; min-height: 0; }
 
 button.titlebutton:backdrop { }
 
@@ -1870,7 +1870,7 @@ cursor-handle { background-color: transparent; background-image: none; box-shado
 
 .context-menu { font: initial; }
 
-.keycap { min-width: 20px; min-height: 25px; margin-top: 2px; padding-bottom: 3px; padding-left: 6px; padding-right: 6px; color: #cccccc; background-color: #333333; border: 1px solid; border-color: #1b1b1b; border-radius: 5px; box-shadow: inset 0 -3px #222222; font-size: smaller; }
+.keycap { min-width: 20px; min-height: 25px; margin-top: 2px; padding-bottom: 3px; padding-left: 2px; padding-right: 2px; color: #cccccc; background-color: #333333; border: 1px solid; border-color: #1b1b1b; border-radius: 2px; box-shadow: inset 0 -3px #222222; font-size: smaller; }
 
 .keycap:backdrop { background-color: #303030; color: #919190; transition: 200ms ease-out; }
 
@@ -1878,7 +1878,7 @@ cursor-handle { background-color: transparent; background-image: none; box-shado
 
 stackswitcher button.text-button { min-width: 100px; }
 
-stackswitcher button.circular, stackswitcher button.text-button.circular { min-width: 32px; min-height: 32px; padding: 0; }
+stackswitcher button.circular, stackswitcher button.text-button.circular { min-width: 28px; min-height: 28px; padding: 0; }
 
 /************* App Icons * */
 /* Outline for low res icons */
@@ -1892,7 +1892,7 @@ popover.emoji-picker { padding-left: 0; padding-right: 0; }
 
 popover.emoji-picker entry.search { margin: 3px 5px 5px 5px; }
 
-button.emoji-section { border-color: transparent; border-width: 3px; border-style: none none solid; border-radius: 0; margin: 2px 4px 2px 4px; padding: 3px 0 0; min-width: 32px; min-height: 28px; /* reset props inherited from the button style */ background: none; box-shadow: none; text-shadow: none; outline-offset: -5px; }
+button.emoji-section { border-color: transparent; border-width: 3px; border-style: none none solid; border-radius: 0; margin: 2px 4px 2px 4px; padding: 3px 0 0; min-width: 28px; min-height: 28px; /* reset props inherited from the button style */ background: none; box-shadow: none; text-shadow: none; outline-offset: -5px; }
 
 button.emoji-section:first-child { margin-left: 7px; }
 
@@ -1910,9 +1910,9 @@ button.emoji-section:hover label { opacity: 0.775; }
 
 button.emoji-section:checked label { opacity: 1; }
 
-popover.emoji-picker .emoji { font-size: x-large; padding: 6px; }
+popover.emoji-picker .emoji { font-size: x-large; padding: 2px; }
 
-popover.emoji-picker .emoji :hover { background: #4b6983; border-radius: 6px; }
+popover.emoji-picker .emoji :hover { background: #4b6983; border-radius: 2px; }
 
 popover.emoji-completion arrow { border: none; background: none; }
 
