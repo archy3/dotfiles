@@ -257,20 +257,20 @@ scrollbar.horizontal slider {min-height: 13px;}
 scrollbar.vertical slider {min-width: 13px;}
 
 scrollbar.horizontal slider, scrollbar.vertical slider {
-    background-color: shade(@theme_bg_color, 1.55);
+    background-color: shade(@theme_bg_color, 1.23);
     transition: none;
     border: 1px solid shade(@theme_bg_color, 0.85);
     border-radius: 0px;
 }
-scrollbar.horizontal slider:hover, scrollbar.vertical slider:hover {background-color: shade(@theme_bg_color, 1.80);}
-scrollbar.horizontal slider:hover:active, scrollbar.vertical slider:hover:active {background-color: shade(@theme_bg_color, 1.95);}
+scrollbar.horizontal slider:hover, scrollbar.vertical slider:hover {background-color: shade(@theme_bg_color, 1.5);}
+scrollbar.horizontal slider:hover:active, scrollbar.vertical slider:hover:active {background-color: shade(@theme_bg_color, 1.5);}
 
 scrollbar button {
-    background-color: shade(@theme_bg_color, 1.55);
+    background-color: shade(@theme_bg_color, 1.23);
     color: @theme_fg_color;
     border: 1px solid shade(@theme_bg_color, 0.85);
 }
-scrollbar button:hover {background-color: shade(@theme_bg_color, 1.95);}
+scrollbar button:hover {background-color: shade(@theme_bg_color, 1.5);}
 scrollbar button:active, scrollbar button:checked {background-color: shade(@theme_bg_color, 0.77);}
 scrollbar button:disabled {
     color: shade(@theme_fg_color, 0.5);
