@@ -2311,6 +2311,14 @@ window#XfcePanelWindow.xfce4-panel > widget  > widget > box.horizontal > widget.
 }
 
 
+/* BEGIN PCMANFM SETTINGS: */
+
+/* Remove border on free-space indicator: */
+window.background:only-child > decoration:first-child + box.vertical >
+    menubar#menubar:first-child + toolbar#toolbar.horizontal + notebook + statusbar.horizontal:last-child >
+    frame:first-child + frame:last-child > border:first-child {border: none;}
+
+
 /* BEGIN FIREFOX SETTINGS: */
 
 /* Make scrollbar more apparent: */

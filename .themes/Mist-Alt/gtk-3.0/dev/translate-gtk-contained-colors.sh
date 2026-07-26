@@ -280,6 +280,9 @@ EOF
   add_additions_xfce4_panel
 
   printf '\n\n'
+  add_additions_pcmanfm
+
+  printf '\n\n'
   add_additions_firefox
 }
 
@@ -417,6 +420,18 @@ window#XfcePanelWindow.xfce4-panel > widget  > widget > box.horizontal > widget.
     border-style: none;
     border-radius: 0px;
 }
+EOF
+}
+
+add_additions_pcmanfm()
+{
+  cat << 'EOF'
+/* BEGIN PCMANFM SETTINGS: */
+
+/* Remove border on free-space indicator: */
+window.background:only-child > decoration:first-child + box.vertical >
+    menubar#menubar:first-child + toolbar#toolbar.horizontal + notebook + statusbar.horizontal:last-child >
+    frame:first-child + frame:last-child > border:first-child {border: none;}
 EOF
 }
 
