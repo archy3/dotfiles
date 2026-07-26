@@ -111,6 +111,9 @@ frame > border, .frame {border: 1px solid shade(@theme_fg_color, 0.43);}
 tooltip * {padding: 0px;}
 tooltip {border-radius: 0px;}
 
+/* Reduce the amount of vertical space that statusbars take: */
+statusbar.horizontal {margin-top: -3px; margin-bottom: -3px;}
+
 /* Make sliders (like volume control) and progress bars more apparent: */
 scale trough {
     background-color: shade(@theme_bg_color, 0.7);
