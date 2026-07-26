@@ -15,7 +15,7 @@ super + {e, t, n, m, c, i, w, y, j, x, g, r, v, l}
 	xscreensaver-command -lock &}
 
 super + p
-	~/scripts/lof.sh gpick &
+	gpick -p &
 
 super + alt + {t, i, n, F4}
 	{xterm -sl 0 -e "$HOME/scripts/tmux-auto-attach.sh" &, \
