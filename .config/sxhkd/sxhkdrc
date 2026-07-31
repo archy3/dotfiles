@@ -14,7 +14,7 @@ super + {e, t, n, m, c, i, w, y, j, x, g, r, v, l}
 	~/scripts/lof.sh pulseeffects &, \
 	xscreensaver-command -lock &}
 
-super + p
+super + z
 	gpick -p &
 
 super + alt + {t, i, n, F4}
