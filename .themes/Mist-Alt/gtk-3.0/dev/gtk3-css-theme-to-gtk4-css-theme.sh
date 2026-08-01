@@ -21,8 +21,8 @@ main()
 replace_gtk3_url_with_gtk4_url()
 {
   set -- \
-    "resource:///org/gtk/libgtk/theme/Adwaita/gtk-contained-dark.css" \
-    "resource:///org/gtk/libgtk/theme/Default/Default-dark.css"
+    resource:///org/gtk/libgtk/theme/Adwaita/gtk-contained-dark.css \
+    resource:///org/gtk/libgtk/theme/Default/Default-dark.css
 
   sed "s|${1}|${2}|g"
 }
