@@ -16,10 +16,10 @@ main()
   #     '$1 ~ "^" hex hex hex hex hex hex "$" {printf "#%s\n", $1;}' |
   #     sort -u
   # ```
-  dir_of_this_theme=~/.themes/Mist-Alt/gtk-3.0
-  input="${1:-"${dir_of_this_theme}/dev/gtk-contained-dark.css"}"
-  translation_table="${2:-"${dir_of_this_theme}/dev/color-translation-table"}"
-  output="${3:-"${dir_of_this_theme}/gtk.css"}"
+  dir_of_this_theme=~/.themes/Mist-Alt
+  input="${1:-"${dir_of_this_theme}/build-scripts/gtk-contained-dark.css"}"
+  translation_table="${2:-"${dir_of_this_theme}/build-scripts/color-translation-table"}"
+  output="${3:-"${dir_of_this_theme}/gtk-3.0/gtk.css"}"
   named_white_replacement="${4:-"#cccccc"}"
   visited_link_color="${5:-"#ff8000"}"
 
