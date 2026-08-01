@@ -87,7 +87,8 @@ replace_named_white()
 # Without this, all the assets (such as checkboxes) will appear solid red.
 remove_assets()
 {
-  printf '%s\n\n' '@import url("resource:///org/gtk/libgtk/theme/Adwaita/gtk-contained-dark.css");'
+  printf '@import url("%s");\n\n' \
+    resource:///org/gtk/libgtk/theme/Adwaita/gtk-contained-dark.css
 
   grep -v assets
 }
