@@ -1,0 +1,3 @@
+/* Referenced CSS files that we don't want to use (such as because they contain
+ * code that only works on GTK3) should be symlinked to this empty CSS file.
+ */

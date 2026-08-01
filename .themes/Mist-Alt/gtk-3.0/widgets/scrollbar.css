@@ -1,0 +1,43 @@
+/* Scrollbar settings: */
+@import url('scrollbar.gtk3-only.css');
+
+scrollbar.top {border-bottom: 2px solid @theme_bg_color;}
+scrollbar.bottom {border-top: 2px solid @theme_bg_color;}
+scrollbar.left {border-right: 2px solid @theme_bg_color;}
+scrollbar.right {border-left: 2px solid @theme_bg_color;}
+
+scrollbar.horizontal trough {
+    background-color: shade(@theme_bg_color, 0.77);
+    border-top: 1px solid shade(@theme_bg_color, 0.53);
+    border-bottom: 1px solid shade(@theme_bg_color, 0.53);
+}
+
+scrollbar.vertical trough {
+    background-color: shade(@theme_bg_color, 0.77);
+    border-left: 1px solid shade(@theme_bg_color, 0.53);
+    border-right: 1px solid shade(@theme_bg_color, 0.53);
+}
+
+scrollbar.horizontal slider {min-height: 13px;}
+scrollbar.vertical slider {min-width: 13px;}
+
+scrollbar.horizontal slider, scrollbar.vertical slider {
+    background-color: shade(@theme_bg_color, 1.23);
+    transition: none;
+    border: 1px solid shade(@theme_bg_color, 0.85);
+    border-radius: 0px;
+}
+scrollbar.horizontal slider:hover, scrollbar.vertical slider:hover {background-color: shade(@theme_bg_color, 1.5);}
+scrollbar.horizontal slider:hover:active, scrollbar.vertical slider:hover:active {background-color: shade(@theme_bg_color, 1.5);}
+
+scrollbar button {
+    background-color: shade(@theme_bg_color, 1.23);
+    color: @theme_fg_color;
+    border: 1px solid shade(@theme_bg_color, 0.85);
+}
+scrollbar button:hover {background-color: shade(@theme_bg_color, 1.5);}
+scrollbar button:active, scrollbar button:checked {background-color: shade(@theme_bg_color, 0.77);}
+scrollbar button:disabled {
+    color: shade(@theme_fg_color, 0.5);
+    background-color: shade(@theme_bg_color, 0.95);
+}

@@ -1,0 +1,33 @@
+/* Use a more readable color for days not in the selected month: */
+calendar:indeterminate {color: mix(@theme_base_color, @theme_fg_color, 0.47);}
+
+/* Make separator bars more apparent against the background: */
+separator {background-color: shade(@theme_fg_color, 0.43);}
+separator.sidebar {background-color: shade(@theme_fg_color, 0.43);}
+treeview.view.separator {color: shade(@theme_fg_color, 0.43);}
+paned > separator {background-image: image(shade(@theme_fg_color, 0.43));}
+paned > separator.wide {background-image: image(shade(@theme_fg_color, 0.43)), image(shade(@theme_fg_color, 0.43));}
+frame > border, .frame {border: 1px solid shade(@theme_fg_color, 0.43);}
+
+/* Reduce padding, removed rounded corners, and add borders on tooltips: */
+tooltip * {padding: 0px;}
+tooltip, tooltip.background {
+    border: 1px solid shade(@theme_fg_color, 0.43);
+    border-radius: 0px;
+    text-shadow: none;
+}
+
+/* Reduce padding on toolbar elements: */
+toolbar {padding: 3px;}
+toolbar.horizontal separator {margin: 0 5px 0px 4px;}
+toolbar.vertical separator {margin: 5px 0px 5px 0;}
+toolbar:not(.inline-toolbar):not(.osd) > *:not(.toggle):not(.popup) > * {margin-right: 1px; margin-bottom: 0px;}
+toolbar.horizontal toolbutton button {padding: 0px 2px 0px 2px;}
+
+/* Reduce the amount of vertical space that statusbars take: */
+statusbar.horizontal {margin-top: -3px; margin-bottom: -3px;}
+
+/* Make column headers more distinguishable: */
+treeview.view header button {color: @theme_fg_color; background-color: @theme_bg_color; font-weight: normal;}
+treeview.view header button:hover {color: @theme_fg_color; background-color: shade(@theme_base_color, 0.97);}
+treeview.view header button:active {color: @theme_fg_color; background-color: shade(@theme_bg_color, 0.7);}

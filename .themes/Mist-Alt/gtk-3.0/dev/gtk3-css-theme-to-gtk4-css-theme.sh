@@ -70,27 +70,9 @@ remove_declaration_from_declaration_blocks() # <pattern>
 
 add_additions()
 {
-  # Pipe previous input through:
   cat
-
-  printf '\n\n'
-
-  cat << 'EOF'
-/* BEGIN GTK4-SPECIFIC SETTINGS: */
-
-/* Make frame borders more apparent against the background: */
-frame {border: 1px solid shade(@theme_fg_color, 0.43);}
-
-/* GTK4 scrollbar settings: */
-scrollbar.horizontal slider {min-height: 8px;}
-scrollbar.vertical slider {min-width: 8px;}
-scrollbar.horizontal slider, scrollbar.vertical slider {
-    background-color: shade(@theme_bg_color, 2.55);
-    border-radius: 10px;
-}
-scrollbar.horizontal slider:hover, scrollbar.vertical slider:hover {background-color: shade(@theme_bg_color, 2.80);}
-scrollbar.horizontal slider:hover:active, scrollbar.vertical slider:hover:active {background-color: shade(@theme_bg_color, 3.1);}
-EOF
+  printf '\n\n/* BEGIN GTK4-SPECIFIC SETTINGS: */\n\n'
+  printf "@import url('%s');\n" gtk4-specific.css
 }
 
 main "$@"

@@ -1,0 +1,17 @@
+/* Make scrollbar more apparent: */
+window.background > widget > scrollbar.horizontal > contents > trough,
+window.background > widget > scrollbar.vertical > contents > trough {
+    background-color: shade(@theme_base_color, 0.975);
+}
+window.background > widget > scrollbar.horizontal > contents > trough > slider,
+window.background > widget > scrollbar.vertical > contents > trough > slider {
+    background-color: shade(@theme_base_color, 2.7);
+}
+window.background > widget > scrollbar.horizontal > contents > trough > slider:hover,
+window.background > widget > scrollbar.vertical > contents > trough > slider:hover {
+    background-color: shade(@theme_base_color, 3.075);
+}
+window.background > widget > scrollbar.horizontal > contents > trough > slider:hover:active,
+window.background > widget > scrollbar.vertical > contents > trough > slider:hover:active {
+    background-color: shade(@theme_base_color, 2.7);
+}

@@ -1,0 +1,5 @@
+/* Set xfce4-panel taskbar button size: */
+window#XfcePanelWindow.xfce4-panel > widget  > widget > box.horizontal > widget.tasklist {
+    -XfceTasklist-min-button-length: 150;
+    -XfceTasklist-max-button-length: 150;
+}

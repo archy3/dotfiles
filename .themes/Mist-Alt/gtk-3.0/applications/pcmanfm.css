@@ -1,0 +1,11 @@
+/* Make the "Places/Directory Tree" combo box be the right color: */
+window.background:only-child > decoration:first-child + box.vertical >
+    menubar#menubar:first-child + toolbar#toolbar.horizontal + notebook >
+    header.top:first-child + stack:last-child > paned.horizontal >
+    box.vertical:first-child > box.horizontal:first-child >
+    button.flat:only-child {background-color: @theme_bg_color;}
+
+/* Remove border on free-space indicator: */
+window.background:only-child > decoration:first-child + box.vertical >
+    menubar#menubar:first-child + toolbar#toolbar.horizontal + notebook + statusbar.horizontal:last-child >
+    frame:first-child + frame:last-child > border:first-child {border: none;}

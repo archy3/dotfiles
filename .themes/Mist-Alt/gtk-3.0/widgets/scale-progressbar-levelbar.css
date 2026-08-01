@@ -1,0 +1,73 @@
+/* Make sliders (like volume control) and progress bars more apparent: */
+scale trough {
+    background-color: shade(@theme_bg_color, 0.7);
+    border-radius: 0px;
+}
+progressbar trough {
+    background-color: shade(@theme_bg_color, 0.7);
+    border: 1px solid shade(@theme_bg_color, 0.35);
+    border-radius: 0px;
+}
+levelbar trough {
+    background-color: shade(@theme_bg_color, 0.7);
+    border-radius: 0px;
+}
+
+scale trough highlight {
+    background-color: shade(@theme_selected_bg_color, 1.12);
+    border: 1px solid shade(@theme_bg_color, 0.47);
+    border-radius: 0px;
+}
+progressbar trough progress {
+    background-color: shade(@theme_selected_bg_color, 1.12);
+    border: 1px solid shade(@theme_selected_bg_color, 0.7);
+    border-radius: 0px;
+}
+levelbar.discrete trough block.filled {
+    background-color: shade(@theme_selected_bg_color, 1.12);
+    border-color: shade(@theme_selected_bg_color, 1.12);
+    border-radius: 0px;
+}
+levelbar.discrete trough block.full {
+    background-color: @success_color;
+    border-color: @success_color;
+    border-radius: 0px;
+}
+levelbar.continuous trough block.filled {
+    background-color: shade(@theme_selected_bg_color, 1.12);
+    border-color: shade(@theme_selected_bg_color, 1.12);
+    border-radius: 0px;
+}
+levelbar.continuous trough block.full {
+    background-color: @success_color;
+    border-color: @success_color;
+    border-radius: 0px;
+}
+
+scale.horizontal trough {min-height: 8px;}
+scale.vertical trough {min-width: 8px;}
+progressbar.horizontal trough {min-height: 19px;}
+progressbar.vertical trough {min-width: 19px;}
+progressbar.horizontal trough progress {
+    min-height: 17px;
+    border-radius: 0px;
+    margin: 0px;
+}
+progressbar.vertical trough progress {
+    min-width: 17px;
+    border-radius: 0px;
+    margin: 0px;
+}
+levelbar.discrete.horizontal trough block {min-height: 4px;}
+levelbar.continuous.horizontal trough block {min-height: 4px;}
+levelbar.discrete.vertical trough block {min-width: 4px;}
+levelbar.continuous.vertical trough block {min-width: 4px;}
+
+scale:not(.marks-before):not(.marks-after) slider {background-image: none;}
+scale:not(.marks-before):not(.marks-after) slider {background-color: shade(@theme_base_color, 1.37);}
+scale:not(.marks-before):not(.marks-after) slider:hover {background-color: shade(@theme_base_color, 1.6);}
+scale:not(.marks-before):not(.marks-after) slider:hover:active {background-color: shade(@theme_base_color, 1.6);}
+
+treeview.view.trough {background-color: shade(@theme_base_color, 1.37);}
+treeview.view.trough:selected:focus, treeview.view.trough:selected {background-color: shade(@theme_base_color, 1.7);}
+treeview.view.progressbar:selected:focus, treeview.view.progressbar:selected {background-image: image(shade(@theme_selected_bg_color, 1.25));}

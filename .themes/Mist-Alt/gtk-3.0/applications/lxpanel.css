@@ -1,0 +1,42 @@
+/* Colorscheme for lxpanel taskbar buttons: */
+window#PanelToplevel.background > box.horizontal > box#taskbar.horizontal > widget > button.toggle {
+    color: shade(@theme_fg_color, 1.10);
+    background-image: none;
+    background-color: shade(@theme_base_color, 1.02);
+    border: 1px solid shade(@theme_bg_color, 0.9);
+    border-radius: 0px;
+}
+
+window#PanelToplevel.background > box.horizontal > box#taskbar.horizontal > widget > button.toggle:checked {
+    color: shade(@theme_selected_fg_color, 0.90);
+    background-image: none;
+    background-color: shade(@theme_bg_color, 1.85);
+}
+
+window#PanelToplevel.background > box.horizontal > box#taskbar.horizontal > widget > button.toggle:hover {
+    color: @theme_selected_fg_color;
+    background-image: none;
+    background-color: shade(@theme_bg_color, 2.15);
+}
+
+/* Colorscheme for the lxpanel pager:
+       `color:` is the border around windows.
+       `background-color` is the color of the window in the pager,
+       and a darker shade of it is used for the background
+       (and a ligher shade of it is used for the color of the
+       active window).
+*/
+window#PanelToplevel.background > box.horizontal > widget#pager > widget > wnck-pager > wnck-pager.wnck-pager {
+    color: @theme_bg_color;
+    background-color: shade(@theme_base_color, 3.0);
+}
+
+window#PanelToplevel.background > box.horizontal > widget#pager > widget > wnck-pager > wnck-pager.wnck-pager:selected {
+    color: @theme_fg_color;
+    background-color: @theme_selected_bg_color;
+}
+
+window#PanelToplevel.background > box.horizontal > widget#pager > widget > wnck-pager > wnck-pager.wnck-pager:hover {
+    color: @theme_fg_color;
+    background-color: @theme_selected_bg_color;
+}
