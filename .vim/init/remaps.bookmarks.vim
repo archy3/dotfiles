@@ -9,6 +9,7 @@ function! s:Show_bookmarks_menu() abort
     \   ['e'    , 'Xresources 🐧',     '~/.Xresources'],
     \   ['r'    , 'xinitrc    🐧',     '~/.xinitrc'],
     \   ['R'    , 'xserverrc  🐧',     '~/.xserverrc'],
+    \   ['t'    , 'gtk theme 🌻',      '~/.themes/Mist-Alt/gtk-3.0/gtk.css'],
     \   ['a'    , 'vimrc 📝',          (has('unix') ? '~/.vim' : '~/vimfiles') . '/vimrc'],
     \   ['s'    , 'openbox 🍊',        '~/.config/openbox/rc.xml'],
     \   ['S'    , 'polybar 🍋',        '~/.config/polybar/config'],
