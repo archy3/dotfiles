@@ -31,3 +31,16 @@ statusbar.horizontal {margin-top: -3px; margin-bottom: -3px;}
 treeview.view header button {color: @theme_fg_color; background-color: @theme_bg_color; font-weight: normal;}
 treeview.view header button:hover {color: @theme_fg_color; background-color: shade(@theme_base_color, 0.97);}
 treeview.view header button:active {color: @theme_fg_color; background-color: shade(@theme_bg_color, 0.7);}
+
+/* Make buttons more distinguishable: */
+button {
+    background-image: image(@theme_base_color);
+    transition: none;
+}
+button:hover {background-image: image(shade(@theme_base_color, 1.23));}
+button:active, button:checked {background-image: image(shade(@theme_base_color, 1.4));}
+button:disabled {background-image: image(shade(@theme_bg_color, 0.7));}
+
+/* Make disabled state theme consistent with `button:disabled` : */
+entry:disabled {background-color: shade(@theme_bg_color, 0.7);}
+spinbutton:disabled:not(.vertical) {background-color: shade(@theme_bg_color, 0.7);}
