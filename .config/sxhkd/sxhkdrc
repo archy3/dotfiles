@@ -3,7 +3,7 @@ super + {e, t, n, m, c, i, w, y, j, x, g, r, v, l}
 	~/scripts/lof.sh xterm -sl 0 -e "$HOME/scripts/tmux-auto-attach.sh" &, \
 	gvim &, \
 	~/scripts/lof.sh xterm -class HTop -sl 0 -e htop -u &, \
-	GTK_THEME=Arc-Dark galculator &, \
+	galculator &, \
 	~/scripts/lof.sh firefox-esr -P default-new-browser &, \
 	gtk-launch libreoffice-writer &, \
 	gtk-launch lyx &, \
