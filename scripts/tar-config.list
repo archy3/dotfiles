@@ -50,6 +50,7 @@ scripts/color.sh
 scripts/config-new-user-for-first-login.sh
 scripts/edit-config.sh
 scripts/encrypt-to-tar-gz-gpg-aes256.sh
+scripts/galculator-focus-input-field.sh
 scripts/lof.sh
 scripts/lof-virt-manager.sh
 scripts/paste-by-typing.sh
