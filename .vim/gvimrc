@@ -2,12 +2,20 @@ set guifont=Monospace\ 11
 set guifont+=DejaVu_Sans_Mono:h12:cANSI:qDRAFT
 set guifont+=Consolas:h14:cANSI:qDRAFT
 
-filetype detect " from https://stackoverflow.com/a/65367744
 function! s:SetWindowDimensions() abort
-  let &columns = get({'tex': 95, 'ps1': 120}, &filetype, 85)
+  let &columns = matchstr(&colorcolumn, '^[^,]*') + 5
   set lines=24
 endfunction
 call <SID>SetWindowDimensions()
+
+" Call `<SID>SetWindowDimensions()` again after `VimEnter` because
+" now a ftplugin might have changed `&colorcolumn` (but we still
+" keep the initial call so that there is not a sudden large change
+" in window dimensions after loading the ftplugin).
+augroup set_gvim_window_dimensions_after_ftplugins_are_loaded
+  autocmd!
+  autocmd VimEnter * call <SID>SetWindowDimensions()
+augroup END
 
 " Reset dimensions if they get messed up:
 nnoremap <C-S-n> <cmd>call <SID>SetWindowDimensions()<cr>
