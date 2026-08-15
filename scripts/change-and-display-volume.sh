@@ -12,10 +12,8 @@ main()
 
   current_vol=$(
     amixer -D pulse get Master |
-      awk '$1 == "Front" && $2 == "Right:" {print $5}'
+      awk '$1 == "Front" && $2 == "Right:" {gsub("]|\\[", "", $5); print $5}'
   )
-  current_vol="${current_vol%']'}"
-  current_vol="${current_vol#'['}"
 
   notify-send \
     --hint=int:transient:1 \
