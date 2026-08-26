@@ -5,7 +5,7 @@ endif
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/vim/UltiSnips']
 
 " From https://github.com/SirVer/ultisnips/issues/1038#issuecomment-452196478
 " (See also https://github.com/SirVer/ultisnips/issues/1371#issuecomment-868769414

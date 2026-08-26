@@ -7,7 +7,7 @@ setlocal foldmethod=marker
 normal! zR
 
 if has('unix') || has('win32')
-  let s:vimrc_dir = has('unix') ? '~/.vim' : '~/vimfiles'
+  let s:vimrc_dir = has('unix') ? '~/.config/vim' : '~/vimfiles'
   exec 'setlocal path+=' . s:vimrc_dir . '/init/'
   exec 'setlocal path+=' . s:vimrc_dir . '/after/ftplugin'
   exec 'setlocal path+=' . s:vimrc_dir . '/plugin'
@@ -35,7 +35,7 @@ nnoremap <buffer> gf <cmd>call <SID>gf()<cr>
 if has('unix') || has('win32')
   nnoremap <buffer> <Leader>r
     \ <cmd>
-    \   exec 'source ' . (has('unix') ? '~/.vim' : '~/vimfiles') . '/vimrc' <bar>
+    \   exec 'source ' . (has('unix') ? '~/.config/vim' : '~/vimfiles') . '/vimrc' <bar>
     \   echo 'vimrc sourced!'
     \ <cr>
 endif

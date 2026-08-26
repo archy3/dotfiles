@@ -12,7 +12,7 @@ if has('eval') " vim-tiny does not have `eval`
   "endif
 
   if has('unix') || has('win32')
-    let s:vimrc_dir = has('unix') ? '~/.vim' : '~/vimfiles'
+    let s:vimrc_dir = has('unix') ? '~/.config/vim' : '~/vimfiles'
     exec 'set directory=' . s:vimrc_dir . '/.swap//'
     exec 'set backupdir=' . s:vimrc_dir . '/.backup//'
     " Do not remember marks ('0) nor registers (<0,s0) nor search (/0) nor
@@ -25,7 +25,8 @@ if has('eval') " vim-tiny does not have `eval`
     set viminfofile=NONE
   endif
 
-  " This dictionary tells scripts in ~/.vim/plugin that these plugins are loaded:
+  " This dictionary tells scripts in ~/.config/vim/plugin
+  " that these plugins are loaded:
   let g:plugins_i_want_to_load = {}
   let g:plugins_i_want_to_load['matchit'] = 1
   let g:plugins_i_want_to_load['gruvbox'] = 1

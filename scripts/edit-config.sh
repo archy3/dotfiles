@@ -18,8 +18,8 @@ list()
 .config/sxhkd/sxhkdrc
 .config/nsxiv/exec/key-handler
 .config/tmux/tmux.conf
+.config/vim/vimrc
 .config/zathura/zathurarc
-.vim/vimrc
 EOF
 }
 

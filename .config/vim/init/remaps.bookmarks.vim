@@ -10,7 +10,7 @@ function! s:Show_bookmarks_menu() abort
     \   ['r'    , 'xinitrc    🐧',     '~/.xinitrc'],
     \   ['R'    , 'xserverrc  🐧',     '~/.xserverrc'],
     \   ['t'    , 'gtk theme 🌻',      '~/.themes/Mist-Alt/gtk-3.0/gtk.css'],
-    \   ['a'    , 'vimrc 📝',          (has('unix') ? '~/.vim' : '~/vimfiles') . '/vimrc'],
+    \   ['a'    , 'vimrc 📝',          (has('unix') ? '~/.config/vim' : '~/vimfiles') . '/vimrc'],
     \   ['s'    , 'openbox 🍊',        '~/.config/openbox/rc.xml'],
     \   ['S'    , 'polybar 🍋',        '~/.config/polybar/config'],
     \   ['<C-s>', 'dunst 🔔',          '~/.config/dunst/dunstrc'],

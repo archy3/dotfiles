@@ -2,7 +2,6 @@
 .bashrc
 .inputrc
 .profile
-.vim
 .XCompose
 .xinitrc
 .Xresources
@@ -24,6 +23,7 @@
 .config/nsxiv
 .config/tmux
 .config/user-dirs.dirs
+.config/vim
 .config/xkb
 .config/xfce4/panel
 .config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml

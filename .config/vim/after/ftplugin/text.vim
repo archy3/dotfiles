@@ -1,4 +1,4 @@
-if filereadable($HOME . '/.vim/spell/es.utf-8.spl')
+if filereadable($HOME . '/.config/vim/spell/es.utf-8.spl')
   setlocal spelllang=en,es
 endif
 setlocal wrap
