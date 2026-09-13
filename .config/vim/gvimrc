@@ -3,7 +3,7 @@ set guifont+=DejaVu_Sans_Mono:h12:cANSI:qDRAFT
 set guifont+=Consolas:h14:cANSI:qDRAFT
 
 function! s:SetWindowDimensions() abort
-  let &columns = matchstr(&colorcolumn, '^[^,]*') + 5
+  let &columns = matchstr(&colorcolumn, '^\d*') + 5
   set lines=24
 endfunction
 call <SID>SetWindowDimensions()
