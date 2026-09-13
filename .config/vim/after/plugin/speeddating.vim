@@ -61,7 +61,8 @@ let s:cycles += [
             \ ['NewDocumentEnvironment', 'RenewDocumentEnvironment', 'DeclareDocumentEnvironment', 'ProvideDocumentEnvironment'],
             \ ['frac', 'dfrac', 'tfrac'],
             \ ['tiny', 'scriptsize', 'footnotesize', 'small', 'normalsize', 'large', 'Large', 'LARGE', 'huge', 'Huge'],
-            \ ['scriptscriptstyle', 'scriptstyle', 'textstyle', 'displaystyle']
+            \ ['scriptscriptstyle', 'scriptstyle', 'textstyle', 'displaystyle'],
+            \ ['arabic', 'alph', 'Alph', 'roman', 'Roman']
             \ ]
 
 " LaTeX Exam additions:
