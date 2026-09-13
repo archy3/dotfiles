@@ -10,6 +10,7 @@ from UltiSnips.error import PebkacError
 from UltiSnips.snippet.definition import UltiSnipsSnippetDefinition
 from UltiSnips.snippet.source.file.base import SnippetFileSource
 from UltiSnips.snippet.source.file.common import (
+    expand_runtimepath_entry,
     handle_action,
     handle_context,
     handle_extends,
@@ -25,13 +26,22 @@ def find_snippet_files(ft, directory: str) -> set[str]:
     directory_path = Path(directory).expanduser()
     for pattern in patterns:
         for fn in directory_path.glob(pattern % ft):
+            # Unlike glob.glob, Path.glob matches hidden files, so the
+            # "ft/*" pattern would pick up Vim's undo/swap files (e.g.
+            # ".foo.snippets.un~") and choke parsing them.
+            if fn.name.startswith("."):
+                continue
             ret.add(normalize_file_path(str(fn)))
     return ret
 
 
 def find_all_snippet_directories() -> list[str]:
-    """Returns a list of the absolute path of all potential snippet
-    directories, no matter if they exist or not."""
+    """Returns the paths of all snippet directories to search.
+
+    A single absolute entry in `UltiSnipsSnippetDirectories` is returned as
+    is, whether it exists or not. Otherwise every 'runtimepath' entry is
+    combined with every configured directory name and only the combinations
+    that exist on disk are returned."""
 
     if vim_helper.eval("exists('b:UltiSnipsSnippetDirectories')") == "1":
         snippet_dirs = vim_helper.eval("b:UltiSnipsSnippetDirectories")
@@ -56,10 +66,7 @@ def find_all_snippet_directories() -> list[str]:
                     "directory for UltiSnips snippets."
                 )
             pth = Path(rtp, snippet_dir).expanduser()
-            # Runtimepath entries may contain wildcards.
-            all_dirs.extend(
-                str(p) for p in Path(pth.anchor).glob(str(pth.relative_to(pth.anchor)))
-            )
+            all_dirs.extend(str(p) for p in expand_runtimepath_entry(pth))
     return all_dirs
 
 
