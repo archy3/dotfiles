@@ -1,5 +1,4 @@
 " From: https://gist.github.com/tpope/1290527
-" Place in: ~/.config/vim/after/plugin/speeddating.vim
 
 if !exists('g:loaded_speeddating') || !g:loaded_speeddating
   finish
