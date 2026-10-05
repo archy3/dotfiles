@@ -171,10 +171,22 @@ snippet item "Itemize" bA
 \end{itemize}
 endsnippet
 
+snippet desc "Description" b
+\begin{description}
+	\item[$1] $0
+\end{description}
+endsnippet
+
 # next item in a list
 context "env('enumerate') or env('itemize')"
 snippet == "new-item" iA
 \item $0
+endsnippet
+
+# next item in a list
+context "env('description')"
+snippet == "new-description-item" iA
+\item[$1] $0
 endsnippet
 
 context "not math()"
