@@ -41,7 +41,12 @@ snippet new "boilerplate" b
 \usepackage{newunicodechar}
 \usepackage{varwidth}
 \usepackage{gensymb}
+\usepackage{ulem,contour}
 %\usepackage{embedall}
+
+% From https://alexwlchan.net/2017/latex-underlines/
+\setlength{\ULdepth}{1.8pt}\contourlength{0.8pt}
+\newcommand{\myuline}[1]{\uline{\phantom{#1}}\llap{\contour{white}{#1}}}
 
 \newcommand{\mymarginr}[2][0ex]{{\normalmarginpar\marginnote{\footnotesize#2}[#1]}}
 \newcommand{\mymarginl}[2][0ex]{{\reversemarginpar\marginnote{\footnotesize#2}[#1]}}
