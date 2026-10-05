@@ -49,6 +49,19 @@ let s:cycles = [
             \ ['Rows', 'Columns']
             \ ]
 
+" Roman numeral support (`%^v` and `%v`) has to be disabled for min/max
+" cycling to work:
+SpeedDatingFormat! %^v
+SpeedDatingFormat! %v
+let s:cycles += [
+            \ ['min', 'max'],
+            \ ['MIN', 'MAX'],
+            \ ['Min', 'Max'],
+            \ ['minimum', 'maximum'],
+            \ ['MINIMUM', 'MAXIMUM'],
+            \ ['Minimum', 'Maximum']
+            \ ]
+
 " IT terms:
 let s:cycles += [
             \ ['bios', 'uefi'],
