@@ -73,6 +73,7 @@ let s:cycles += [
             \ ['tiny', 'scriptsize', 'footnotesize', 'small', 'normalsize', 'large', 'Large', 'LARGE', 'huge', 'Huge'],
             \ ['scriptscriptstyle', 'scriptstyle', 'textstyle', 'displaystyle'],
             \ ['arabic', 'alph', 'Alph', 'roman', 'Roman'],
+            \ ['minipage', 'varwidth'],
             \ ['gray', 'red', 'brown', 'yellow', 'olive', 'green', 'teal', 'cyan', 'azure', 'blue', 'violet', 'magenta', 'purple']
             \ ]
 
