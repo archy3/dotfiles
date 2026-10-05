@@ -269,6 +269,17 @@ snippet case "cases" wA
 \end{cases}
 endsnippet
 
+# GENERAL COMMANDS:
+snippet pbox "parbox" iA
+\parbox{${1:10em}}{
+	${2:${VISUAL}}
+}$0
+endsnippet
+
+snippet rb "raisebox" i
+\raisebox{${1:0ex}}[${2:\height}][${3:\depth}]{${4:${VISUAL}}}$0
+endsnippet
+
 
 # MODES:
 #snippet mm "Math" wA
@@ -292,12 +303,6 @@ endsnippet
 context "math()"
 snippet tt "text" iA
 \text{$1}$0
-endsnippet
-
-snippet pbox "parbox" iA
-\parbox{${1:10em}}{
-	${2:${VISUAL}}
-}$0
 endsnippet
 
 
