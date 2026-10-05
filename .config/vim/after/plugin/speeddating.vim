@@ -36,8 +36,18 @@ let s:cycles = [
             \ ['East', 'West'],
             \ ['top', 'bottom'],
             \ ['Top', 'Bottom'],
+            \ ['above', 'below'],
+            \ ['Above', 'Below'],
             \ ['horizontal', 'vertical'],
-            \ ['Horizontal', 'Vertical']
+            \ ['Horizontal', 'Vertical'],
+            \ ['horizontally', 'vertically'],
+            \ ['Horizontally', 'Vertically'],
+            \ ['increasing', 'decreasing'],
+            \ ['Increasing', 'Decreasing'],
+            \ ['row', 'column'],
+            \ ['Row', 'Column'],
+            \ ['rows', 'columns'],
+            \ ['Rows', 'Columns']
             \ ]
 
 " IT terms:
