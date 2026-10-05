@@ -189,6 +189,18 @@ snippet == "new-description-item" iA
 \item[$1] $0
 endsnippet
 
+snippet mp "minipage" b
+\begin{minipage}{${1:\linewidth}}
+	$0
+\end{minipage}
+endsnippet
+
+snippet vw "varwidth" b
+\begin{varwidth}{${1:\linewidth}}
+	$0
+\end{varwidth}
+endsnippet
+
 context "not math()"
 snippet ali "Align" bA
 \begin{align*}
