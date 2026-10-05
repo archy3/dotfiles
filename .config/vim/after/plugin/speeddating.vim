@@ -72,7 +72,8 @@ let s:cycles += [
             \ ['frac', 'dfrac', 'tfrac'],
             \ ['tiny', 'scriptsize', 'footnotesize', 'small', 'normalsize', 'large', 'Large', 'LARGE', 'huge', 'Huge'],
             \ ['scriptscriptstyle', 'scriptstyle', 'textstyle', 'displaystyle'],
-            \ ['arabic', 'alph', 'Alph', 'roman', 'Roman']
+            \ ['arabic', 'alph', 'Alph', 'roman', 'Roman'],
+            \ ['gray', 'red', 'brown', 'yellow', 'olive', 'green', 'teal', 'cyan', 'azure', 'blue', 'violet', 'magenta', 'purple']
             \ ]
 
 " LaTeX Exam additions:
